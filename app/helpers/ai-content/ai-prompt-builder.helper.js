@@ -199,8 +199,8 @@ RULES:
    be written the same way the source gives it — digits, not spelled-out
    words. Write "4 Inches" / "4-seater" / "78 x 60 in", never "four
    inches" / "four-seater".
-4. The price tier ({{TIER}}) must shape your WORD CHOICE only — {{TIER_VOICE}}.
-   Never state the tier name, never mention price, never imply a numeric
+4. VOICE & TONE ({{TONE_NAME}}): {{TONE_VOICE}}
+   Never state any internal tier name, never mention price, never imply a numeric
    price range.
 5. care_and_maintenance: select and politely rephrase ONLY from the
    provided reference list below. Do not invent instructions. Exactly 3
@@ -426,10 +426,29 @@ function formatLearnedRules(rules, category) {
     .join('\n');
 }
 
-function buildPrompt(product, priceBands, lengthDirection = null, learnedRules = {}) {
+function loadTonePresets() {
+  const p = path.join(__dirname, 'reference-data', 'tonePresets.json');
+  if (fs.existsSync(p)) {
+    try {
+      return JSON.parse(fs.readFileSync(p, 'utf-8'));
+    } catch (e) {}
+  }
+  return {};
+}
+
+function buildPrompt(product, priceBands, lengthDirection = null, learnedRules = {}, selectedTone = null) {
   const pb = priceBands || loadPriceBands();
   const tier = computeTier(product.price, product.category, pb);
   const careMatch = matchMaterial(product.primary_material);
+  const tonePresets = loadTonePresets();
+
+  let toneName = `Tier Voice (${tier})`;
+  let toneVoice = TIER_VOICE[tier] || '';
+
+  if (selectedTone && selectedTone !== 'auto' && tonePresets[selectedTone]) {
+    toneName = tonePresets[selectedTone].name;
+    toneVoice = tonePresets[selectedTone].instructions;
+  }
 
   const productKey = product.id || product.product_short_name || product.name;
   const assignedStrategy = selectOpeningStrategy(productKey);
@@ -448,8 +467,10 @@ function buildPrompt(product, priceBands, lengthDirection = null, learnedRules =
 
   let systemPrompt = SYSTEM_PROMPT_TEMPLATE
     .replace('{{SCHEMA_SUBSET}}', JSON.stringify(schemaSubset, null, 2))
+    .replace('{{TONE_NAME}}', toneName)
+    .replace('{{TONE_VOICE}}', toneVoice)
     .replace('{{TIER}}', tier)
-    .replace('{{TIER_VOICE}}', TIER_VOICE[tier])
+    .replace('{{TIER_VOICE}}', toneVoice)
     .replace('{{MATCHED_CATEGORY}}', careMatch.category)
     .replace('{{MATCHED_INSTRUCTIONS}}', JSON.stringify(careMatch.instructions))
     .replace('{{MATCHED_AVOID}}', JSON.stringify(careMatch.avoid))
@@ -491,7 +512,7 @@ Raw source data: ${JSON.stringify(productForPrompt, null, 2)}
 
 Generate the requested fields now.`;
 
-  return { systemPrompt, userPrompt, tier, careMatch, assignedStrategy, assignedCloseStrategy };
+  return { systemPrompt, userPrompt, tier, careMatch, assignedStrategy, assignedCloseStrategy, selectedTone };
 }
 
 module.exports = {
@@ -500,6 +521,7 @@ module.exports = {
   loadPriceBands,
   loadRulesFromMongo,
   loadCategoryRules,
+  loadTonePresets,
   resolveSubcategoryName,
   formatLearnedRules,
   SUBCATEGORY_MAPPING,

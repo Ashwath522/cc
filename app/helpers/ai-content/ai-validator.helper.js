@@ -4,6 +4,55 @@ const FORBIDDEN_TIER_WORDS = ['premium', 'mid-premium', 'value tier'];
 const BARE_IMPERATIVE_RE = /^(wipe|do not|don't|clean|dry|avoid|use|apply|dust|store|keep|remove|scrub)\b/i;
 const RAW_DIMENSION_RE = /\b\d+(?:\.\d+)?\s*(?:m|cm|mm|in|inch|inches|ft|feet)\b\s*(?:[lwhd]\b)?(?:\s*x\s*\d+(?:\.\d+)?\s*(?:m|cm|mm|in|inch|inches|ft|feet)\b\s*(?:[lwhd]\b)?)+/i;
 
+const THEME_FAMILIES = {
+  calm: {
+    moodWords: ['calm', 'rest', 'peace', 'peaceful', 'serene', 'serenity', 'unhurried', 'quiet', 'soothe', 'soothing', 'relax', 'relaxing', 'stillness', 'gentle', 'ease', 'tranquil', 'tranquility', 'unwind', 'mornings', 'wake', 'experience'],
+    closeWords: ['rest', 'restful', 'serenity', 'serene', 'calm', 'peace', 'peaceful', 'comfort', 'retreat', 'unwind', 'sleep', 'slumber', 'quiet', 'ease', 'tranquility', 'recharge', 'haven', 'order', 'balance'],
+  },
+  elegant: {
+    moodWords: ['statement', 'contemporary', 'elegant', 'elegance', 'sophisticated', 'sophistication', 'refined', 'refinement', 'grace', 'graceful', 'poise', 'sculptural', 'architectural', 'modern', 'distinction', 'timeless', 'elevate'],
+    closeWords: ['sophistication', 'sophisticated', 'statement', 'elegance', 'elegant', 'refined', 'refinement', 'style', 'presence', 'distinction', 'elevate', 'grace', 'aesthetic', 'polish', 'contemporary', 'balance'],
+  },
+  inviting: {
+    moodWords: ['inviting', 'warm', 'warmth', 'cozy', 'welcome', 'welcoming', 'gather', 'gathering', 'comfort', 'comforting', 'hearth', 'home', 'embrace', 'hospitable'],
+    closeWords: ['warmth', 'warm', 'welcome', 'welcoming', 'inviting', 'gather', 'comfort', 'living', 'home', 'cozy', 'belonging', 'presence', 'balance'],
+  },
+  minimal: {
+    moodWords: ['minimal', 'order', 'simplicity', 'simple', 'clean', 'clarity', 'uncluttered', 'essential', 'balance', 'balanced', 'harmony'],
+    closeWords: ['order', 'balance', 'balanced', 'simplicity', 'simple', 'clean', 'clarity', 'harmony', 'functional', 'pure', 'minimal', 'calm'],
+  },
+  craft: {
+    moodWords: ['grounded', 'enduring', 'craft', 'craftsmanship', 'heritage', 'rooted', 'authentic', 'foundation', 'strength', 'solid', 'lasting'],
+    closeWords: ['enduring', 'lasting', 'grounded', 'craftsmanship', 'strength', 'integrity', 'heritage', 'foundation', 'solid', 'dependable'],
+  },
+};
+
+function checkLoopThemeMatch(moodLine, closingSentence) {
+  if (!moodLine || !closingSentence) return { checked: false, matched: true };
+  const moodTokens = moodLine.toLowerCase().split(/[^a-z0-9]+/);
+  const closeTokens = new Set(closingSentence.toLowerCase().split(/[^a-z0-9]+/));
+
+  let detectedFamily = null;
+  for (const [familyName, family] of Object.entries(THEME_FAMILIES)) {
+    if (family.moodWords.some((w) => moodTokens.includes(w))) {
+      detectedFamily = familyName;
+      break;
+    }
+  }
+
+  if (!detectedFamily) {
+    return { checked: true, detectedFamily: null, matched: true };
+  }
+
+  const family = THEME_FAMILIES[detectedFamily];
+  const sharesTheme = family.closeWords.some((w) => closeTokens.has(w));
+  return {
+    checked: true,
+    detectedFamily,
+    matched: sharesTheme,
+  };
+}
+
 function normalize(v) {
   return String(v).trim().toLowerCase();
 }
@@ -23,6 +72,8 @@ function validateItem(item, sourceProduct, options = {}) {
       errors.push('Missing description.summary');
     }
     const summary = item.description.summary || '';
+    const sentences = summary.match(/[^.!?]+[.!?]+/g)?.map((s) => s.trim()).filter(Boolean) || (summary.trim() ? [summary.trim()] : []);
+
     if (!options.relaxLengthCheck) {
       const sentenceCount = (summary.match(/[.!?]/g) || []).length;
       if (sentenceCount < 4 || sentenceCount > 6) {
@@ -38,6 +89,18 @@ function validateItem(item, sourceProduct, options = {}) {
       errors.push('description.summary must not include raw dimension strings');
     }
 
+    // Structural loop check: Mood line and closing sentence theme match
+    if (sentences.length >= 2) {
+      const moodLine = sentences[0];
+      const closingSentence = sentences[sentences.length - 1];
+      const loopTheme = checkLoopThemeMatch(moodLine, closingSentence);
+      if (loopTheme.checked && !loopTheme.matched) {
+        errors.push(
+          `Structural loop check failed: closing sentence must return to the theme family of the mood line (detected family: "${loopTheme.detectedFamily}").`,
+        );
+      }
+    }
+
     if (sourceProduct && sourceProduct.product_short_name) {
       const shortName = sourceProduct.product_short_name;
       const escapedShortName = shortName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -46,7 +109,6 @@ function validateItem(item, sourceProduct, options = {}) {
       if (matches.length !== 1) {
         errors.push(`description.summary must mention product_short_name exactly once; found ${matches.length}`);
       } else {
-        const sentences = summary.match(/[^.!?]+[.!?]+/g)?.map((s) => s.trim()).filter(Boolean) || (summary.trim() ? [summary.trim()] : []);
         const closingSentence = sentences.length > 0 ? sentences[sentences.length - 1] : '';
         const closingRegex = new RegExp(`\\b${escapedShortName}\\b`, 'i');
         if (!closingRegex.test(closingSentence)) {
@@ -144,9 +206,16 @@ function validateItem(item, sourceProduct, options = {}) {
     errors.push('Missing returns');
   }
 
-  // Tier leakage check
+  // Tier / Vocabulary leakage check (tone-aware)
+  const selectedTone = options.selectedTone || (sourceProduct && sourceProduct.selected_tone) || null;
   const descriptionText = item.description ? JSON.stringify(item.description).toLowerCase() : '';
-  for (const word of FORBIDDEN_TIER_WORDS) {
+
+  // If selectedTone is 'premium_indulgent', allow 'premium' (it's required by that tone preset)
+  const forbiddenWords = selectedTone === 'premium_indulgent'
+    ? FORBIDDEN_TIER_WORDS.filter((w) => w !== 'premium')
+    : FORBIDDEN_TIER_WORDS;
+
+  for (const word of forbiddenWords) {
     if (descriptionText.includes(word)) {
       errors.push(`Tier leakage: description contains forbidden word "${word}"`);
     }

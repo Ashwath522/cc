@@ -1,0 +1,27 @@
+{
+  "warm_inviting": {
+    "id": "warm_inviting",
+    "name": "Warm & Inviting",
+    "instructions": "Adopt a warm, inviting, and hospitable voice. Use cozy, lived-in language focused on everyday comfort, shared rituals, and ease ('linger', 'gather', 'everyday ritual', 'welcoming warmth'). Sentences should feel gentle, affectionate, and personal without being overly sentimental."
+  },
+  "elegant_sophisticated": {
+    "id": "elegant_sophisticated",
+    "name": "Elegant & Sophisticated",
+    "instructions": "Adopt a poised, restrained, and cultivated voice. Use statement-piece architectural vocabulary that suggests quiet distinction, tailored grace, and enduring allure ('refined', 'timeless', 'elevate', 'understated presence'). Keep pacing deliberate and phrasing immaculate."
+  },
+  "minimal_modern": {
+    "id": "minimal_modern",
+    "name": "Minimal & Modern",
+    "instructions": "Adopt a crisp, clean, and concise modern voice. Emphasize geometric clarity, functional simplicity, and intentional space with short sentences and low adjective density ('clean lines', 'uncluttered', 'essential form', 'balanced profile'). Avoid ornamentation or decorative flourish."
+  },
+  "premium_indulgent": {
+    "id": "premium_indulgent",
+    "name": "Premium & Indulgent",
+    "instructions": "Adopt an opulent, sumptuous voice that foregrounds exquisite craftsmanship, bespoke tactile richness, and sensory luxury ('indulgence', 'craftsmanship', 'heirloom quality', 'flawless joinery', 'premium textures'). Pacing should be slower and evocative of exceptional artistry."
+  },
+  "playful_casual": {
+    "id": "playful_casual",
+    "name": "Playful & Casual",
+    "instructions": "Adopt a breezy, upbeat, and accessible voice. Contractions are welcome, tone is conversational and optimistic, and direct address brings easy vitality ('you\\'ll love', 'effortless charm', 'fresh spin', 'fun-loving'). Keep descriptions bright, relatable, and approachable."
+  }
+}

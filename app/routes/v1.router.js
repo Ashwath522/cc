@@ -107,6 +107,8 @@ const {
   startAiContentJob,
   listAiContentJobs,
   getAiContentJobStatus,
+  previewAiContentJob,
+  confirmAiContentJob,
 } = require('./controllers/aiContentJob.controller');
 const {
   listReviewRows,
@@ -120,6 +122,8 @@ const {
 router.post('/ai-content/jobs', startAiContentJob);
 router.get('/ai-content/jobs', listAiContentJobs);
 router.get('/ai-content/jobs/:jobId', getAiContentJobStatus);
+router.post('/ai-content/jobs/:jobId/preview', previewAiContentJob);
+router.post('/ai-content/jobs/:jobId/confirm', confirmAiContentJob);
 router.get('/ai-content/jobs/:jobId/review', listReviewRows);
 router.put('/ai-content/jobs/:jobId/review/:rowId', editReviewRow);
 router.post('/ai-content/jobs/:jobId/review/:rowId/regenerate', regenerateReviewRow);
@@ -131,6 +135,8 @@ router.post('/ai-content/feedback', submitFeedback);
 router.post(`${APP_BASE_PATH}/ai-content/jobs`, startAiContentJob);
 router.get(`${APP_BASE_PATH}/ai-content/jobs`, listAiContentJobs);
 router.get(`${APP_BASE_PATH}/ai-content/jobs/:jobId`, getAiContentJobStatus);
+router.post(`${APP_BASE_PATH}/ai-content/jobs/:jobId/preview`, previewAiContentJob);
+router.post(`${APP_BASE_PATH}/ai-content/jobs/:jobId/confirm`, confirmAiContentJob);
 router.get(`${APP_BASE_PATH}/ai-content/jobs/:jobId/review`, listReviewRows);
 router.put(`${APP_BASE_PATH}/ai-content/jobs/:jobId/review/:rowId`, editReviewRow);
 router.post(`${APP_BASE_PATH}/ai-content/jobs/:jobId/review/:rowId/regenerate`, regenerateReviewRow);

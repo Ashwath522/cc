@@ -137,6 +137,9 @@
             <button class="btn-secondary" :disabled="actionLoading" @click="handleSaveEdits(row)">
               Save Edits
             </button>
+            <button class="btn-secondary" :disabled="actionLoading" @click="promptRevertField(row)">
+              &#x21a9; Revert Field
+            </button>
             <button class="btn-push" :disabled="actionLoading" @click="handlePush(row)">
               Approve &amp; Push to CMS
             </button>
@@ -187,6 +190,7 @@ import {
   editReviewRow,
   regenerateReviewRow,
   pushReviewRow,
+  revertField,
   submitFeedback,
 } from '../services/aiContent.service';
 
@@ -278,6 +282,20 @@ export default {
         const errorMsg = err.response?.data?.error || err.message;
         const valErrors = err.response?.data?.validation?.errors;
         alert(`Failed to push to CMS: ${errorMsg}\n${valErrors ? valErrors.join('\n') : ''}`);
+      } finally {
+        this.actionLoading = false;
+      }
+    },
+    async promptRevertField(row) {
+      const fieldHistoryId = prompt('Enter the Field History ID to revert:');
+      if (!fieldHistoryId) return;
+      this.actionLoading = true;
+      try {
+        await revertField(fieldHistoryId.trim());
+        alert('Field reverted successfully!');
+        await this.fetchRows();
+      } catch (err) {
+        alert('Failed to revert field: ' + (err.response?.data?.error || err.message));
       } finally {
         this.actionLoading = false;
       }

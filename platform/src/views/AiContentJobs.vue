@@ -36,6 +36,19 @@
           </div>
 
           <div class="form-group">
+            <label>Voice & Tone Preset</label>
+            <select v-model="selectedTone">
+              <option value="auto">Auto (Price-tier driven voice)</option>
+              <option value="warm_inviting">Warm & Inviting (Cozy, lived-in, everyday rituals)</option>
+              <option value="elegant_sophisticated">Elegant & Sophisticated (Restrained, timeless, tailored)</option>
+              <option value="minimal_modern">Minimal & Modern (Crisp, clean lines, low adjective density)</option>
+              <option value="premium_indulgent">Premium & Indulgent (Opulent, heirloom, craftsmanship)</option>
+              <option value="playful_casual">Playful & Casual (Breezy, conversational, upbeat)</option>
+            </select>
+            <p class="hint">Sets the emotional tone and vocabulary across description prose.</p>
+          </div>
+
+          <div class="form-group">
             <label>Target CMS Definition (Optional for direct push)</label>
             <select v-model="selectedDefinitionSlug">
               <option value="">No direct CMS push (Review Queue only)</option>
@@ -48,10 +61,71 @@
         </div>
         <div class="modal-footer">
           <button class="btn-secondary" @click="showStartModal = false">Cancel</button>
+          <button class="btn-preview-action" :disabled="previewLoading" @click="handlePreview">
+            {{ previewLoading ? 'Generating Preview...' : '🔍 Preview (2-3 Items)' }}
+          </button>
           <button class="btn-primary" :disabled="loading" @click="handleStartJob">
-            {{ loading ? 'Starting...' : 'Launch Job' }}
+            {{ loading ? 'Starting...' : 'Launch Full Run' }}
           </button>
         </div>
+      </div>
+    </div>
+
+    <!-- Preview Results Panel -->
+    <div v-if="previewItems.length" class="preview-panel card">
+      <div class="preview-header">
+        <div>
+          <h2>On-Screen Preview: {{ previewCategory }} ({{ previewItems.length }} Products)</h2>
+          <p class="subtitle">Evaluate tone and structure before launching full run.</p>
+        </div>
+        <div class="preview-controls">
+          <label>Tone Preset:</label>
+          <select v-model="selectedTone" :disabled="previewLoading" @change="handleRePreview">
+            <option value="auto">Auto (Tier-based)</option>
+            <option value="warm_inviting">Warm & Inviting</option>
+            <option value="elegant_sophisticated">Elegant & Sophisticated</option>
+            <option value="minimal_modern">Minimal & Modern</option>
+            <option value="premium_indulgent">Premium & Indulgent</option>
+            <option value="playful_casual">Playful & Casual</option>
+          </select>
+          <button class="btn-primary" :disabled="confirming" @click="handleConfirmFullRun">
+            {{ confirming ? 'Enqueuing...' : '🚀 Generate All' }}
+          </button>
+        </div>
+      </div>
+
+      <div class="preview-grid">
+        <div v-for="(item, idx) in previewItems" :key="idx" class="preview-card">
+          <div class="item-title">{{ item.source_product.name }}</div>
+          <div class="item-summary">{{ item.generated_content.description?.summary }}</div>
+          <div v-if="item.generated_content.description?.key_features?.length" class="item-bullets">
+            <ul>
+              <li v-for="(b, bIdx) in item.generated_content.description.key_features" :key="bIdx">{{ b }}</li>
+            </ul>
+          </div>
+          <div class="item-meta">
+            <span class="badge" :class="item.validation?.valid ? 'badge-success' : 'badge-warning'">
+              {{ item.validation?.valid ? 'Valid Structure' : 'Validation Flags' }}
+            </span>
+            <span class="badge badge-info">Tone: {{ item.tone }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Free-text Feedback in Preview Panel -->
+      <div class="feedback-box">
+        <label>Refine with Feedback (creates reusable content rule):</label>
+        <div class="feedback-input-row">
+          <input
+            v-model="feedbackText"
+            placeholder="e.g., Avoid mentioning raw measurements in the summary"
+            @keyup.enter="handleSubmitFeedback"
+          />
+          <button class="btn-secondary" :disabled="!feedbackText.trim() || feedbackSubmitting" @click="handleSubmitFeedback">
+            {{ feedbackSubmitting ? 'Saving...' : 'Apply Feedback Rule' }}
+          </button>
+        </div>
+        <p v-if="feedbackSuccess" class="text-success">{{ feedbackSuccess }}</p>
       </div>
     </div>
 
@@ -119,7 +193,13 @@
 </template>
 
 <script>
-import { startAiJob, listAiJobs } from '../services/aiContent.service';
+import {
+  startAiJob,
+  listAiJobs,
+  previewAiJob,
+  confirmAiJob,
+  submitFeedback,
+} from '../services/aiContent.service';
 import { listDefinitions } from '../services/objectDefinition.service';
 
 export default {
@@ -129,9 +209,18 @@ export default {
       jobs: [],
       definitions: [],
       loading: false,
+      previewLoading: false,
+      confirming: false,
+      feedbackSubmitting: false,
       showStartModal: false,
       selectedCategory: 'Beds',
       selectedDefinitionSlug: '',
+      selectedTone: 'auto',
+      previewCategory: '',
+      previewJobId: null,
+      previewItems: [],
+      feedbackText: '',
+      feedbackSuccess: '',
       pollInterval: null,
     };
   },
@@ -174,6 +263,7 @@ export default {
           category: this.selectedCategory,
           category_ids: [this.selectedCategory],
           definition_slug: this.selectedDefinitionSlug,
+          selected_tone: this.selectedTone,
         });
         this.showStartModal = false;
         await this.fetchJobs();
@@ -181,6 +271,90 @@ export default {
         alert('Failed to start job: ' + (err.response?.data?.error || err.message));
       } finally {
         this.loading = false;
+      }
+    },
+    async handlePreview() {
+      this.previewLoading = true;
+      this.feedbackSuccess = '';
+      try {
+        // Start job in PREVIEW status or create preview job
+        const jobRes = await startAiJob({
+          category: this.selectedCategory,
+          category_ids: [this.selectedCategory],
+          definition_slug: this.selectedDefinitionSlug,
+          selected_tone: this.selectedTone,
+        });
+        const job = jobRes.data?.job;
+        if (!job) throw new Error('Could not create preview job');
+
+        this.previewJobId = job._id;
+        this.previewCategory = this.selectedCategory;
+
+        // Fetch preview items
+        const previewRes = await previewAiJob(job._id, {
+          tone: this.selectedTone,
+          count: 3,
+        });
+
+        this.previewItems = previewRes.data?.preview_items || [];
+        this.showStartModal = false;
+        await this.fetchJobs();
+      } catch (err) {
+        alert('Preview generation failed: ' + (err.response?.data?.error || err.message));
+      } finally {
+        this.previewLoading = false;
+      }
+    },
+    async handleRePreview() {
+      if (!this.previewJobId) return;
+      this.previewLoading = true;
+      this.feedbackSuccess = '';
+      try {
+        const previewRes = await previewAiJob(this.previewJobId, {
+          tone: this.selectedTone,
+          count: 3,
+        });
+        this.previewItems = previewRes.data?.preview_items || [];
+      } catch (err) {
+        alert('Re-preview failed: ' + (err.response?.data?.error || err.message));
+      } finally {
+        this.previewLoading = false;
+      }
+    },
+    async handleConfirmFullRun() {
+      if (!this.previewJobId) return;
+      this.confirming = true;
+      try {
+        await confirmAiJob(this.previewJobId, {
+          tone: this.selectedTone,
+        });
+        alert('Full AI content generation launched with selected tone!');
+        this.previewItems = [];
+        this.previewJobId = null;
+        await this.fetchJobs();
+      } catch (err) {
+        alert('Failed to confirm job: ' + (err.response?.data?.error || err.message));
+      } finally {
+        this.confirming = false;
+      }
+    },
+    async handleSubmitFeedback() {
+      if (!this.feedbackText.trim() || !this.previewCategory) return;
+      this.feedbackSubmitting = true;
+      try {
+        await submitFeedback({
+          category: this.previewCategory,
+          field: 'summary',
+          feedback_text: this.feedbackText.trim(),
+        });
+        this.feedbackSuccess = '✓ Rule saved! Subsequent runs and preview regenerations will honor this rule.';
+        this.feedbackText = '';
+        // Automatically re-preview to show the effect of the new rule
+        await this.handleRePreview();
+      } catch (err) {
+        alert('Failed to submit feedback: ' + (err.response?.data?.error || err.message));
+      } finally {
+        this.feedbackSubmitting = false;
       }
     },
     formatDate(d) {
@@ -343,5 +517,117 @@ export default {
   padding: 40px;
   text-align: center;
   color: #6b7280;
+}
+.btn-preview-action {
+  background-color: #059669;
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-preview-action:hover {
+  background-color: #047857;
+}
+.preview-panel {
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #10b981;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.preview-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.preview-controls select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+}
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.preview-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  background: #f9fafb;
+}
+.item-title {
+  font-weight: 700;
+  font-size: 15px;
+  color: #111827;
+  margin-bottom: 8px;
+}
+.item-summary {
+  font-size: 13.5px;
+  color: #374151;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.item-bullets ul {
+  padding-left: 18px;
+  margin: 8px 0;
+  font-size: 13px;
+  color: #4b5563;
+}
+.item-meta {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.badge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+.badge-success {
+  background-color: #def7ec;
+  color: #03543f;
+}
+.badge-warning {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+.badge-info {
+  background-color: #e0e7ff;
+  color: #3730a3;
+}
+.feedback-box {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 16px;
+  margin-top: 12px;
+}
+.feedback-box label {
+  font-weight: 600;
+  font-size: 13px;
+  color: #374151;
+  display: block;
+  margin-bottom: 6px;
+}
+.feedback-input-row {
+  display: flex;
+  gap: 12px;
+}
+.feedback-input-row input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
 }
 </style>

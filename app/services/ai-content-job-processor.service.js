@@ -182,13 +182,14 @@ async function processAiContentJob(jobId, companyId, applicationId, options = {}
     return;
   }
 
-  job.status = AI_CONTENT_JOB_STATUS.RUNNING;
+  job.status = AI_CONTENT_JOB_STATUS.PROCESSING;
   job.started_at = new Date();
   await job.save();
 
   try {
     const categoryIds = job.category_ids && job.category_ids.length > 0 ? job.category_ids : (job.category ? [job.category] : []);
     const definitionSlug = job.definition_slug;
+    const selectedTone = job.selected_tone || options.selected_tone || 'auto';
 
     let pageId = '*';
     let hasMore = true;
@@ -232,11 +233,11 @@ async function processAiContentJob(jobId, companyId, applicationId, options = {}
             product,
             null,
             1,
-            { company_id: companyId, application_id: applicationId, options },
+            { company_id: companyId, application_id: applicationId, selected_tone: selectedTone, options },
           );
 
           // Re-validate immediately before push
-          const prePushValidation = validateItem(generated, product);
+          const prePushValidation = validateItem(generated, product, { selectedTone });
 
           if (prePushValidation.valid && !generated._meta?.needs_review) {
             cleanCount++;
@@ -321,8 +322,63 @@ async function processAiContentJob(jobId, companyId, applicationId, options = {}
   }
 }
 
+/**
+ * Generates 2-3 preview products for on-screen tone evaluation without running full run or CMS push.
+ */
+async function generatePreviewProducts({
+  companyId,
+  applicationId,
+  category,
+  categoryIds,
+  tone = 'auto',
+  count = 3,
+}) {
+  const cats = categoryIds && categoryIds.length > 0 ? categoryIds : (category ? [category] : []);
+  const pageResponse = await getProductsByCategoryPaginated({
+    companyId,
+    categoryIds: cats,
+    pageSize: Math.max(1, count),
+    pageId: '*',
+  });
+
+  const rawItems = (pageResponse?.items || []).slice(0, count);
+  const previewResults = [];
+
+  for (const rawItem of rawItems) {
+    const product = transformCatalogItemToProduct(rawItem);
+    const productRef = catalogItemToProductRef(rawItem) || {
+      uid: product.id,
+      slug: product.slug || '',
+      name: product.name || '',
+    };
+
+    const generated = await generateOne(
+      product,
+      null,
+      1,
+      { company_id: companyId, application_id: applicationId, selected_tone: tone },
+    );
+
+    const validation = validateItem(generated, product, { selectedTone: tone });
+
+    previewResults.push({
+      product_ref: productRef,
+      source_product: product,
+      generated_content: generated,
+      validation,
+      tone,
+    });
+  }
+
+  return {
+    preview_products: previewResults,
+    product_refs: previewResults.map((r) => r.product_ref),
+  };
+}
+
 module.exports = {
   processAiContentJob,
+  generatePreviewProducts,
   pushProductToCms,
   buildCmsPayloadFromGenerated,
   findPublishedDefinition,

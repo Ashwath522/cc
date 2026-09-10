@@ -42,7 +42,8 @@ module.exports = {
   BULK_IMPORT_PRODUCT_SKU_BATCH_SIZE: 50,
   AI_CONTENT_JOB_STATUS: {
     PENDING: "pending",
-    RUNNING: "running",
+    PREVIEW: "preview",
+    PROCESSING: "processing",
     COMPLETED: "completed",
     FAILED: "failed",
   },
@@ -54,6 +55,7 @@ module.exports = {
     FAILED: "failed",
   },
   AI_CONTENT_PRODUCT_BATCH_SIZE: 50,
+  AI_CONTENT_REVIEW_TTL_DAYS: 14,
   AI_CONTENT_QUEUE_NAME: "cms-ai-content",
 };
 

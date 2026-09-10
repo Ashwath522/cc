@@ -61,10 +61,26 @@ const revertField = (fieldHistoryId, payload = {}) =>
 const submitFeedback = (payload = {}) =>
   axios.post(`${baseApi}/ai-content/feedback`, { ...payload, ...getAppParams() }, { params: getAppParams() });
 
+const previewAiJob = (jobId, payload = {}) =>
+  axios.post(
+    `${baseApi}/ai-content/jobs/${jobId}/preview`,
+    { ...payload, ...getAppParams() },
+    { params: getAppParams() },
+  );
+
+const confirmAiJob = (jobId, payload = {}) =>
+  axios.post(
+    `${baseApi}/ai-content/jobs/${jobId}/confirm`,
+    { ...payload, ...getAppParams() },
+    { params: getAppParams() },
+  );
+
 export {
   startAiJob,
   listAiJobs,
   getAiJobStatus,
+  previewAiJob,
+  confirmAiJob,
   listReviewRows,
   editReviewRow,
   regenerateReviewRow,

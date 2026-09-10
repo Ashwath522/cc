@@ -5,11 +5,12 @@ const logger = require('../../common/logger');
 const AiContentJobModel = require('../../models/aiContentJob.model');
 const { AI_CONTENT_JOB_STATUS } = require('../../constants/constant');
 const { enqueueAiContentJob } = require('../../workers/ai-content.worker');
+const { generatePreviewProducts } = require('../../services/ai-content-job-processor.service');
 
 const startAiContentJob = async (req, res, next) => {
   const companyId = req.headers['x-company-id'] || req.query.company_id || req.body.company_id;
   const applicationId = req.params.application_id || req.headers['x-application-id'] || req.body.application_id;
-  const { category, category_ids, definition_slug, created_by } = req.body;
+  const { category, category_ids, definition_slug, created_by, tone, selected_tone } = req.body;
 
   try {
     if (!companyId || !applicationId) {
@@ -24,6 +25,8 @@ const startAiContentJob = async (req, res, next) => {
       return res.status(400).json({ error: 'At least one category or category_id must be selected' });
     }
 
+    const chosenTone = selected_tone || tone || 'auto';
+
     const job = await AiContentJobModel.create({
       company_id: companyId,
       application_id: applicationId,
@@ -31,6 +34,7 @@ const startAiContentJob = async (req, res, next) => {
       category_ids: cats,
       definition_slug: definition_slug || '',
       status: AI_CONTENT_JOB_STATUS.PENDING,
+      selected_tone: chosenTone,
       created_by: created_by || '',
     });
 
@@ -38,7 +42,7 @@ const startAiContentJob = async (req, res, next) => {
       jobId: job._id,
       companyId,
       applicationId,
-      options: req.body.options || {},
+      options: { selected_tone: chosenTone, ...(req.body.options || {}) },
     });
 
     return res.status(201).json({
@@ -119,8 +123,107 @@ const getAiContentJobStatus = async (req, res, next) => {
   }
 };
 
+const previewAiContentJob = async (req, res, next) => {
+  const companyId = req.headers['x-company-id'] || req.query.company_id || req.body.company_id;
+  const applicationId = req.params.application_id || req.headers['x-application-id'] || req.body.application_id;
+  const { jobId } = req.params;
+  const { tone = 'auto', count = 3 } = req.body;
+
+  try {
+    if (!companyId || !applicationId) {
+      return res.status(400).json({ error: 'company_id and application_id are required' });
+    }
+
+    const job = await AiContentJobModel.findOne({
+      _id: jobId,
+      company_id: companyId,
+      application_id: applicationId,
+    }).exec();
+
+    if (!job) {
+      return res.status(404).json({ error: 'Job not found' });
+    }
+
+    const preview = await generatePreviewProducts({
+      companyId,
+      applicationId,
+      category: job.category,
+      categoryIds: job.category_ids,
+      tone,
+      count,
+    });
+
+    job.selected_tone = tone;
+    job.status = AI_CONTENT_JOB_STATUS.PREVIEW;
+    job.preview_product_refs = preview.product_refs;
+    job.preview_results = preview.preview_products;
+    await job.save();
+
+    return res.json({
+      success: true,
+      status: AI_CONTENT_JOB_STATUS.PREVIEW,
+      selected_tone: tone,
+      preview_items: preview.preview_products,
+      job,
+    });
+  } catch (error) {
+    logger.error(`[previewAiContentJob] Error: ${error.message}`);
+    Sentry.captureException(error);
+    return next(error);
+  }
+};
+
+const confirmAiContentJob = async (req, res, next) => {
+  const companyId = req.headers['x-company-id'] || req.query.company_id || req.body.company_id;
+  const applicationId = req.params.application_id || req.headers['x-application-id'] || req.body.application_id;
+  const { jobId } = req.params;
+  const { tone } = req.body;
+
+  try {
+    if (!companyId || !applicationId) {
+      return res.status(400).json({ error: 'company_id and application_id are required' });
+    }
+
+    const job = await AiContentJobModel.findOne({
+      _id: jobId,
+      company_id: companyId,
+      application_id: applicationId,
+    }).exec();
+
+    if (!job) {
+      return res.status(404).json({ error: 'Job not found' });
+    }
+
+    if (tone) {
+      job.selected_tone = tone;
+    }
+
+    job.status = AI_CONTENT_JOB_STATUS.PENDING;
+    await job.save();
+
+    await enqueueAiContentJob({
+      jobId: job._id,
+      companyId,
+      applicationId,
+      options: { selected_tone: job.selected_tone, ...(req.body.options || {}) },
+    });
+
+    return res.json({
+      success: true,
+      message: 'Job confirmed and enqueued for full run',
+      job,
+    });
+  } catch (error) {
+    logger.error(`[confirmAiContentJob] Error: ${error.message}`);
+    Sentry.captureException(error);
+    return next(error);
+  }
+};
+
 module.exports = {
   startAiContentJob,
   listAiContentJobs,
   getAiContentJobStatus,
+  previewAiContentJob,
+  confirmAiContentJob,
 };

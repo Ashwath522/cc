@@ -114,7 +114,8 @@ async function generateOne(
   const pb = priceBands || loadPriceBands();
   const rules = context.rules || (await loadRulesFromMongo(context.company_id, context.application_id, product.category));
 
-  const { systemPrompt, userPrompt, careMatch } = buildPrompt(product, pb, null, rules);
+  const selectedTone = context.selected_tone || context.tone || null;
+  const { systemPrompt, userPrompt, careMatch } = buildPrompt(product, pb, null, rules, selectedTone);
 
   let finalUserPrompt = userPrompt;
 
@@ -168,12 +169,6 @@ async function generateOne(
     finalUserPrompt += correctionNote;
   }
 
-  const llmOutput = await generateContent({
-    systemPrompt,
-    userPrompt: finalUserPrompt,
-    options: context.options,
-  });
-
   // specifications: deterministic pass-through
   const specifications = {};
   for (const field of [
@@ -187,6 +182,46 @@ async function generateOne(
   ]) {
     if (product[field] !== undefined && product[field] !== null && product[field] !== '') {
       specifications[field] = product[field];
+    }
+  }
+
+  // Policy 1: LLM infrastructure error (network/429/5xx) -> retry once, then mark needs_review.
+  // Do NOT burn the 3-attempt content-correction budget on infra failures.
+  let llmOutput = null;
+  let infraAttempts = 0;
+  while (infraAttempts < 2) {
+    infraAttempts++;
+    try {
+      llmOutput = await generateContent({
+        systemPrompt,
+        userPrompt: finalUserPrompt,
+        options: context.options,
+      });
+      break;
+    } catch (llmErr) {
+      logger.warn(`[aiOrchestrator] LLM API error on attempt ${infraAttempts}/2 for product ${product.id || product.name}: ${llmErr.message}`);
+      if (infraAttempts >= 2) {
+        return {
+          description: {
+            summary: product.name || '',
+            key_features: generateBulletList(product),
+          },
+          specifications,
+          care_and_maintenance: { instructions: [], avoid: [] },
+          warranty: { applicable: false, status_line: '**No**, it has a warranty of **0 months**.', points: [] },
+          returns: getReturnsBlock(product.category),
+          quality_promise: '',
+          _meta: {
+            needs_review: true,
+            infrastructure_error: true,
+            validation_errors: [`LLM API error (retried once): ${llmErr.message}`],
+            attempt_history: [
+              ...attemptHistory,
+              { attempt, valid: false, errors: [`LLM API error (retried once): ${llmErr.message}`] },
+            ],
+          },
+        };
+      }
     }
   }
 
@@ -219,7 +254,8 @@ async function generateOne(
     },
   };
 
-  const result = validateItem(item, product);
+  // Policy 2: Content quality validation -> up to 3 attempts with targeted correction note
+  const result = validateItem(item, product, { selectedTone });
 
   const currentAttemptRecord = {
     attempt,

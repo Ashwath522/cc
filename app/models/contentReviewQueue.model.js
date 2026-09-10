@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 const mongo = require('../common/mongo.init').host;
-const { AI_CONTENT_ROW_STATUS } = require('../constants/constant');
+const { AI_CONTENT_ROW_STATUS, AI_CONTENT_REVIEW_TTL_DAYS } = require('../constants/constant');
 
 const ContentReviewQueueSchema = new mongoose.Schema(
   {
@@ -39,7 +39,7 @@ ContentReviewQueueSchema.index({
 ContentReviewQueueSchema.index(
   { created_at: 1 },
   {
-    expireAfterSeconds: 14 * 86400,
+    expireAfterSeconds: AI_CONTENT_REVIEW_TTL_DAYS * 86400,
     partialFilterExpression: { status: 'needs_review' },
   },
 );

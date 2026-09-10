@@ -115,7 +115,10 @@ async function generateOne(
   const rules = context.rules || (await loadRulesFromMongo(context.company_id, context.application_id, product.category));
 
   const selectedTone = context.selected_tone || context.tone || null;
-  const { systemPrompt, userPrompt, careMatch } = buildPrompt(product, pb, null, rules, selectedTone);
+  const { systemPrompt, userPrompt, careMatch } = await buildPrompt(product, pb, null, rules, selectedTone, {
+    company_id: context.company_id,
+    application_id: context.application_id,
+  });
 
   let finalUserPrompt = userPrompt;
 
@@ -255,7 +258,7 @@ async function generateOne(
   };
 
   // Policy 2: Content quality validation -> up to 3 attempts with targeted correction note
-  const result = validateItem(item, product, { selectedTone });
+  const result = validateItem(item, product, { ...(context.options || {}), selectedTone });
 
   const currentAttemptRecord = {
     attempt,
@@ -278,67 +281,74 @@ async function generateOne(
   }
 
   // Similarity & Repetition check on valid items
+  if (!context.options?.skipRepetitionCheck) {
+    const summary = item.description?.summary || '';
+    const sentences = summary.match(/[^.!?]+[.!?]+/g)?.map((s) => s.trim()).filter(Boolean) || (summary.trim() ? [summary.trim()] : []);
+    const opener = sentences[0] || '';
+    const closer = sentences.length > 0 ? sentences[sentences.length - 1] : '';
+
+    const existingRecords = loadOpeners();
+    const existingOpeners = existingRecords.map((r) => ({ id: r.id, sentence: r.opener }));
+    const existingClosers = existingRecords.map((r) => ({ id: r.id, sentence: r.closer }));
+
+    const openerCheck = opener ? ngramOverlapCheck(opener, existingOpeners) : { tooSimilar: false };
+    const closerCheck = closer ? ngramOverlapCheck(closer, existingClosers) : { tooSimilar: false };
+    const isTooSimilar = openerCheck.tooSimilar || closerCheck.tooSimilar;
+
+    const phraseFreqMap = loadPhraseFrequencies();
+    const phraseCheckResults = sentences.map((sentence, idx) => ({
+      sentenceIndex: idx,
+      sentence,
+      ...checkPhraseFrequency(sentence, phraseFreqMap, 3),
+    }));
+    const flaggedSentenceChecks = phraseCheckResults.filter((r) => r.flagged);
+    const hasOverusedPhrases = flaggedSentenceChecks.length > 0;
+
+    if ((isTooSimilar || hasOverusedPhrases) && attempt < 3) {
+      const retryErrors = [];
+      if (openerCheck.tooSimilar) {
+        retryErrors.push(
+          `REPETITION FIX REQUIRED: Your opening sentence is too similar to a previously generated product's opener (matched: '${openerCheck.matchedSentence}'). Rewrite the opening sentence using different vocabulary.`,
+        );
+      }
+      if (closerCheck.tooSimilar) {
+        retryErrors.push(
+          `REPETITION FIX REQUIRED: Your closing sentence is too similar to a previously generated product's closer (matched: '${closerCheck.matchedSentence}'). Rewrite the closing sentence using different vocabulary.`,
+        );
+      }
+      if (hasOverusedPhrases) {
+        for (const res of flaggedSentenceChecks) {
+          const positionLabel =
+            res.sentenceIndex === 0
+              ? 'opening sentence'
+              : res.sentenceIndex === sentences.length - 1
+              ? 'closing sentence'
+              : `sentence ${res.sentenceIndex + 1}`;
+          for (const p of res.repeatedPhrases) {
+            retryErrors.push(`OVERUSED PHRASE: '${p.phrase}' in your ${positionLabel} has already appeared 3+ times.`);
+          }
+        }
+      }
+
+      logger.warn(`[aiOrchestrator] Product ${product.id} failed repetition/phrase check on attempt ${attempt}/3: ${retryErrors.join('; ')}`);
+      const repetitionAttemptRecord = {
+        attempt,
+        valid: true,
+        repetition_failed: isTooSimilar,
+        phrase_overuse_failed: hasOverusedPhrases,
+        errors: retryErrors,
+        output_snippet: llmOutput.description?.summary?.slice(0, 100),
+      };
+      return generateOne(product, pb, attempt + 1, context, [...attemptHistory, repetitionAttemptRecord]);
+    }
+  }
+
+  // Persist opener and closer
   const summary = item.description?.summary || '';
   const sentences = summary.match(/[^.!?]+[.!?]+/g)?.map((s) => s.trim()).filter(Boolean) || (summary.trim() ? [summary.trim()] : []);
   const opener = sentences[0] || '';
   const closer = sentences.length > 0 ? sentences[sentences.length - 1] : '';
 
-  const existingRecords = loadOpeners();
-  const existingOpeners = existingRecords.map((r) => ({ id: r.id, sentence: r.opener }));
-  const existingClosers = existingRecords.map((r) => ({ id: r.id, sentence: r.closer }));
-
-  const openerCheck = opener ? ngramOverlapCheck(opener, existingOpeners) : { tooSimilar: false };
-  const closerCheck = closer ? ngramOverlapCheck(closer, existingClosers) : { tooSimilar: false };
-  const isTooSimilar = openerCheck.tooSimilar || closerCheck.tooSimilar;
-
-  const phraseFreqMap = loadPhraseFrequencies();
-  const phraseCheckResults = sentences.map((sentence, idx) => ({
-    sentenceIndex: idx,
-    sentence,
-    ...checkPhraseFrequency(sentence, phraseFreqMap, 3),
-  }));
-  const flaggedSentenceChecks = phraseCheckResults.filter((r) => r.flagged);
-  const hasOverusedPhrases = flaggedSentenceChecks.length > 0;
-
-  if ((isTooSimilar || hasOverusedPhrases) && attempt < 3) {
-    const retryErrors = [];
-    if (openerCheck.tooSimilar) {
-      retryErrors.push(
-        `REPETITION FIX REQUIRED: Your opening sentence is too similar to a previously generated product's opener (matched: '${openerCheck.matchedSentence}'). Rewrite the opening sentence using different vocabulary.`,
-      );
-    }
-    if (closerCheck.tooSimilar) {
-      retryErrors.push(
-        `REPETITION FIX REQUIRED: Your closing sentence is too similar to a previously generated product's closer (matched: '${closerCheck.matchedSentence}'). Rewrite the closing sentence using different vocabulary.`,
-      );
-    }
-    if (hasOverusedPhrases) {
-      for (const res of flaggedSentenceChecks) {
-        const positionLabel =
-          res.sentenceIndex === 0
-            ? 'opening sentence'
-            : res.sentenceIndex === sentences.length - 1
-            ? 'closing sentence'
-            : `sentence ${res.sentenceIndex + 1}`;
-        for (const p of res.repeatedPhrases) {
-          retryErrors.push(`OVERUSED PHRASE: '${p.phrase}' in your ${positionLabel} has already appeared 3+ times.`);
-        }
-      }
-    }
-
-    logger.warn(`[aiOrchestrator] Product ${product.id} failed repetition/phrase check on attempt ${attempt}/3: ${retryErrors.join('; ')}`);
-    const repetitionAttemptRecord = {
-      attempt,
-      valid: true,
-      repetition_failed: isTooSimilar,
-      phrase_overuse_failed: hasOverusedPhrases,
-      errors: retryErrors,
-      output_snippet: llmOutput.description?.summary?.slice(0, 100),
-    };
-    return generateOne(product, pb, attempt + 1, context, [...attemptHistory, repetitionAttemptRecord]);
-  }
-
-  // Persist opener and closer
   appendOpener({
     id: product.id,
     name: product.name,

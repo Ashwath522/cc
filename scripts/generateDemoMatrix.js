@@ -4,6 +4,19 @@
 require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
+const mongoose = require('mongoose');
+
+process.on('unhandledRejection', () => {});
+
+// Prevent ECONNREFUSED when running standalone demo without local MongoDB daemon
+const dummyConnection = new mongoose.Connection(mongoose);
+const mongoInitPath = require.resolve('../app/common/mongo.init');
+require.cache[mongoInitPath] = {
+  id: mongoInitPath,
+  filename: mongoInitPath,
+  loaded: true,
+  exports: { host: dummyConnection, groot: dummyConnection },
+};
 
 const { transformCatalogItemToProduct } = require('../app/helpers/ai-content/ai-attribute-transform.helper');
 const { generateOne } = require('../app/helpers/ai-content/ai-orchestrator.helper');

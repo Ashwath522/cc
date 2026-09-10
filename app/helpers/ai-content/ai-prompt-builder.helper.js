@@ -426,30 +426,31 @@ function formatLearnedRules(rules, category) {
     .join('\n');
 }
 
+const { getEffectiveTone } = require('./tone');
+
+const TONE_NAMES = Object.freeze({
+  warm_inviting: 'Warm & Inviting',
+  elegant_sophisticated: 'Elegant & Sophisticated',
+  minimal_modern: 'Minimal & Modern',
+  premium_indulgent: 'Premium & Indulgent',
+  playful_casual: 'Playful & Casual',
+});
+
 function loadTonePresets() {
-  const p = path.join(__dirname, 'reference-data', 'tonePresets.json');
-  if (fs.existsSync(p)) {
-    try {
-      return JSON.parse(fs.readFileSync(p, 'utf-8'));
-    } catch (e) {}
-  }
-  return {};
+  const { TONE_PRESETS } = require('./tone');
+  return TONE_PRESETS;
 }
 
-function buildPrompt(product, priceBands, lengthDirection = null, learnedRules = {}, selectedTone = null) {
-  const pb = priceBands || loadPriceBands();
-  const tier = computeTier(product.price, product.category, pb);
-  const careMatch = matchMaterial(product.primary_material);
-  const tonePresets = loadTonePresets();
-
-  let toneName = `Tier Voice (${tier})`;
-  let toneVoice = TIER_VOICE[tier] || '';
-
-  if (selectedTone && selectedTone !== 'auto' && tonePresets[selectedTone]) {
-    toneName = tonePresets[selectedTone].name;
-    toneVoice = tonePresets[selectedTone].instructions;
-  }
-
+function assemblePromptTemplate({
+  product,
+  tier,
+  careMatch,
+  toneName,
+  toneVoice,
+  lengthDirection,
+  learnedRules,
+  selectedTone,
+}) {
   const productKey = product.id || product.product_short_name || product.name;
   const assignedStrategy = selectOpeningStrategy(productKey);
   const assignedCloseStrategy = selectCloseStrategy(productKey);
@@ -468,9 +469,9 @@ function buildPrompt(product, priceBands, lengthDirection = null, learnedRules =
   let systemPrompt = SYSTEM_PROMPT_TEMPLATE
     .replace('{{SCHEMA_SUBSET}}', JSON.stringify(schemaSubset, null, 2))
     .replace('{{TONE_NAME}}', toneName)
-    .replace('{{TONE_VOICE}}', toneVoice)
+    .replace('{{TONE_VOICE}}', String(toneVoice || ''))
     .replace('{{TIER}}', tier)
-    .replace('{{TIER_VOICE}}', toneVoice)
+    .replace('{{TIER_VOICE}}', String(toneVoice || ''))
     .replace('{{MATCHED_CATEGORY}}', careMatch.category)
     .replace('{{MATCHED_INSTRUCTIONS}}', JSON.stringify(careMatch.instructions))
     .replace('{{MATCHED_AVOID}}', JSON.stringify(careMatch.avoid))
@@ -513,6 +514,78 @@ Raw source data: ${JSON.stringify(productForPrompt, null, 2)}
 Generate the requested fields now.`;
 
   return { systemPrompt, userPrompt, tier, careMatch, assignedStrategy, assignedCloseStrategy, selectedTone };
+}
+
+function buildPrompt(
+  product,
+  priceBands,
+  lengthDirection = null,
+  learnedRules = {},
+  selectedTone = null,
+  tenantContext = {},
+) {
+  const pb = priceBands || loadPriceBands();
+  const tier = computeTier(product.price, product.category, pb);
+  const careMatch = matchMaterial(product.primary_material);
+
+  const toneId =
+    typeof selectedTone === 'object' && selectedTone !== null
+      ? selectedTone.toneId || selectedTone.tone_id || selectedTone.id
+      : selectedTone;
+
+  const companyId =
+    tenantContext.company_id ||
+    tenantContext.companyId ||
+    (typeof selectedTone === 'object' && selectedTone !== null ? selectedTone.companyId || selectedTone.company_id : null);
+  const applicationId =
+    tenantContext.application_id ||
+    tenantContext.applicationId ||
+    (typeof selectedTone === 'object' && selectedTone !== null
+      ? selectedTone.applicationId || selectedTone.application_id
+      : null);
+
+  let toneName = `Tier Voice (${tier})`;
+  let toneVoice = TIER_VOICE[tier] || '';
+
+  if (toneId && toneId !== 'auto') {
+    toneName = TONE_NAMES[toneId] || toneId;
+    const toneResult = getEffectiveTone({ companyId, applicationId, toneId });
+    toneVoice = String(toneResult || '');
+  }
+
+  const syncResult = assemblePromptTemplate({
+    product,
+    tier,
+    careMatch,
+    toneName,
+    toneVoice,
+    lengthDirection,
+    learnedRules,
+    selectedTone: toneId,
+  });
+
+  // Support both synchronous destructuring and async await
+  const asyncPromise = (async () => {
+    if (toneId && toneId !== 'auto') {
+      const asyncResolvedTone = await getEffectiveTone({ companyId, applicationId, toneId });
+      if (asyncResolvedTone && asyncResolvedTone !== toneVoice) {
+        return assemblePromptTemplate({
+          product,
+          tier,
+          careMatch,
+          toneName,
+          toneVoice: String(asyncResolvedTone),
+          lengthDirection,
+          learnedRules,
+          selectedTone: toneId,
+        });
+      }
+    }
+    return syncResult;
+  })();
+
+  Object.assign(asyncPromise, syncResult);
+  return asyncPromise;
 }
 
 module.exports = {

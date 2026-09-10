@@ -6,6 +6,12 @@ const AiContentJobModel = require('../../models/aiContentJob.model');
 const { AI_CONTENT_JOB_STATUS } = require('../../constants/constant');
 const { enqueueAiContentJob } = require('../../workers/ai-content.worker');
 const { generatePreviewProducts } = require('../../services/ai-content-job-processor.service');
+const { TONE_PRESETS } = require('../../helpers/ai-content/tone');
+
+const ALLOWED_TONE_IDS = new Set(['auto', ...Object.keys(TONE_PRESETS)]);
+function isValidToneId(toneId) {
+  return !toneId || ALLOWED_TONE_IDS.has(toneId);
+}
 
 const startAiContentJob = async (req, res, next) => {
   const companyId = req.headers['x-company-id'] || req.query.company_id || req.body.company_id;
@@ -26,6 +32,11 @@ const startAiContentJob = async (req, res, next) => {
     }
 
     const chosenTone = selected_tone || tone || 'auto';
+    if (!isValidToneId(chosenTone)) {
+      return res.status(400).json({
+        error: `Invalid tone "${chosenTone}". Raw tone text cannot be passed directly. Only preset IDs are allowed: ${[...ALLOWED_TONE_IDS].join(', ')}`,
+      });
+    }
 
     const job = await AiContentJobModel.create({
       company_id: companyId,
@@ -134,6 +145,12 @@ const previewAiContentJob = async (req, res, next) => {
       return res.status(400).json({ error: 'company_id and application_id are required' });
     }
 
+    if (!isValidToneId(tone)) {
+      return res.status(400).json({
+        error: `Invalid tone "${tone}". Raw tone text cannot be passed directly. Only preset IDs are allowed: ${[...ALLOWED_TONE_IDS].join(', ')}`,
+      });
+    }
+
     const job = await AiContentJobModel.findOne({
       _id: jobId,
       company_id: companyId,
@@ -182,6 +199,12 @@ const confirmAiContentJob = async (req, res, next) => {
   try {
     if (!companyId || !applicationId) {
       return res.status(400).json({ error: 'company_id and application_id are required' });
+    }
+
+    if (tone && !isValidToneId(tone)) {
+      return res.status(400).json({
+        error: `Invalid tone "${tone}". Raw tone text cannot be passed directly. Only preset IDs are allowed: ${[...ALLOWED_TONE_IDS].join(', ')}`,
+      });
     }
 
     const job = await AiContentJobModel.findOne({

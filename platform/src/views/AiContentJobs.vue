@@ -48,6 +48,42 @@
             <p class="hint">Sets the emotional tone and vocabulary across description prose.</p>
           </div>
 
+          <!-- Viewable & Editable Tone Format -->
+          <div v-if="selectedTone !== 'auto'" class="tone-rules-card">
+            <div class="tone-rules-header">
+              <span class="tone-rules-title">Effective Tone Rules (how this tone is formatted):</span>
+              <span class="badge" :class="isToneOverridden ? 'badge-warning' : 'badge-neutral'">
+                {{ isToneOverridden ? 'Company Override' : 'Shipped Default' }}
+              </span>
+            </div>
+            <textarea
+              v-model="toneRuleText"
+              class="tone-textarea"
+              rows="4"
+              placeholder="Edit tone prompt instructions..."
+              :disabled="toneLoading"
+            ></textarea>
+            <div class="tone-rules-footer">
+              <button
+                type="button"
+                class="btn-sm btn-outline-primary"
+                :disabled="toneSaving || toneLoading"
+                @click="saveTonePreset"
+              >
+                {{ toneSaving ? 'Saving...' : '💾 Save Tone Preset' }}
+              </button>
+              <button
+                type="button"
+                class="btn-sm btn-outline-secondary"
+                :disabled="toneResetting || toneLoading || !isToneOverridden"
+                @click="resetTonePreset"
+              >
+                {{ toneResetting ? 'Resetting...' : '↺ Reset to Default' }}
+              </button>
+              <span v-if="toneFeedbackMsg" class="tone-feedback-msg">{{ toneFeedbackMsg }}</span>
+            </div>
+          </div>
+
           <div class="form-group">
             <label>Target CMS Definition (Optional for direct push)</label>
             <select v-model="selectedDefinitionSlug">
@@ -88,9 +124,53 @@
             <option value="premium_indulgent">Premium & Indulgent</option>
             <option value="playful_casual">Playful & Casual</option>
           </select>
+          <button
+            v-if="selectedTone !== 'auto'"
+            type="button"
+            class="btn-sm btn-outline-secondary"
+            @click="showPreviewToneEditor = !showPreviewToneEditor"
+          >
+            {{ showPreviewToneEditor ? 'Hide Tone Format' : '⚙ View / Edit Tone Format' }}
+          </button>
           <button class="btn-primary" :disabled="confirming" @click="handleConfirmFullRun">
             {{ confirming ? 'Enqueuing...' : '🚀 Generate All' }}
           </button>
+        </div>
+      </div>
+
+      <!-- Optional Tone Editor in Preview Panel -->
+      <div v-if="showPreviewToneEditor && selectedTone !== 'auto'" class="tone-rules-card preview-tone-box">
+        <div class="tone-rules-header">
+          <span class="tone-rules-title">Effective Tone Rules (how this tone is formatted):</span>
+          <span class="badge" :class="isToneOverridden ? 'badge-warning' : 'badge-neutral'">
+            {{ isToneOverridden ? 'Company Override' : 'Shipped Default' }}
+          </span>
+        </div>
+        <textarea
+          v-model="toneRuleText"
+          class="tone-textarea"
+          rows="3"
+          placeholder="Edit tone prompt instructions..."
+          :disabled="toneLoading"
+        ></textarea>
+        <div class="tone-rules-footer">
+          <button
+            type="button"
+            class="btn-sm btn-outline-primary"
+            :disabled="toneSaving || toneLoading"
+            @click="saveTonePreset"
+          >
+            {{ toneSaving ? 'Saving...' : '💾 Save Tone Preset' }}
+          </button>
+          <button
+            type="button"
+            class="btn-sm btn-outline-secondary"
+            :disabled="toneResetting || toneLoading || !isToneOverridden"
+            @click="resetTonePreset"
+          >
+            {{ toneResetting ? 'Resetting...' : '↺ Reset to Default' }}
+          </button>
+          <span v-if="toneFeedbackMsg" class="tone-feedback-msg">{{ toneFeedbackMsg }}</span>
         </div>
       </div>
 
@@ -199,6 +279,9 @@ import {
   previewAiJob,
   confirmAiJob,
   submitFeedback,
+  getTonePreset,
+  updateTonePreset,
+  resetTonePreset,
 } from '../services/aiContent.service';
 import { listDefinitions } from '../services/objectDefinition.service';
 
@@ -222,7 +305,20 @@ export default {
       feedbackText: '',
       feedbackSuccess: '',
       pollInterval: null,
+      toneLoading: false,
+      toneSaving: false,
+      toneResetting: false,
+      toneRuleText: '',
+      defaultToneRuleText: '',
+      isToneOverridden: false,
+      toneFeedbackMsg: '',
+      showPreviewToneEditor: false,
     };
+  },
+  watch: {
+    selectedTone(newVal) {
+      this.loadToneDetails();
+    },
   },
   async mounted() {
     await this.fetchData();
@@ -355,6 +451,76 @@ export default {
         alert('Failed to submit feedback: ' + (err.response?.data?.error || err.message));
       } finally {
         this.feedbackSubmitting = false;
+      }
+    },
+    async loadToneDetails() {
+      if (!this.selectedTone || this.selectedTone === 'auto') {
+        this.toneRuleText = '';
+        this.defaultToneRuleText = '';
+        this.isToneOverridden = false;
+        this.toneFeedbackMsg = '';
+        return;
+      }
+      this.toneLoading = true;
+      this.toneFeedbackMsg = '';
+      try {
+        const res = await getTonePreset(this.selectedTone);
+        const toneData = res.data?.tone;
+        if (toneData) {
+          this.toneRuleText = toneData.rule_text || '';
+          this.defaultToneRuleText = toneData.default_rule_text || '';
+          this.isToneOverridden = !!toneData.is_overridden;
+        }
+      } catch (err) {
+        console.error('Failed to load tone preset details:', err);
+      } finally {
+        this.toneLoading = false;
+      }
+    },
+    async saveTonePreset() {
+      if (!this.selectedTone || this.selectedTone === 'auto') return;
+      if (!this.toneRuleText.trim()) {
+        this.toneFeedbackMsg = 'Rule text cannot be empty';
+        return;
+      }
+      this.toneSaving = true;
+      this.toneFeedbackMsg = '';
+      try {
+        const res = await updateTonePreset(this.selectedTone, this.toneRuleText);
+        if (res.data?.success) {
+          this.isToneOverridden = true;
+          this.toneFeedbackMsg = '✓ Tone preset saved for your company!';
+          setTimeout(() => {
+            this.toneFeedbackMsg = '';
+          }, 3500);
+        }
+      } catch (err) {
+        console.error('Failed to save tone preset:', err);
+        this.toneFeedbackMsg = 'Failed to save tone preset';
+      } finally {
+        this.toneSaving = false;
+      }
+    },
+    async resetTonePreset() {
+      if (!this.selectedTone || this.selectedTone === 'auto') return;
+      this.toneResetting = true;
+      this.toneFeedbackMsg = '';
+      try {
+        const res = await resetTonePreset(this.selectedTone);
+        const toneData = res.data?.tone;
+        if (toneData) {
+          this.toneRuleText = toneData.default_rule_text || toneData.rule_text || '';
+          this.isToneOverridden = false;
+          this.toneFeedbackMsg = '↺ Reverted to shipped default preset';
+          setTimeout(() => {
+            this.toneFeedbackMsg = '';
+          }, 3500);
+        }
+      } catch (err) {
+        console.error('Failed to reset tone preset:', err);
+        this.toneFeedbackMsg = 'Failed to reset tone preset';
+      } finally {
+        this.toneResetting = false;
       }
     },
     formatDate(d) {
@@ -629,5 +795,92 @@ export default {
   padding: 8px 12px;
   border: 1px solid #d1d5db;
   border-radius: 6px;
+}
+.tone-rules-card {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 10px;
+  margin-bottom: 14px;
+}
+.preview-tone-box {
+  background: #ffffff;
+  border: 1px solid #c7d2fe;
+  box-shadow: 0 1px 3px rgba(79, 70, 229, 0.08);
+}
+.tone-rules-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.tone-rules-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #374151;
+}
+.tone-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  font-size: 13px;
+  font-family: inherit;
+  line-height: 1.45;
+  color: #1f2937;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  resize: vertical;
+  background: #ffffff;
+}
+.tone-textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15);
+}
+.tone-rules-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+.btn-sm {
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-outline-primary {
+  background: #ffffff;
+  color: #4f46e5;
+  border: 1px solid #4f46e5;
+}
+.btn-outline-primary:hover:not(:disabled) {
+  background: #4f46e5;
+  color: #ffffff;
+}
+.btn-outline-secondary {
+  background: #ffffff;
+  color: #4b5563;
+  border: 1px solid #d1d5db;
+}
+.btn-outline-secondary:hover:not(:disabled) {
+  background: #f3f4f6;
+  color: #111827;
+}
+.btn-sm:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.badge-neutral {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+.tone-feedback-msg {
+  font-size: 12px;
+  color: #059669;
+  font-weight: 500;
+  margin-left: 4px;
 }
 </style>

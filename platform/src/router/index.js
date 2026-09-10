@@ -58,6 +58,14 @@ const routes = [
     component: () => import('../views/AiContentReview.vue'),
     beforeEnter: routeGuardApp,
   },
+  {
+    path: '/',
+    redirect: '/company/95/application/65eb1972926345654bc9c1a8/ai-content/jobs',
+  },
+  {
+    path: '/ai-content/jobs',
+    redirect: '/company/95/application/65eb1972926345654bc9c1a8/ai-content/jobs',
+  },
 ];
 
 

@@ -38,8 +38,10 @@ const Sentry = require('@sentry/node');
   if (appMode === APP_MODE.SERVER) {
     const { startBulkImportWorker } = require('./app/workers/bulk-import.worker');
     startBulkImportWorker();
+    const { startAiContentWorker } = require('./app/workers/ai-content.worker');
+    startAiContentWorker();
     const app = require('./app/server');
-    const port = config.port || 3000;
+    const port = config.port || 8082;
     app.listen(port, '0.0.0.0', () => {
       console.log(`Application app listening at http://localhost:${port}`);
     });

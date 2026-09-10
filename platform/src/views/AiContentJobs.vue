@@ -39,11 +39,9 @@
             <label>Voice & Tone Preset</label>
             <select v-model="selectedTone">
               <option value="auto">Auto (Price-tier driven voice)</option>
-              <option value="warm_inviting">Warm & Inviting (Cozy, lived-in, everyday rituals)</option>
-              <option value="elegant_sophisticated">Elegant & Sophisticated (Restrained, timeless, tailored)</option>
-              <option value="minimal_modern">Minimal & Modern (Crisp, clean lines, low adjective density)</option>
-              <option value="premium_indulgent">Premium & Indulgent (Opulent, heirloom, craftsmanship)</option>
-              <option value="playful_casual">Playful & Casual (Breezy, conversational, upbeat)</option>
+              <option v-for="t in dynamicTonePresets" :key="t.id" :value="t.id">
+                {{ t.label }}
+              </option>
             </select>
             <p class="hint">Sets the emotional tone and vocabulary across description prose.</p>
           </div>
@@ -113,28 +111,26 @@
         <div>
           <h2>On-Screen Preview: {{ previewCategory }} ({{ previewItems.length }} Products)</h2>
           <p class="subtitle">Evaluate tone and structure before launching full run.</p>
-        </div>
-        <div class="preview-controls">
-          <label>Tone Preset:</label>
-          <select v-model="selectedTone" :disabled="previewLoading" @change="handleRePreview">
-            <option value="auto">Auto (Tier-based)</option>
-            <option value="warm_inviting">Warm & Inviting</option>
-            <option value="elegant_sophisticated">Elegant & Sophisticated</option>
-            <option value="minimal_modern">Minimal & Modern</option>
-            <option value="premium_indulgent">Premium & Indulgent</option>
-            <option value="playful_casual">Playful & Casual</option>
-          </select>
-          <button
-            v-if="selectedTone !== 'auto'"
-            type="button"
-            class="btn-sm btn-outline-secondary"
-            @click="showPreviewToneEditor = !showPreviewToneEditor"
-          >
-            {{ showPreviewToneEditor ? 'Hide Tone Format' : '⚙ View / Edit Tone Format' }}
-          </button>
-          <button class="btn-primary" :disabled="confirming" @click="handleConfirmFullRun">
-            {{ confirming ? 'Enqueuing...' : '🚀 Generate All' }}
-          </button>
+          <div class="preview-controls">
+            <label>Tone Preset:</label>
+            <select v-model="selectedTone" :disabled="previewLoading" @change="handleRePreview">
+              <option value="auto">Auto (Tier-based)</option>
+              <option v-for="t in dynamicTonePresets" :key="t.id" :value="t.id">
+                {{ t.label }}
+              </option>
+            </select>
+            <button
+              v-if="selectedTone !== 'auto'"
+              type="button"
+              class="btn-sm btn-outline-secondary"
+              @click="showPreviewToneEditor = !showPreviewToneEditor"
+            >
+              {{ showPreviewToneEditor ? 'Hide Tone Format' : '⚙ View / Edit Tone Format' }}
+            </button>
+            <button class="btn-primary" :disabled="confirming" @click="handleConfirmFullRun">
+              {{ confirming ? 'Enqueuing...' : '🚀 Generate All' }}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -177,15 +173,37 @@
       <div class="preview-grid">
         <div v-for="(item, idx) in previewItems" :key="idx" class="preview-card">
           <div class="item-title">{{ item.source_product.name }}</div>
-          <div class="item-summary">{{ item.generated_content.description?.summary }}</div>
-          <div v-if="item.generated_content.description?.key_features?.length" class="item-bullets">
-            <ul>
-              <li v-for="(b, bIdx) in item.generated_content.description.key_features" :key="bIdx">{{ b }}</li>
-            </ul>
+
+          <!-- Distinct 5-part structure breakdown -->
+          <div class="structured-description">
+            <div class="part-section part-mood">
+              <span class="part-label">1. Mood Line:</span>
+              <p class="part-text">{{ decomposeSummary(item.generated_content.description?.summary).mood }}</p>
+            </div>
+            <div class="part-section part-intro">
+              <span class="part-label">2. Intro:</span>
+              <p class="part-text">{{ decomposeSummary(item.generated_content.description?.summary).intro }}</p>
+            </div>
+            <div class="part-section part-story">
+              <span class="part-label">3. Story:</span>
+              <p class="part-text">{{ decomposeSummary(item.generated_content.description?.summary).story }}</p>
+            </div>
+            <div class="part-section part-close">
+              <span class="part-label">4. Close:</span>
+              <p class="part-text">{{ decomposeSummary(item.generated_content.description?.summary).close }}</p>
+            </div>
+            <div class="part-section part-bullets">
+              <span class="part-label">5. Specifications / Deterministic Bullets:</span>
+              <ul v-if="item.generated_content.description?.key_features?.length">
+                <li v-for="(b, bIdx) in item.generated_content.description.key_features" :key="bIdx">{{ b }}</li>
+              </ul>
+              <p v-else class="text-muted">No bullets generated</p>
+            </div>
           </div>
+
           <div class="item-meta">
             <span class="badge" :class="item.validation?.valid ? 'badge-success' : 'badge-warning'">
-              {{ item.validation?.valid ? 'Valid Structure' : 'Validation Flags' }}
+              {{ item.validation?.valid ? '✓ Valid 5-Part Structure' : 'Validation Flags' }}
             </span>
             <span class="badge badge-info">Tone: {{ item.tone }}</span>
           </div>
@@ -279,6 +297,7 @@ import {
   previewAiJob,
   confirmAiJob,
   submitFeedback,
+  listTonePresets,
   getTonePreset,
   updateTonePreset,
   resetTonePreset,
@@ -309,11 +328,26 @@ export default {
       toneSaving: false,
       toneResetting: false,
       toneRuleText: '',
-      defaultToneRuleText: '',
+      toneOriginalDefaultText: '',
       isToneOverridden: false,
       toneFeedbackMsg: '',
-      showPreviewToneEditor: false,
+      showPreviewToneEditor: true,
+      tonePresetsList: [],
     };
+  },
+  computed: {
+    dynamicTonePresets() {
+      if (this.tonePresetsList && this.tonePresetsList.length > 0) {
+        return this.tonePresetsList;
+      }
+      return [
+        { id: 'warm_inviting', label: 'Warm & Inviting (Cozy, lived-in, everyday rituals)' },
+        { id: 'elegant_sophisticated', label: 'Elegant & Sophisticated (Restrained, timeless, tailored)' },
+        { id: 'minimal_modern', label: 'Minimal & Modern (Crisp, clean lines, low adjective density)' },
+        { id: 'premium_indulgent', label: 'Premium & Indulgent (Opulent, heirloom, craftsmanship)' },
+        { id: 'playful_casual', label: 'Playful & Casual (Breezy, conversational, upbeat)' },
+      ];
+    },
   },
   watch: {
     selectedTone(newVal) {
@@ -331,7 +365,7 @@ export default {
     async fetchData() {
       this.loading = true;
       try {
-        await Promise.all([this.fetchJobs(), this.fetchDefinitions()]);
+        await Promise.all([this.fetchJobs(), this.fetchDefinitions(), this.fetchTonePresets()]);
       } finally {
         this.loading = false;
       }
@@ -406,6 +440,9 @@ export default {
       this.previewLoading = true;
       this.feedbackSuccess = '';
       try {
+        if (this.selectedTone !== 'auto') {
+          await this.fetchToneRule(this.selectedTone);
+        }
         const previewRes = await previewAiJob(this.previewJobId, {
           tone: this.selectedTone,
           count: 3,
@@ -451,6 +488,25 @@ export default {
         alert('Failed to submit feedback: ' + (err.response?.data?.error || err.message));
       } finally {
         this.feedbackSubmitting = false;
+      }
+    },
+    decomposeSummary(summary) {
+      if (!summary) return { mood: '', intro: '', story: '', close: '' };
+      const sentences = summary.match(/[^.!?]+[.!?]+/g)?.map((s) => s.trim()).filter(Boolean) || (summary ? [summary.trim()] : []);
+      const mood = sentences[0] || '';
+      const intro = sentences[1] || '';
+      const story = sentences.length > 3 ? sentences.slice(2, -1).join(' ') : (sentences[2] || '');
+      const close = sentences.length > 2 ? sentences[sentences.length - 1] : '';
+      return { mood, intro, story, close };
+    },
+    async fetchTonePresets() {
+      try {
+        const res = await listTonePresets();
+        if (res.data?.tones && Array.isArray(res.data.tones)) {
+          this.tonePresetsList = res.data.tones;
+        }
+      } catch (err) {
+        console.error('Failed to load tone presets from backend:', err);
       }
     },
     async loadToneDetails() {
@@ -882,5 +938,45 @@ export default {
   color: #059669;
   font-weight: 500;
   margin-left: 4px;
+}
+.structured-description {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+  background: #f8fafc;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+.part-section {
+  font-size: 13px;
+  line-height: 1.45;
+}
+.part-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #475569;
+  margin-bottom: 2px;
+}
+.part-text {
+  margin: 0;
+  color: #1e293b;
+}
+.part-mood .part-text {
+  font-weight: 600;
+  color: #0f172a;
+}
+.part-bullets ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 12.5px;
+  color: #334155;
+}
+.part-bullets li {
+  margin-bottom: 2px;
 }
 </style>

@@ -86,6 +86,13 @@ const startAiContentWorker = () => {
   }
 };
 
+if (require.main === module) {
+  require('dotenv').config();
+  require('../init');
+  const worker = startAiContentWorker();
+  console.log('[aiContentWorker] Dedicated BullMQ AI Content Worker process is running on queue ' + AI_CONTENT_QUEUE_NAME);
+}
+
 module.exports = {
   getAiContentQueue,
   enqueueAiContentJob,

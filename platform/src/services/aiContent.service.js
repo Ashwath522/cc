@@ -75,6 +75,11 @@ const confirmAiJob = (jobId, payload = {}) =>
     { params: getAppParams() },
   );
 
+const listTonePresets = () =>
+  axios.get(`${baseApi}/ai-content/tones`, {
+    params: getAppParams(),
+  });
+
 const getTonePreset = (toneId) =>
   axios.get(`${baseApi}/ai-content/tones/${toneId}`, {
     params: getAppParams(),
@@ -106,6 +111,7 @@ export {
   pushReviewRow,
   revertField,
   submitFeedback,
+  listTonePresets,
   getTonePreset,
   updateTonePreset,
   resetTonePreset,

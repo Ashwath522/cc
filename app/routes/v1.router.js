@@ -120,6 +120,7 @@ const {
 } = require('./controllers/aiContentReview.controller');
 
 const {
+  listTonePresets,
   getTonePreset,
   updateTonePreset,
   resetTonePreset,
@@ -136,6 +137,7 @@ router.post('/ai-content/jobs/:jobId/review/:rowId/regenerate', regenerateReview
 router.post('/ai-content/jobs/:jobId/review/:rowId/push', pushReviewRow);
 router.post('/ai-content/fields/:fieldHistoryId/revert', revertField);
 router.post('/ai-content/feedback', submitFeedback);
+router.get('/ai-content/tones', listTonePresets);
 router.get('/ai-content/tones/:toneId', getTonePreset);
 router.put('/ai-content/tones/:toneId', updateTonePreset);
 router.delete('/ai-content/tones/:toneId', resetTonePreset);
@@ -153,6 +155,7 @@ router.post(`${APP_BASE_PATH}/ai-content/jobs/:jobId/review/:rowId/regenerate`, 
 router.post(`${APP_BASE_PATH}/ai-content/jobs/:jobId/review/:rowId/push`, pushReviewRow);
 router.post(`${APP_BASE_PATH}/ai-content/fields/:fieldHistoryId/revert`, revertField);
 router.post(`${APP_BASE_PATH}/ai-content/feedback`, submitFeedback);
+router.get(`${APP_BASE_PATH}/ai-content/tones`, listTonePresets);
 router.get(`${APP_BASE_PATH}/ai-content/tones/:toneId`, getTonePreset);
 router.put(`${APP_BASE_PATH}/ai-content/tones/:toneId`, updateTonePreset);
 router.delete(`${APP_BASE_PATH}/ai-content/tones/:toneId`, resetTonePreset);

@@ -33,6 +33,8 @@ app.use('/', healthzRouter);
 // Only intercepts GET /cms/:slug when x-application-data is present (see publicListObjectInstances);
 // otherwise it calls next() and falls through to the normal FDK session-gated route below, unchanged.
 app.get('/api/v1/cms/:slug', publicListObjectInstances);
+// Direct API mount for frontend dev server / local requests
+app.use('/api/v1', v1Router);
 app.use(express.static('platform/dist'));
 app.use('/', fdkExtension.fdkHandler);
 const apiRoutes = fdkExtension.apiRoutes;

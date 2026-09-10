@@ -11,6 +11,40 @@ const {
 } = require('../../helpers/ai-content/tone');
 
 /**
+ * Returns list of all 5 available tone presets with effective rule text and override status.
+ */
+const listTonePresets = async (req, res, next) => {
+  const companyId = req.headers['x-company-id'] || req.query.company_id;
+  const applicationId = req.params.application_id || req.headers['x-application-id'] || req.query.application_id;
+
+  try {
+    const toneList = await Promise.all(
+      Object.keys(TONE_PRESETS).map(async (toneId) => {
+        const details = await getEffectiveToneDetails({
+          companyId,
+          applicationId,
+          toneId,
+        });
+        return {
+          id: toneId,
+          label: TONE_PRESETS[toneId].label,
+          ...details,
+        };
+      }),
+    );
+
+    return res.json({
+      success: true,
+      tones: toneList,
+    });
+  } catch (error) {
+    logger.error(`[listTonePresets] Error: ${error.message}`);
+    Sentry.captureException(error);
+    return next(error);
+  }
+};
+
+/**
  * Returns effective tone rule_text for tenant (override if exists, else shipped default).
  */
 const getTonePreset = async (req, res, next) => {
@@ -163,6 +197,7 @@ const resetTonePreset = async (req, res, next) => {
 };
 
 module.exports = {
+  listTonePresets,
   getTonePreset,
   updateTonePreset,
   resetTonePreset,

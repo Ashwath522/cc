@@ -92,3 +92,5 @@ temp/
 scratch/
 .agents/
 .gemini/
+dump.rdb
+

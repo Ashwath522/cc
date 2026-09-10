@@ -123,15 +123,18 @@ async function generateOne(product, priceBands, attempt = 1, conv_id = null, att
       bullets.push(`Available in ${sizes.join(' and ')} sizes to suit different spaces.`);
     }
     
-    const mattressSize = prod.recommended_mattress_size || (prod.mattress_recommendation && prod.mattress_recommendation.size);
-    const mattressThickness = prod.mattress_recommendation && prod.mattress_recommendation.thickness_range;
-    
-    if (mattressSize && mattressThickness) {
-      bullets.push(`Comfortably fits a ${mattressSize} mattress with an ideal thickness of ${mattressThickness}.`);
-    } else if (mattressSize) {
-      bullets.push(`Comfortably fits a ${mattressSize} mattress.`);
-    } else if (mattressThickness) {
-      bullets.push(`Best paired with a ${mattressThickness} thick mattress.`);
+    const isBedCategory = !prod.category || prod.category.toLowerCase() === 'bedroom' || /bed/i.test(prod.subcategory || '') || /bed/i.test(prod.name || '');
+    if (isBedCategory) {
+      const mattressSize = prod.recommended_mattress_size || (prod.mattress_recommendation && prod.mattress_recommendation.size);
+      const mattressThickness = prod.mattress_recommendation && prod.mattress_recommendation.thickness_range;
+      
+      if (mattressSize && mattressThickness) {
+        bullets.push(`Comfortably fits a ${mattressSize} mattress with an ideal thickness of ${mattressThickness}.`);
+      } else if (mattressSize) {
+        bullets.push(`Comfortably fits a ${mattressSize} mattress.`);
+      } else if (mattressThickness) {
+        bullets.push(`Best paired with a ${mattressThickness} thick mattress.`);
+      }
     }
     
     const storageOptions = (Array.isArray(axes.storage_type) && axes.storage_type.length > 0) ? axes.storage_type :

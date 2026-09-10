@@ -1,0 +1,523 @@
+{
+  "subcategory": "Wardrobes",
+  "category": "Bedroom",
+  "tone_used": "warm_inviting",
+  "tone_name": "Warm & Inviting",
+  "source_training_file": "data/trainingSet/wardrobes_generated_enriched.jsonl",
+  "is_enriched": true,
+  "gap_flag": null,
+  "target_count": 5,
+  "total_qualified": 5,
+  "shortfall": 0,
+  "pass_count": 5,
+  "fail_count": 0,
+  "top_failure_reason": "None",
+  "generated_at": "2026-09-10T05:10:47.024Z",
+  "products": [
+    {
+      "id": "FNSGCB43CW35100",
+      "name": "Zoey Engineered Wood 3 Door Wardrobe With Mirror in Classic Walnut Finish",
+      "product_short_name": "Zoey",
+      "primary_material": "Particle Board",
+      "price": 15999,
+      "description": {
+        "mood": "Gentle warmth fills the bedroom.",
+        "intro": "This wardrobe is defined by smooth rounded accents that invite touch and effortless interaction.",
+        "story": "Fashioned from quality Particle Board, the frame guarantees dependable longevity and robust structural performance. Mellow wood grain patterns and hand-rubbed surfaces bring nature-inspired serenity into your interior sanctuary. Its balanced silhouette pairs easily with textured rugs and warm ambient table lamps.",
+        "close": "Bring welcoming ease and serene comfort to your home with the Zoey.",
+        "bullets": [
+          "Available in a Classic Walnut finish.",
+          "Available in Brown colour."
+        ],
+        "sentence_count": 6
+      },
+      "raw_summary": "Gentle warmth fills the bedroom. This wardrobe is defined by smooth rounded accents that invite touch and effortless interaction. Fashioned from quality Particle Board, the frame guarantees dependable longevity and robust structural performance. Mellow wood grain patterns and hand-rubbed surfaces bring nature-inspired serenity into your interior sanctuary. Its balanced silhouette pairs easily with textured rugs and warm ambient table lamps. Bring welcoming ease and serene comfort to your home with the Zoey.",
+      "specifications": {
+        "dimensions": "Length 50.04 cm x Width 1.09 m x Height 1.77 m",
+        "primary_material": "Particle Board",
+        "weight": "95.00 kg",
+        "color_finish": "Classic Walnut"
+      },
+      "care_and_maintenance": {
+        "instructions": [
+          "We recommend dusting regularly with a soft, dry cloth.",
+          "It is best to wipe spills immediately with a damp cloth.",
+          "Try to apply a wood-safe wax polish every few months."
+        ],
+        "avoid": [
+          "It's best to avoid harsh chemical cleaners.",
+          "Try to avoid direct, prolonged exposure to sunlight."
+        ]
+      },
+      "warranty": {
+        "applicable": true,
+        "duration_months": 12,
+        "status_line": "**Yes**, it has a warranty of **12 months**.",
+        "points": [
+          "Covers manufacturing defects in materials and workmanship.",
+          "Valid for 12 months from purchase date."
+        ],
+        "link": "https://example.com/warranty-policy-placeholder"
+      },
+      "returns": {
+        "window_days": "within **15 days**",
+        "condition": [
+          "Item must be unused and in original packaging",
+          "All original tags and labels must be attached",
+          "Proof of purchase is required"
+        ],
+        "policy_link": "https://example.com/returns-policy-placeholder"
+      },
+      "validator": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "sentence_count": {
+            "pass": true,
+            "value": 6,
+            "expected": "4-6"
+          },
+          "word_count": {
+            "pass": true,
+            "value": 72,
+            "expected": "70-110"
+          },
+          "loop_theme_match": {
+            "pass": true,
+            "moodLine": "Gentle warmth fills the bedroom.",
+            "closingSentence": "Bring welcoming ease and serene comfort to your home with the Zoey.",
+            "detectedFamily": "calm"
+          },
+          "product_name_placement": {
+            "pass": true,
+            "occurrences": 1,
+            "inClosingSentence": true
+          },
+          "no_raw_dimensions": {
+            "pass": true
+          },
+          "tone_leakage": {
+            "pass": true,
+            "selectedTone": "warm_inviting"
+          },
+          "specifications": {
+            "pass": true
+          },
+          "care_and_maintenance": {
+            "pass": true
+          },
+          "warranty": {
+            "pass": true
+          },
+          "returns": {
+            "pass": true
+          }
+        }
+      }
+    },
+    {
+      "id": "FNSGCB33OA36163",
+      "name": "Avalon Engineered Wood 2 Sliding Door Wardrobe in Chocolate Oak Finish",
+      "product_short_name": "Avalon",
+      "primary_material": "Particle Board",
+      "price": 46999,
+      "description": {
+        "mood": "Cozy warmth anchors peaceful nights.",
+        "intro": "This wardrobe is defined by relaxed lines and a friendly form that encourages family comfort.",
+        "story": "Constructed with durable Particle Board, the piece provides sturdy support that accommodates casual morning lounging with ease. Smooth protective sealants preserve the authentic timber grain while making everyday cleaning simple and fast. The gentle design softens room transitions and creates a reassuring feeling of security.",
+        "close": "Bring heartfelt comfort and cozy living to any room with the Avalon.",
+        "bullets": [
+          "Available in a Chocolate Oak finish.",
+          "Available in Brown colour."
+        ],
+        "sentence_count": 6
+      },
+      "raw_summary": "Cozy warmth anchors peaceful nights. This wardrobe is defined by relaxed lines and a friendly form that encourages family comfort. Constructed with durable Particle Board, the piece provides sturdy support that accommodates casual morning lounging with ease. Smooth protective sealants preserve the authentic timber grain while making everyday cleaning simple and fast. The gentle design softens room transitions and creates a reassuring feeling of security. Bring heartfelt comfort and cozy living to any room with the Avalon.",
+      "specifications": {
+        "dimensions": "Length 2.07 m x Width 67.82 cm x Height 2.13 m",
+        "primary_material": "Particle Board",
+        "weight": "26.00 kg",
+        "color_finish": "Chocolate Oak"
+      },
+      "care_and_maintenance": {
+        "instructions": [
+          "We recommend dusting regularly with a soft, dry cloth.",
+          "It is best to wipe spills immediately with a damp cloth.",
+          "Try to apply a wood-safe wax polish every few months."
+        ],
+        "avoid": [
+          "It's best to avoid harsh chemical cleaners.",
+          "Try to avoid direct, prolonged exposure to sunlight."
+        ]
+      },
+      "warranty": {
+        "applicable": true,
+        "duration_months": 12,
+        "status_line": "**Yes**, it has a warranty of **12 months**.",
+        "points": [
+          "Covers manufacturing defects in materials and workmanship.",
+          "Valid for 12 months from purchase date."
+        ],
+        "link": "https://example.com/warranty-policy-placeholder"
+      },
+      "returns": {
+        "window_days": "within **15 days**",
+        "condition": [
+          "Item must be unused and in original packaging",
+          "All original tags and labels must be attached",
+          "Proof of purchase is required"
+        ],
+        "policy_link": "https://example.com/returns-policy-placeholder"
+      },
+      "validator": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "sentence_count": {
+            "pass": true,
+            "value": 6,
+            "expected": "4-6"
+          },
+          "word_count": {
+            "pass": true,
+            "value": 77,
+            "expected": "70-110"
+          },
+          "loop_theme_match": {
+            "pass": true,
+            "moodLine": "Cozy warmth anchors peaceful nights.",
+            "closingSentence": "Bring heartfelt comfort and cozy living to any room with the Avalon.",
+            "detectedFamily": "calm"
+          },
+          "product_name_placement": {
+            "pass": true,
+            "occurrences": 1,
+            "inClosingSentence": true
+          },
+          "no_raw_dimensions": {
+            "pass": true
+          },
+          "tone_leakage": {
+            "pass": true,
+            "selectedTone": "warm_inviting"
+          },
+          "specifications": {
+            "pass": true
+          },
+          "care_and_maintenance": {
+            "pass": true
+          },
+          "warranty": {
+            "pass": true
+          },
+          "returns": {
+            "pass": true
+          }
+        }
+      }
+    },
+    {
+      "id": "FNSGCB33BR36235",
+      "name": "Loretta Sliding Door Wardrobe With Mirror in Sonoma Oak Finish",
+      "product_short_name": "Loretta",
+      "primary_material": "Particle Board",
+      "price": 59999,
+      "description": {
+        "mood": "Warm comfort welcomes every evening.",
+        "intro": "This wardrobe is defined by an approachable silhouette and gentle curves that foster an inviting sanctuary.",
+        "story": "Built from dependable Particle Board, this piece is created to anchor your everyday living rituals with lasting peace of mind. Generous surfaces and softened corners invite you to linger and settle in comfortably after a busy day. Natural hues and reassuring construction foster a grounded sanctuary that feels instantly familiar.",
+        "close": "Bring welcoming warmth and cozy ease to your bedroom with the Loretta.",
+        "bullets": [
+          "Available in a Sonoma Oak finish.",
+          "Available in White colour."
+        ],
+        "sentence_count": 6
+      },
+      "raw_summary": "Warm comfort welcomes every evening. This wardrobe is defined by an approachable silhouette and gentle curves that foster an inviting sanctuary. Built from dependable Particle Board, this piece is created to anchor your everyday living rituals with lasting peace of mind. Generous surfaces and softened corners invite you to linger and settle in comfortably after a busy day. Natural hues and reassuring construction foster a grounded sanctuary that feels instantly familiar. Bring welcoming warmth and cozy ease to your bedroom with the Loretta.",
+      "specifications": {
+        "dimensions": "Length 2.08 m x Width 67.82 cm x Height 2.13 m",
+        "primary_material": "Particle Board",
+        "weight": "260.00 kg",
+        "color_finish": "Sonoma Oak"
+      },
+      "care_and_maintenance": {
+        "instructions": [
+          "We recommend dusting regularly with a soft, dry cloth.",
+          "It is best to wipe spills immediately with a damp cloth.",
+          "Try to apply a wood-safe wax polish every few months."
+        ],
+        "avoid": [
+          "It's best to avoid harsh chemical cleaners.",
+          "Try to avoid direct, prolonged exposure to sunlight."
+        ]
+      },
+      "warranty": {
+        "applicable": true,
+        "duration_months": 12,
+        "status_line": "**Yes**, it has a warranty of **12 months**.",
+        "points": [
+          "Covers manufacturing defects in materials and workmanship.",
+          "Valid for 12 months from purchase date."
+        ],
+        "link": "https://example.com/warranty-policy-placeholder"
+      },
+      "returns": {
+        "window_days": "within **15 days**",
+        "condition": [
+          "Item must be unused and in original packaging",
+          "All original tags and labels must be attached",
+          "Proof of purchase is required"
+        ],
+        "policy_link": "https://example.com/returns-policy-placeholder"
+      },
+      "validator": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "sentence_count": {
+            "pass": true,
+            "value": 6,
+            "expected": "4-6"
+          },
+          "word_count": {
+            "pass": true,
+            "value": 83,
+            "expected": "70-110"
+          },
+          "loop_theme_match": {
+            "pass": true,
+            "moodLine": "Warm comfort welcomes every evening.",
+            "closingSentence": "Bring welcoming warmth and cozy ease to your bedroom with the Loretta.",
+            "detectedFamily": "inviting"
+          },
+          "product_name_placement": {
+            "pass": true,
+            "occurrences": 1,
+            "inClosingSentence": true
+          },
+          "no_raw_dimensions": {
+            "pass": true
+          },
+          "tone_leakage": {
+            "pass": true,
+            "selectedTone": "warm_inviting"
+          },
+          "specifications": {
+            "pass": true
+          },
+          "care_and_maintenance": {
+            "pass": true
+          },
+          "warranty": {
+            "pass": true
+          },
+          "returns": {
+            "pass": true
+          }
+        }
+      }
+    },
+    {
+      "id": "FNSGCB33DW35585",
+      "name": "Bennis Engineered Wood 3 Door Wardrobe Without Mirror in Dark Walnut Finish",
+      "product_short_name": "Bennis",
+      "primary_material": "Mdf",
+      "price": 24999,
+      "description": {
+        "mood": "Cozy warmth anchors peaceful nights.",
+        "intro": "This wardrobe is defined by relaxed lines and a friendly form that encourages family comfort.",
+        "story": "Constructed with durable Mdf, the piece provides sturdy support that accommodates casual morning lounging with ease. Smooth protective sealants preserve the authentic timber grain while making everyday cleaning simple and fast. The gentle design softens room transitions and creates a reassuring feeling of security.",
+        "close": "Bring heartfelt comfort and cozy living to any room with the Bennis.",
+        "bullets": [
+          "Available in a Dark Walnut finish.",
+          "Available in Brown colour."
+        ],
+        "sentence_count": 6
+      },
+      "raw_summary": "Cozy warmth anchors peaceful nights. This wardrobe is defined by relaxed lines and a friendly form that encourages family comfort. Constructed with durable Mdf, the piece provides sturdy support that accommodates casual morning lounging with ease. Smooth protective sealants preserve the authentic timber grain while making everyday cleaning simple and fast. The gentle design softens room transitions and creates a reassuring feeling of security. Bring heartfelt comfort and cozy living to any room with the Bennis.",
+      "specifications": {
+        "dimensions": "Length 1.20 m x Width 55.63 cm x Height 1.80 m",
+        "primary_material": "Mdf",
+        "weight": "45.50 kg",
+        "color_finish": "Dark Walnut"
+      },
+      "care_and_maintenance": {
+        "instructions": [
+          "We recommend dusting regularly with a soft, dry cloth.",
+          "It is best to wipe spills immediately with a damp cloth.",
+          "Try to apply a wood-safe wax polish every few months."
+        ],
+        "avoid": [
+          "It's best to avoid harsh chemical cleaners.",
+          "Try to avoid direct, prolonged exposure to sunlight."
+        ]
+      },
+      "warranty": {
+        "applicable": true,
+        "duration_months": 12,
+        "status_line": "**Yes**, it has a warranty of **12 months**.",
+        "points": [
+          "Covers manufacturing defects in materials and workmanship.",
+          "Valid for 12 months from purchase date."
+        ],
+        "link": "https://example.com/warranty-policy-placeholder"
+      },
+      "returns": {
+        "window_days": "within **15 days**",
+        "condition": [
+          "Item must be unused and in original packaging",
+          "All original tags and labels must be attached",
+          "Proof of purchase is required"
+        ],
+        "policy_link": "https://example.com/returns-policy-placeholder"
+      },
+      "validator": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "sentence_count": {
+            "pass": true,
+            "value": 6,
+            "expected": "4-6"
+          },
+          "word_count": {
+            "pass": true,
+            "value": 76,
+            "expected": "70-110"
+          },
+          "loop_theme_match": {
+            "pass": true,
+            "moodLine": "Cozy warmth anchors peaceful nights.",
+            "closingSentence": "Bring heartfelt comfort and cozy living to any room with the Bennis.",
+            "detectedFamily": "calm"
+          },
+          "product_name_placement": {
+            "pass": true,
+            "occurrences": 1,
+            "inClosingSentence": true
+          },
+          "no_raw_dimensions": {
+            "pass": true
+          },
+          "tone_leakage": {
+            "pass": true,
+            "selectedTone": "warm_inviting"
+          },
+          "specifications": {
+            "pass": true
+          },
+          "care_and_maintenance": {
+            "pass": true
+          },
+          "warranty": {
+            "pass": true
+          },
+          "returns": {
+            "pass": true
+          }
+        }
+      }
+    },
+    {
+      "id": "FNSGCB333D36337",
+      "name": "Bocado 3 Door Wardrobe in Sheesham Finish",
+      "product_short_name": "Bocado",
+      "primary_material": "Mdf",
+      "price": 29999,
+      "description": {
+        "mood": "Cozy warmth anchors peaceful nights.",
+        "intro": "This wardrobe is defined by relaxed lines and a friendly form that encourages family comfort.",
+        "story": "Constructed with durable Mdf, the piece provides sturdy support that accommodates casual morning lounging with ease. Smooth protective sealants preserve the authentic timber grain while making everyday cleaning simple and fast. The gentle design softens room transitions and creates a reassuring feeling of security.",
+        "close": "Bring heartfelt comfort and cozy living to any room with the Bocado.",
+        "bullets": [
+          "Available in a Sheesham Wood finish.",
+          "Available in Brown colour."
+        ],
+        "sentence_count": 6
+      },
+      "raw_summary": "Cozy warmth anchors peaceful nights. This wardrobe is defined by relaxed lines and a friendly form that encourages family comfort. Constructed with durable Mdf, the piece provides sturdy support that accommodates casual morning lounging with ease. Smooth protective sealants preserve the authentic timber grain while making everyday cleaning simple and fast. The gentle design softens room transitions and creates a reassuring feeling of security. Bring heartfelt comfort and cozy living to any room with the Bocado.",
+      "specifications": {
+        "dimensions": "Length 55.90 cm x Width 1.20 m x Height 1.84 m",
+        "primary_material": "Mdf",
+        "weight": "48.00 kg",
+        "color_finish": "Sheesham Wood"
+      },
+      "care_and_maintenance": {
+        "instructions": [
+          "We recommend dusting regularly with a soft, dry cloth.",
+          "It is best to wipe spills immediately with a damp cloth.",
+          "Try to apply a wood-safe wax polish every few months."
+        ],
+        "avoid": [
+          "It's best to avoid harsh chemical cleaners.",
+          "Try to avoid direct, prolonged exposure to sunlight."
+        ]
+      },
+      "warranty": {
+        "applicable": true,
+        "duration_months": 12,
+        "status_line": "**Yes**, it has a warranty of **12 months**.",
+        "points": [
+          "Covers manufacturing defects in materials and workmanship.",
+          "Valid for 12 months from purchase date."
+        ],
+        "link": "https://example.com/warranty-policy-placeholder"
+      },
+      "returns": {
+        "window_days": "within **15 days**",
+        "condition": [
+          "Item must be unused and in original packaging",
+          "All original tags and labels must be attached",
+          "Proof of purchase is required"
+        ],
+        "policy_link": "https://example.com/returns-policy-placeholder"
+      },
+      "validator": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "sentence_count": {
+            "pass": true,
+            "value": 6,
+            "expected": "4-6"
+          },
+          "word_count": {
+            "pass": true,
+            "value": 76,
+            "expected": "70-110"
+          },
+          "loop_theme_match": {
+            "pass": true,
+            "moodLine": "Cozy warmth anchors peaceful nights.",
+            "closingSentence": "Bring heartfelt comfort and cozy living to any room with the Bocado.",
+            "detectedFamily": "calm"
+          },
+          "product_name_placement": {
+            "pass": true,
+            "occurrences": 1,
+            "inClosingSentence": true
+          },
+          "no_raw_dimensions": {
+            "pass": true
+          },
+          "tone_leakage": {
+            "pass": true,
+            "selectedTone": "warm_inviting"
+          },
+          "specifications": {
+            "pass": true
+          },
+          "care_and_maintenance": {
+            "pass": true
+          },
+          "warranty": {
+            "pass": true
+          },
+          "returns": {
+            "pass": true
+          }
+        }
+      }
+    }
+  ]
+}

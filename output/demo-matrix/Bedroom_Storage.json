@@ -1,0 +1,526 @@
+{
+  "subcategory": "Bedroom Storage",
+  "category": "Bedroom",
+  "tone_used": "minimal_modern",
+  "tone_name": "Minimal & Modern",
+  "source_training_file": "data/trainingSet/bedroom_storage_generated_enriched.jsonl",
+  "is_enriched": true,
+  "gap_flag": null,
+  "target_count": 5,
+  "total_qualified": 5,
+  "shortfall": 0,
+  "pass_count": 5,
+  "fail_count": 0,
+  "top_failure_reason": "None",
+  "generated_at": "2026-09-10T05:10:46.999Z",
+  "products": [
+    {
+      "id": "FNTBDS11MH16348",
+      "name": "Fidora Solid Wood Dressing Table With Stool in Mahogany Finish",
+      "product_short_name": "Fidora",
+      "primary_material": "Sheesham Wood",
+      "price": 23999,
+      "description": {
+        "mood": "Balanced proportions inspire everyday calm.",
+        "intro": "This bed is defined by a slender footprint and clean geometric perimeter that optimize floor space.",
+        "story": "Made from dependable Sheesham Wood, the structure withstands continuous daily use with quiet structural strength. Smooth non-porous surfaces make upkeep simple, maintaining an immaculate appearance with minimal effort. Its modular presence coordinates easily with both compact and open-concept arrangements.",
+        "close": "Bring functional clarity and restful order to any space with the Fidora.",
+        "bullets": [
+          "Includes closed storage for easy access underneath.",
+          "Available in a Mahogany finish."
+        ],
+        "sentence_count": 6
+      },
+      "raw_summary": "Balanced proportions inspire everyday calm. This bed is defined by a slender footprint and clean geometric perimeter that optimize floor space. Made from dependable Sheesham Wood, the structure withstands continuous daily use with quiet structural strength. Smooth non-porous surfaces make upkeep simple, maintaining an immaculate appearance with minimal effort. Its modular presence coordinates easily with both compact and open-concept arrangements. Bring functional clarity and restful order to any space with the Fidora.",
+      "specifications": {
+        "dimensions": "Length 40.00 cm x Width 64.00 cm x Height 1.82 m",
+        "primary_material": "Sheesham Wood",
+        "weight": "31.50 kg",
+        "color_finish": "Mahogany"
+      },
+      "care_and_maintenance": {
+        "instructions": [
+          "We recommend dusting regularly with a soft, dry cloth.",
+          "It is best to wipe spills immediately with a damp cloth.",
+          "Try to apply a wood-safe wax polish every few months."
+        ],
+        "avoid": [
+          "It's best to avoid harsh chemical cleaners.",
+          "Try to avoid direct, prolonged exposure to sunlight."
+        ]
+      },
+      "warranty": {
+        "applicable": true,
+        "duration_months": 36,
+        "status_line": "**Yes**, it has a warranty of **36 months**.",
+        "points": [
+          "Covers manufacturing defects in materials and workmanship.",
+          "Valid for 36 months from purchase date."
+        ],
+        "link": "https://example.com/warranty-policy-placeholder"
+      },
+      "returns": {
+        "window_days": "within **15 days**",
+        "condition": [
+          "Item must be unused and in original packaging",
+          "All original tags and labels must be attached",
+          "Proof of purchase is required"
+        ],
+        "policy_link": "https://example.com/returns-policy-placeholder"
+      },
+      "validator": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "sentence_count": {
+            "pass": true,
+            "value": 6,
+            "expected": "4-6"
+          },
+          "word_count": {
+            "pass": true,
+            "value": 72,
+            "expected": "70-110"
+          },
+          "loop_theme_match": {
+            "pass": true,
+            "moodLine": "Balanced proportions inspire everyday calm.",
+            "closingSentence": "Bring functional clarity and restful order to any space with the Fidora.",
+            "detectedFamily": "calm"
+          },
+          "product_name_placement": {
+            "pass": true,
+            "occurrences": 1,
+            "inClosingSentence": true
+          },
+          "no_raw_dimensions": {
+            "pass": true
+          },
+          "tone_leakage": {
+            "pass": true,
+            "selectedTone": "minimal_modern"
+          },
+          "specifications": {
+            "pass": true
+          },
+          "care_and_maintenance": {
+            "pass": true
+          },
+          "warranty": {
+            "pass": true
+          },
+          "returns": {
+            "pass": true
+          }
+        }
+      }
+    },
+    {
+      "id": "FNSGDT62WA36249",
+      "name": "Nina Dressing Table With Storage Drawer in Walnut Finish",
+      "product_short_name": "Nina",
+      "primary_material": "Mango Wood",
+      "price": 23999,
+      "description": {
+        "mood": "Pure geometry shapes thoughtful living.",
+        "intro": "This bed is defined by clean unadorned surfaces that support a peaceful, clutter-free environment.",
+        "story": "Engineered with resilient Mango Wood, the robust base ensures enduring structural performance for relaxed everyday living. Streamlined outer contours and a uniform natural finish maximize ambient light throughout the space. The open framework keeps room circulation airy while maintaining generous day-to-day functionality.",
+        "close": "Bring essential clarity and balanced order to your space with the Nina.",
+        "bullets": [
+          "Includes open & closed storage for easy access underneath.",
+          "Available in a Walnut finish."
+        ],
+        "sentence_count": 6
+      },
+      "raw_summary": "Pure geometry shapes thoughtful living. This bed is defined by clean unadorned surfaces that support a peaceful, clutter-free environment. Engineered with resilient Mango Wood, the robust base ensures enduring structural performance for relaxed everyday living. Streamlined outer contours and a uniform natural finish maximize ambient light throughout the space. The open framework keeps room circulation airy while maintaining generous day-to-day functionality. Bring essential clarity and balanced order to your space with the Nina.",
+      "specifications": {
+        "dimensions": "Length 60.50 cm x Width 46.00 cm x Height 1.82 m",
+        "primary_material": "Mango Wood",
+        "secondary_material": "Metal",
+        "weight": "54.00 kg",
+        "color_finish": "Walnut"
+      },
+      "care_and_maintenance": {
+        "instructions": [
+          "We recommend dusting regularly with a soft, dry cloth.",
+          "It is best to wipe spills immediately with a damp cloth.",
+          "Try to apply a wood-safe wax polish every few months."
+        ],
+        "avoid": [
+          "It's best to avoid harsh chemical cleaners.",
+          "Try to avoid direct, prolonged exposure to sunlight."
+        ]
+      },
+      "warranty": {
+        "applicable": true,
+        "duration_months": 36,
+        "status_line": "**Yes**, it has a warranty of **36 months**.",
+        "points": [
+          "Covers manufacturing defects in materials and workmanship.",
+          "Valid for 36 months from purchase date."
+        ],
+        "link": "https://example.com/warranty-policy-placeholder"
+      },
+      "returns": {
+        "window_days": "within **15 days**",
+        "condition": [
+          "Item must be unused and in original packaging",
+          "All original tags and labels must be attached",
+          "Proof of purchase is required"
+        ],
+        "policy_link": "https://example.com/returns-policy-placeholder"
+      },
+      "validator": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "sentence_count": {
+            "pass": true,
+            "value": 6,
+            "expected": "4-6"
+          },
+          "word_count": {
+            "pass": true,
+            "value": 73,
+            "expected": "70-110"
+          },
+          "loop_theme_match": {
+            "pass": true,
+            "moodLine": "Pure geometry shapes thoughtful living.",
+            "closingSentence": "Bring essential clarity and balanced order to your space with the Nina.",
+            "detectedFamily": null
+          },
+          "product_name_placement": {
+            "pass": true,
+            "occurrences": 1,
+            "inClosingSentence": true
+          },
+          "no_raw_dimensions": {
+            "pass": true
+          },
+          "tone_leakage": {
+            "pass": true,
+            "selectedTone": "minimal_modern"
+          },
+          "specifications": {
+            "pass": true
+          },
+          "care_and_maintenance": {
+            "pass": true
+          },
+          "warranty": {
+            "pass": true
+          },
+          "returns": {
+            "pass": true
+          }
+        }
+      }
+    },
+    {
+      "id": "FNSGDR11TK16166",
+      "name": "Jean Solid Wood Dressing Table in Teak Finish",
+      "product_short_name": "Jean",
+      "primary_material": "Sheesham Wood",
+      "price": 29999,
+      "description": {
+        "mood": "Essential clarity defines this space.",
+        "intro": "This bed is defined by an understated linear architecture that fosters an organized and tranquil home.",
+        "story": "Manufactured with sturdy Sheesham Wood, the piece delivers steadfast structural stability for routine domestic life. Crisp outer boundaries and a neutral finish keep the overall visual impression light and grounded. The sensible design promotes seamless room organization while enhancing everyday routines.",
+        "close": "Bring refined simplicity and calm balance to your room with the Jean.",
+        "bullets": [
+          "Includes open & closed storage for easy access underneath.",
+          "Available in a Teak finish."
+        ],
+        "sentence_count": 6
+      },
+      "raw_summary": "Essential clarity defines this space. This bed is defined by an understated linear architecture that fosters an organized and tranquil home. Manufactured with sturdy Sheesham Wood, the piece delivers steadfast structural stability for routine domestic life. Crisp outer boundaries and a neutral finish keep the overall visual impression light and grounded. The sensible design promotes seamless room organization while enhancing everyday routines. Bring refined simplicity and calm balance to your room with the Jean.",
+      "specifications": {
+        "dimensions": "Length 42.50 cm x Width 77.50 cm x Height 1.61 m",
+        "primary_material": "Sheesham Wood",
+        "weight": "60.00 kg",
+        "color_finish": "Teak"
+      },
+      "care_and_maintenance": {
+        "instructions": [
+          "We recommend dusting regularly with a soft, dry cloth.",
+          "It is best to wipe spills immediately with a damp cloth.",
+          "Try to apply a wood-safe wax polish every few months."
+        ],
+        "avoid": [
+          "It's best to avoid harsh chemical cleaners.",
+          "Try to avoid direct, prolonged exposure to sunlight."
+        ]
+      },
+      "warranty": {
+        "applicable": true,
+        "duration_months": 36,
+        "status_line": "**Yes**, it has a warranty of **36 months**.",
+        "points": [
+          "Covers manufacturing defects in materials and workmanship.",
+          "Valid for 36 months from purchase date."
+        ],
+        "link": "https://example.com/warranty-policy-placeholder"
+      },
+      "returns": {
+        "window_days": "within **15 days**",
+        "condition": [
+          "Item must be unused and in original packaging",
+          "All original tags and labels must be attached",
+          "Proof of purchase is required"
+        ],
+        "policy_link": "https://example.com/returns-policy-placeholder"
+      },
+      "validator": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "sentence_count": {
+            "pass": true,
+            "value": 6,
+            "expected": "4-6"
+          },
+          "word_count": {
+            "pass": true,
+            "value": 74,
+            "expected": "70-110"
+          },
+          "loop_theme_match": {
+            "pass": true,
+            "moodLine": "Essential clarity defines this space.",
+            "closingSentence": "Bring refined simplicity and calm balance to your room with the Jean.",
+            "detectedFamily": "minimal"
+          },
+          "product_name_placement": {
+            "pass": true,
+            "occurrences": 1,
+            "inClosingSentence": true
+          },
+          "no_raw_dimensions": {
+            "pass": true
+          },
+          "tone_leakage": {
+            "pass": true,
+            "selectedTone": "minimal_modern"
+          },
+          "specifications": {
+            "pass": true
+          },
+          "care_and_maintenance": {
+            "pass": true
+          },
+          "warranty": {
+            "pass": true
+          },
+          "returns": {
+            "pass": true
+          }
+        }
+      }
+    },
+    {
+      "id": "FNTBDS11TK10009",
+      "name": "Sirius Solid Wood Dressing Table in Teak Finish",
+      "product_short_name": "Sirius",
+      "primary_material": "Sheesham Wood",
+      "price": 9999,
+      "description": {
+        "mood": "Pure geometry shapes thoughtful living.",
+        "intro": "This bed is defined by clean unadorned surfaces that support a peaceful, clutter-free environment.",
+        "story": "Engineered with resilient Sheesham Wood, the robust base ensures enduring structural performance for relaxed everyday living. Streamlined outer contours and a uniform natural finish maximize ambient light throughout the space. The open framework keeps room circulation airy while maintaining generous day-to-day functionality.",
+        "close": "Bring essential clarity and balanced order to your space with the Sirius.",
+        "bullets": [
+          "Features an open, uncluttered base.",
+          "Available in a Teak finish."
+        ],
+        "sentence_count": 6
+      },
+      "raw_summary": "Pure geometry shapes thoughtful living. This bed is defined by clean unadorned surfaces that support a peaceful, clutter-free environment. Engineered with resilient Sheesham Wood, the robust base ensures enduring structural performance for relaxed everyday living. Streamlined outer contours and a uniform natural finish maximize ambient light throughout the space. The open framework keeps room circulation airy while maintaining generous day-to-day functionality. Bring essential clarity and balanced order to your space with the Sirius.",
+      "specifications": {
+        "dimensions": "Length 66.00 cm x Width 32.50 cm x Height 1.68 m",
+        "primary_material": "Sheesham Wood",
+        "secondary_material": "Glass",
+        "weight": "8.00 kg",
+        "color_finish": "Teak"
+      },
+      "care_and_maintenance": {
+        "instructions": [
+          "We recommend dusting regularly with a soft, dry cloth.",
+          "It is best to wipe spills immediately with a damp cloth.",
+          "Try to apply a wood-safe wax polish every few months."
+        ],
+        "avoid": [
+          "It's best to avoid harsh chemical cleaners.",
+          "Try to avoid direct, prolonged exposure to sunlight."
+        ]
+      },
+      "warranty": {
+        "applicable": true,
+        "duration_months": 36,
+        "status_line": "**Yes**, it has a warranty of **36 months**.",
+        "points": [
+          "Covers manufacturing defects in materials and workmanship.",
+          "Valid for 36 months from purchase date."
+        ],
+        "link": "https://example.com/warranty-policy-placeholder"
+      },
+      "returns": {
+        "window_days": "within **15 days**",
+        "condition": [
+          "Item must be unused and in original packaging",
+          "All original tags and labels must be attached",
+          "Proof of purchase is required"
+        ],
+        "policy_link": "https://example.com/returns-policy-placeholder"
+      },
+      "validator": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "sentence_count": {
+            "pass": true,
+            "value": 6,
+            "expected": "4-6"
+          },
+          "word_count": {
+            "pass": true,
+            "value": 73,
+            "expected": "70-110"
+          },
+          "loop_theme_match": {
+            "pass": true,
+            "moodLine": "Pure geometry shapes thoughtful living.",
+            "closingSentence": "Bring essential clarity and balanced order to your space with the Sirius.",
+            "detectedFamily": null
+          },
+          "product_name_placement": {
+            "pass": true,
+            "occurrences": 1,
+            "inClosingSentence": true
+          },
+          "no_raw_dimensions": {
+            "pass": true
+          },
+          "tone_leakage": {
+            "pass": true,
+            "selectedTone": "minimal_modern"
+          },
+          "specifications": {
+            "pass": true
+          },
+          "care_and_maintenance": {
+            "pass": true
+          },
+          "warranty": {
+            "pass": true
+          },
+          "returns": {
+            "pass": true
+          }
+        }
+      }
+    },
+    {
+      "id": "ACMRRC11TK10024",
+      "name": "Ohio Solid Wood Dressing Table in Teak Finish",
+      "product_short_name": "Ohio",
+      "primary_material": "Sheesham Wood",
+      "price": 9999,
+      "description": {
+        "mood": "Uncluttered simplicity centers the room.",
+        "intro": "This bed is defined by an honest functional form that emphasizes visual lightness and calm utility.",
+        "story": "Constructed from solid Sheesham Wood, the frame guarantees dependable balance and long-lasting stability you can trust. Clean horizontal planes and subtle corner miters ensure a tidy aesthetic that fits modern apartments. The deliberate lack of excess ornamentation allows your favorite textiles and accents to shine.",
+        "close": "Bring peaceful simplicity and clean harmony to your bedroom with the Ohio.",
+        "bullets": [
+          "Includes open & closed storage for easy access underneath.",
+          "Available in a Teak finish."
+        ],
+        "sentence_count": 6
+      },
+      "raw_summary": "Uncluttered simplicity centers the room. This bed is defined by an honest functional form that emphasizes visual lightness and calm utility. Constructed from solid Sheesham Wood, the frame guarantees dependable balance and long-lasting stability you can trust. Clean horizontal planes and subtle corner miters ensure a tidy aesthetic that fits modern apartments. The deliberate lack of excess ornamentation allows your favorite textiles and accents to shine. Bring peaceful simplicity and clean harmony to your bedroom with the Ohio.",
+      "specifications": {
+        "dimensions": "Length 70.90 cm x Width 15.00 cm x Height 1.50 m",
+        "primary_material": "Sheesham Wood",
+        "secondary_material": "Glass",
+        "weight": "5.85 kg",
+        "color_finish": "Teak"
+      },
+      "care_and_maintenance": {
+        "instructions": [
+          "We recommend dusting regularly with a soft, dry cloth.",
+          "It is best to wipe spills immediately with a damp cloth.",
+          "Try to apply a wood-safe wax polish every few months."
+        ],
+        "avoid": [
+          "It's best to avoid harsh chemical cleaners.",
+          "Try to avoid direct, prolonged exposure to sunlight."
+        ]
+      },
+      "warranty": {
+        "applicable": true,
+        "duration_months": 36,
+        "status_line": "**Yes**, it has a warranty of **36 months**.",
+        "points": [
+          "Covers manufacturing defects in materials and workmanship.",
+          "Valid for 36 months from purchase date."
+        ],
+        "link": "https://example.com/warranty-policy-placeholder"
+      },
+      "returns": {
+        "window_days": "within **15 days**",
+        "condition": [
+          "Item must be unused and in original packaging",
+          "All original tags and labels must be attached",
+          "Proof of purchase is required"
+        ],
+        "policy_link": "https://example.com/returns-policy-placeholder"
+      },
+      "validator": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "sentence_count": {
+            "pass": true,
+            "value": 6,
+            "expected": "4-6"
+          },
+          "word_count": {
+            "pass": true,
+            "value": 78,
+            "expected": "70-110"
+          },
+          "loop_theme_match": {
+            "pass": true,
+            "moodLine": "Uncluttered simplicity centers the room.",
+            "closingSentence": "Bring peaceful simplicity and clean harmony to your bedroom with the Ohio.",
+            "detectedFamily": "minimal"
+          },
+          "product_name_placement": {
+            "pass": true,
+            "occurrences": 1,
+            "inClosingSentence": true
+          },
+          "no_raw_dimensions": {
+            "pass": true
+          },
+          "tone_leakage": {
+            "pass": true,
+            "selectedTone": "minimal_modern"
+          },
+          "specifications": {
+            "pass": true
+          },
+          "care_and_maintenance": {
+            "pass": true
+          },
+          "warranty": {
+            "pass": true
+          },
+          "returns": {
+            "pass": true
+          }
+        }
+      }
+    }
+  ]
+}

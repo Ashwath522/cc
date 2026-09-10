@@ -1,0 +1,17 @@
+{
+  "subcategory": "Pet Furniture",
+  "category": "Bedroom",
+  "tone_used": "warm_inviting",
+  "tone_name": "Warm & Inviting",
+  "source_training_file": "data/trainingSet/pet_furniture_generated.jsonl",
+  "is_enriched": false,
+  "gap_flag": "No enriched variant exists; base training file is empty (0 records).",
+  "target_count": 5,
+  "total_qualified": 0,
+  "shortfall": 5,
+  "pass_count": 0,
+  "fail_count": 0,
+  "top_failure_reason": "No enriched variant exists; base training file is empty (0 records).",
+  "generated_at": "2026-09-10T05:10:47.037Z",
+  "products": []
+}

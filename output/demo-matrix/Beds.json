@@ -1,0 +1,543 @@
+{
+  "subcategory": "Beds",
+  "category": "Bedroom",
+  "tone_used": "elegant_sophisticated",
+  "tone_name": "Elegant & Sophisticated",
+  "source_training_file": "data/trainingSet/beds_generated_enriched.jsonl",
+  "is_enriched": true,
+  "gap_flag": null,
+  "target_count": 5,
+  "total_qualified": 5,
+  "shortfall": 0,
+  "pass_count": 5,
+  "fail_count": 0,
+  "top_failure_reason": "None",
+  "generated_at": "2026-09-10T05:10:46.985Z",
+  "products": [
+    {
+      "id": "ul-fnbdst12sq16417",
+      "name": "Hanoi Solid Wood Cane Queen Size Bed With Hydraulic Storage (Amber Walnut Finish, Shitake Beige Colour)",
+      "product_short_name": "Hanoi",
+      "primary_material": "Mango Wood",
+      "price": 79999,
+      "description": {
+        "mood": "Sophistication defines this contemporary piece.",
+        "intro": "This bed is defined by an understated silhouette that frames the surrounding room with poised architectural balance.",
+        "story": "Built from select Mango Wood, the balanced construction delivers dependable strength and peace of mind for daily living. Gracefully tailored contours and an enduring satin finish highlight the organic depth of the fine wood grains. Its refined geometry elevates contemporary decor while remaining welcoming and practical.",
+        "close": "Bring elevated elegance and refined style to your room with the Hanoi.",
+        "bullets": [
+          "Available in Queen sizes to suit different spaces.",
+          "Comfortably fits a 78 x 60 in mattress.",
+          "Includes hydraulic storage for easy access underneath.",
+          "Available in a Amber Walnut finish.",
+          "Available in Beige colour."
+        ],
+        "sentence_count": 6
+      },
+      "raw_summary": "Sophistication defines this contemporary piece. This bed is defined by an understated silhouette that frames the surrounding room with poised architectural balance. Built from select Mango Wood, the balanced construction delivers dependable strength and peace of mind for daily living. Gracefully tailored contours and an enduring satin finish highlight the organic depth of the fine wood grains. Its refined geometry elevates contemporary decor while remaining welcoming and practical. Bring elevated elegance and refined style to your room with the Hanoi.",
+      "specifications": {
+        "dimensions": "Length 1.82 m x Width 1.99 m x Height 36.07 cm",
+        "primary_material": "Mango Wood",
+        "secondary_material": "Engineered Wood",
+        "weight": "136.00 kg",
+        "seating_capacity": "Queen",
+        "color_finish": "Amber Walnut"
+      },
+      "care_and_maintenance": {
+        "instructions": [
+          "We recommend dusting regularly with a soft, dry cloth.",
+          "It is best to wipe spills immediately with a damp cloth.",
+          "Try to apply a wood-safe wax polish every few months."
+        ],
+        "avoid": [
+          "It's best to avoid harsh chemical cleaners.",
+          "Try to avoid direct, prolonged exposure to sunlight."
+        ]
+      },
+      "warranty": {
+        "applicable": true,
+        "duration_months": 36,
+        "status_line": "**Yes**, it has a warranty of **36 months**.",
+        "points": [
+          "Covers manufacturing defects in materials and workmanship.",
+          "Valid for 36 months from purchase date."
+        ],
+        "link": "https://example.com/warranty-policy-placeholder"
+      },
+      "returns": {
+        "window_days": "within **15 days**",
+        "condition": [
+          "Item must be unused and in original packaging",
+          "All original tags and labels must be attached",
+          "Proof of purchase is required"
+        ],
+        "policy_link": "https://example.com/returns-policy-placeholder"
+      },
+      "validator": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "sentence_count": {
+            "pass": true,
+            "value": 6,
+            "expected": "4-6"
+          },
+          "word_count": {
+            "pass": true,
+            "value": 80,
+            "expected": "70-110"
+          },
+          "loop_theme_match": {
+            "pass": true,
+            "moodLine": "Sophistication defines this contemporary piece.",
+            "closingSentence": "Bring elevated elegance and refined style to your room with the Hanoi.",
+            "detectedFamily": "elegant"
+          },
+          "product_name_placement": {
+            "pass": true,
+            "occurrences": 1,
+            "inClosingSentence": true
+          },
+          "no_raw_dimensions": {
+            "pass": true
+          },
+          "tone_leakage": {
+            "pass": true,
+            "selectedTone": "elegant_sophisticated"
+          },
+          "specifications": {
+            "pass": true
+          },
+          "care_and_maintenance": {
+            "pass": true
+          },
+          "warranty": {
+            "pass": true
+          },
+          "returns": {
+            "pass": true
+          }
+        }
+      }
+    },
+    {
+      "id": "ul-fnbdst43wa35175",
+      "name": "Aruba Engineered Wood Queen Size Bed With Hydraulic Storage (Rustic Walnut Finish)",
+      "product_short_name": "Aruba",
+      "primary_material": "Particle Board",
+      "price": 26999,
+      "description": {
+        "mood": "Refined simplicity anchors the bedroom.",
+        "intro": "This bed is defined by continuous geometric lines and an artfully composed presence that anchors your decor.",
+        "story": "Constructed with resilient Particle Board, the dependable framework offers long-lasting durability through years of regular use. Subtle edge bevels and a smooth protective coating preserve the tactile beauty of the surface. The thoughtful visual weight sits gracefully within both modern and traditional layouts.",
+        "close": "Bring lasting sophistication and artistic grace to your bedroom with the Aruba.",
+        "bullets": [
+          "Available in Queen sizes to suit different spaces.",
+          "Comfortably fits a 78 x 60 in mattress.",
+          "Includes hydraulic storage for easy access underneath.",
+          "Available in a Rustic Walnut finish.",
+          "Available in Brown colour."
+        ],
+        "sentence_count": 6
+      },
+      "raw_summary": "Refined simplicity anchors the bedroom. This bed is defined by continuous geometric lines and an artfully composed presence that anchors your decor. Constructed with resilient Particle Board, the dependable framework offers long-lasting durability through years of regular use. Subtle edge bevels and a smooth protective coating preserve the tactile beauty of the surface. The thoughtful visual weight sits gracefully within both modern and traditional layouts. Bring lasting sophistication and artistic grace to your bedroom with the Aruba.",
+      "specifications": {
+        "dimensions": "Length 2.03 m x Width 1.56 m x Height 88.00 cm",
+        "primary_material": "Particle Board",
+        "weight": "49.60 kg",
+        "seating_capacity": "Queen",
+        "color_finish": "Rustic Walnut"
+      },
+      "care_and_maintenance": {
+        "instructions": [
+          "We recommend dusting regularly with a soft, dry cloth.",
+          "It is best to wipe spills immediately with a damp cloth.",
+          "Try to apply a wood-safe wax polish every few months."
+        ],
+        "avoid": [
+          "It's best to avoid harsh chemical cleaners.",
+          "Try to avoid direct, prolonged exposure to sunlight."
+        ]
+      },
+      "warranty": {
+        "applicable": true,
+        "duration_months": 12,
+        "status_line": "**Yes**, it has a warranty of **12 months**.",
+        "points": [
+          "Covers manufacturing defects in materials and workmanship.",
+          "Valid for 12 months from purchase date."
+        ],
+        "link": "https://example.com/warranty-policy-placeholder"
+      },
+      "returns": {
+        "window_days": "within **15 days**",
+        "condition": [
+          "Item must be unused and in original packaging",
+          "All original tags and labels must be attached",
+          "Proof of purchase is required"
+        ],
+        "policy_link": "https://example.com/returns-policy-placeholder"
+      },
+      "validator": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "sentence_count": {
+            "pass": true,
+            "value": 6,
+            "expected": "4-6"
+          },
+          "word_count": {
+            "pass": true,
+            "value": 77,
+            "expected": "70-110"
+          },
+          "loop_theme_match": {
+            "pass": true,
+            "moodLine": "Refined simplicity anchors the bedroom.",
+            "closingSentence": "Bring lasting sophistication and artistic grace to your bedroom with the Aruba.",
+            "detectedFamily": "elegant"
+          },
+          "product_name_placement": {
+            "pass": true,
+            "occurrences": 1,
+            "inClosingSentence": true
+          },
+          "no_raw_dimensions": {
+            "pass": true
+          },
+          "tone_leakage": {
+            "pass": true,
+            "selectedTone": "elegant_sophisticated"
+          },
+          "specifications": {
+            "pass": true
+          },
+          "care_and_maintenance": {
+            "pass": true
+          },
+          "warranty": {
+            "pass": true
+          },
+          "returns": {
+            "pass": true
+          }
+        }
+      }
+    },
+    {
+      "id": "ul-fnbdst12dq16437",
+      "name": "Toledo Solid Wood Queen Size Bed With Hydraulic Storage (Danish Walnut Finish)",
+      "product_short_name": "Toledo",
+      "primary_material": "Mango Wood",
+      "price": 65999,
+      "description": {
+        "mood": "Sophistication defines this contemporary piece.",
+        "intro": "This bed is defined by an understated silhouette that frames the surrounding room with poised architectural balance.",
+        "story": "Built from select Mango Wood, the balanced construction delivers dependable strength and peace of mind for daily living. Gracefully tailored contours and an enduring satin finish highlight the organic depth of the fine wood grains. Its refined geometry elevates contemporary decor while remaining welcoming and practical.",
+        "close": "Bring elevated elegance and refined style to your room with the Toledo.",
+        "bullets": [
+          "Available in Queen sizes to suit different spaces.",
+          "Comfortably fits a 78 x 60 in mattress.",
+          "Includes hydraulic storage for easy access underneath.",
+          "Available in a Danish Walnut finish.",
+          "Available in Brown colour."
+        ],
+        "sentence_count": 6
+      },
+      "raw_summary": "Sophistication defines this contemporary piece. This bed is defined by an understated silhouette that frames the surrounding room with poised architectural balance. Built from select Mango Wood, the balanced construction delivers dependable strength and peace of mind for daily living. Gracefully tailored contours and an enduring satin finish highlight the organic depth of the fine wood grains. Its refined geometry elevates contemporary decor while remaining welcoming and practical. Bring elevated elegance and refined style to your room with the Toledo.",
+      "specifications": {
+        "dimensions": "Length 2.15 m x Width 1.66 m x Height 1.12 m",
+        "primary_material": "Mango Wood",
+        "secondary_material": "Engineered Wood",
+        "weight": "354.00 kg",
+        "seating_capacity": "Queen",
+        "color_finish": "Danish Walnut"
+      },
+      "care_and_maintenance": {
+        "instructions": [
+          "We recommend dusting regularly with a soft, dry cloth.",
+          "It is best to wipe spills immediately with a damp cloth.",
+          "Try to apply a wood-safe wax polish every few months."
+        ],
+        "avoid": [
+          "It's best to avoid harsh chemical cleaners.",
+          "Try to avoid direct, prolonged exposure to sunlight."
+        ]
+      },
+      "warranty": {
+        "applicable": true,
+        "duration_months": 36,
+        "status_line": "**Yes**, it has a warranty of **36 months**.",
+        "points": [
+          "Covers manufacturing defects in materials and workmanship.",
+          "Valid for 36 months from purchase date."
+        ],
+        "link": "https://example.com/warranty-policy-placeholder"
+      },
+      "returns": {
+        "window_days": "within **15 days**",
+        "condition": [
+          "Item must be unused and in original packaging",
+          "All original tags and labels must be attached",
+          "Proof of purchase is required"
+        ],
+        "policy_link": "https://example.com/returns-policy-placeholder"
+      },
+      "validator": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "sentence_count": {
+            "pass": true,
+            "value": 6,
+            "expected": "4-6"
+          },
+          "word_count": {
+            "pass": true,
+            "value": 80,
+            "expected": "70-110"
+          },
+          "loop_theme_match": {
+            "pass": true,
+            "moodLine": "Sophistication defines this contemporary piece.",
+            "closingSentence": "Bring elevated elegance and refined style to your room with the Toledo.",
+            "detectedFamily": "elegant"
+          },
+          "product_name_placement": {
+            "pass": true,
+            "occurrences": 1,
+            "inClosingSentence": true
+          },
+          "no_raw_dimensions": {
+            "pass": true
+          },
+          "tone_leakage": {
+            "pass": true,
+            "selectedTone": "elegant_sophisticated"
+          },
+          "specifications": {
+            "pass": true
+          },
+          "care_and_maintenance": {
+            "pass": true
+          },
+          "warranty": {
+            "pass": true
+          },
+          "returns": {
+            "pass": true
+          }
+        }
+      }
+    },
+    {
+      "id": "ul-fnbdst33tq36638",
+      "name": "Milan Engineered Wood Queen Size Bed With Hydraulic Storage (Mocha Mousse Velvet Colour)",
+      "product_short_name": "Milan",
+      "primary_material": "High Density Block Board",
+      "price": 49999,
+      "description": {
+        "mood": "Architectural poise defines modern living.",
+        "intro": "This bed is defined by disciplined proportions and clean transitions that bring elevated composure to the area.",
+        "story": "Made from high-grade High Density Block Board, the frame guarantees structural integrity and daily dependability you can rely on. Rich wood textures and a satin-smooth touch provide tactile warmth that deepens with everyday familiarity. The cohesive shape complements airy spaces while establishing an intentional decorative focal point.",
+        "close": "Bring contemporary elegance and stately balance to your home with the Milan.",
+        "bullets": [
+          "Available in Queen sizes to suit different spaces.",
+          "Includes hydraulic storage for easy access underneath.",
+          "Available in a Brown finish.",
+          "Available in Brown colour."
+        ],
+        "sentence_count": 6
+      },
+      "raw_summary": "Architectural poise defines modern living. This bed is defined by disciplined proportions and clean transitions that bring elevated composure to the area. Made from high-grade High Density Block Board, the frame guarantees structural integrity and daily dependability you can rely on. Rich wood textures and a satin-smooth touch provide tactile warmth that deepens with everyday familiarity. The cohesive shape complements airy spaces while establishing an intentional decorative focal point. Bring contemporary elegance and stately balance to your home with the Milan.",
+      "specifications": {
+        "dimensions": "Length 2.13 m x Width 1.67 m x Height 1.26 m",
+        "primary_material": "High Density Block Board",
+        "weight": "130.00 kg",
+        "seating_capacity": "Queen",
+        "color_finish": "Brown"
+      },
+      "care_and_maintenance": {
+        "instructions": [
+          "We recommend dusting regularly with a soft, dry cloth.",
+          "It is best to wipe spills immediately with a damp cloth.",
+          "Try to apply a wood-safe wax polish every few months."
+        ],
+        "avoid": [
+          "It's best to avoid harsh chemical cleaners.",
+          "Try to avoid direct, prolonged exposure to sunlight."
+        ]
+      },
+      "warranty": {
+        "applicable": true,
+        "duration_months": 12,
+        "status_line": "**Yes**, it has a warranty of **12 months**.",
+        "points": [
+          "Covers manufacturing defects in materials and workmanship.",
+          "Valid for 12 months from purchase date."
+        ],
+        "link": "https://example.com/warranty-policy-placeholder"
+      },
+      "returns": {
+        "window_days": "within **15 days**",
+        "condition": [
+          "Item must be unused and in original packaging",
+          "All original tags and labels must be attached",
+          "Proof of purchase is required"
+        ],
+        "policy_link": "https://example.com/returns-policy-placeholder"
+      },
+      "validator": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "sentence_count": {
+            "pass": true,
+            "value": 6,
+            "expected": "4-6"
+          },
+          "word_count": {
+            "pass": true,
+            "value": 81,
+            "expected": "70-110"
+          },
+          "loop_theme_match": {
+            "pass": true,
+            "moodLine": "Architectural poise defines modern living.",
+            "closingSentence": "Bring contemporary elegance and stately balance to your home with the Milan.",
+            "detectedFamily": "elegant"
+          },
+          "product_name_placement": {
+            "pass": true,
+            "occurrences": 1,
+            "inClosingSentence": true
+          },
+          "no_raw_dimensions": {
+            "pass": true
+          },
+          "tone_leakage": {
+            "pass": true,
+            "selectedTone": "elegant_sophisticated"
+          },
+          "specifications": {
+            "pass": true
+          },
+          "care_and_maintenance": {
+            "pass": true
+          },
+          "warranty": {
+            "pass": true
+          },
+          "returns": {
+            "pass": true
+          }
+        }
+      }
+    },
+    {
+      "id": "ul-fnbdns12cq36385",
+      "name": "Takai Solid Wood Queen Size Bed Without Storage (Red Cedar Finish)",
+      "product_short_name": "Takai",
+      "primary_material": "Mango Wood",
+      "price": 54999,
+      "description": {
+        "mood": "Refined simplicity anchors the bedroom.",
+        "intro": "This bed is defined by continuous geometric lines and an artfully composed presence that anchors your decor.",
+        "story": "Constructed with resilient Mango Wood, the dependable framework offers long-lasting durability through years of regular use. Subtle edge bevels and a smooth protective coating preserve the tactile beauty of the surface. The thoughtful visual weight sits gracefully within both modern and traditional layouts.",
+        "close": "Bring lasting sophistication and artistic grace to your bedroom with the Takai.",
+        "bullets": [
+          "Available in Queen sizes to suit different spaces.",
+          "Features an open, uncluttered base.",
+          "Available in a Red Cedar finish.",
+          "Available in Brown colour."
+        ],
+        "sentence_count": 6
+      },
+      "raw_summary": "Refined simplicity anchors the bedroom. This bed is defined by continuous geometric lines and an artfully composed presence that anchors your decor. Constructed with resilient Mango Wood, the dependable framework offers long-lasting durability through years of regular use. Subtle edge bevels and a smooth protective coating preserve the tactile beauty of the surface. The thoughtful visual weight sits gracefully within both modern and traditional layouts. Bring lasting sophistication and artistic grace to your bedroom with the Takai.",
+      "specifications": {
+        "dimensions": "Length 2.06 m x Width 1.59 m x Height 1.00 m",
+        "primary_material": "Mango Wood",
+        "weight": "84.00 kg",
+        "seating_capacity": "Queen",
+        "color_finish": "Red Cedar"
+      },
+      "care_and_maintenance": {
+        "instructions": [
+          "We recommend dusting regularly with a soft, dry cloth.",
+          "It is best to wipe spills immediately with a damp cloth.",
+          "Try to apply a wood-safe wax polish every few months."
+        ],
+        "avoid": [
+          "It's best to avoid harsh chemical cleaners.",
+          "Try to avoid direct, prolonged exposure to sunlight."
+        ]
+      },
+      "warranty": {
+        "applicable": true,
+        "duration_months": 36,
+        "status_line": "**Yes**, it has a warranty of **36 months**.",
+        "points": [
+          "Covers manufacturing defects in materials and workmanship.",
+          "Valid for 36 months from purchase date."
+        ],
+        "link": "https://example.com/warranty-policy-placeholder"
+      },
+      "returns": {
+        "window_days": "within **15 days**",
+        "condition": [
+          "Item must be unused and in original packaging",
+          "All original tags and labels must be attached",
+          "Proof of purchase is required"
+        ],
+        "policy_link": "https://example.com/returns-policy-placeholder"
+      },
+      "validator": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "sentence_count": {
+            "pass": true,
+            "value": 6,
+            "expected": "4-6"
+          },
+          "word_count": {
+            "pass": true,
+            "value": 77,
+            "expected": "70-110"
+          },
+          "loop_theme_match": {
+            "pass": true,
+            "moodLine": "Refined simplicity anchors the bedroom.",
+            "closingSentence": "Bring lasting sophistication and artistic grace to your bedroom with the Takai.",
+            "detectedFamily": "elegant"
+          },
+          "product_name_placement": {
+            "pass": true,
+            "occurrences": 1,
+            "inClosingSentence": true
+          },
+          "no_raw_dimensions": {
+            "pass": true
+          },
+          "tone_leakage": {
+            "pass": true,
+            "selectedTone": "elegant_sophisticated"
+          },
+          "specifications": {
+            "pass": true
+          },
+          "care_and_maintenance": {
+            "pass": true
+          },
+          "warranty": {
+            "pass": true
+          },
+          "returns": {
+            "pass": true
+          }
+        }
+      }
+    }
+  ]
+}

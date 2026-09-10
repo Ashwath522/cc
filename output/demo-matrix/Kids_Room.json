@@ -1,0 +1,533 @@
+{
+  "subcategory": "Kids Room",
+  "category": "Bedroom",
+  "tone_used": "playful_casual",
+  "tone_name": "Playful & Casual",
+  "source_training_file": "data/trainingSet/kids_room_generated_enriched.jsonl",
+  "is_enriched": true,
+  "gap_flag": null,
+  "target_count": 5,
+  "total_qualified": 5,
+  "shortfall": 0,
+  "pass_count": 5,
+  "fail_count": 0,
+  "top_failure_reason": "None",
+  "generated_at": "2026-09-10T05:10:47.037Z",
+  "products": [
+    {
+      "id": "FVBDBB33BR69193",
+      "name": "Pinwheels Bunk Bed with Storage in Oak Colour",
+      "product_short_name": "Pinwheels",
+      "primary_material": "Engineered Wood",
+      "price": 82115,
+      "description": {
+        "mood": "Cheerful charm brings everyday delight.",
+        "intro": "This piece is defined by vibrant clean shapes that add an upbeat spark to family living areas.",
+        "story": "Engineered with dependable Engineered Wood, the strong build supports playful activities and daily use with lasting resilience. Snag-free rounded edges and safe water-resistant coatings ensure worry-free ownership for growing households. The open, cheerful layout makes organizing personal belongings intuitive and fun for all ages.",
+        "close": "Bring playful energy and joyful ease to your room with the Pinwheels.",
+        "bullets": [
+          "Available in Single sizes to suit different spaces.",
+          "Includes box storage for easy access underneath.",
+          "Available in a Oak finish.",
+          "Available in Brown colour."
+        ],
+        "sentence_count": 6
+      },
+      "raw_summary": "Cheerful charm brings everyday delight. This piece is defined by vibrant clean shapes that add an upbeat spark to family living areas. Engineered with dependable Engineered Wood, the strong build supports playful activities and daily use with lasting resilience. Snag-free rounded edges and safe water-resistant coatings ensure worry-free ownership for growing households. The open, cheerful layout makes organizing personal belongings intuitive and fun for all ages. Bring playful energy and joyful ease to your room with the Pinwheels.",
+      "specifications": {
+        "dimensions": "Length 96.50 cm x Width 2.34 m x Height 1.91 m",
+        "primary_material": "Engineered Wood",
+        "weight": "160.00 kg",
+        "seating_capacity": "Single",
+        "color_finish": "Oak"
+      },
+      "care_and_maintenance": {
+        "instructions": [
+          "We recommend dusting regularly with a soft, dry cloth.",
+          "It is best to wipe spills immediately with a damp cloth.",
+          "Try to apply a wood-safe wax polish every few months."
+        ],
+        "avoid": [
+          "It's best to avoid harsh chemical cleaners.",
+          "Try to avoid direct, prolonged exposure to sunlight."
+        ]
+      },
+      "warranty": {
+        "applicable": true,
+        "duration_months": 12,
+        "status_line": "**Yes**, it has a warranty of **12 months**.",
+        "points": [
+          "Covers manufacturing defects in materials and workmanship.",
+          "Valid for 12 months from purchase date."
+        ],
+        "link": "https://example.com/warranty-policy-placeholder"
+      },
+      "returns": {
+        "window_days": "within **15 days**",
+        "condition": [
+          "Item must be unused and in original packaging",
+          "All original tags and labels must be attached",
+          "Proof of purchase is required"
+        ],
+        "policy_link": "https://example.com/returns-policy-placeholder"
+      },
+      "validator": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "sentence_count": {
+            "pass": true,
+            "value": 6,
+            "expected": "4-6"
+          },
+          "word_count": {
+            "pass": true,
+            "value": 78,
+            "expected": "70-110"
+          },
+          "loop_theme_match": {
+            "pass": true,
+            "moodLine": "Cheerful charm brings everyday delight.",
+            "closingSentence": "Bring playful energy and joyful ease to your room with the Pinwheels.",
+            "detectedFamily": "playful"
+          },
+          "product_name_placement": {
+            "pass": true,
+            "occurrences": 1,
+            "inClosingSentence": true
+          },
+          "no_raw_dimensions": {
+            "pass": true
+          },
+          "tone_leakage": {
+            "pass": true,
+            "selectedTone": "playful_casual"
+          },
+          "specifications": {
+            "pass": true
+          },
+          "care_and_maintenance": {
+            "pass": true
+          },
+          "warranty": {
+            "pass": true
+          },
+          "returns": {
+            "pass": true
+          }
+        }
+      }
+    },
+    {
+      "id": "FVBDST33OK52750",
+      "name": "Play Date Single Size Bunk Bed in Tropical Theme",
+      "product_short_name": "Play",
+      "primary_material": "HDF",
+      "price": 32200,
+      "description": {
+        "mood": "Playful charm brightens any room.",
+        "intro": "This piece is defined by clean, optimistic design lines that make shared spaces feel open and welcoming.",
+        "story": "Manufactured using tough HDF, the frame resists everyday wear while offering reliable, steadfast stability. Rounded corners and smooth sanded faces prioritize comfort and safety across morning and bedtime rituals. Its breezy character invites relaxation and cheerful creativity into personal bedrooms.",
+        "close": "Bring lively charm and playful ease to your space with the Play.",
+        "bullets": [
+          "Available in Kids sizes to suit different spaces.",
+          "Includes drawer storage for easy access underneath.",
+          "Available in a Brown finish.",
+          "Available in Brown colour."
+        ],
+        "sentence_count": 6
+      },
+      "raw_summary": "Playful charm brightens any room. This piece is defined by clean, optimistic design lines that make shared spaces feel open and welcoming. Manufactured using tough HDF, the frame resists everyday wear while offering reliable, steadfast stability. Rounded corners and smooth sanded faces prioritize comfort and safety across morning and bedtime rituals. Its breezy character invites relaxation and cheerful creativity into personal bedrooms. Bring lively charm and playful ease to your space with the Play.",
+      "specifications": {
+        "dimensions": "Length 99.06 cm x Width 1.98 m x Height 1.52 m",
+        "primary_material": "HDF",
+        "secondary_material": "Solid Wood",
+        "weight": "65.00 kg",
+        "seating_capacity": "Kids",
+        "color_finish": "Brown"
+      },
+      "care_and_maintenance": {
+        "instructions": [
+          "We recommend dusting regularly with a soft, dry cloth.",
+          "It is best to wipe spills immediately with a damp cloth.",
+          "Try to apply a wood-safe wax polish every few months."
+        ],
+        "avoid": [
+          "It's best to avoid harsh chemical cleaners.",
+          "Try to avoid direct, prolonged exposure to sunlight."
+        ]
+      },
+      "warranty": {
+        "applicable": true,
+        "duration_months": 12,
+        "status_line": "**Yes**, it has a warranty of **12 months**.",
+        "points": [
+          "Covers manufacturing defects in materials and workmanship.",
+          "Valid for 12 months from purchase date."
+        ],
+        "link": "https://example.com/warranty-policy-placeholder"
+      },
+      "returns": {
+        "window_days": "within **15 days**",
+        "condition": [
+          "Item must be unused and in original packaging",
+          "All original tags and labels must be attached",
+          "Proof of purchase is required"
+        ],
+        "policy_link": "https://example.com/returns-policy-placeholder"
+      },
+      "validator": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "sentence_count": {
+            "pass": true,
+            "value": 6,
+            "expected": "4-6"
+          },
+          "word_count": {
+            "pass": true,
+            "value": 74,
+            "expected": "70-110"
+          },
+          "loop_theme_match": {
+            "pass": true,
+            "moodLine": "Playful charm brightens any room.",
+            "closingSentence": "Bring lively charm and playful ease to your space with the Play.",
+            "detectedFamily": "playful"
+          },
+          "product_name_placement": {
+            "pass": true,
+            "occurrences": 1,
+            "inClosingSentence": true
+          },
+          "no_raw_dimensions": {
+            "pass": true
+          },
+          "tone_leakage": {
+            "pass": true,
+            "selectedTone": "playful_casual"
+          },
+          "specifications": {
+            "pass": true
+          },
+          "care_and_maintenance": {
+            "pass": true
+          },
+          "warranty": {
+            "pass": true
+          },
+          "returns": {
+            "pass": true
+          }
+        }
+      }
+    },
+    {
+      "id": "FVTBST33BL51704",
+      "name": "Utopia Extendable Toddler Study Desk and Chair Set in Azure Blue Colour",
+      "product_short_name": "Utopia",
+      "primary_material": "Mdf",
+      "price": 12999,
+      "description": {
+        "mood": "Cheerful charm brings everyday delight.",
+        "intro": "This piece is defined by vibrant clean shapes that add an upbeat spark to family living areas.",
+        "story": "Engineered with dependable Mdf, the strong build supports playful activities and daily use with lasting resilience. Snag-free rounded edges and safe water-resistant coatings ensure worry-free ownership for growing households. The open, cheerful layout makes organizing personal belongings intuitive and fun for all ages.",
+        "close": "Bring playful energy and joyful ease to your room with the Utopia.",
+        "bullets": [
+          "Includes open & closed storage for easy access underneath.",
+          "Available in a Multicolor finish.",
+          "Available in Multicolor colour."
+        ],
+        "sentence_count": 6
+      },
+      "raw_summary": "Cheerful charm brings everyday delight. This piece is defined by vibrant clean shapes that add an upbeat spark to family living areas. Engineered with dependable Mdf, the strong build supports playful activities and daily use with lasting resilience. Snag-free rounded edges and safe water-resistant coatings ensure worry-free ownership for growing households. The open, cheerful layout makes organizing personal belongings intuitive and fun for all ages. Bring playful energy and joyful ease to your room with the Utopia.",
+      "specifications": {
+        "dimensions": "Length 40.00 cm x Width 60.00 cm x Height 61.00 cm",
+        "primary_material": "Mdf",
+        "weight": "24.00 kg",
+        "color_finish": "Multicolor"
+      },
+      "care_and_maintenance": {
+        "instructions": [
+          "We recommend dusting regularly with a soft, dry cloth.",
+          "It is best to wipe spills immediately with a damp cloth.",
+          "Try to apply a wood-safe wax polish every few months."
+        ],
+        "avoid": [
+          "It's best to avoid harsh chemical cleaners.",
+          "Try to avoid direct, prolonged exposure to sunlight."
+        ]
+      },
+      "warranty": {
+        "applicable": true,
+        "duration_months": 12,
+        "status_line": "**Yes**, it has a warranty of **12 months**.",
+        "points": [
+          "Covers manufacturing defects in materials and workmanship.",
+          "Valid for 12 months from purchase date."
+        ],
+        "link": "https://example.com/warranty-policy-placeholder"
+      },
+      "returns": {
+        "window_days": "within **15 days**",
+        "condition": [
+          "Item must be unused and in original packaging",
+          "All original tags and labels must be attached",
+          "Proof of purchase is required"
+        ],
+        "policy_link": "https://example.com/returns-policy-placeholder"
+      },
+      "validator": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "sentence_count": {
+            "pass": true,
+            "value": 6,
+            "expected": "4-6"
+          },
+          "word_count": {
+            "pass": true,
+            "value": 77,
+            "expected": "70-110"
+          },
+          "loop_theme_match": {
+            "pass": true,
+            "moodLine": "Cheerful charm brings everyday delight.",
+            "closingSentence": "Bring playful energy and joyful ease to your room with the Utopia.",
+            "detectedFamily": "playful"
+          },
+          "product_name_placement": {
+            "pass": true,
+            "occurrences": 1,
+            "inClosingSentence": true
+          },
+          "no_raw_dimensions": {
+            "pass": true
+          },
+          "tone_leakage": {
+            "pass": true,
+            "selectedTone": "playful_casual"
+          },
+          "specifications": {
+            "pass": true
+          },
+          "care_and_maintenance": {
+            "pass": true
+          },
+          "warranty": {
+            "pass": true
+          },
+          "returns": {
+            "pass": true
+          }
+        }
+      }
+    },
+    {
+      "id": "FVTBST33GY52779",
+      "name": "Ele Toddler Activity Table &amp; Chair",
+      "product_short_name": "Ele",
+      "primary_material": "HDF",
+      "price": 4840,
+      "description": {
+        "mood": "Cheerful charm brings everyday delight.",
+        "intro": "This piece is defined by vibrant clean shapes that add an upbeat spark to family living areas.",
+        "story": "Engineered with dependable HDF, the strong build supports playful activities and daily use with lasting resilience. Snag-free rounded edges and safe water-resistant coatings ensure worry-free ownership for growing households. The open, cheerful layout makes organizing personal belongings intuitive and fun for all ages.",
+        "close": "Bring playful energy and joyful ease to your room with the Ele.",
+        "bullets": [
+          "Includes open storage for easy access underneath.",
+          "Available in a Grey finish.",
+          "Available in Grey colour."
+        ],
+        "sentence_count": 6
+      },
+      "raw_summary": "Cheerful charm brings everyday delight. This piece is defined by vibrant clean shapes that add an upbeat spark to family living areas. Engineered with dependable HDF, the strong build supports playful activities and daily use with lasting resilience. Snag-free rounded edges and safe water-resistant coatings ensure worry-free ownership for growing households. The open, cheerful layout makes organizing personal belongings intuitive and fun for all ages. Bring playful energy and joyful ease to your room with the Ele.",
+      "specifications": {
+        "dimensions": "Length 45.72 cm x Width 66.04 cm x Height 55.88 cm",
+        "primary_material": "HDF",
+        "weight": "20.00 kg",
+        "color_finish": "Grey"
+      },
+      "care_and_maintenance": {
+        "instructions": [
+          "We recommend dusting regularly with a soft, dry cloth.",
+          "It is best to wipe spills immediately with a damp cloth.",
+          "Try to apply a wood-safe wax polish every few months."
+        ],
+        "avoid": [
+          "It's best to avoid harsh chemical cleaners.",
+          "Try to avoid direct, prolonged exposure to sunlight."
+        ]
+      },
+      "warranty": {
+        "applicable": true,
+        "duration_months": 12,
+        "status_line": "**Yes**, it has a warranty of **12 months**.",
+        "points": [
+          "Covers manufacturing defects in materials and workmanship.",
+          "Valid for 12 months from purchase date."
+        ],
+        "link": "https://example.com/warranty-policy-placeholder"
+      },
+      "returns": {
+        "window_days": "within **15 days**",
+        "condition": [
+          "Item must be unused and in original packaging",
+          "All original tags and labels must be attached",
+          "Proof of purchase is required"
+        ],
+        "policy_link": "https://example.com/returns-policy-placeholder"
+      },
+      "validator": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "sentence_count": {
+            "pass": true,
+            "value": 6,
+            "expected": "4-6"
+          },
+          "word_count": {
+            "pass": true,
+            "value": 77,
+            "expected": "70-110"
+          },
+          "loop_theme_match": {
+            "pass": true,
+            "moodLine": "Cheerful charm brings everyday delight.",
+            "closingSentence": "Bring playful energy and joyful ease to your room with the Ele.",
+            "detectedFamily": "playful"
+          },
+          "product_name_placement": {
+            "pass": true,
+            "occurrences": 1,
+            "inClosingSentence": true
+          },
+          "no_raw_dimensions": {
+            "pass": true
+          },
+          "tone_leakage": {
+            "pass": true,
+            "selectedTone": "playful_casual"
+          },
+          "specifications": {
+            "pass": true
+          },
+          "care_and_maintenance": {
+            "pass": true
+          },
+          "warranty": {
+            "pass": true
+          },
+          "returns": {
+            "pass": true
+          }
+        }
+      }
+    },
+    {
+      "id": "FVTBST33BL51650",
+      "name": "Flora Kids Study Desk cum Bookshelf with Shuttered Cabinets Open Shelves and Drawers in Lime Yellow Azure Blue Colour",
+      "product_short_name": "Flora",
+      "primary_material": "Mdf",
+      "price": 29999,
+      "description": {
+        "mood": "Cheerful charm brings everyday delight.",
+        "intro": "This piece is defined by vibrant clean shapes that add an upbeat spark to family living areas.",
+        "story": "Engineered with dependable Mdf, the strong build supports playful activities and daily use with lasting resilience. Snag-free rounded edges and safe water-resistant coatings ensure worry-free ownership for growing households. The open, cheerful layout makes organizing personal belongings intuitive and fun for all ages.",
+        "close": "Bring playful energy and joyful ease to your room with the Flora.",
+        "bullets": [
+          "Includes open & closed storage for easy access underneath.",
+          "Available in a Multicolor finish.",
+          "Available in Multicolor colour."
+        ],
+        "sentence_count": 6
+      },
+      "raw_summary": "Cheerful charm brings everyday delight. This piece is defined by vibrant clean shapes that add an upbeat spark to family living areas. Engineered with dependable Mdf, the strong build supports playful activities and daily use with lasting resilience. Snag-free rounded edges and safe water-resistant coatings ensure worry-free ownership for growing households. The open, cheerful layout makes organizing personal belongings intuitive and fun for all ages. Bring playful energy and joyful ease to your room with the Flora.",
+      "specifications": {
+        "dimensions": "Length 60.00 cm x Width 1.20 m x Height 2.00 m",
+        "primary_material": "Mdf",
+        "weight": "115.00 kg",
+        "color_finish": "Multicolor"
+      },
+      "care_and_maintenance": {
+        "instructions": [
+          "We recommend dusting regularly with a soft, dry cloth.",
+          "It is best to wipe spills immediately with a damp cloth.",
+          "Try to apply a wood-safe wax polish every few months."
+        ],
+        "avoid": [
+          "It's best to avoid harsh chemical cleaners.",
+          "Try to avoid direct, prolonged exposure to sunlight."
+        ]
+      },
+      "warranty": {
+        "applicable": true,
+        "duration_months": 12,
+        "status_line": "**Yes**, it has a warranty of **12 months**.",
+        "points": [
+          "Covers manufacturing defects in materials and workmanship.",
+          "Valid for 12 months from purchase date."
+        ],
+        "link": "https://example.com/warranty-policy-placeholder"
+      },
+      "returns": {
+        "window_days": "within **15 days**",
+        "condition": [
+          "Item must be unused and in original packaging",
+          "All original tags and labels must be attached",
+          "Proof of purchase is required"
+        ],
+        "policy_link": "https://example.com/returns-policy-placeholder"
+      },
+      "validator": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "sentence_count": {
+            "pass": true,
+            "value": 6,
+            "expected": "4-6"
+          },
+          "word_count": {
+            "pass": true,
+            "value": 77,
+            "expected": "70-110"
+          },
+          "loop_theme_match": {
+            "pass": true,
+            "moodLine": "Cheerful charm brings everyday delight.",
+            "closingSentence": "Bring playful energy and joyful ease to your room with the Flora.",
+            "detectedFamily": "playful"
+          },
+          "product_name_placement": {
+            "pass": true,
+            "occurrences": 1,
+            "inClosingSentence": true
+          },
+          "no_raw_dimensions": {
+            "pass": true
+          },
+          "tone_leakage": {
+            "pass": true,
+            "selectedTone": "playful_casual"
+          },
+          "specifications": {
+            "pass": true
+          },
+          "care_and_maintenance": {
+            "pass": true
+          },
+          "warranty": {
+            "pass": true
+          },
+          "returns": {
+            "pass": true
+          }
+        }
+      }
+    }
+  ]
+}

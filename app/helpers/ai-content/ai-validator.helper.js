@@ -25,6 +25,14 @@ const THEME_FAMILIES = {
     moodWords: ['grounded', 'enduring', 'craft', 'craftsmanship', 'heritage', 'rooted', 'authentic', 'foundation', 'strength', 'solid', 'lasting'],
     closeWords: ['enduring', 'lasting', 'grounded', 'craftsmanship', 'strength', 'integrity', 'heritage', 'foundation', 'solid', 'dependable'],
   },
+  luxury: {
+    moodWords: ['luxury', 'luxurious', 'indulgence', 'indulgent', 'grand', 'opulent', 'sumptuous', 'exquisite', 'masterpiece', 'prestige'],
+    closeWords: ['luxury', 'luxurious', 'indulgence', 'indulgent', 'craftsmanship', 'refined', 'sophistication', 'grandeur', 'elevated', 'prestige', 'comfort'],
+  },
+  playful: {
+    moodWords: ['playful', 'cheerful', 'bright', 'joy', 'joyful', 'vibrant', 'lively', 'delight', 'energy', 'friendly'],
+    closeWords: ['playful', 'cheerful', 'joy', 'delight', 'bright', 'energy', 'ease', 'comfort', 'warmth', 'welcome', 'charm'],
+  },
 };
 
 function checkLoopThemeMatch(moodLine, closingSentence) {
@@ -230,4 +238,8 @@ function validateItem(item, sourceProduct, options = {}) {
   };
 }
 
-module.exports = { validateItem };
+module.exports = {
+  validateItem,
+  checkLoopThemeMatch,
+  THEME_FAMILIES,
+};

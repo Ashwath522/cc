@@ -6,7 +6,8 @@
     "start": "node index.js",
     "start:dev": "node --inspect dev.js",
     "dev": "nodemon index.js",
-    "format": "prettier --write \"app/**/*.js\" \"platform/src/**/*.js\" \"platform/src/**/*.vue\""
+    "format": "prettier --write \"app/**/*.js\" \"platform/src/**/*.js\" \"platform/src/**/*.vue\"",
+    "demo:matrix": "node scripts/generateDemoMatrix.js"
   },
   "dependencies": {
     "@newrelic/native-metrics": "^12.0.0",

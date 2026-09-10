@@ -1,0 +1,789 @@
+{
+  "description": {
+    "summary": "Velvet Accent Armchair brings a complete, inviting feel to any living room space, pairing everyday usability with a composed aesthetic that helps shoppers imagine the piece in their home. Its surface feels smooth and easy to live with, creating a tactile impression that supports comfort, relaxed use, and a more finished room. This is the selected size variant, chosen for shoppers who want the right fit for daily comfort and practical space planning. This selected finish finish gives the room a grounded, easy-to-style character, making the purchase feel thoughtful and ready for real homes.",
+    "key_features": []
+  },
+  "specifications": {
+    "dimensions": "75cm L x 80cm W x 90cm H",
+    "primary_material": "Velvet Upholstery",
+    "weight": "18 kg",
+    "assembly_required": "No assembly required"
+  },
+  "care_and_maintenance": {
+    "instructions": [
+      "We recommend you vacuum regularly using a soft brush attachment.",
+      "We recommend you blot spills immediately with a clean, absorbent cloth.",
+      "We recommend you rotate cushions periodically for even wear."
+    ],
+    "avoid": [
+      "It's best to avoid rubbing stains, as this can spread them.",
+      "It's best to avoid direct sunlight for extended periods to prevent fading."
+    ]
+  },
+  "warranty": {
+    "applicable": true,
+    "duration_months": 12,
+    "status_line": "**Yes**, it has a warranty of **12 months**.",
+    "points": [
+      "Covers manufacturing defects in materials and workmanship.",
+      "Covers defects in the production finish under normal use.",
+      "Excludes accidental damage or misuse."
+    ],
+    "link": "https://example.com/warranty-policy-placeholder"
+  },
+  "returns": {
+    "window_days": "within **15 days**",
+    "condition": [
+      "Item must be unused and in original packaging",
+      "All original tags and labels must be attached",
+      "Proof of purchase is required"
+    ],
+    "policy_link": "https://example.com/returns-policy-placeholder"
+  },
+  "quality_promise": {
+    "statement": "Every living room product is checked for finish, fit, and everyday usability before it reaches your home.",
+    "highlights": [
+      "Designed to feel dependable in daily use, with details reviewed for a cleaner ownership experience.",
+      "Supported by a 12-month warranty, so the purchase feels considered after delivery too."
+    ],
+    "isi": {
+      "certified": false,
+      "label": "ISI Certified",
+      "logo": "static-asset-reference"
+    }
+  },
+  "_meta": {
+    "needs_review": false,
+    "care_category_matched": "Fabric",
+    "repetition_flagged": true,
+    "repetition_matched_id": "sp-004",
+    "repetition_score": 1,
+    "phrase_overuse_flagged": true,
+    "overused_phrases": [
+      {
+        "phrase": "velvet accent",
+        "count": 3
+      },
+      {
+        "phrase": "accent armchair",
+        "count": 3
+      },
+      {
+        "phrase": "armchair brings",
+        "count": 3
+      },
+      {
+        "phrase": "brings complete",
+        "count": 24
+      },
+      {
+        "phrase": "complete inviting",
+        "count": 24
+      },
+      {
+        "phrase": "inviting feel",
+        "count": 24
+      },
+      {
+        "phrase": "feel any",
+        "count": 24
+      },
+      {
+        "phrase": "any living",
+        "count": 10
+      },
+      {
+        "phrase": "living room",
+        "count": 10
+      },
+      {
+        "phrase": "room space",
+        "count": 10
+      },
+      {
+        "phrase": "space pairing",
+        "count": 24
+      },
+      {
+        "phrase": "pairing everyday",
+        "count": 24
+      },
+      {
+        "phrase": "everyday usability",
+        "count": 24
+      },
+      {
+        "phrase": "usability composed",
+        "count": 24
+      },
+      {
+        "phrase": "composed aesthetic",
+        "count": 24
+      },
+      {
+        "phrase": "aesthetic helps",
+        "count": 24
+      },
+      {
+        "phrase": "helps shoppers",
+        "count": 24
+      },
+      {
+        "phrase": "shoppers imagine",
+        "count": 24
+      },
+      {
+        "phrase": "imagine piece",
+        "count": 24
+      },
+      {
+        "phrase": "piece their",
+        "count": 24
+      },
+      {
+        "phrase": "their home",
+        "count": 24
+      },
+      {
+        "phrase": "velvet accent armchair",
+        "count": 3
+      },
+      {
+        "phrase": "accent armchair brings",
+        "count": 3
+      },
+      {
+        "phrase": "armchair brings complete",
+        "count": 3
+      },
+      {
+        "phrase": "brings complete inviting",
+        "count": 24
+      },
+      {
+        "phrase": "complete inviting feel",
+        "count": 24
+      },
+      {
+        "phrase": "inviting feel any",
+        "count": 24
+      },
+      {
+        "phrase": "feel any living",
+        "count": 10
+      },
+      {
+        "phrase": "any living room",
+        "count": 10
+      },
+      {
+        "phrase": "living room space",
+        "count": 10
+      },
+      {
+        "phrase": "room space pairing",
+        "count": 10
+      },
+      {
+        "phrase": "space pairing everyday",
+        "count": 24
+      },
+      {
+        "phrase": "pairing everyday usability",
+        "count": 24
+      },
+      {
+        "phrase": "everyday usability composed",
+        "count": 24
+      },
+      {
+        "phrase": "usability composed aesthetic",
+        "count": 24
+      },
+      {
+        "phrase": "composed aesthetic helps",
+        "count": 24
+      },
+      {
+        "phrase": "aesthetic helps shoppers",
+        "count": 24
+      },
+      {
+        "phrase": "helps shoppers imagine",
+        "count": 24
+      },
+      {
+        "phrase": "shoppers imagine piece",
+        "count": 24
+      },
+      {
+        "phrase": "imagine piece their",
+        "count": 24
+      },
+      {
+        "phrase": "piece their home",
+        "count": 24
+      },
+      {
+        "phrase": "surface feels",
+        "count": 11
+      },
+      {
+        "phrase": "feels smooth",
+        "count": 10
+      },
+      {
+        "phrase": "smooth easy",
+        "count": 10
+      },
+      {
+        "phrase": "easy live",
+        "count": 10
+      },
+      {
+        "phrase": "live creating",
+        "count": 10
+      },
+      {
+        "phrase": "creating tactile",
+        "count": 10
+      },
+      {
+        "phrase": "tactile impression",
+        "count": 10
+      },
+      {
+        "phrase": "impression supports",
+        "count": 10
+      },
+      {
+        "phrase": "supports comfort",
+        "count": 10
+      },
+      {
+        "phrase": "comfort relaxed",
+        "count": 10
+      },
+      {
+        "phrase": "relaxed use",
+        "count": 10
+      },
+      {
+        "phrase": "use more",
+        "count": 10
+      },
+      {
+        "phrase": "more finished",
+        "count": 10
+      },
+      {
+        "phrase": "finished room",
+        "count": 10
+      },
+      {
+        "phrase": "surface feels smooth",
+        "count": 10
+      },
+      {
+        "phrase": "feels smooth easy",
+        "count": 10
+      },
+      {
+        "phrase": "smooth easy live",
+        "count": 10
+      },
+      {
+        "phrase": "easy live creating",
+        "count": 10
+      },
+      {
+        "phrase": "live creating tactile",
+        "count": 10
+      },
+      {
+        "phrase": "creating tactile impression",
+        "count": 10
+      },
+      {
+        "phrase": "tactile impression supports",
+        "count": 10
+      },
+      {
+        "phrase": "impression supports comfort",
+        "count": 10
+      },
+      {
+        "phrase": "supports comfort relaxed",
+        "count": 10
+      },
+      {
+        "phrase": "comfort relaxed use",
+        "count": 10
+      },
+      {
+        "phrase": "relaxed use more",
+        "count": 10
+      },
+      {
+        "phrase": "use more finished",
+        "count": 10
+      },
+      {
+        "phrase": "more finished room",
+        "count": 10
+      },
+      {
+        "phrase": "selected size",
+        "count": 10
+      },
+      {
+        "phrase": "size variant",
+        "count": 10
+      },
+      {
+        "phrase": "variant chosen",
+        "count": 10
+      },
+      {
+        "phrase": "chosen shoppers",
+        "count": 10
+      },
+      {
+        "phrase": "shoppers who",
+        "count": 10
+      },
+      {
+        "phrase": "who want",
+        "count": 10
+      },
+      {
+        "phrase": "want right",
+        "count": 10
+      },
+      {
+        "phrase": "right fit",
+        "count": 10
+      },
+      {
+        "phrase": "fit daily",
+        "count": 10
+      },
+      {
+        "phrase": "daily comfort",
+        "count": 10
+      },
+      {
+        "phrase": "comfort practical",
+        "count": 10
+      },
+      {
+        "phrase": "practical space",
+        "count": 10
+      },
+      {
+        "phrase": "space planning",
+        "count": 10
+      },
+      {
+        "phrase": "selected size variant",
+        "count": 10
+      },
+      {
+        "phrase": "size variant chosen",
+        "count": 10
+      },
+      {
+        "phrase": "variant chosen shoppers",
+        "count": 10
+      },
+      {
+        "phrase": "chosen shoppers who",
+        "count": 10
+      },
+      {
+        "phrase": "shoppers who want",
+        "count": 10
+      },
+      {
+        "phrase": "who want right",
+        "count": 10
+      },
+      {
+        "phrase": "want right fit",
+        "count": 10
+      },
+      {
+        "phrase": "right fit daily",
+        "count": 10
+      },
+      {
+        "phrase": "fit daily comfort",
+        "count": 10
+      },
+      {
+        "phrase": "daily comfort practical",
+        "count": 10
+      },
+      {
+        "phrase": "comfort practical space",
+        "count": 10
+      },
+      {
+        "phrase": "practical space planning",
+        "count": 10
+      },
+      {
+        "phrase": "selected finish",
+        "count": 24
+      },
+      {
+        "phrase": "finish finish",
+        "count": 24
+      },
+      {
+        "phrase": "finish gives",
+        "count": 24
+      },
+      {
+        "phrase": "gives room",
+        "count": 24
+      },
+      {
+        "phrase": "room grounded",
+        "count": 24
+      },
+      {
+        "phrase": "grounded easy",
+        "count": 24
+      },
+      {
+        "phrase": "easy style",
+        "count": 24
+      },
+      {
+        "phrase": "style character",
+        "count": 24
+      },
+      {
+        "phrase": "character making",
+        "count": 24
+      },
+      {
+        "phrase": "making purchase",
+        "count": 24
+      },
+      {
+        "phrase": "purchase feel",
+        "count": 24
+      },
+      {
+        "phrase": "feel thoughtful",
+        "count": 24
+      },
+      {
+        "phrase": "thoughtful ready",
+        "count": 24
+      },
+      {
+        "phrase": "ready real",
+        "count": 24
+      },
+      {
+        "phrase": "real homes",
+        "count": 24
+      },
+      {
+        "phrase": "selected finish finish",
+        "count": 24
+      },
+      {
+        "phrase": "finish finish gives",
+        "count": 24
+      },
+      {
+        "phrase": "finish gives room",
+        "count": 24
+      },
+      {
+        "phrase": "gives room grounded",
+        "count": 24
+      },
+      {
+        "phrase": "room grounded easy",
+        "count": 24
+      },
+      {
+        "phrase": "grounded easy style",
+        "count": 24
+      },
+      {
+        "phrase": "easy style character",
+        "count": 24
+      },
+      {
+        "phrase": "style character making",
+        "count": 24
+      },
+      {
+        "phrase": "character making purchase",
+        "count": 24
+      },
+      {
+        "phrase": "making purchase feel",
+        "count": 24
+      },
+      {
+        "phrase": "purchase feel thoughtful",
+        "count": 24
+      },
+      {
+        "phrase": "feel thoughtful ready",
+        "count": 24
+      },
+      {
+        "phrase": "thoughtful ready real",
+        "count": 24
+      },
+      {
+        "phrase": "ready real homes",
+        "count": 24
+      }
+    ],
+    "attempt_history": [
+      {
+        "attempt": 1,
+        "valid": true,
+        "repetition_failed": true,
+        "phrase_overuse_failed": true,
+        "errors": [
+          "REPETITION FIX REQUIRED: Your opening sentence is too similar to a previously generated product's opener (matched: 'Velvet Accent Armchair brings a complete, inviting feel to any living room space, pairing everyday usability with a composed aesthetic that helps shoppers imagine the piece in their home.'). Rewrite the opening sentence using different vocabulary and sentence structure. This is unrelated to factual content — keep all facts the same, only change the phrasing.",
+          "REPETITION FIX REQUIRED: Your closing sentence is too similar to a previously generated product's closer (matched: 'This selected finish finish gives the room a grounded, easy-to-style character, making the purchase feel thoughtful and ready for real homes.'). Rewrite the closing sentence using different vocabulary and sentence structure. This is unrelated to factual content — keep all facts the same, only change the phrasing.",
+          "OVERUSED PHRASE: 'velvet accent' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'accent armchair' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'armchair brings' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'brings complete' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'complete inviting' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'inviting feel' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'feel any' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'any living' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'living room' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'room space' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'space pairing' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'pairing everyday' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'everyday usability' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'usability composed' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'composed aesthetic' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'aesthetic helps' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'helps shoppers' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'shoppers imagine' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'imagine piece' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'piece their' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'their home' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'velvet accent armchair' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'accent armchair brings' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'armchair brings complete' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'brings complete inviting' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'complete inviting feel' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'inviting feel any' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'feel any living' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'any living room' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'living room space' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'room space pairing' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'space pairing everyday' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'pairing everyday usability' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'everyday usability composed' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'usability composed aesthetic' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'composed aesthetic helps' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'aesthetic helps shoppers' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'helps shoppers imagine' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'shoppers imagine piece' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'imagine piece their' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'piece their home' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'surface feels' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'feels smooth' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'smooth easy' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'easy live' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'live creating' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'creating tactile' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'tactile impression' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'impression supports' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'supports comfort' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'comfort relaxed' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'relaxed use' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'use more' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'more finished' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'finished room' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'surface feels smooth' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'feels smooth easy' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'smooth easy live' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'easy live creating' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'live creating tactile' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'creating tactile impression' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'tactile impression supports' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'impression supports comfort' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'supports comfort relaxed' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'comfort relaxed use' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'relaxed use more' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'use more finished' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'more finished room' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'selected size' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'size variant' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'variant chosen' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'chosen shoppers' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'shoppers who' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'who want' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'want right' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'right fit' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'fit daily' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'daily comfort' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'comfort practical' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'practical space' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'space planning' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'selected size variant' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'size variant chosen' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'variant chosen shoppers' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'chosen shoppers who' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'shoppers who want' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'who want right' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'want right fit' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'right fit daily' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'fit daily comfort' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'daily comfort practical' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'comfort practical space' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'practical space planning' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'selected finish' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'finish finish' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'finish gives' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'gives room' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'room grounded' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'grounded easy' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'easy style' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'style character' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'character making' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'making purchase' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'purchase feel' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'feel thoughtful' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'thoughtful ready' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'ready real' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'real homes' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'selected finish finish' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'finish finish gives' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'finish gives room' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'gives room grounded' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'room grounded easy' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'grounded easy style' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'easy style character' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'style character making' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'character making purchase' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'making purchase feel' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'purchase feel thoughtful' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'feel thoughtful ready' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'thoughtful ready real' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'ready real homes' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence."
+        ],
+        "output_snippet": "Velvet Accent Armchair brings a complete, inviting feel to any living room space, pairing everyday u"
+      },
+      {
+        "attempt": 2,
+        "valid": true,
+        "repetition_failed": true,
+        "phrase_overuse_failed": true,
+        "errors": [
+          "REPETITION FIX REQUIRED: Your closing sentence is too similar to a previously generated product's closer (matched: 'This selected finish finish gives the room a grounded, easy-to-style character, making the purchase feel thoughtful and ready for real homes.'). Rewrite the closing sentence using different vocabulary and sentence structure. This is unrelated to factual content — keep all facts the same, only change the phrasing.",
+          "OVERUSED PHRASE: 'velvet accent' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'accent armchair' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'living room' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'velvet accent armchair' in your opening sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'surface feels' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'feels smooth' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'smooth easy' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'easy live' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'live creating' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'creating tactile' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'tactile impression' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'impression supports' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'supports comfort' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'comfort relaxed' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'relaxed use' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'use more' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'more finished' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'finished room' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'surface feels smooth' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'feels smooth easy' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'smooth easy live' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'easy live creating' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'live creating tactile' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'creating tactile impression' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'tactile impression supports' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'impression supports comfort' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'supports comfort relaxed' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'comfort relaxed use' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'relaxed use more' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'use more finished' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'more finished room' in your sentence 2 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'selected size' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'size variant' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'variant chosen' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'chosen shoppers' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'shoppers who' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'who want' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'want right' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'right fit' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'fit daily' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'daily comfort' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'comfort practical' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'practical space' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'space planning' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'selected size variant' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'size variant chosen' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'variant chosen shoppers' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'chosen shoppers who' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'shoppers who want' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'who want right' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'want right fit' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'right fit daily' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'fit daily comfort' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'daily comfort practical' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'comfort practical space' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'practical space planning' in your sentence 3 has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'selected finish' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'finish finish' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'finish gives' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'gives room' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'room grounded' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'grounded easy' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'easy style' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'style character' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'character making' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'making purchase' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'purchase feel' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'feel thoughtful' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'thoughtful ready' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'ready real' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'real homes' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'selected finish finish' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'finish finish gives' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'finish gives room' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'gives room grounded' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'room grounded easy' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'grounded easy style' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'easy style character' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'style character making' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'character making purchase' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'making purchase feel' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'purchase feel thoughtful' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'feel thoughtful ready' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'thoughtful ready real' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.",
+          "OVERUSED PHRASE: 'ready real homes' in your closing sentence has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence."
+        ],
+        "output_snippet": "Introducing Velvet Accent Armchair, an artfully designed piece that brings distinct charm and everyd"
+      },
+      {
+        "attempt": 3,
+        "valid": true,
+        "errors": [],
+        "output_snippet": "Velvet Accent Armchair brings a complete, inviting feel to any living room space, pairing everyday u"
+      }
+    ]
+  }
+}

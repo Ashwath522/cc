@@ -1,0 +1,567 @@
+[
+  {
+    "category": "Beds",
+    "id": "ul-fnbdst12sq16417",
+    "name": "Hanoi Solid Wood Cane Queen Size Bed With Hydraulic Storage (Amber Walnut Finish, Shitake Beige Colour)",
+    "shortName": "Hanoi",
+    "primaryMaterial": "Mango Wood",
+    "opener": "Stepping away from daytime demands requires an environment crafted for physical and mental renewal.",
+    "closer": "Designed for contemporary apartments and spacious masters alike, this bed integrates the Hanoi.",
+    "summary": "Stepping away from daytime demands requires an environment crafted for physical and mental renewal. This mango wood platform piece showcases integrated cane detailing paired with a hydraulic mechanism that conceals bulky textiles beneath the mattress platform. The warm grain displays rich tones complemented by neutral upholstery panels. Designed for contemporary apartments and spacious masters alike, this bed integrates the Hanoi.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 60"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Beds",
+    "id": "ul-fnbdst43wa35175",
+    "name": "Aruba Engineered Wood Queen Size Bed With Hydraulic Storage (Rustic Walnut Finish)",
+    "shortName": "Aruba",
+    "primaryMaterial": "Particle Board",
+    "opener": "Rich rustic walnut tones define the wooden architecture, establishing a warm focal point for the room.",
+    "closer": "Function meets practicality as this storage bed keeps daily essentials neatly stowed away inside Aruba.",
+    "summary": "Rich rustic walnut tones define the wooden architecture, establishing a warm focal point for the room. This bed integrates concealed hydraulic storage beneath the mattress platform for effortless access to seasonal bedding. The particle board panels create a sturdy frame featuring a generous 78 x 60 in sleeping expanse. Function meets practicality as this storage bed keeps daily essentials neatly stowed away inside Aruba.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 64"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Beds",
+    "id": "ul-fnbdst12dq16437",
+    "name": "Toledo Solid Wood Queen Size Bed With Hydraulic Storage (Danish Walnut Finish)",
+    "shortName": "Toledo",
+    "primaryMaterial": "Mango Wood",
+    "opener": "Evening hours call for a purposeful environment centered around winding down in complete comfort.",
+    "closer": "The Danish Walnut finish lends warmth and character to the interior, making the Toledo an enduring focal point.",
+    "summary": "Evening hours call for a purposeful environment centered around winding down in complete comfort. This storage bed brings practical elegance to the room with an integrated hydraulic lift mechanism, granting effortless access to a generous compartment underneath for stashing spare blankets and seasonal quilts out of sight. Crafted from solid mango wood, the rich grain patterns showcase the natural beauty of the timber while offering a sturdy and reliable foundation. The Danish Walnut finish lends warmth and character to the interior, making the Toledo an enduring focal point.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": true,
+    "errors": [],
+    "attempts": 3
+  },
+  {
+    "category": "Beds",
+    "id": "ul-fnbdst33tq36638",
+    "name": "Milan Engineered Wood Queen Size Bed With Hydraulic Storage (Mocha Mousse Velvet Colour)",
+    "shortName": "Milan",
+    "primaryMaterial": "High Density Block Board",
+    "opener": "Arranging furniture around structural pillars requires careful planning to maintain clear pathways across the chamber.",
+    "closer": "Perfect for apartments featuring restricted square footage, Milan brings order and exceptional style to the modern sleeping sanctuary.",
+    "summary": "Arranging furniture around structural pillars requires careful planning to maintain clear pathways across the chamber. This bed features a rich mocha mousse velvet upholstery wrapping the high density block board structure. Concealed under-bed compartments utilize gas-powered pistons to effortlessly reveal generous space for bulky winter quilts. Perfect for apartments featuring restricted square footage, Milan brings order and exceptional style to the modern sleeping sanctuary.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 64"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Beds",
+    "id": "ul-fnbdns12cq36385",
+    "name": "Takai Solid Wood Queen Size Bed Without Storage (Red Cedar Finish)",
+    "shortName": "Takai",
+    "primaryMaterial": "Mango Wood",
+    "opener": "Mornings arrive with a distinct clarity in quarters defined by architectural simplicity.",
+    "closer": "The Takai bed adapts effortlessly to morning routines and evening repose.",
+    "summary": "Mornings arrive with a distinct clarity in quarters defined by architectural simplicity. Mango wood displays organic patterns beneath a red cedar finish, creating visual warmth that anchors the sleeping chamber. Artisanal craftsmanship shows in the balanced proportions and sturdy frame design. The Takai bed adapts effortlessly to morning routines and evening repose.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 52"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Beds",
+    "id": "ul-fnbdst62ho36225",
+    "name": "Cambry Queen Size Box Storage Bed With Headboard Storage In Honey Finish",
+    "shortName": "Cambry",
+    "primaryMaterial": "Sheesham Wood",
+    "opener": "Preparing for a relaxing evening starts by selecting furnishings that bring warmth and genuine character to the room.",
+    "closer": "The architectural proportions of Cambry shape a balanced silhouette that harmonizes with diverse interior aesthetics.",
+    "summary": "Preparing for a relaxing evening starts by selecting furnishings that bring warmth and genuine character to the room. This wooden storage bed features built-in headboard compartments and convenient box storage underneath, offering plenty of room to tuck away seasonal bedding and keep everyday necessities neatly organized. Natural sheesham timber showcases expressive figuring throughout the frame, introducing rich organic texture. The architectural proportions of Cambry shape a balanced silhouette that harmonizes with diverse interior aesthetics.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": true,
+    "rawMaterialLeakage": false,
+    "valid": true,
+    "errors": [],
+    "attempts": 3
+  },
+  {
+    "category": "Beds",
+    "id": "ul-fnbdst33cw35588",
+    "name": "Amy Engineered Wood Queen Size Bed With Box Storage (Classic Walnut Finish, Brown Colour)",
+    "shortName": "Amy",
+    "primaryMaterial": "Particle Board",
+    "opener": "Classic Walnut tones cast a warm, inviting glow across the room.",
+    "closer": "Amy brings practical daily function to organize personal belongings with ease.",
+    "summary": "Classic Walnut tones cast a warm, inviting glow across the room. Particle board forms a sturdy silhouette featuring integrated box storage underneath for organizing seasonal quilts and extra pillows out of sight. This bedroom centerpiece balances clean geometry with everyday utility to support effortless living. Amy brings practical daily function to organize personal belongings with ease.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 56"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Beds",
+    "id": "ul-fnbdst43fw31002",
+    "name": "Scott Storage Bed Bed Size king Storage Type box Finish californian walnut",
+    "shortName": "Scott",
+    "primaryMaterial": "Plpb",
+    "opener": "Shadows stretch across the californian walnut finish as daylight wanes over the room.",
+    "closer": "Every detail speaks to functional elegance in the Scott.",
+    "summary": "Shadows stretch across the californian walnut finish as daylight wanes over the room. This bed provides an expansive resting place crafted from sturdy plpb material with integrated box storage for effortless organization. Enclosed storage compartments keep extra quilts and pillows neatly tucked away from daily view. Every detail speaks to functional elegance in the Scott.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": true,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 55"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Beds",
+    "id": "ul-fnbdst33sq36384",
+    "name": "Stanhope Engineered Wood Queen Size Bed With Hydraulic Storage (Brown Finish, Sienna Brown Colour)",
+    "shortName": "Stanhope",
+    "primaryMaterial": "Particle Board",
+    "opener": "Warm light plays across smooth surfaces and rich Sienna Brown tones, bringing an inviting luster to mornings.",
+    "closer": "Every detail reflects thoughtful craftsmanship built around the Stanhope.",
+    "summary": "Warm light plays across smooth surfaces and rich Sienna Brown tones, bringing an inviting luster to mornings. This storage bed offers an ingenious lift mechanism that reveals generous compartment volume underneath for bulk quilts and spare duvets out of everyday view. Crafted from sturdy particle board, the frame introduces a reliable foundation that pairs sturdiness with refined aesthetics. Every detail reflects thoughtful craftsmanship built around the Stanhope.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 67"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Beds",
+    "id": "ul-fnnsbd12qa37972",
+    "name": "Sora Solid Wood Queen Size Bed Without Storage in Amber Walnut Finish",
+    "shortName": "Sora",
+    "primaryMaterial": "Mango Wood",
+    "opener": "Mango timber ages with character, developing rich tonal variance that brings authenticity to domestic spaces.",
+    "closer": "Practical daily function and utility are supported by the open base design, making everyday cleaning straightforward with Sora.",
+    "summary": "Mango timber ages with character, developing rich tonal variance that brings authenticity to domestic spaces. This bed establishes an understated focal point with a clean minimalist silhouette. Crafted from solid mango wood, the frame highlights natural grain variations under a warm finish. Practical daily function and utility are supported by the open base design, making everyday cleaning straightforward with Sora.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 60"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Mattresses",
+    "id": "ul-theramedic-memory-foam-king-size-mattress-with-latex-7554609",
+    "name": "Orthopedic Memory Foam King Size Mattress with Latex (Mattress Thickness : 8 Inches, Mattress Dimensions : 78 x 72 in)",
+    "shortName": "Orthopedic",
+    "primaryMaterial": "Latex",
+    "opener": "Latex composition provides responsive contouring and dynamic pressure redistribution for balanced weight distribution across the sleeping platform.",
+    "closer": "Mornings begin with renewed physical readiness as this premium Orthopedic.",
+    "summary": "Latex composition provides responsive contouring and dynamic pressure redistribution for balanced weight distribution across the sleeping platform. This mattress combines latex layers with high-density foam to absorb movement and maintain steady airflow during rest periods. The multi-layer internal structure adapts to individual curves while maintaining consistent edge support throughout nocturnal shifts. Mornings begin with renewed physical readiness as this premium Orthopedic.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": true,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 61",
+      "Tier leakage: description contains forbidden word \"premium\""
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Mattresses",
+    "id": "ul-cloud-pocket-spring-queen-size-mattress-with-memory-foam-eurotop-7554622",
+    "name": "Cloud Pocket Spring Queen Size Mattress with Memory Foam Eurotop (Mattress Thickness : 8 Inches, Mattress Dimensions : 78 x 60 in)",
+    "shortName": "Cloud",
+    "primaryMaterial": "Memory Foam",
+    "opener": "Rooms acquire a balanced posture when an independent pocket spring core limits motion transfer between partners.",
+    "closer": "Personal rest finds a reliable foundation in Cloud.",
+    "summary": "Rooms acquire a balanced posture when an independent pocket spring core limits motion transfer between partners. Enveloping memory foam and a plush eurotop contour precisely to body lines, absorbing pressure points efficiently. Individual springs react locally to weight distribution, maintaining uniform vertical support from edge to edge. Air circulates freely through the internal strata, helping regulate temperature during the resting cycle. Personal rest finds a reliable foundation in Cloud.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 69"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Mattresses",
+    "id": "ul-essential-memory-foam-queen-size-mattress-7554598",
+    "name": "Orthopedic Memory Foam Mattress (Mattress Thickness : 6 Inches, Mattress Dimensions : 78 x 60 in)",
+    "shortName": "Orthopedic",
+    "primaryMaterial": "Memory Foam",
+    "opener": "Pressure yields to balanced contouring as weight disperses across the memory foam core, cradling the body during long hours of rest.",
+    "closer": "Mornings begin with renewed energy after waking on the Orthopedic.",
+    "summary": "Pressure yields to balanced contouring as weight disperses across the memory foam core, cradling the body during long hours of rest. This mattress delivers structured support that adapts to shifting sleeping positions throughout the night. High-density layers absorb movement to maintain stillness while promoting steady airflow across the resting plane. Mornings begin with renewed energy after waking on the Orthopedic.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 60"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Mattresses",
+    "id": "ul-dreamlite-bonnel-spring-queen-size-mattress-with-eurotop-7554603",
+    "name": "Dreamlite Bonnel Spring Queen Size Mattress with Eurotop (Mattress Thickness : 8 Inches, Mattress Dimensions : 78 x 60 in)",
+    "shortName": "Dreamlite",
+    "primaryMaterial": "Bonnell Spring",
+    "opener": "Dropping onto the bed after a long day lets tired limbs instantly unwind.",
+    "closer": "Crafted for lasting resilience, the Dreamlite brings reliable comfort to nightly rest.",
+    "summary": "Dropping onto the bed after a long day lets tired limbs instantly unwind. This mattress combines responsive Bonnel spring construction with an integrated Eurotop to deliver balanced ergonomic support. Pressure distributes evenly across the interior layers, cradling the body while maintaining a stable resting posture throughout hours of sleep. Crafted for lasting resilience, the Dreamlite brings reliable comfort to nightly rest.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 61"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Mattresses",
+    "id": "ul-simplywud-essential-mattress-queen-colour-white-grey-8148071-9420561",
+    "name": "Essential Queen Size Mattress White & Grey (Mattress Thickness : 4 Inches, Mattress Dimensions : 78 x 60 in)",
+    "shortName": "Essential",
+    "primaryMaterial": "Foam",
+    "opener": "Stepping away from daytime demands begins with settling into a supportive resting place.",
+    "closer": "Refresh your sanctuary with the Essential.",
+    "summary": "Stepping away from daytime demands begins with settling into a supportive resting place. This mattress provides balanced ergonomic support designed for refreshing nightly sleep. The interior foam composition adapts continuously to body contours, ensuring even pressure distribution and undisturbed movement. Practical edge construction maintains structural shape throughout the night. Refresh your sanctuary with the Essential.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 55"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Mattresses",
+    "id": "ul-simplywud-classic-foam-mattress-queen-8115873-9420566",
+    "name": "Classic Foam Queen Size Mattress (Mattress Thickness : 4 Inches, Mattress Dimensions : 78 x 60 in)",
+    "shortName": "Classic",
+    "primaryMaterial": "Foam",
+    "opener": "Settling in for nightly rest requires an ergonomic profile designed to contour gently to body contours.",
+    "closer": "Designed for restful sleep, the Classic delivers reliable comfort.",
+    "summary": "Settling in for nightly rest requires an ergonomic profile designed to contour gently to body contours. This foam mattress provides balanced weight distribution across the surface while maintaining proper pressure relief during sleep cycles. The internal foam composition absorbs kinetic energy to isolate movement effectively. Accommodating standard resting positions, the construction promotes healthy airflow through active material breathability. Designed for restful sleep, the Classic delivers reliable comfort.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 67"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Mattresses",
+    "id": "ul-simplywud-basic-coir-mattress-queen-8115874-9420569",
+    "name": "Basic Coir Queen Size Mattress (Mattress Thickness : 4 Inches, Mattress Dimensions : 78 x 60 in)",
+    "shortName": "Basic",
+    "primaryMaterial": "Coir",
+    "opener": "Firm physical support meets breathable natural fibers beneath a low-profile construction designed for steady, daily rest.",
+    "closer": "Restful hours unfold predictably on the Basic.",
+    "summary": "Firm physical support meets breathable natural fibers beneath a low-profile construction designed for steady, daily rest. This coir mattress uses dense structural material to distribute weight evenly and prevent sagging across the lying area. Air circulates freely through the fibrous core, keeping the sleeping plane cool and steady through the night. Restful hours unfold predictably on the Basic.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 58"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Mattresses",
+    "id": "ul-theramedic-coir-foam-queen-size-mattress-7554626",
+    "name": "Orthopedic Coir &amp; Foam Queen Size Mattress (Mattress Thickness : 6 Inches, Mattress Dimensions : 78 x 60 in)",
+    "shortName": "Orthopedic",
+    "primaryMaterial": "Coir",
+    "opener": "Pressure distribution relies on natural coir layered with dense foam to deliver balanced support for varied sleeping postures.",
+    "closer": "Mornings unfold with a rested body and renewed physical energy ready for the day ahead, all anchored by the Orthopedic.",
+    "summary": "Pressure distribution relies on natural coir layered with dense foam to deliver balanced support for varied sleeping postures. This mattress absorbs movement to minimize sleep disruption for partners sharing the bed. The interior composition promotes active airflow while contouring closely to physical curves. Mornings unfold with a rested body and renewed physical energy ready for the day ahead, all anchored by the Orthopedic.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 63"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Mattresses",
+    "id": "ul-cloud-pocket-spring-king-size-mattress-with-memory-foam-eurotop-7554612",
+    "name": "Cloud Pocket Spring King Size Mattress with Memory Foam Eurotop (Mattress Thickness : 8 Inches, Mattress Dimensions : 78 x 72 in)",
+    "shortName": "Cloud",
+    "primaryMaterial": "Memory Foam",
+    "opener": "Independent pocket springs react directly to individual movement, localizing pressure points for undisturbed rest.",
+    "closer": "This supportive design adapts effortlessly to varied sleeping positions, making Cloud the ideal addition for restful nights.",
+    "summary": "Independent pocket springs react directly to individual movement, localizing pressure points for undisturbed rest. Above this responsive core sits a plush memory foam eurotop layer, molding closely to physical contours while maintaining balanced airflow throughout the night. Edge support remains steady across the entire sleeping plane. This supportive design adapts effortlessly to varied sleeping positions, making Cloud the ideal addition for restful nights.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 63"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Mattresses",
+    "id": "ul-aer-latex-queen-size-mattress-7554602",
+    "name": "Aer Latex with Memory Foam Queen Size Mattress (Mattress Thickness : 8 Inches, Mattress Dimensions : 78 x 60 in)",
+    "shortName": "Aer",
+    "primaryMaterial": "Latex",
+    "opener": "Latex responds dynamically to body contours, adapting instantly to shift and movement throughout the rest cycle.",
+    "closer": "This supportive mattress is known as Aer.",
+    "summary": "Latex responds dynamically to body contours, adapting instantly to shift and movement throughout the rest cycle. Open material layers encourage continuous airflow while memory foam cushions pressure points, balancing ergonomic support and plush responsiveness. Every internal component works together to isolate motion, keeping disturbances contained during movement. This supportive mattress is known as Aer.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": true,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 54"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Bedroom Storage",
+    "id": "ul-fntbds11mh16348",
+    "name": "Fidora Solid Wood Dressing Table With Stool in Mahogany Finish",
+    "shortName": "Fidora",
+    "primaryMaterial": "Sheesham Wood",
+    "opener": "Deep reddish undertones emerge from rich timber planks as daily habits find a structured venue.",
+    "closer": "Daily grooming routines and personal organization take on a reliable rhythm with Fidora.",
+    "summary": "Deep reddish undertones emerge from rich timber planks as daily habits find a structured venue. This grooming station pairs a companion stool with closed compartments to keep personal items concealed and organized. Crafted from sheesham wood, the assembly coordinates with perimeter wall areas while maintaining an efficient footprint. Daily grooming routines and personal organization take on a reliable rhythm with Fidora.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 61"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Bedroom Storage",
+    "id": "ul-fnsgdt62wa36249",
+    "name": "Nina Dressing Table With Storage Drawer in Walnut Finish",
+    "shortName": "Nina",
+    "primaryMaterial": "Mango Wood",
+    "opener": "Perimeter layouts benefit from furniture that anchors foot-traffic flow while shaping a distinct functional zone.",
+    "closer": "Practical daily utility takes center stage for organizing accessories and cosmetics, bringing lasting function to Nina.",
+    "summary": "Perimeter layouts benefit from furniture that anchors foot-traffic flow while shaping a distinct functional zone. This dressing table provides a grooming and personal organization station featuring open and closed storage capabilities. Crafted from solid mango wood with a walnut finish, the exposed grain textures highlight natural material warmth along bedroom walls. Practical daily utility takes center stage for organizing accessories and cosmetics, bringing lasting function to Nina.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 67"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Bedroom Storage",
+    "id": "ul-fnsgdr11tk16166",
+    "name": "Jean Solid Wood Dressing Table in Teak Finish",
+    "shortName": "Jean",
+    "primaryMaterial": "Sheesham Wood",
+    "opener": "Preparing for a busy day involves a centralized grooming station that keeps personal accessories close at hand.",
+    "closer": "The profile rests flush beside perimeter boundaries while preserving overall spatial equilibrium, perfectly illustrated by the Jean.",
+    "summary": "Preparing for a busy day involves a centralized grooming station that keeps personal accessories close at hand. This furnishing provides dual storage configurations for organized cosmetics and everyday items. Built using dense hardwood materials, the exterior displays organic botanical textures and a warm honey-toned luster. The profile rests flush beside perimeter boundaries while preserving overall spatial equilibrium, perfectly illustrated by the Jean.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 62"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Bedroom Storage",
+    "id": "ul-fntbds11tk10009",
+    "name": "Sirius Solid Wood Dressing Table in Teak Finish",
+    "shortName": "Sirius",
+    "primaryMaterial": "Sheesham Wood",
+    "opener": "Perimeter layouts benefit from furniture that establishes efficient staging zones for daily preparation and personal organization.",
+    "closer": "Daily routines receive reliable support from the well-proportioned framework of Sirius.",
+    "summary": "Perimeter layouts benefit from furniture that establishes efficient staging zones for daily preparation and personal organization. This dressing station provides a dedicated grooming area featuring a smooth top surface and practical compartments. Crafted from solid wood, the piece showcases natural grain variations brought forward through a teak stain. Daily routines receive reliable support from the well-proportioned framework of Sirius.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 59"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Bedroom Storage",
+    "id": "ul-acmrrc11tk10024",
+    "name": "Ohio Solid Wood Dressing Table in Teak Finish",
+    "shortName": "Ohio",
+    "primaryMaterial": "Sheesham Wood",
+    "opener": "Natural grain patterns catch the morning sun, establishing an inviting focal point for your morning routine.",
+    "closer": "Elegantly combining open display areas with private storage, the Ohio enhances daily preparation rituals.",
+    "summary": "Natural grain patterns catch the morning sun, establishing an inviting focal point for your morning routine. This dressing table provides a dedicated grooming and personal organization station with integrated open and closed storage compartments. Built from sturdy sheesham wood featuring a teak finish, it delivers reliable everyday utility for personal items. Placing this compact vanity against the wall helps maintain clear walking paths and complements existing furniture arrangements. Elegantly combining open display areas with private storage, the Ohio enhances daily preparation rituals.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": true,
+    "errors": [],
+    "attempts": 3
+  },
+  {
+    "category": "Bedroom Storage",
+    "id": "ul-fnsgdr33be36195",
+    "name": "Valeria Dresser with Mirror in Dual Tone Finish",
+    "shortName": "Valeria",
+    "primaryMaterial": "Mdf",
+    "opener": "Perimeter walls organize easily when personal grooming essentials find a dedicated storage zone.",
+    "closer": "Every styling session benefits from having beauty accessories neatly organized within reach of Valeria.",
+    "summary": "Perimeter walls organize easily when personal grooming essentials find a dedicated storage zone. A dressing table provides tiered compartments for daily necessities alongside an integrated mirror for morning preparation routines. Crafted from MDF with a contrasting palette, this piece brings open and closed storage capabilities directly to perimeter layouts. Every styling session benefits from having beauty accessories neatly organized within reach of Valeria.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 63"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Bedroom Storage",
+    "id": "ul-fntbds33cw35797",
+    "name": "Eve Engineered Wood Dressing Table in Classic Walnut Finish",
+    "shortName": "Eve",
+    "primaryMaterial": "Particle Board",
+    "opener": "Engineered wood fabrication delivers a dependable structure for daily routines.",
+    "closer": "Everyday preparation flows naturally with the thoughtful proportions of Eve.",
+    "summary": "Engineered wood fabrication delivers a dependable structure for daily routines. This grooming station offers tabletop utility and concealed compartments to keep grooming essentials neatly ordered. The profile nestles alongside perimeter walls, integrating smoothly into existing bedroom arrangements while managing personal belongings efficiently. Everyday preparation flows naturally with the thoughtful proportions of Eve.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": true,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 52"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Bedroom Storage",
+    "id": "ul-fntbds41wl30025",
+    "name": "Baltoro Engineered Wood Dressing Table in White Finish",
+    "shortName": "Baltoro",
+    "primaryMaterial": "Mdf",
+    "opener": "Bright surfaces reflect morning light across the perimeter layout.",
+    "closer": "The clean white finish brings an airy quality to the space, highlighting the deliberate lines of Baltoro.",
+    "summary": "Bright surfaces reflect morning light across the perimeter layout. This dressing table provides a dedicated grooming and personal organization station along the bedroom wall. Crafted from mdf, the tiered structure integrates open and closed compartments for keeping daily essentials neatly arranged and within reach. The clean white finish brings an airy quality to the space, highlighting the deliberate lines of Baltoro.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 61"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Bedroom Storage",
+    "id": "ul-fntbdm11tk16333",
+    "name": "Zephyr Solid Wood Dresser with Mirror in Amber Walnut Finish",
+    "shortName": "Zephyr",
+    "primaryMaterial": "Mango Wood",
+    "opener": "Mango Wood shapes the framework of this functional grooming and personal organization station.",
+    "closer": "Orderly routines find reliable support through the thoughtful proportions of Zephyr.",
+    "summary": "Mango Wood shapes the framework of this functional grooming and personal organization station. Closed Storage keeps daily accessories neatly sequestered and protected behind solid panels. The attached looking glass extends vertical utility while reflecting illumination across surrounding perimeters. Generous tabletop surface area accommodates daily essentials within arm's reach of the bed. Orderly routines find reliable support through the thoughtful proportions of Zephyr.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 62"
+    ],
+    "attempts": 3
+  },
+  {
+    "category": "Bedroom Storage",
+    "id": "ul-fntbdm12dw16407",
+    "name": "Toledo Solid Wood Mirror Frame In Danish Walnut Finish",
+    "shortName": "Toledo",
+    "primaryMaterial": "Mango Wood",
+    "opener": "Preparing for an evening out or assembling a morning look requires a dependable station for daily organization.",
+    "closer": "Every detail comes together purposefully in the Toledo.",
+    "summary": "Preparing for an evening out or assembling a morning look requires a dependable station for daily organization. This mirror frame offers an upright reflective surface designed for placement along perimeter bedroom walls. Fashioned from mango wood, the dense timber displays rich character and solid framing capabilities. The rich finish brings warm tones to daily grooming routines. Every detail comes together purposefully in the Toledo.",
+    "nameInCloser": true,
+    "hasServesAs": false,
+    "hasTuckedAway": false,
+    "rawMaterialLeakage": false,
+    "valid": false,
+    "errors": [
+      "description.summary should be ~70-110 words; found 64"
+    ],
+    "attempts": 3
+  }
+]

@@ -1,0 +1,1043 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Content-X (Groot) API",
+    "description": "Schema-driven CMS API for the Fynd Platform extension **groot**. Routes under `/api` are served through the FDK extension router (`fdk-extension-javascript`); clients must have a valid extension / platform session (cookies and OAuth flow). `company_id` and `application_id` are taken from session, query, or body per `request-context.helper.js`. Published CMS instance routes use `router.param('slug', loadDefinition)` and require a **published** definition for that slug.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "/",
+      "description": "Same origin as the extension (paths include `/api/v1/...`)"
+    }
+  ],
+  "tags": [
+    { "name": "Health", "description": "Liveness / readiness" },
+    { "name": "Smoke", "description": "Connectivity" },
+    { "name": "Company", "description": "Application and sales-channel context" },
+    { "name": "Definitions", "description": "Object definition CRUD, publish, versions" },
+    { "name": "CMS instances", "description": "Dynamic CRUD and bulk import by definition slug" },
+    { "name": "Search", "description": "Fynd catalog search proxies" }
+  ],
+  "paths": {
+    "/_healthz": {
+      "get": {
+        "tags": ["Health"],
+        "summary": "Liveness probe",
+        "operationId": "getHealthz",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_readyz": {
+      "get": {
+        "tags": ["Health"],
+        "summary": "Readiness probe",
+        "operationId": "getReadyz",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/test-api": {
+      "get": {
+        "tags": ["Smoke"],
+        "summary": "Smoke test",
+        "operationId": "testApi",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "hello": { "type": "string", "example": "hello" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/applications": {
+      "get": {
+        "tags": ["Company"],
+        "summary": "List company applications (sales channels) with Content-X config flag",
+        "operationId": "listApplications",
+        "responses": {
+          "200": {
+            "description": "Platform application list shape (see Fynd SDK)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/company/application/{application_id}/details": {
+      "get": {
+        "tags": ["Company"],
+        "summary": "Basic application details",
+        "operationId": "getApplicationDetails",
+        "parameters": [
+          {
+            "name": "application_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "App basic details from platform",
+            "content": {
+              "application/json": {
+                "schema": { "type": "object", "additionalProperties": true }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/cms/definitions": {
+      "get": {
+        "tags": ["Definitions"],
+        "summary": "List object definitions for the current company + application",
+        "operationId": "listObjectDefinitions",
+        "parameters": [
+          {
+            "name": "application_id",
+            "in": "query",
+            "description": "Target application (also from FDK session / body in some clients).",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of definitions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/ObjectDefinition" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Definitions"],
+        "summary": "Create object definition",
+        "operationId": "createObjectDefinition",
+        "parameters": [
+          {
+            "name": "application_id",
+            "in": "query",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ObjectDefinitionCreate" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ObjectDefinition" }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "409": { "$ref": "#/components/responses/Conflict" }
+        }
+      }
+    },
+    "/api/v1/cms/definitions/{definitionId}": {
+      "get": {
+        "tags": ["Definitions"],
+        "summary": "Get object definition by id",
+        "operationId": "getObjectDefinition",
+        "parameters": [
+          { "$ref": "#/components/parameters/DefinitionId" },
+          { "name": "application_id", "in": "query", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ObjectDefinition" }
+              }
+            }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      },
+      "put": {
+        "tags": ["Definitions"],
+        "summary": "Update object definition (resets to DRAFT, bumps version)",
+        "operationId": "updateObjectDefinition",
+        "parameters": [
+          { "$ref": "#/components/parameters/DefinitionId" },
+          { "name": "application_id", "in": "query", "schema": { "type": "string" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ObjectDefinitionUpdate" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ObjectDefinition" }
+              }
+            }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "409": { "$ref": "#/components/responses/Conflict" }
+        }
+      },
+      "delete": {
+        "tags": ["Definitions"],
+        "summary": "Delete object definition and tenant-scoped instances",
+        "operationId": "deleteObjectDefinition",
+        "parameters": [
+          { "$ref": "#/components/parameters/DefinitionId" },
+          { "name": "application_id", "in": "query", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "204": { "description": "Deleted" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "409": {
+            "description": "Definition is referenced by custom_object fields on other definitions",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ReferencedError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/cms/definitions/{definitionId}/deletion-impact": {
+      "get": {
+        "tags": ["Definitions"],
+        "summary": "Preview deletion impact (entries count, referencing definitions)",
+        "operationId": "getDefinitionDeletionImpact",
+        "parameters": [
+          { "$ref": "#/components/parameters/DefinitionId" },
+          { "name": "application_id", "in": "query", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/DeletionImpact" }
+              }
+            }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/api/v1/cms/definitions/{definitionId}/publish": {
+      "post": {
+        "tags": ["Definitions"],
+        "summary": "Publish definition (creates version snapshot, invalidates cache)",
+        "operationId": "publishObjectDefinition",
+        "parameters": [
+          { "$ref": "#/components/parameters/DefinitionId" },
+          { "name": "application_id", "in": "query", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ObjectDefinition" }
+              }
+            }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/api/v1/cms/definitions/{definitionId}/versions": {
+      "get": {
+        "tags": ["Definitions"],
+        "summary": "List version history",
+        "operationId": "listObjectDefinitionVersions",
+        "parameters": [
+          { "$ref": "#/components/parameters/DefinitionId" },
+          { "name": "application_id", "in": "query", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/ObjectDefinitionVersion" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/cms/{slug}": {
+      "get": {
+        "tags": ["CMS instances"],
+        "summary": "List instances (standalone definitions only; 403 if embedded_only)",
+        "operationId": "listObjectInstances",
+        "parameters": [
+          { "$ref": "#/components/parameters/Slug" },
+          { "name": "application_id", "in": "query", "schema": { "type": "string" } },
+          { "name": "page", "in": "query", "schema": { "type": "integer", "default": 1 } },
+          {
+            "name": "page_size",
+            "in": "query",
+            "schema": { "type": "integer", "default": 20, "maximum": 100 }
+          },
+          { "name": "sort_by", "in": "query", "schema": { "type": "string", "default": "createdAt" } },
+          {
+            "name": "sort_order",
+            "in": "query",
+            "schema": { "type": "string", "enum": ["asc", "desc"], "default": "desc" }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "Filter object; structure depends on definition filterable fields (passed through `buildFilterQuery`).",
+            "schema": { "type": "string" },
+            "examples": {
+              "json": { "value": "{}" }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/InstanceListResponse" }
+              }
+            }
+          },
+          "403": { "$ref": "#/components/responses/ForbiddenEmbeddedOnly" },
+          "404": { "$ref": "#/components/responses/DefinitionNotFound" }
+        }
+      },
+      "post": {
+        "tags": ["CMS instances"],
+        "summary": "Create instance (multipart if file fields; 403 if embedded_only)",
+        "operationId": "createObjectInstance",
+        "parameters": [
+          { "$ref": "#/components/parameters/Slug" },
+          { "name": "application_id", "in": "query", "schema": { "type": "string" } }
+        ],
+        "requestBody": {
+          "description": "JSON fields and/or multipart file parts named after `file` fields in the definition.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created document",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "403": { "$ref": "#/components/responses/ForbiddenEmbeddedOnly" },
+          "404": { "$ref": "#/components/responses/DefinitionNotFound" }
+        }
+      }
+    },
+    "/api/v1/cms/{slug}/definition": {
+      "get": {
+        "tags": ["CMS instances"],
+        "summary": "Get published definition for slug (allowed for embedded_only)",
+        "operationId": "getPublishedDefinitionBySlug",
+        "parameters": [
+          { "$ref": "#/components/parameters/Slug" },
+          { "name": "application_id", "in": "query", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ObjectDefinition" }
+              }
+            }
+          },
+          "404": { "$ref": "#/components/responses/DefinitionNotFound" }
+        }
+      }
+    },
+    "/api/v1/cms/{slug}/bulk/template": {
+      "get": {
+        "tags": ["CMS instances"],
+        "summary": "Download bulk import template (CSV or XLSX)",
+        "operationId": "downloadBulkTemplate",
+        "parameters": [
+          { "$ref": "#/components/parameters/Slug" },
+          {
+            "name": "format",
+            "in": "query",
+            "schema": { "type": "string", "enum": ["csv", "xlsx"], "default": "xlsx" }
+          },
+          { "name": "application_id", "in": "query", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "File download",
+            "content": {
+              "text/csv": { "schema": { "type": "string", "format": "binary" } },
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {
+                "schema": { "type": "string", "format": "binary" }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "403": { "$ref": "#/components/responses/ForbiddenEmbeddedOnly" },
+          "404": { "$ref": "#/components/responses/DefinitionNotFound" }
+        }
+      }
+    },
+    "/api/v1/cms/{slug}/bulk/import": {
+      "post": {
+        "tags": ["CMS instances"],
+        "summary": "Bulk import from spreadsheet upload",
+        "operationId": "bulkImportInstances",
+        "parameters": [
+          { "$ref": "#/components/parameters/Slug" },
+          { "name": "application_id", "in": "query", "schema": { "type": "string" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": ["file"],
+                "properties": {
+                  "file": { "type": "string", "format": "binary", "description": "CSV or XLSX" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/BulkImportResult" }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "403": { "$ref": "#/components/responses/ForbiddenEmbeddedOnly" },
+          "404": { "$ref": "#/components/responses/DefinitionNotFound" }
+        }
+      }
+    },
+    "/api/v1/cms/{slug}/bulk/import-async": {
+      "post": {
+        "tags": ["CMS instances"],
+        "summary": "Start async bulk import with spreadsheet and assets ZIP",
+        "operationId": "startBulkImportAsync",
+        "parameters": [
+          { "$ref": "#/components/parameters/Slug" },
+          { "name": "application_id", "in": "query", "schema": { "type": "string" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": ["spreadsheet", "assets"],
+                "properties": {
+                  "spreadsheet": { "type": "string", "format": "binary", "description": "CSV or XLSX data file" },
+                  "assets": { "type": "string", "format": "binary", "description": "ZIP of asset files referenced by basename in spreadsheet" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/BulkImportJobStarted" }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "403": { "$ref": "#/components/responses/ForbiddenEmbeddedOnly" },
+          "404": { "$ref": "#/components/responses/DefinitionNotFound" }
+        }
+      }
+    },
+    "/api/v1/cms/{slug}/bulk/jobs": {
+      "get": {
+        "tags": ["CMS instances"],
+        "summary": "List recent bulk import jobs",
+        "operationId": "listBulkImportJobs",
+        "parameters": [
+          { "$ref": "#/components/parameters/Slug" },
+          { "name": "application_id", "in": "query", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "jobs": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/BulkImportJobStatus" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": { "$ref": "#/components/responses/ForbiddenEmbeddedOnly" },
+          "404": { "$ref": "#/components/responses/DefinitionNotFound" }
+        }
+      }
+    },
+    "/api/v1/cms/{slug}/bulk/jobs/{jobId}": {
+      "get": {
+        "tags": ["CMS instances"],
+        "summary": "Get bulk import job status",
+        "operationId": "getBulkImportJobStatus",
+        "parameters": [
+          { "$ref": "#/components/parameters/Slug" },
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          { "name": "application_id", "in": "query", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/BulkImportJobStatus" }
+              }
+            }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/api/v1/cms/{slug}/bulk/jobs/{jobId}/report": {
+      "get": {
+        "tags": ["CMS instances"],
+        "summary": "Download bulk import result report",
+        "operationId": "downloadBulkImportReport",
+        "parameters": [
+          { "$ref": "#/components/parameters/Slug" },
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "schema": { "type": "string", "enum": ["csv", "xlsx"] }
+          },
+          { "name": "application_id", "in": "query", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Report file download",
+            "content": {
+              "text/csv": { "schema": { "type": "string", "format": "binary" } },
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {
+                "schema": { "type": "string", "format": "binary" }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/api/v1/cms/{slug}/{id}": {
+      "get": {
+        "tags": ["CMS instances"],
+        "summary": "Get instance by MongoDB id",
+        "operationId": "getObjectInstance",
+        "parameters": [
+          { "$ref": "#/components/parameters/Slug" },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "description": "MongoDB ObjectId string" }
+          },
+          { "name": "application_id", "in": "query", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "type": "object", "additionalProperties": true }
+              }
+            }
+          },
+          "403": { "$ref": "#/components/responses/ForbiddenEmbeddedOnly" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      },
+      "put": {
+        "tags": ["CMS instances"],
+        "summary": "Replace/update instance",
+        "operationId": "updateObjectInstance",
+        "parameters": [
+          { "$ref": "#/components/parameters/Slug" },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          { "name": "application_id", "in": "query", "schema": { "type": "string" } }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "type": "object", "additionalProperties": true }
+            },
+            "multipart/form-data": {
+              "schema": { "type": "object", "additionalProperties": true }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "type": "object", "additionalProperties": true }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "403": { "$ref": "#/components/responses/ForbiddenEmbeddedOnly" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      },
+      "delete": {
+        "tags": ["CMS instances"],
+        "summary": "Delete instance",
+        "operationId": "deleteObjectInstance",
+        "parameters": [
+          { "$ref": "#/components/parameters/Slug" },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          { "name": "application_id", "in": "query", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "204": { "description": "Deleted" },
+          "403": { "$ref": "#/components/responses/ForbiddenEmbeddedOnly" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/api/v1/company/application/{application_id}/cms/products/search": {
+      "get": {
+        "tags": ["Search"],
+        "summary": "Search catalog products (for CMS product fields)",
+        "operationId": "searchProducts",
+        "parameters": [
+          {
+            "name": "application_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Search query",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Catalog response from Fynd SDK",
+            "content": {
+              "application/json": {
+                "schema": { "type": "object", "additionalProperties": true }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/company/application/{application_id}/cms/collections/search": {
+      "get": {
+        "tags": ["Search"],
+        "summary": "Search catalog collections (for CMS collection fields)",
+        "operationId": "searchCollections",
+        "parameters": [
+          {
+            "name": "application_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Catalog response from Fynd SDK",
+            "content": {
+              "application/json": {
+                "schema": { "type": "object", "additionalProperties": true }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "DefinitionId": {
+        "name": "definitionId",
+        "in": "path",
+        "required": true,
+        "schema": { "type": "string" }
+      },
+      "Slug": {
+        "name": "slug",
+        "in": "path",
+        "required": true,
+        "description": "Published object definition slug (loads definition via `loadDefinition`).",
+        "schema": { "type": "string" }
+      }
+    },
+    "schemas": {
+      "ErrorMessage": {
+        "type": "object",
+        "properties": {
+          "message": { "type": "string" }
+        }
+      },
+      "ReferencedError": {
+        "type": "object",
+        "properties": {
+          "message": { "type": "string" },
+          "referenced_by": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "slug": { "type": "string" },
+                "name": { "type": "string" }
+              }
+            }
+          }
+        }
+      },
+      "FieldSchema": {
+        "type": "object",
+        "description": "Single field in an object definition",
+        "properties": {
+          "name": { "type": "string" },
+          "label": { "type": "string" },
+          "field_type": {
+            "type": "string",
+            "enum": [
+              "text",
+              "long_text",
+              "number",
+              "file",
+              "date",
+              "date_time",
+              "url",
+              "json",
+              "html",
+              "multiple_values",
+              "dropdown",
+              "checkbox",
+              "radio",
+              "product",
+              "collection",
+              "custom_object"
+            ]
+          },
+          "required": { "type": "boolean" },
+          "regex_pattern": { "type": "string" },
+          "is_filterable": { "type": "boolean" },
+          "options": { "type": "array", "items": { "type": "string" } },
+          "default_value": {},
+          "multiple": { "type": "boolean" },
+          "relation": { "type": "string", "enum": ["none", "product", "collection"] },
+          "placeholder": { "type": "string" },
+          "ref_definition_slug": { "type": "string" },
+          "file_config": { "type": "object", "additionalProperties": true }
+        },
+        "additionalProperties": true
+      },
+      "ObjectDefinition": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string" },
+          "company_id": { "type": "string" },
+          "application_id": { "type": "string" },
+          "name": { "type": "string" },
+          "slug": { "type": "string" },
+          "description": { "type": "string" },
+          "usage_mode": { "type": "string", "enum": ["standalone", "embedded_only"] },
+          "status": { "type": "string", "enum": ["DRAFT", "PUBLISHED"] },
+          "version": { "type": "integer" },
+          "fields": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/FieldSchema" }
+          },
+          "published_at": { "type": "string", "format": "date-time" },
+          "created_by": { "type": "string" },
+          "updated_by": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        },
+        "additionalProperties": true
+      },
+      "ObjectDefinitionCreate": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "slug": { "type": "string", "description": "Optional; derived from name if omitted" },
+          "description": { "type": "string" },
+          "usage_mode": { "type": "string", "enum": ["standalone", "embedded_only"] },
+          "fields": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/FieldSchema" }
+          }
+        }
+      },
+      "ObjectDefinitionUpdate": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "slug": { "type": "string" },
+          "description": { "type": "string" },
+          "usage_mode": { "type": "string", "enum": ["standalone", "embedded_only"] },
+          "fields": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/FieldSchema" }
+          }
+        }
+      },
+      "ObjectDefinitionVersion": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string" },
+          "company_id": { "type": "string" },
+          "application_id": { "type": "string" },
+          "definition_id": { "type": "string" },
+          "version": { "type": "integer" },
+          "status": { "type": "string" },
+          "snapshot": { "type": "object", "additionalProperties": true },
+          "comment": { "type": "string" },
+          "created_by": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        },
+        "additionalProperties": true
+      },
+      "DeletionImpact": {
+        "type": "object",
+        "properties": {
+          "slug": { "type": "string" },
+          "name": { "type": "string" },
+          "entry_count": { "type": "integer" },
+          "referenced_by": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "slug": { "type": "string" },
+                "name": { "type": "string" }
+              }
+            }
+          }
+        }
+      },
+      "InstanceListResponse": {
+        "type": "object",
+        "properties": {
+          "total": { "type": "integer" },
+          "page": { "type": "integer" },
+          "page_size": { "type": "integer" },
+          "items": {
+            "type": "array",
+            "items": { "type": "object", "additionalProperties": true }
+          }
+        }
+      },
+      "BulkImportResult": {
+        "type": "object",
+        "properties": {
+          "created_count": { "type": "integer" },
+          "failed_count": { "type": "integer" },
+          "created_ids": { "type": "array", "items": { "type": "string" } },
+          "failed": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "row": { "type": "integer" },
+                "message": { "type": "string" }
+              }
+            }
+          },
+          "message": { "type": "string" }
+        }
+      },
+      "BulkImportJobStarted": {
+        "type": "object",
+        "properties": {
+          "job_id": { "type": "string" },
+          "status": { "type": "string", "enum": ["pending", "processing", "completed", "failed"] }
+        }
+      },
+      "BulkImportJobStatus": {
+        "type": "object",
+        "properties": {
+          "job_id": { "type": "string" },
+          "status": { "type": "string", "enum": ["pending", "processing", "completed", "failed"] },
+          "total_rows": { "type": "integer" },
+          "processed_rows": { "type": "integer" },
+          "created_count": { "type": "integer" },
+          "failed_count": { "type": "integer" },
+          "asset_count": { "type": "integer" },
+          "error_message": { "type": "string" },
+          "can_download_report": { "type": "boolean" },
+          "created_at": { "type": "string", "format": "date-time" },
+          "started_at": { "type": "string", "format": "date-time" },
+          "completed_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "Bad request",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorMessage" }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "Not found",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorMessage" }
+          }
+        }
+      },
+      "Conflict": {
+        "description": "Conflict",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorMessage" }
+          }
+        }
+      },
+      "DefinitionNotFound": {
+        "description": "Published object definition not found for slug",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorMessage" }
+          }
+        }
+      },
+      "ForbiddenEmbeddedOnly": {
+        "description": "Definition is embedded_only; standalone instance APIs are disabled",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorMessage" }
+          }
+        }
+      }
+    }
+  }
+}

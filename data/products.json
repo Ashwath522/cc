@@ -1,0 +1,267 @@
+[
+  {
+    "id": "ul-stanhope-king-shitake-beige",
+    "name": "Stanhope Engineered Wood King Size Bed With Hydraulic Storage (Shitake Beige Colour)",
+    "category": "Bedroom",
+    "price": 54999,
+    "dimensions": "Length 2.09 m x Width 2.42 m x Height 99.80 cm",
+    "primary_material": "Engineered Wood",
+    "weight": "230 kg",
+    "assembly_required": "Requires Assembly",
+    "warranty_months": 12,
+    "seating_capacity": "King",
+    "color_finish": "Shitake Beige",
+    "available_sizes": [
+      "King",
+      "Queen"
+    ],
+    "available_colors": [
+      "Baltic Blue",
+      "Shitake Beige",
+      "Sienna Brown",
+      "Urban Grey"
+    ],
+    "subcategory": "Bedroom",
+    "product_short_name": "Stanhope",
+    "design_details": "standard minimal design",
+    "variant_axes": {
+      "size": [
+        "King",
+        "Queen"
+      ],
+      "storage_type": [],
+      "finish": [
+        "Baltic Blue",
+        "Shitake Beige",
+        "Sienna Brown",
+        "Urban Grey"
+      ],
+      "colour": [
+        "Baltic Blue",
+        "Shitake Beige",
+        "Sienna Brown",
+        "Urban Grey"
+      ]
+    }
+  },
+  {
+    "id": "ul-sophia-bedsheet-single",
+    "name": "Sophia Bedsheets - Single",
+    "category": "Furnishing",
+    "price": 1599,
+    "dimensions": "Length 2.15 m x Width 2.59 m x Height 1.00 cm",
+    "primary_material": "Poly Cotton",
+    "weight": "0.81 kg",
+    "assembly_required": "Pre Assembled",
+    "warranty_months": 0,
+    "color_finish": "Magenta",
+    "subcategory": "Furnishing",
+    "product_short_name": "Sophia",
+    "design_details": "standard minimal design",
+    "variant_axes": {
+      "size": [],
+      "storage_type": [],
+      "finish": [
+        "Magenta"
+      ],
+      "colour": [
+        "Magenta"
+      ]
+    }
+  },
+  {
+    "id": "ul-luna-3seater-slate-grey",
+    "name": "Luna 3 Seater Fabric Sofa in Slate Grey Colour",
+    "category": "Living Room",
+    "price": 19999,
+    "dimensions": "Length 83.00 cm x Width 1.89 m x Height 86.50 cm",
+    "primary_material": "Fabric",
+    "weight": "50 kg",
+    "assembly_required": "Requires Assembly",
+    "warranty_months": 12,
+    "seating_capacity": "3 Seater",
+    "color_finish": "Slate Grey",
+    "available_sizes": [
+      "1 Seater",
+      "3 Seater"
+    ],
+    "available_colors": [
+      "Marine Blue",
+      "Slate Grey"
+    ],
+    "subcategory": "Living Room",
+    "product_short_name": "Luna",
+    "design_details": "standard minimal design",
+    "variant_axes": {
+      "size": [
+        "1 Seater",
+        "3 Seater"
+      ],
+      "storage_type": [],
+      "finish": [
+        "Marine Blue",
+        "Slate Grey"
+      ],
+      "colour": [
+        "Marine Blue",
+        "Slate Grey"
+      ]
+    }
+  },
+  {
+    "id": "ul-bond-study-table-walnut",
+    "name": "Bond Engineered Wood Study Table in Classic Walnut Finish",
+    "category": "Study",
+    "price": 6999,
+    "dimensions": "Length 1.00 m x Width 48.00 cm x Height 1.32 m",
+    "primary_material": "Engineered Wood",
+    "weight": "34.5 kg",
+    "assembly_required": "Requires Assembly",
+    "warranty_months": 12,
+    "color_finish": "Classic Walnut",
+    "subcategory": "Study",
+    "product_short_name": "Bond",
+    "design_details": "standard minimal design",
+    "variant_axes": {
+      "size": [],
+      "storage_type": [],
+      "finish": [
+        "Classic Walnut"
+      ],
+      "colour": [
+        "Classic Walnut"
+      ]
+    }
+  },
+  {
+    "id": "ul-torin-tv-cabinet-golden-ash",
+    "name": "Torin Solid Wood TV Cabinet In Golden Ash Finish",
+    "category": "Living Room",
+    "price": 29999,
+    "dimensions": "Length 45.00 cm x Width 1.60 m x Height 50.00 cm",
+    "primary_material": "Solid Wood (Mango)",
+    "weight": "50.2 kg",
+    "assembly_required": "Requires Assembly",
+    "warranty_months": 36,
+    "color_finish": "Golden Ash",
+    "available_colors": [
+      "Danish Walnut",
+      "Golden Ash"
+    ],
+    "subcategory": "Living Room",
+    "product_short_name": "Torin",
+    "design_details": "standard minimal design",
+    "variant_axes": {
+      "size": [],
+      "storage_type": [],
+      "finish": [
+        "Danish Walnut",
+        "Golden Ash"
+      ],
+      "colour": [
+        "Danish Walnut",
+        "Golden Ash"
+      ]
+    }
+  },
+  {
+    "id": "ul-kuba-queen-bed",
+    "name": "Kuba Solid Wood Queen Size Bed With Hydraulic Storage",
+    "category": "Bedroom",
+    "subcategory": "Beds",
+    "product_short_name": "Kuba",
+    "design_details": "headboard with vertical and chevron groove detailing, floating headboard effect",
+    "price": 60000,
+    "dimensions": "Length 2.05 m x Width 1.6 m x Height 1.0 m",
+    "primary_material": "Sheesham wood",
+    "weight": "120 kg",
+    "assembly_required": "Requires Assembly",
+    "warranty_months": 12,
+    "variant_axes": {
+      "size": [
+        "King",
+        "Queen"
+      ],
+      "storage_type": [
+        "Non-storage",
+        "Drawer",
+        "Box",
+        "Hydraulic"
+      ],
+      "finish": [
+        "Teak",
+        "Mahogany"
+      ],
+      "colour": []
+    },
+    "mattress_recommendation": {
+      "size": "King - 78 x 72 inches; Queen - 78 x 60 inches",
+      "thickness_range": "4-8 inches"
+    }
+  },
+  {
+    "id": "ul-nimbus-king-bed",
+    "name": "Nimbus Solid Wood King Size Bed Without Storage",
+    "category": "Bedroom",
+    "subcategory": "Beds",
+    "product_short_name": "Nimbus",
+    "design_details": "curvilinear silhouette, metal inlay tracing the headboard, rounded corners",
+    "price": 55000,
+    "dimensions": "Length 2.05 m x Width 1.8 m x Height 1.0 m",
+    "primary_material": "Sheesham wood",
+    "weight": "110 kg",
+    "assembly_required": "Requires Assembly",
+    "warranty_months": 12,
+    "variant_axes": {
+      "size": [],
+      "storage_type": [
+        "Non-storage",
+        "Box",
+        "Drawer",
+        "Hydraulic"
+      ],
+      "finish": [
+        "Teak",
+        "Mahogany"
+      ],
+      "colour": []
+    },
+    "mattress_recommendation": {
+      "size": "King - 78 x 72 inches; Queen - 78 x 60 inches"
+    }
+  },
+  {
+    "id": "ul-milan-queen-bed",
+    "name": "Milan Engineered Wood Queen Size Bed With Hydraulic Storage",
+    "category": "Bedroom",
+    "subcategory": "Beds",
+    "product_short_name": "Milan",
+    "design_details": "velvet headboard, graceful pleats, gold-finish staple accent",
+    "price": 45000,
+    "dimensions": "Length 2.05 m x Width 1.6 m x Height 1.0 m",
+    "primary_material": "Engineered wood",
+    "weight": "130 kg",
+    "assembly_required": "Requires Assembly",
+    "warranty_months": 12,
+    "variant_axes": {
+      "size": [
+        "King",
+        "Queen"
+      ],
+      "storage_type": [
+        "Hydraulic",
+        "fabric hand-pull"
+      ],
+      "finish": [],
+      "colour": [
+        "Deep Olive",
+        "Deep Crimson",
+        "Mocha Mousse"
+      ]
+    },
+    "mattress_recommendation": {
+      "size": "King - 72 x 78 inches; Queen - 60 x 78 inches",
+      "thickness_range": "4 to 6 inches"
+    }
+  }
+]

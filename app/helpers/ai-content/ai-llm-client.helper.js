@@ -196,7 +196,10 @@ async function generateContent({ systemPrompt, userPrompt, options }) {
 
   const hasApiKey = Boolean(options?.clientConfig?.api_key || process.env.LLM_API_KEY);
   if (!hasApiKey) {
-    return simulateSmartGeneration({ systemPrompt, userPrompt, options });
+    if (process.env.MODE === 'test') {
+      return simulateSmartGeneration({ systemPrompt, userPrompt, options });
+    }
+    throw new Error('LLM_UNAVAILABLE: Real LLM provider is not configured. Production fallback prose generation is strictly disallowed.');
   }
 
   const client = getAiClient(options?.clientConfig);

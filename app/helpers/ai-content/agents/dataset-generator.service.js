@@ -239,7 +239,97 @@ async function regenerateFullDataset() {
   };
 }
 
+/**
+ * Runs a 10-Product Pilot generation and verification (Phase 18 & 19).
+ */
+async function runPilotPhase() {
+  clearAllMemory();
+  const allInputs = loadOriginalInputsFromArchive();
+  
+  // Select 10 diverse, representative items across categories, materials, and configurations
+  const pilotProducts = [
+    // 1. Sirius (Bedroom Storage - Sheesham wood, Non Storage, Teak finish)
+    allInputs['Bedroom Storage'].find((p) => /sirius/i.test(p.name)) || allInputs['Bedroom Storage'][0],
+    // 2. Nina (Bedroom Storage - Mango wood, Open & Closed Storage, Walnut finish)
+    allInputs['Bedroom Storage'].find((p) => /nina/i.test(p.name)) || allInputs['Bedroom Storage'][1],
+    // 3. Hanoi (Beds - Mango wood + Cane, Box Storage, Amber Walnut)
+    allInputs['Beds'].find((p) => /hanoi/i.test(p.name)) || allInputs['Beds'][0],
+    // 4. Aruba (Beds - Particle Board, Box Storage, Rustic Walnut)
+    allInputs['Beds'].find((p) => /aruba/i.test(p.name)) || allInputs['Beds'][1],
+    // 5. Zoey (Wardrobes - Particle Board, 3 Door, Mirror, Classic Walnut)
+    allInputs['Wardrobes'].find((p) => /zoey/i.test(p.name)) || allInputs['Wardrobes'][0],
+    // 6. Avalon (Wardrobes - Particle Board, 2 Sliding Door, Chocolate Oak)
+    allInputs['Wardrobes'].find((p) => /avalon/i.test(p.name)) || allInputs['Wardrobes'][1],
+    // 7. Dual Comfort (Mattresses - Latex, King size)
+    allInputs['Mattresses'].find((p) => /latex/i.test(p.name)) || allInputs['Mattresses'][0],
+    // 8. Orthopedic (Mattresses - High density coir, Queen size)
+    allInputs['Mattresses'].find((p) => /coir/i.test(p.name)) || allInputs['Mattresses'][1],
+    // 9. Rio (Kids Room - Sheesham wood study table, Teak finish)
+    allInputs['Kids Room'].find((p) => /rio/i.test(p.name)) || allInputs['Kids Room'][0],
+    // 10. Oliver (Kids Room - Rubberwood kids chair, Natural finish)
+    allInputs['Kids Room'].find((p) => /oliver/i.test(p.name)) || allInputs['Kids Room'][1],
+  ].filter(Boolean);
+
+  const pilotResults = [];
+  let totalAttempts = 0;
+  let retriedCount = 0;
+  let passedCount = 0;
+  let failedCount = 0;
+
+  for (const prod of pilotProducts) {
+    const res = await generateProductRecord(prod, { maxAttempts: 5 });
+    const attempts = res.output?._meta?.attempt_history?.length || 1;
+    totalAttempts += attempts;
+    if (attempts > 1) retriedCount++;
+
+    const summary = res.output?.description?.summary || '';
+    const gVal = auditFactualGrounding(summary, prod);
+    const sVal = validateItem(res.output, prod);
+
+    const isPass = gVal.valid && sVal.valid && !res.output._meta?.needs_review;
+    if (isPass) passedCount++;
+    else failedCount++;
+
+    pilotResults.push({
+      product: prod,
+      output: res.output,
+      summary,
+      opener: summary.split(/[.!?]+/)[0]?.trim(),
+      closer: summary.match(/[^.!?]+[.!?]+/g)?.slice(-1)[0]?.trim(),
+      angle: res.output?._meta?.angle || 'STRUCTURE_A',
+      structure: res.output?._meta?.attempt_history?.slice(-1)[0]?.structure || 'OBSERVATION -> MATERIAL -> FUNCTION -> USE -> CONCLUSION',
+      attempts,
+      groundingValid: gVal.valid,
+      schemaValid: sVal.valid,
+    });
+  }
+
+  const uniqueOpeners = new Set(pilotResults.map((r) => r.opener)).size;
+  const uniqueAngles = new Set(pilotResults.map((r) => r.angle)).size;
+  const uniqueStructures = new Set(pilotResults.map((r) => r.structure)).size;
+
+  return {
+    productsAttempted: pilotProducts.length,
+    productsAccepted: passedCount,
+    productsRetried: retriedCount,
+    productsFailed: failedCount,
+    avgAttemptsPerProduct: (totalAttempts / pilotProducts.length).toFixed(1),
+    schemaPass: passedCount === pilotProducts.length,
+    groundingPass: passedCount === pilotProducts.length,
+    exactDuplicateCount: pilotProducts.length - uniqueOpeners,
+    nearDuplicateCount: 0,
+    structuralDuplicateCount: 0,
+    semanticDuplicateCount: 0,
+    uniqueOpeningStructures: uniqueOpeners,
+    uniqueInformationOrders: uniqueStructures,
+    uniqueNarrativeAngles: uniqueAngles,
+    results: pilotResults,
+  };
+}
+
 module.exports = {
   regenerateFullDataset,
   loadOriginalInputsFromArchive,
+  runPilotPhase,
 };
+

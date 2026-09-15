@@ -223,7 +223,7 @@ async function generateOne(
     primary_material: product.primary_material,
     color_finish: product.color_finish,
     dimensions_descriptor: product.dimensions ? 'proportioned for balanced room flow' : '',
-    craftsmanship: 'precision joinery and enduring construction',
+    craftsmanship: 'durable construction and authentic finish',
     tone_rule: pb.toneRuleText,
   };
   logger.info(`[aiOrchestrator] Invoking Agent 3 (Story) with isolated context: ${JSON.stringify(storyContext)}`);

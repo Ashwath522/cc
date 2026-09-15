@@ -216,7 +216,7 @@ function buildSpecificationsBlock(product) {
  * Orchestrates generation for a single product with full audit and retry loop.
  */
 async function generateProductRecord(product, options = {}) {
-  const categoryName = normalizeSubcategory(product);
+  const categoryName = options.categoryName || normalizeSubcategory(product);
   const { generate } = getCategoryGenerator(categoryName);
   const facts = extractProductFacts(product);
 
@@ -228,12 +228,17 @@ async function generateProductRecord(product, options = {}) {
   let attemptHistory = [];
   let acceptedItem = null;
 
+  const itemIndex = options.itemIndex !== undefined 
+    ? options.itemIndex 
+    : (product.catalog_index !== undefined ? product.catalog_index : memory.items.length);
+
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
     const assignedStructure = rankedStructures[(attempt - 1) % rankedStructures.length];
 
     const copyRes = generate(product, {
       structureId: assignedStructure,
       attempt,
+      itemIndex,
     });
 
     const summary = copyRes.summary;

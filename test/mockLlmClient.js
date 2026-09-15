@@ -61,7 +61,7 @@ const TEMPLATES = [
   (shortName, mat, cat) => ({
     mood: `Distinctive surface discipline defines this ${mat || 'frame'} design, holding its character through years of regular use.`,
     intro: `This ${cat} piece channels material consistency into a grounded profile that fits naturally across various interior styles.`,
-    story: `Solid timber construction preserves structural integrity and dependable stability under daily weight loading. The sturdy framework and durable platform keep the bed securely level and completely quiet.`,
+    story: `Solid timber construction preserves structural integrity and level platform alignment under daily use. The sturdy framework and durable platform keep the bed securely level and quiet.`,
     close: `${shortName} handles the ordinary with appropriate quiet — built for daily use, dependable in quality, and lasting in purpose.`,
   }),
 
@@ -69,7 +69,7 @@ const TEMPLATES = [
   (shortName, mat, cat) => ({
     mood: `The morning runs more smoothly when the room has already worked out its spatial balance.`,
     intro: `This ${cat} furniture removes daily friction through dimensional accuracy and an uncluttered silhouette that stays quietly functional.`,
-    story: `Selected hardwood sections provide a dense and resilient foundation that withstands daily household use. The natural wood grain surface is protected by an enduring clear finish that highlights organic texture.`,
+    story: `Selected hardwood sections provide a dense and steady foundation that withstands daily household use. The natural wood grain surface is protected by an enduring clear finish that highlights organic texture.`,
     close: `${shortName} settles into the room on its own terms, bringing quiet order, restful ease, and enduring strength.`,
   }),
 
@@ -77,7 +77,7 @@ const TEMPLATES = [
   (shortName, mat, cat) => ({
     mood: `A room rearranges itself around furniture that understands its functional role.`,
     intro: `This ${cat} design earns its footprint with lean proportions, solid stability, and zero visual excess.`,
-    story: `High-density engineered boards deliver consistent structural density that prevents sagging and surface deformation over time. A smooth hydraulic lift mechanism and sturdy perimeter framing ensure easy operation and organized under-bed storage.`,
+    story: `High-density engineered boards deliver consistent structural density that maintains shape retention over time. An integrated hydraulic lift mechanism and sturdy perimeter framing provide accessible under-bed storage.`,
     close: `${shortName} earns its place through honest craftsmanship, material integrity, and a silhouette that asks nothing extra of the space.`,
   }),
 
@@ -85,7 +85,7 @@ const TEMPLATES = [
   (shortName, mat, cat) => ({
     mood: `Carefully balanced proportions resolve the tension between visual lightness and structural durability.`,
     intro: `This upholstered ${cat} bed creates an inviting backdrop that softens the surrounding bedroom architecture without visual clutter.`,
-    story: `The tailored fabric panels cover a solid internal framework designed to distribute weight evenly and prevent frame creaking. Resilient cushioning preserves its clean geometric form and supportive backrest comfort through years of nightly reading.`,
+    story: `The tailored fabric panels cover a solid internal framework designed to distribute weight evenly across the platform. Resilient cushioning preserves its clean geometric form and supportive backrest comfort through years of nightly reading.`,
     close: `${shortName} anchors the space with unforced presence, serene comfort, balanced proportions, and lasting material quality.`,
   }),
 
@@ -93,7 +93,7 @@ const TEMPLATES = [
   (shortName, mat, cat) => ({
     mood: `Some furniture belongs to the practical rhythms of the day that often go unnoticed.`,
     intro: `This compact ${cat} design occupies that reliable register — durable, honest, and built for continuous everyday living.`,
-    story: `Solid mango wood offers rich character and exceptional density, built with sturdy framing for lasting rigidity. The low-profile silhouette optimizes floor clearance while providing sturdy, wobble-free support for single mattresses.`,
+    story: `Solid mango wood offers rich character and authentic texture, built with sturdy framing for lasting rigidity. The low-profile silhouette optimizes floor clearance while providing steady platform support for single mattresses.`,
     close: `${shortName} makes itself useful without making itself noticed — delivering a solid foundation and dependable comfort for everyday living.`,
   }),
 
@@ -101,7 +101,7 @@ const TEMPLATES = [
   (shortName, mat, cat) => ({
     mood: `Grounded visual weight gives this ${mat ? mat.toLowerCase() : 'furniture'} an immediate sense of permanence.`,
     intro: `Its considered geometry keeps the bedroom structured and organized without overwhelming surrounding furnishings.`,
-    story: `Generous box storage compartments beneath the platform keep seasonal bedding neatly tucked away yet readily accessible. Heavy-duty woven upholstery resists abrasions and everyday wear, backed by a rigid structural base engineered for daily use.`,
+    story: `Generous box storage compartments beneath the platform keep seasonal bedding neatly tucked away yet readily accessible. Woven fabric upholstery covers a solid perimeter frame designed for continuous everyday use.`,
     close: `${shortName} is furniture that answers the brief with clarity — honest in material, accurate in dimension, and grounded in craftsmanship.`,
   }),
 
@@ -109,7 +109,7 @@ const TEMPLATES = [
   (shortName, mat, cat) => ({
     mood: `Not every ${cat} piece needs to announce itself with dramatic flourishes.`,
     intro: `This Scandinavian-inspired frame establishes calm authority through genuine restraint, clean geometry, and a dependable structural foundation.`,
-    story: `Solid rubberwood legs and rails create soft clean edges and seamless tonal transitions throughout the frame. Sturdy slatted platform construction supports the mattress securely while absorbing movement for restful sleep.`,
+    story: `Solid rubberwood legs and rails create clean edges and seamless tonal transitions throughout the frame. Sturdy platform construction supports the mattress securely while absorbing movement for restful sleep.`,
     close: `${shortName} completes the bedroom with quiet confidence, peaceful ease, timeless refinement, and authentic craftsmanship.`,
   }),
 
@@ -117,7 +117,7 @@ const TEMPLATES = [
   (shortName, mat, cat) => ({
     mood: `Quiet architectural discipline shapes this ${cat} piece from every angle.`,
     intro: `The frame combines robust craftsmanship with clean architectural lines to deliver lasting peace of mind.`,
-    story: `Solid construction and reinforced load points ensure the platform remains rock-solid through years of daily use. Protective surface treatments seal the material against dust and spills while preserving natural texture.`,
+    story: `Solid construction and secure joints ensure the platform remains steady through years of daily use. Protective surface treatments seal the material against everyday wear while preserving natural texture.`,
     close: `${shortName} provides lasting structural integrity while keeping the room peaceful, organized, and effortlessly balanced.`,
   }),
 
@@ -125,7 +125,7 @@ const TEMPLATES = [
   (shortName, mat, cat) => ({
     mood: `Purposeful simplicity ensures this ${cat} piece integrates smoothly into modern daily routines.`,
     intro: `The thoughtful layout and sturdy frame provide unwavering support without introducing unnecessary visual clutter.`,
-    story: `Every structural rail and support leg is calibrated to handle regular loads without flexing or creaking over time. Carefully smoothed surfaces and durable hardware maintain an immaculate, refined profile from all viewing angles.`,
+    story: `Every structural rail and support leg is calibrated to handle regular loads without flexing over time. Carefully finished surfaces and durable hardware maintain a clean profile from all viewing angles.`,
     close: `${shortName} fulfills its role through enduring craftsmanship, honest construction, and elegant functional simplicity.`,
   }),
 
@@ -133,7 +133,7 @@ const TEMPLATES = [
   (shortName, mat, cat) => ({
     mood: `Evening light lands on ${mat ? mat.toLowerCase() : 'the surface'} with subtle warmth and depth.`,
     intro: `This ${cat} piece maintains its finish through deliberate construction and enduring material integrity.`,
-    story: `Sturdy structural members keep the frame steady, ensuring the platform deck remains completely quiet and securely anchored. Protective surface coatings repel ambient moisture while accentuating subtle textural depth across all exterior faces.`,
+    story: `Sturdy structural members keep the frame steady, ensuring the platform deck remains securely positioned. Protective surface coatings safeguard the timber while accentuating subtle textural depth across all exterior faces.`,
     close: `${shortName} brings the room to a natural resolution — combining lasting construction with refined proportion and enduring balance.`,
   }),
 ];

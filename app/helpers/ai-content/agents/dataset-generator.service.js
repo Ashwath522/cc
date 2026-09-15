@@ -104,8 +104,9 @@ async function regenerateFullDataset() {
     let catGroundingErrors = 0;
     let catSchemaErrors = 0;
 
-    for (const prod of products) {
-      const result = await generateProductRecord(prod, { maxAttempts: 8 });
+    for (let pIdx = 0; pIdx < products.length; pIdx++) {
+      const prod = products[pIdx];
+      const result = await generateProductRecord(prod, { maxAttempts: 8, itemIndex: pIdx, categoryName: catName });
       records.push(result);
       enrichedRecords.push(result); // Enriched matches full structure
 

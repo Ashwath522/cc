@@ -2,689 +2,451 @@
   "category": "Kids Room",
   "items": [
     {
-      "id": "ul-fnbdns15dw11037",
-      "name": "Barnley Single Over Queen Storage Bunk Bed In Dark Walnut",
-      "shortName": "Barnley",
-      "summary": "A tiered architectural bunk silhouette brings cheerful organization and open play space to the children's room. The design provides two comfortable resting tiers within a consolidated, space-conscious vertical footprint. Solid rubber wood paneling provides a resilient foundation capable of handling continuous everyday household activity with ease. Durable protective coatings safeguard the framework while keeping routine cleaning and domestic maintenance straightforward. Barnley handles daily domestic life with authentic rubber wood construction, versatile activity utility, and understated modern elegance.",
-      "opener": "A tiered architectural bunk silhouette brings cheerful organization and open play space to the children's room",
-      "closer": "Barnley handles daily domestic life with authentic rubber wood construction, versatile activity utility, and understated modern elegance.",
-      "angle": "STRUCTURE_A",
-      "structure": "SPATIAL_OBSERVATION -> FUNCTION -> FUNCTION -> FUNCTION -> CONCLUSION",
-      "facts": [
-        "rubber wood",
-        "dark walnut",
-        "bunk bed",
-        "STRUCTURE_A"
-      ],
-      "timestamp": "2026-09-15T10:43:42.950Z"
-    },
-    {
-      "id": "ul-fvbdbb33wh69192",
-      "name": "Sleep N Slide Bunk Bed with Slide and Storage in White Colour",
-      "shortName": "Sleep",
-      "summary": "An orderly stacked silhouette and smooth white surfaces establish a cheerful, modern bunk arrangement. The design provides two comfortable resting tiers within a consolidated, space-conscious vertical footprint. High-density engineered wood components maintain platform levelness and structural rigidity throughout years of active family use. Wipe-clean protective surfaces resist daily domestic wear, keeping the children's room looking fresh and well-maintained. Sleep introduces thoughtful functional discipline with resilient engineered wood paneling, wipe-clean surfaces, and understated modern elegance.",
-      "opener": "An orderly stacked silhouette and smooth white surfaces establish a cheerful, modern bunk arrangement",
-      "closer": "Sleep introduces thoughtful functional discipline with resilient engineered wood paneling, wipe-clean surfaces, and understated modern elegance.",
-      "angle": "STRUCTURE_A",
-      "structure": "OBSERVATION -> FUNCTION -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION",
-      "facts": [
-        "engineered wood",
-        "white",
-        "bunk bed",
-        "STRUCTURE_A"
-      ],
-      "timestamp": "2026-09-15T10:43:42.968Z"
-    },
-    {
-      "id": "ul-fvbdst33pr20727",
-      "name": "Siona Engineered Wood Box Drawer Storage Bunk Bed Lavender Purple",
-      "shortName": "Siona",
-      "summary": "Clean vertical lines and a child-friendly matte laminate finish define this space-efficient bunk bed design. This matte laminate bunk bed optimizes floor area by stacking twin sleeping tiers in a compact and secure footprint. Crafted with dependable mdf panels, the structure preserves strict mechanical alignment across years of active family life. Smooth outer edges and protective surfaces ensure everyday ease and safety while children study, play, and rest. Siona introduces thoughtful functional discipline with resilient mdf paneling, wipe-clean surfaces, and balanced order.",
-      "opener": "Clean vertical lines and a child-friendly matte laminate finish define this space-efficient bunk bed design",
-      "closer": "Siona introduces thoughtful functional discipline with resilient mdf paneling, wipe-clean surfaces, and balanced order.",
-      "angle": "STRUCTURE_A",
-      "structure": "MATERIAL_SENSORY -> SPATIAL_FUNCTION -> FUNCTION -> PRACTICAL_USE -> CONCLUSION",
-      "facts": [
-        "mdf",
-        "matte laminate",
-        "bunk bed",
-        "STRUCTURE_A"
-      ],
-      "timestamp": "2026-09-15T10:43:42.969Z"
-    },
-    {
-      "id": "ul-fvbdbb33br69187",
-      "name": "Sleep N Slide Bunk Bed with Slide and Storage in Oak Colour",
-      "shortName": "Sleep",
-      "summary": "Balanced proportions and a vibrant oak finish give this bunk bed an approachable, modern character. This oak bunk bed optimizes floor area by stacking twin sleeping tiers in a compact and secure footprint. Solid engineered wood paneling provides a resilient foundation capable of handling continuous everyday household activity with ease. Durable protective coatings safeguard the framework while keeping routine cleaning and domestic maintenance straightforward. Sleep brings space-efficient geometry, practical study and rest utility, and graceful refined presence.",
-      "opener": "Balanced proportions and a vibrant oak finish give this bunk bed an approachable, modern character",
-      "closer": "Sleep brings space-efficient geometry, practical study and rest utility, and graceful refined presence.",
-      "angle": "STRUCTURE_A",
-      "structure": "MATERIAL_SENSORY -> SPATIAL_FUNCTION -> MATERIAL_DETAIL -> FUNCTION -> CONCLUSION",
-      "facts": [
-        "engineered wood",
-        "oak",
-        "bunk bed",
-        "STRUCTURE_A"
-      ],
-      "timestamp": "2026-09-15T10:43:42.969Z"
-    },
-    {
-      "id": "ul-fvbdbb33br69180",
-      "name": "Pattern Dreams Bunk Bed with Storage in White Colour",
-      "shortName": "Pattern",
-      "summary": "Children's morning and evening routines settle into quiet comfort with accessible and supportive furniture. Thoughtfully proportioned for young users, this oak companion supports healthy everyday study and resting habits. Built with resilient engineered wood panels, the structure withstands energetic household activity with steady strength. Smooth wipeable surfaces ensure accidental spills are easily cleaned up during everyday arts and crafts sessions. Pattern enriches the domestic environment with clean oak visual character, rounded edge safety, and quiet domestic comfort.",
-      "opener": "Children's morning and evening routines settle into quiet comfort with accessible and supportive furniture",
-      "closer": "Pattern enriches the domestic environment with clean oak visual character, rounded edge safety, and quiet domestic comfort.",
-      "angle": "STRUCTURE_B",
-      "structure": "USE_CASE -> FUNCTION -> MATERIAL_DETAIL -> FUNCTION -> CONCLUSION",
-      "facts": [
-        "engineered wood",
-        "oak",
-        "bunk bed",
-        "STRUCTURE_B"
-      ],
-      "timestamp": "2026-09-15T10:43:42.970Z"
-    },
-    {
-      "id": "ul-fvstbd33ob51122",
-      "name": "Pine Tree Single Size Bunk Bed In Oak and Blue Colour",
-      "shortName": "Pine",
-      "summary": "Afternoon homework and creative play settle into quiet focus around this dedicated children's piece. This multicolor design provides accessible functional utility suited for daily play, focused study, and restful sleep. Dense engineered wood paneling provides a steady framework that resists shifting during active daily household interactions. Child-scaled dimensions ensure comfortable seating and access, fostering confident and independent everyday habits. Pine serves as a reliable domestic companion through child-scaled dimensions, sturdy frame construction, and unhurried restful calm.",
-      "opener": "Afternoon homework and creative play settle into quiet focus around this dedicated children's piece",
-      "closer": "Pine serves as a reliable domestic companion through child-scaled dimensions, sturdy frame construction, and unhurried restful calm.",
-      "angle": "STRUCTURE_B",
-      "structure": "USE_CASE -> PRACTICAL_USE -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION",
-      "facts": [
-        "engineered wood",
-        "multicolor",
-        "bunk bed",
-        "STRUCTURE_B"
-      ],
-      "timestamp": "2026-09-15T10:43:42.971Z"
-    },
-    {
-      "id": "ul-fvbdst33or20699",
-      "name": "Evita Engineered Wood Box Storage Bunk Bed - Light Orange",
-      "shortName": "Evita",
-      "summary": "Creative play and focused study find structured calm around this practical children's bedroom piece. Designed for regular family use, this matte laminate piece integrates reliable domestic utility into an approachable profile. High-grade mdf components maintain dependable load-bearing strength across years of regular domestic use. Practical storage sections and sturdy surfaces help children organize toys, books, and accessories independently. Evita enhances your daily living space with approachable functional layout, durable panel strength, and restful sleep and quiet ease.",
-      "opener": "Creative play and focused study find structured calm around this practical children's bedroom piece",
-      "closer": "Evita enhances your daily living space with approachable functional layout, durable panel strength, and restful sleep and quiet ease.",
-      "angle": "STRUCTURE_B",
-      "structure": "OBSERVATION -> FUNCTION -> FUNCTION -> STORAGE_FUNCTION -> CONCLUSION",
-      "facts": [
-        "mdf",
-        "matte laminate",
-        "bunk bed",
-        "STRUCTURE_B"
-      ],
-      "timestamp": "2026-09-15T10:43:42.973Z"
-    },
-    {
-      "id": "ul-fvbdst33ob20714",
-      "name": "Luxuria Engineered Wood Box & Drawer Storage Bunk Bed - Light Orange - Azure Blue",
-      "shortName": "Luxuria",
-      "summary": "Proportioned for efficient spatial integration, this matte laminate design maximizes usable play and rest area. This matte laminate piece maximizes usable play area while providing dedicated resting, storage, or study space. Sturdy mdf components maintain platform levelness and rigidity through continuous active family living. The compact perimeter layout fits cleanly along room walls, leaving central floor space clear for creative activities. Luxuria handles daily domestic life with authentic mdf construction, versatile activity utility, and tranquil domestic comfort.",
-      "opener": "Proportioned for efficient spatial integration, this matte laminate design maximizes usable play and rest area",
-      "closer": "Luxuria handles daily domestic life with authentic mdf construction, versatile activity utility, and tranquil domestic comfort.",
-      "angle": "STRUCTURE_C",
-      "structure": "OBSERVATION -> STORAGE_FUNCTION -> FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION",
-      "facts": [
-        "mdf",
-        "matte laminate",
-        "bunk bed",
-        "STRUCTURE_C"
-      ],
-      "timestamp": "2026-09-15T10:43:42.974Z"
-    },
-    {
-      "id": "ul-fvbdbb33wh70281",
-      "name": "Pine Tree Bunk Bed with Drawer Storage",
-      "shortName": "Pine",
-      "summary": "Solid engineered wood construction gives this white children's unit enduring strength and stability for family life. It provides a level resting or study surface designed specifically for comfortable everyday domestic use. Durable engineered wood framing and structural panels provide reliable load-bearing support for daily domestic life. Accessible compartments keep daily essentials organized, supporting tidy bedroom habits throughout the week. Pine fits naturally into household routines through steadfast engineered wood stability, accessible storage compartments, and dependable domestic strength.",
-      "opener": "Solid engineered wood construction gives this white children's unit enduring strength and stability for family life",
-      "closer": "Pine fits naturally into household routines through steadfast engineered wood stability, accessible storage compartments, and dependable domestic strength.",
-      "angle": "STRUCTURE_D",
-      "structure": "MATERIAL_SENSORY -> FUNCTION -> MATERIAL_DETAIL -> FUNCTION -> CONCLUSION",
-      "facts": [
-        "engineered wood",
-        "white",
-        "bunk bed",
-        "STRUCTURE_D"
-      ],
-      "timestamp": "2026-09-15T10:43:42.976Z"
-    },
-    {
-      "id": "ul-fvbdst33tq20673",
-      "name": "Astra Engineered Wood Box & Drawer Storage Bunk Bed - English Pink - Misty Turquoise",
-      "shortName": "Astra",
-      "summary": "Crafted from durable mdf, this matte laminate piece delivers steadfast everyday reliability for the home. It provides a level resting or study surface designed specifically for comfortable everyday domestic use. Durable mdf framing and structural panels provide reliable load-bearing support for daily domestic life. Accessible compartments keep daily essentials organized, supporting tidy bedroom habits throughout the week. Astra supports your household habits with steadfast mdf stability, accessible storage compartments, and inviting room presence.",
-      "opener": "Crafted from durable mdf, this matte laminate piece delivers steadfast everyday reliability for the home",
-      "closer": "Astra supports your household habits with steadfast mdf stability, accessible storage compartments, and inviting room presence.",
-      "angle": "STRUCTURE_D",
-      "structure": "OBSERVATION -> FUNCTION -> PRACTICAL_USE -> FUNCTION -> CONCLUSION",
-      "facts": [
-        "mdf",
-        "matte laminate",
-        "bunk bed",
-        "STRUCTURE_D"
-      ],
-      "timestamp": "2026-09-15T10:43:42.977Z"
-    },
-    {
-      "id": "ul-fvbdst33yl20665",
-      "name": "Adonica Engineered Wood Drawer Storage Bunk Bed - Mango Yellow",
-      "shortName": "Adonica",
-      "summary": "Children's bedtime routines unfold with unhurried ease around a sturdy and comfortable resting station. Thoughtfully proportioned for young users, this matte laminate companion supports healthy everyday study and resting habits. Built with resilient mdf panels, the structure withstands energetic household activity with steady strength. Smooth wipeable surfaces ensure accidental spills are easily cleaned up during everyday arts and crafts sessions. Adonica brings space-efficient geometry, practical study and rest utility, and restful sleep and quiet ease.",
-      "opener": "Children's bedtime routines unfold with unhurried ease around a sturdy and comfortable resting station",
-      "closer": "Adonica brings space-efficient geometry, practical study and rest utility, and restful sleep and quiet ease.",
-      "angle": "STRUCTURE_B",
-      "structure": "OBSERVATION -> FUNCTION -> FUNCTION -> FUNCTION -> CONCLUSION",
-      "facts": [
-        "mdf",
-        "matte laminate",
-        "bunk bed",
-        "STRUCTURE_B"
-      ],
-      "timestamp": "2026-09-15T10:43:42.978Z"
-    },
-    {
-      "id": "ul-fvbdbb33br69194",
-      "name": "Pinwheels Bunk Bed with Storage in Oak Colour",
-      "shortName": "Pinwheels",
-      "summary": "Elevated architectural geometry and bright oak surfaces establish an engaging, playful sleeping station. Featuring two stacked sleeping levels, this oak bunk bed maximizes open play area across the room. High-density engineered wood components maintain platform levelness and structural rigidity throughout years of active family use. Wipe-clean protective surfaces resist daily domestic wear, keeping the children's room looking fresh and well-maintained. Pinwheels maintains a reliable domestic presence through clean oak visual character, rounded edge safety, and contemporary elegance.",
-      "opener": "Elevated architectural geometry and bright oak surfaces establish an engaging, playful sleeping station",
-      "closer": "Pinwheels maintains a reliable domestic presence through clean oak visual character, rounded edge safety, and contemporary elegance.",
-      "angle": "STRUCTURE_A",
-      "structure": "OBSERVATION -> SPATIAL_FUNCTION -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION",
-      "facts": [
-        "engineered wood",
-        "oak",
-        "bunk bed",
-        "STRUCTURE_A"
-      ],
-      "timestamp": "2026-09-15T10:43:42.978Z"
-    },
-    {
       "id": "ul-fvbdbb33br69193",
       "name": "Pinwheels Bunk Bed with Storage in Oak Colour",
       "shortName": "Pinwheels",
-      "summary": "Carefully planned perimeter dimensions ensure this oak piece optimizes available floor space in shared bedrooms. It delivers reliable functional utility within a consolidated footprint, preserving open pathways across the room. Dense engineered wood framing provides solid load-bearing capacity and resists distortion during everyday family use. Smooth perimeter contours allow comfortable movement around the piece while keeping the room feeling open. Pinwheels introduces thoughtful functional discipline with resilient engineered wood paneling, wipe-clean surfaces, and uncluttered harmony.",
-      "opener": "Carefully planned perimeter dimensions ensure this oak piece optimizes available floor space in shared bedrooms",
-      "closer": "Pinwheels introduces thoughtful functional discipline with resilient engineered wood paneling, wipe-clean surfaces, and uncluttered harmony.",
-      "angle": "STRUCTURE_C",
-      "structure": "SPATIAL_OBSERVATION -> SPATIAL_FUNCTION -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION",
+      "summary": "A cheerful oak finish and functional proportions make this bunk bed a bright addition to children's rooms. The dedicated layout accommodates schoolbooks, toys, and childhood essentials while preserving play space on the floor. Constructed from solid engineered wood, the silhouette delivers steady structural support throughout active family routines. Compact dimensions make it easy to arrange alongside study chairs and storage chests in bedrooms of all sizes. Pinwheels enriches the bedroom suite with authentic engineered wood construction, oak tones, and cheerful living comfort.",
+      "opener": "A cheerful oak finish and functional proportions make this bunk bed a bright addition to children's rooms",
+      "closer": "Pinwheels enriches the bedroom suite with authentic engineered wood construction, oak tones, and cheerful living comfort.",
+      "angle": "STRUCTURE_A",
+      "structure": "MATERIAL_SENSORY -> SPATIAL_FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION",
       "facts": [
-        "engineered wood",
-        "oak",
-        "bunk bed",
-        "STRUCTURE_C"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:42.993Z"
+      "timestamp": "2026-09-15T11:37:15.012Z"
     },
     {
       "id": "ul-fvbdst33ok52750",
       "name": "Play Date Single Size Bunk Bed in Tropical Theme",
       "shortName": "Play",
-      "summary": "With its calibrated scale, this brown children's unit fits neatly along bedroom perimeters without crowding walkways. It delivers reliable functional utility within a consolidated footprint, preserving open pathways across the room. Dense hdf framing provides solid load-bearing capacity and resists distortion during everyday family use. Smooth perimeter contours allow comfortable movement around the piece while keeping the room feeling open. Play settles into your bedroom suite with resilient hdf paneling, wipe-clean surfaces, and functional clarity.",
-      "opener": "With its calibrated scale, this brown children's unit fits neatly along bedroom perimeters without crowding walkways",
-      "closer": "Play settles into your bedroom suite with resilient hdf paneling, wipe-clean surfaces, and functional clarity.",
-      "angle": "STRUCTURE_C",
-      "structure": "OBSERVATION -> SPATIAL_FUNCTION -> FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION",
+      "summary": "Practical organization and a warm brown tone give this versatile bunk bed a welcoming presence in the room. Integrated storage compartments keep art materials, storybooks, and school supplies systematically arranged for easy access. Primary hdf construction ensures sturdy panel alignment, sturdy corner posts, and dependable safety. Organized personal storage helps keep the bedroom tidy, creating a calm and restful environment for bedtime. With balanced proportions and a brown finish, Play brings lasting inviting domestic comfort to daily domestic living.",
+      "opener": "Practical organization and a warm brown tone give this versatile bunk bed a welcoming presence in the room",
+      "closer": "With balanced proportions and a brown finish, Play brings lasting inviting domestic comfort to daily domestic living.",
+      "angle": "STRUCTURE_A",
+      "structure": "SPATIAL_OBSERVATION -> STORAGE_FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION",
       "facts": [
-        "hdf",
-        "brown",
-        "bunk bed",
-        "STRUCTURE_C"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:42.994Z"
+      "timestamp": "2026-09-15T11:37:15.013Z"
     },
     {
       "id": "ul-fvtbst33bl51704",
       "name": "Utopia Extendable Toddler Study Desk and Chair Set in Azure Blue Colour",
       "shortName": "Utopia",
-      "summary": "A colorful multicolor finish and clean geometric lines establish an attractive, cheerful study companion. The thoughtfully scaled chair proportions provide dependable seating comfort tailored specifically for young children. Crafted with dependable mdf panels, the structure preserves strict mechanical alignment across years of active family life. Smooth outer edges and protective surfaces ensure everyday ease and safety while children study, play, and rest. Utopia coordinates with surrounding furniture through space-efficient geometry, practical study and rest utility, and pure functional order.",
-      "opener": "A colorful multicolor finish and clean geometric lines establish an attractive, cheerful study companion",
-      "closer": "Utopia coordinates with surrounding furniture through space-efficient geometry, practical study and rest utility, and pure functional order.",
+      "summary": "An authentic multicolor stain and space-efficient styling readily define this kids study desk designed for readily active study and rest. The practical platform design supports standard mattress sizes while leaving generous open clearance for activities. Built with durable mdf, the chassis provides dependable load support across all shelves and drawers. Preserving open floor area allows plenty of room for active daytime play, creative building, and comfortable movement. Utopia coordinates with surrounding furniture through authentic mdf framing, practical utility, and unhurried morning rest.",
+      "opener": "An authentic multicolor stain and space-efficient styling readily define this kids study desk designed for readily active study and rest",
+      "closer": "Utopia coordinates with surrounding furniture through authentic mdf framing, practical utility, and unhurried morning rest.",
       "angle": "STRUCTURE_A",
-      "structure": "MATERIAL_SENSORY -> SPATIAL_FUNCTION -> FUNCTION -> PRACTICAL_USE -> CONCLUSION",
+      "structure": "SPATIAL_OBSERVATION -> SPATIAL_FUNCTION -> PRACTICAL_USE -> SPATIAL_FUNCTION -> CONCLUSION",
       "facts": [
-        "mdf",
-        "multicolor",
-        "kids chair",
-        "STRUCTURE_A"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:42.995Z"
+      "timestamp": "2026-09-15T11:37:15.014Z"
     },
     {
       "id": "ul-fvtbst33gy52779",
       "name": "Ele Toddler Activity Table &amp; Chair",
       "shortName": "Ele",
-      "summary": "Bright grey surfaces and a comfortable backrest define this child-friendly seating piece. The thoughtfully scaled chair proportions provide dependable seating comfort tailored specifically for young children. Solid hdf paneling provides a resilient foundation capable of handling continuous everyday household activity with ease. Durable protective coatings safeguard the framework while keeping routine cleaning and domestic maintenance straightforward. Ele supports your household habits with steadfast hdf stability, accessible storage compartments, and playful ease.",
-      "opener": "Bright grey surfaces and a comfortable backrest define this child-friendly seating piece",
-      "closer": "Ele supports your household habits with steadfast hdf stability, accessible storage compartments, and playful ease.",
+      "summary": "Bright timber graining and a smooth grey stain bring cheerful energy to this multi-functional children's kids study desk. Multi-level shelving bays provide accessible perches for board games, soft toys, and personal childhood treasures. Solid hdf framing maintains steadfast cabinet integrity and level surface alignment under regular use. The space-conscious footprint fits easily into compact bedrooms, maximizing usable area for study and relaxation. Finished in grey, Ele completes your room arrangement with structured utility and cheerful comfort.",
+      "opener": "Bright timber graining and a smooth grey stain bring cheerful energy to this multi-functional children's kids study desk",
+      "closer": "Finished in grey, Ele completes your room arrangement with structured utility and cheerful comfort.",
       "angle": "STRUCTURE_A",
-      "structure": "OBSERVATION -> SPATIAL_FUNCTION -> FUNCTION -> FUNCTION -> CONCLUSION",
+      "structure": "MATERIAL_SENSORY -> FUNCTION -> FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION",
       "facts": [
-        "hdf",
-        "grey",
-        "kids chair",
-        "STRUCTURE_A"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:42.996Z"
+      "timestamp": "2026-09-15T11:37:15.015Z"
     },
     {
       "id": "ul-fvtbst33bl51650",
       "name": "Flora Kids Study Desk cum Bookshelf with Shuttered Cabinets Open Shelves and Drawers in Lime Yellow Azure Blue Colour",
       "shortName": "Flora",
-      "summary": "A bright multicolor finish and clean proportions create an orderly and cheerful focal point in the room. This multicolor study workstation provides dedicated surface space for books, coloring materials, and daily homework. Solid mdf paneling provides a resilient foundation capable of handling continuous everyday household activity with ease. Durable protective coatings safeguard the framework while keeping routine cleaning and domestic maintenance straightforward. Flora enhances your daily living space with approachable functional layout, durable panel strength, and minimal balance.",
-      "opener": "A bright multicolor finish and clean proportions create an orderly and cheerful focal point in the room",
-      "closer": "Flora enhances your daily living space with approachable functional layout, durable panel strength, and minimal balance.",
+      "summary": "A modern silhouette in a multicolor hue creates an organized environment for children to learn and play. A wide study surface offers dedicated space for homework, drawing projects, and desk lamps in a focused setup. High-density mdf panels form the outer housing, ensuring robust support for daily study and storage demands. Having study materials systematically arranged fosters focused learning habits and an uncluttered bedroom environment. Flora anchors the room with natural mdf surfaces, understated lines, and understated sophistication.",
+      "opener": "A modern silhouette in a multicolor hue creates an organized environment for children to learn and play",
+      "closer": "Flora anchors the room with natural mdf surfaces, understated lines, and understated sophistication.",
       "angle": "STRUCTURE_A",
-      "structure": "MATERIAL_SENSORY -> FUNCTION -> FUNCTION -> FUNCTION -> CONCLUSION",
+      "structure": "OBSERVATION -> PRACTICAL_USE -> STORAGE_FUNCTION -> PRACTICAL_USE -> CONCLUSION",
       "facts": [
-        "mdf",
-        "multicolor",
-        "study desk",
-        "STRUCTURE_A"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:42.996Z"
+      "timestamp": "2026-09-15T11:37:15.016Z"
     },
     {
       "id": "ul-fvtbst33pi51646",
       "name": "Flora Kids Study Desk cum Bookshelf with Shuttered Cabinets Open Shelves and Drawers in English Pink Persian Lilac Colour",
       "shortName": "Flora",
-      "summary": "A child-friendly brown finish brings energetic warmth and visual calm to the children's bedroom. The unit provides a sturdy, child-scaled workstation designed to support daily creative and learning activities. Crafted with dependable mdf panels, the structure preserves strict mechanical alignment across years of active family life. Smooth outer edges and protective surfaces ensure everyday ease and safety while children study, play, and rest. Flora coordinates with surrounding furniture through space-efficient geometry, practical study and rest utility, and quiet domestic comfort.",
-      "opener": "A child-friendly brown finish brings energetic warmth and visual calm to the children's bedroom",
-      "closer": "Flora coordinates with surrounding furniture through space-efficient geometry, practical study and rest utility, and quiet domestic comfort.",
+      "summary": "Vibrant styling daily and an custom brown finish impart this bedroom kids study desk an engaging, child-friendly character. The versatile lower compartment houses storage bins, sports gear, and seasonal blankets neatly out of walking paths. Crafted from authentic mdf, the structure delivers unwavering balance and authentic timber durability. Concealing playthings inside structured compartments keeps the bedroom calm and ready for restful evening sleep. Designed for domestic routines, Flora integrates brown aesthetics with dependable cheerful comfort.",
+      "opener": "Vibrant styling daily and an custom brown finish impart this bedroom kids study desk an engaging, child-friendly character",
+      "closer": "Designed for domestic routines, Flora integrates brown aesthetics with dependable cheerful comfort.",
       "angle": "STRUCTURE_A",
-      "structure": "MATERIAL_SENSORY -> PRACTICAL_USE -> FUNCTION -> PRACTICAL_USE -> CONCLUSION",
+      "structure": "USE_CASE -> STORAGE_FUNCTION -> FUNCTION -> PRACTICAL_USE -> CONCLUSION",
       "facts": [
-        "mdf",
-        "brown",
-        "study desk",
-        "STRUCTURE_A"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:42.997Z"
+      "timestamp": "2026-09-15T11:37:15.017Z"
     },
     {
       "id": "ul-fvtbst33bl51710",
       "name": "Renata Kids Study Desk cum Drawer Unit on Wheels in Lime Yellow Azure Blue Colour",
       "shortName": "Renata",
-      "summary": "A tailored multicolor facade with child-scaled proportions introduces organized visual warmth to the space. Designed for young learners, this multicolor desk pairs comfortable tabletop dimensions with accessible organization. Crafted with dependable mdf panels, the structure preserves strict mechanical alignment across years of active family life. Smooth outer edges and protective surfaces ensure everyday ease and safety while children study, play, and rest. Renata settles into your bedroom suite with resilient mdf paneling, wipe-clean surfaces, and inviting domestic warmth.",
-      "opener": "A tailored multicolor facade with child-scaled proportions introduces organized visual warmth to the space",
-      "closer": "Renata settles into your bedroom suite with resilient mdf paneling, wipe-clean surfaces, and inviting domestic warmth.",
+      "summary": "Compact dimensions and a warm multicolor stain allow this kids study desk to maximize floor space in shared bedrooms. Segmented storage sections allow children to organize their own clothing, footwear, and hobby kits independently. Engineered with solid mdf, the structure resists warping while maintaining rock-solid joint connections. The tidy room layout promotes independent organization habits while keeping walkways completely clear of tripping hazards. Renata supports daily bedroom activities with genuine mdf materials, tidy organization, and inviting domestic warmth.",
+      "opener": "Compact dimensions and a warm multicolor stain allow this kids study desk to maximize floor space in shared bedrooms",
+      "closer": "Renata supports daily bedroom activities with genuine mdf materials, tidy organization, and inviting domestic warmth.",
       "angle": "STRUCTURE_A",
-      "structure": "SPATIAL_OBSERVATION -> FUNCTION -> FUNCTION -> PRACTICAL_USE -> CONCLUSION",
+      "structure": "SPATIAL_OBSERVATION -> STORAGE_FUNCTION -> FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION",
       "facts": [
-        "mdf",
-        "multicolor",
-        "study desk",
-        "STRUCTURE_A"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:42.998Z"
+      "timestamp": "2026-09-15T11:37:15.018Z"
     },
     {
       "id": "ul-fvtbst33pi51622",
       "name": "Cherokee Multicolor Kids Student Desk with 4 Handle Less Drawers in Ivory English Pink Colour",
       "shortName": "Cherokee",
-      "summary": "Clean geometric lines and a smooth brown surface give this kids piece an organized, approachable aesthetic. The unit provides a sturdy, child-scaled workstation designed to support daily creative and learning activities. Solid mdf paneling provides a resilient foundation capable of handling continuous everyday household activity with ease. Durable protective coatings safeguard the framework while keeping routine cleaning and domestic maintenance straightforward. Cherokee provides dependable domestic service with child-scaled dimensions, sturdy frame construction, and uncluttered minimal balance.",
-      "opener": "Clean geometric lines and a smooth brown surface give this kids piece an organized, approachable aesthetic",
-      "closer": "Cherokee provides dependable domestic service with child-scaled dimensions, sturdy frame construction, and uncluttered minimal balance.",
+      "summary": "A functional multi-tier design and durable brown exterior bring disciplined order to children's daily routines. The structured bunk arrangement maximizes vertical room capacity, providing dedicated sleeping berths for two. daily The neatly resilient mdf chassis supports heavy book stacks and storage bins without sagging or frame flex. Maximizing vertical room capacity leaves generous floor area open for creative play, reading rugs, and toy chests. The balanced profile of Cherokee pairs a brown exterior with functional domestic functional order.",
+      "opener": "A functional multi-tier design and durable brown exterior bring disciplined order to children's daily routines",
+      "closer": "The balanced profile of Cherokee pairs a brown exterior with functional domestic functional order.",
       "angle": "STRUCTURE_A",
-      "structure": "MATERIAL_SENSORY -> PRACTICAL_USE -> FUNCTION -> FUNCTION -> CONCLUSION",
+      "structure": "USE_CASE -> SPATIAL_FUNCTION -> STORAGE_FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION",
       "facts": [
-        "mdf",
-        "brown",
-        "study desk",
-        "STRUCTURE_A"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:42.998Z"
+      "timestamp": "2026-09-15T11:37:15.020Z"
     },
     {
       "id": "ul-fvtbst33ye51700",
       "name": "Tiara Kids Study Desk with 3 Drawers and Built In Bookshelf in Mango Yellow Colour",
       "shortName": "Tiara",
-      "summary": "An approachable multicolor profile and smooth surfaces create an inviting children's room companion. This multicolor study workstation provides dedicated surface space for books, coloring materials, and daily homework. Crafted with dependable mdf panels, the structure preserves strict mechanical alignment across years of active family life. Smooth outer edges and protective surfaces ensure everyday ease and safety while children study, play, and rest. Tiara enriches the domestic environment with clean multicolor visual character, rounded edge safety, and warm domestic balance.",
-      "opener": "An approachable multicolor profile and smooth surfaces create an inviting children's room companion",
-      "closer": "Tiara enriches the domestic environment with clean multicolor visual character, rounded edge safety, and warm domestic balance.",
+      "summary": "Clean geometric lines and a bright multicolor finish establish an uncluttered, inspiring study and rest zone. A spacious desktop area accommodates computer monitors, notebooks, and writing instruments comfortably for study time. Built from selected mdf, the unit securely offers reliable frame rigidity and daily uniform surface alignment. An organized desk environment reduces distractions, supporting effective study sessions and relaxed evening routines. Tiara delivers reliable household service through authentic mdf panels, warm multicolor tones, and restful ease.",
+      "opener": "Clean geometric lines and a bright multicolor finish establish an uncluttered, inspiring study and rest zone",
+      "closer": "Tiara delivers reliable household service through authentic mdf panels, warm multicolor tones, and restful ease.",
       "angle": "STRUCTURE_A",
-      "structure": "SPATIAL_OBSERVATION -> FUNCTION -> FUNCTION -> PRACTICAL_USE -> CONCLUSION",
+      "structure": "MATERIAL_SENSORY -> PRACTICAL_USE -> FUNCTION -> PRACTICAL_USE -> CONCLUSION",
       "facts": [
-        "mdf",
-        "multicolor",
-        "study desk",
-        "STRUCTURE_A"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:42.999Z"
+      "timestamp": "2026-09-15T11:37:15.021Z"
     },
     {
       "id": "ul-fvtbst33ye51623",
       "name": "Cherokee Multicolor Kids Student Desk with 4 Handle Less Drawers in Light Woodgrain Mango Yellow Colour",
       "shortName": "Cherokee",
-      "summary": "Daily learning and rest proceed smoothly around furniture scaled thoughtfully for children's comfort and daily ease. It delivers dependable functional support tailored for young children's daily learning and creative activities. Sturdy mdf framing maintains solid platform alignment and unwavering stability through continuous family use. Integrated functional sections keep bedtime and study essentials accessible, supporting an unhurried daily routine. Cherokee completes your room arrangement with approachable functional layout, durable panel strength, and quiet domestic comfort.",
-      "opener": "Daily learning and rest proceed smoothly around furniture scaled thoughtfully for children's comfort and daily ease",
-      "closer": "Cherokee completes your room arrangement with approachable functional layout, durable panel strength, and quiet domestic comfort.",
-      "angle": "STRUCTURE_B",
-      "structure": "USE_CASE -> PRACTICAL_USE -> FUNCTION -> FUNCTION -> CONCLUSION",
+      "summary": "A charming multicolor facade and sturdy proportions make this kids study desk a dependable anchor for kids' bedroom decor. Deep drawer tiers store folded children's apparel, pyjamas, and bedding sets in clean, organized sections. Solid mdf components ensure dependable corner joinery, stable base support, and lasting performance. Keeping childhood essentials neatly stored supports a clean visual horizon and peaceful bedtime relaxation. Built for everyday domestic life, Cherokee combines solid mdf elements with multicolor styling and clean simplicity.",
+      "opener": "A charming multicolor facade and sturdy proportions make this kids study desk a dependable anchor for kids' bedroom decor",
+      "closer": "Built for everyday domestic life, Cherokee combines solid mdf elements with multicolor styling and clean simplicity.",
+      "angle": "STRUCTURE_A",
+      "structure": "OBSERVATION -> STORAGE_FUNCTION -> PRACTICAL_USE -> FUNCTION -> CONCLUSION",
       "facts": [
-        "mdf",
-        "multicolor",
-        "study desk",
-        "STRUCTURE_B"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:43.000Z"
+      "timestamp": "2026-09-15T11:37:15.023Z"
     },
     {
       "id": "ul-fvtbst33pi51712",
       "name": "Royale Kids Study Set with Folding Desk cum Bookshelf and Wooden Chair in Barbie Pink Colour",
       "shortName": "Royale",
-      "summary": "Children settle into focused creative play and study on this comfortable, child-scaled chair. Thoughtfully proportioned for young users, this brown companion supports healthy everyday study and resting habits. Built with resilient mdf panels, the structure withstands energetic household activity with steady strength. Smooth wipeable surfaces ensure accidental spills are easily cleaned up during everyday arts and crafts sessions. Royale serves as a reliable domestic companion through child-scaled dimensions, sturdy frame construction, and functional clarity.",
-      "opener": "Children settle into focused creative play and study on this comfortable, child-scaled chair",
-      "closer": "Royale serves as a reliable domestic companion through child-scaled dimensions, sturdy frame construction, and functional clarity.",
-      "angle": "STRUCTURE_B",
-      "structure": "USE_CASE -> FUNCTION -> FUNCTION -> FUNCTION -> CONCLUSION",
+      "summary": "Space-conscious framing and an authentic brown stain provide versatile utility for growing children's bedrooms. The compact sleeping platform fits standard single mattresses while preserving wide floor walkways for room games. High-density mdf readily boards provide structural stability, level shelf tracking, and durable perimeter housing. The streamlined silhouette integrates naturally into varied room layouts without crowding windows or doors. Royale introduces disciplined storage utility and brown character to elevate your bedroom with honest material character.",
+      "opener": "Space-conscious framing and an authentic brown stain provide versatile utility for growing children's bedrooms",
+      "closer": "Royale introduces disciplined storage utility and brown character to elevate your bedroom with honest material character.",
+      "angle": "STRUCTURE_A",
+      "structure": "SPATIAL_OBSERVATION -> SPATIAL_FUNCTION -> STORAGE_FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION",
       "facts": [
-        "mdf",
-        "brown",
-        "kids chair",
-        "STRUCTURE_B"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:43.001Z"
+      "timestamp": "2026-09-15T11:37:15.025Z"
     },
     {
       "id": "ul-fvtbst33pu51718",
       "name": "Celestia Kids Study Set with Desk Bookshelf and Wooden Chair in Lavender Purple Colour",
       "shortName": "Celestia",
-      "summary": "Daily arts, crafts, and reading find comfortable support with a dedicated children's chair. It delivers dependable functional support tailored for young children's daily learning and creative activities. Sturdy mdf framing maintains solid platform alignment and unwavering stability through continuous family use. Integrated functional sections keep bedtime and study essentials accessible, supporting an unhurried daily routine. Celestia supports your household habits with steadfast mdf stability, accessible storage compartments, and minimal balance.",
-      "opener": "Daily arts, crafts, and reading find comfortable support with a dedicated children's chair",
-      "closer": "Celestia supports your household habits with steadfast mdf stability, accessible storage compartments, and minimal balance.",
-      "angle": "STRUCTURE_B",
-      "structure": "USE_CASE -> PRACTICAL_USE -> FUNCTION -> FUNCTION -> CONCLUSION",
+      "summary": "Understated modern styling and neatly daily a warm multicolor patina give this kids study desk a fresh, tidy bedroom presence. Accessible low-height shelving encourages young children to tidy away their own toys and storybooks after playtime. Constructed with mdf, the structure preserves enduring squareness, solid joint strength, and stability. Accessible child-height organization encourages daily tidying habits, keeping the family home orderly and calm. With clean geometric contours and multicolor surfaces, Celestia enhances your quarters with understated sophistication.",
+      "opener": "Understated modern styling and neatly daily a warm multicolor patina give this kids study desk a fresh, tidy bedroom presence",
+      "closer": "With clean geometric contours and multicolor surfaces, Celestia enhances your quarters with understated sophistication.",
+      "angle": "STRUCTURE_A",
+      "structure": "USE_CASE -> FUNCTION -> FUNCTION -> FUNCTION -> CONCLUSION",
       "facts": [
-        "mdf",
-        "multicolor",
-        "kids chair",
-        "STRUCTURE_B"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:43.002Z"
+      "timestamp": "2026-09-15T11:37:15.027Z"
     },
     {
       "id": "ul-fvtbst33pu51603",
       "name": "Calypso Kids Wall Mounted Folding Study Desk and Built In Bookshelf in Light Wood Lavender Purple Colour",
       "shortName": "Calypso",
-      "summary": "Simple, balanced contours in a bright multicolor finish ensure this piece feels light and friendly. This multicolor study workstation provides dedicated surface space for books, coloring materials, and daily homework. Crafted with dependable mdf panels, the structure preserves strict mechanical alignment across years of active family life. Smooth outer edges and protective surfaces ensure everyday ease and safety while children study, play, and rest. Calypso establishes an approachable focal point with authentic mdf construction, versatile activity utility, and pure functional order.",
-      "opener": "Simple, balanced contours in a bright multicolor finish ensure this piece feels light and friendly",
-      "closer": "Calypso establishes an approachable focal point with authentic mdf construction, versatile activity utility, and pure functional order.",
+      "summary": "A versatile multi-bay layout and rich multicolor stain offer ample capacity for books, toys, and study gear. Divided storage bays separate school assignments from play materials, helping maintain focused learning routines. Primary mdf framing delivers robust chassis readily balance and precise neatly partition squaring throughout routines. Maintaining clear floor walkways around the bed and desk ensures safe and effortless navigation throughout the day. Calypso offers dependable domestic utility through authentic mdf joinery and pure geometric clarity.",
+      "opener": "A versatile multi-bay layout and rich multicolor stain offer ample capacity for books, toys, and study gear",
+      "closer": "Calypso offers dependable domestic utility through authentic mdf joinery and pure geometric clarity.",
       "angle": "STRUCTURE_A",
-      "structure": "MATERIAL_SENSORY -> FUNCTION -> FUNCTION -> PRACTICAL_USE -> CONCLUSION",
+      "structure": "SPATIAL_OBSERVATION -> STORAGE_FUNCTION -> FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION",
       "facts": [
-        "mdf",
-        "multicolor",
-        "study desk",
-        "STRUCTURE_A"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:43.003Z"
+      "timestamp": "2026-09-15T11:37:15.029Z"
     },
     {
       "id": "ul-fvtbst33ok52777",
       "name": "Topolino Toddler Activity Table &amp; Chair in Oak and Pink",
       "shortName": "Topolino",
-      "summary": "A child-scaled pink chair brings ergonomic seating comfort and bright visual appeal to the study area. This pink kids chair supplies comfortable, child-scaled seating tailored for homework, creative drawing, and reading. High-density hdf components maintain platform levelness and structural rigidity throughout years of active family use. Wipe-clean protective surfaces resist daily domestic wear, keeping the children's room looking fresh and well-maintained. Topolino enhances your daily living space with approachable functional layout, durable panel strength, and inviting domestic warmth.",
-      "opener": "A child-scaled pink chair brings ergonomic seating comfort and bright visual appeal to the study area",
-      "closer": "Topolino enhances your daily living space with approachable functional layout, durable panel strength, and inviting domestic warmth.",
+      "summary": "Playful proportions and an authentic pink patina create a creative atmosphere in the children's quarters. The open desk perimeter provides comfortable legroom alongside room for study chairs and under-desk organizers. Built with true-grain hdf, the outer chassis and carefully internal divider panels deliver steady structural balance. The cheerful, organized setup creates an inspiring environment where children can study, create, and unwind happily. Showcasing an authentic pink exterior, Topolino provides lasting dependable structural integrity for master bedrooms.",
+      "opener": "Playful proportions and an authentic pink patina create a creative atmosphere in the children's quarters",
+      "closer": "Showcasing an authentic pink exterior, Topolino provides lasting dependable structural integrity for master bedrooms.",
       "angle": "STRUCTURE_A",
-      "structure": "OBSERVATION -> SPATIAL_FUNCTION -> FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION",
+      "structure": "OBSERVATION -> SPATIAL_FUNCTION -> FUNCTION -> PRACTICAL_USE -> CONCLUSION",
       "facts": [
-        "hdf",
-        "pink",
-        "kids chair",
-        "STRUCTURE_A"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:43.004Z"
+      "timestamp": "2026-09-15T11:37:15.031Z"
     },
     {
       "id": "ul-fvstch62pk33616",
       "name": "Lavista Solid Wood Kids Chair in Barbie Pink Colour",
       "shortName": "Lavista",
-      "summary": "Creative playtime and quiet reading find a supportive home on this sturdy children's chair. Designed for regular family use, this pink piece integrates reliable domestic utility into an approachable profile. High-grade teak wood components maintain dependable load-bearing strength across years of regular domestic use. Practical storage sections and sturdy surfaces help children organize toys, books, and accessories independently. Lavista handles daily domestic life with authentic teak wood construction, versatile activity utility, and restful ease.",
-      "opener": "Creative playtime and quiet reading find a supportive home on this sturdy children's chair",
-      "closer": "Lavista handles daily domestic life with authentic teak wood construction, versatile activity utility, and restful ease.",
-      "angle": "STRUCTURE_B",
-      "structure": "OBSERVATION -> FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION",
+      "summary": "Streamlined contours and a smooth pink exterior make this kids bed a practical solution for shared kids' rooms. Multiple pull-out compartments keep smaller toy pieces, craft supplies, and stationery items neatly categorized. Dense teak wood panels daily ensure lasting chassis durability, reliable corner reliably joints, and authentic character. Enclosing clothing and toys inside solid compartments maintains an orderly, relaxing bedroom aesthetic for sleep. Lavista brings together solid teak wood construction and a pink stain to create pure geometric clarity.",
+      "opener": "Streamlined contours and a smooth pink exterior make this kids bed a practical solution for shared kids' rooms",
+      "closer": "Lavista brings together solid teak wood construction and a pink stain to create pure geometric clarity.",
+      "angle": "STRUCTURE_A",
+      "structure": "OBSERVATION -> FUNCTION -> MATERIAL_DETAIL -> PRACTICAL_USE -> CONCLUSION",
       "facts": [
-        "teak wood",
-        "pink",
-        "kids chair",
-        "STRUCTURE_B"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:43.005Z"
+      "timestamp": "2026-09-15T11:37:15.033Z"
     },
     {
       "id": "ul-fvstch33ok52758",
       "name": "Topolino Engineered Wood Kids Chair in Red Colour",
       "shortName": "Topolino",
-      "summary": "Starting daily homework feels comfortable and supportive on this child-proportioned seat. This red design provides accessible functional utility suited for daily play, focused study, and restful sleep. Dense hdf paneling provides a steady framework that resists shifting during active daily household interactions. Child-scaled dimensions ensure comfortable seating and access, fostering confident and independent everyday habits. Topolino settles into your bedroom suite with resilient hdf paneling, wipe-clean surfaces, and uncluttered harmony.",
-      "opener": "Starting daily homework feels comfortable and supportive on this child-proportioned seat",
-      "closer": "Topolino settles into your bedroom suite with resilient hdf paneling, wipe-clean surfaces, and uncluttered harmony.",
-      "angle": "STRUCTURE_B",
-      "structure": "USE_CASE -> PRACTICAL_USE -> FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION",
+      "summary": "A durable red exterior and structured compartmentalization support daily learning and organized rest. The space-saving vertical profile combines sleep, study, and storage functions within a single room footprint. Engineered hdf construction provides durable perimeter strength, neatly level shelf placement, and stable base support. Multi-functional utility allows growing children to transition smoothly between study time, playtime, and nightly rest. Clean lines and red surface tones ensure Topolino delivers enduring unhurried morning rest to your home.",
+      "opener": "A durable red exterior and structured compartmentalization support daily learning and organized rest",
+      "closer": "Clean lines and red surface tones ensure Topolino delivers enduring unhurried morning rest to your home.",
+      "angle": "STRUCTURE_A",
+      "structure": "USE_CASE -> STORAGE_FUNCTION -> STORAGE_FUNCTION -> PRACTICAL_USE -> CONCLUSION",
       "facts": [
-        "hdf",
-        "red",
-        "kids chair",
-        "STRUCTURE_B"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:43.007Z"
+      "timestamp": "2026-09-15T11:37:15.036Z"
     },
     {
       "id": "ul-fvstch33ok52763",
       "name": "Topolino Engineered Wood Kids Chair in Teal Colour",
       "shortName": "Topolino",
-      "summary": "Clean proportions and smooth blue contours give this kids chair an engaging, approachable presence. Designed for growing learners, this blue seating companion pairs sturdy back support with an accessible height. Dense hdf framing ensures steadfast structural balance, keeping the entire piece firmly grounded through daily use. Smooth rounded corners protect active young family members while maintaining a neat and clean room environment. Topolino maintains a reliable domestic presence through clean blue visual character, rounded edge safety, and uncluttered harmony.",
-      "opener": "Clean proportions and smooth blue contours give this kids chair an engaging, approachable presence",
-      "closer": "Topolino maintains a reliable domestic presence through clean blue visual character, rounded edge safety, and uncluttered harmony.",
+      "summary": "Modern architectural lines in a warm blue tone accord to this children's kids bed a neat, contemporary appeal. Wide tabletop dimensions give budding artists ample room to spread out sketchbooks, paints, and learning materials. Crafted with hdf, the frame retains rock-solid corner joinery, level work surfaces, and durability. The uncluttered work surface promotes calm concentration during school assignments and creative drawing projects. Topolino fits naturally into master suites, combining hdf framing with modern refinement.",
+      "opener": "Modern architectural lines in a warm blue tone accord to this children's kids bed a neat, contemporary appeal",
+      "closer": "Topolino fits naturally into master suites, combining hdf framing with modern refinement.",
       "angle": "STRUCTURE_A",
-      "structure": "OBSERVATION -> SPATIAL_FUNCTION -> FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION",
+      "structure": "OBSERVATION -> SPATIAL_FUNCTION -> FUNCTION -> FUNCTION -> CONCLUSION",
       "facts": [
-        "hdf",
-        "blue",
-        "kids chair",
-        "STRUCTURE_A"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:43.008Z"
+      "timestamp": "2026-09-15T11:37:15.038Z"
     },
     {
       "id": "ul-fvstch33ok52762",
       "name": "Topolino Engineered Wood Kids Chair in Yellow Colour",
       "shortName": "Topolino",
-      "summary": "With its space-conscious scale, this yellow chair preserves clear walkways around children's workstations. It delivers reliable functional utility within a consolidated footprint, preserving open pathways across the room. Dense hdf framing provides solid load-bearing capacity and resists distortion during everyday family use. Smooth perimeter contours allow comfortable movement around the piece while keeping the room feeling open. Topolino anchors your personal resting space with honest hdf durability, child-friendly proportions, and functional clarity.",
-      "opener": "With its space-conscious scale, this yellow chair preserves clear walkways around children's workstations",
-      "closer": "Topolino anchors your personal resting space with honest hdf durability, child-friendly proportions, and functional clarity.",
-      "angle": "STRUCTURE_C",
-      "structure": "SPATIAL_OBSERVATION -> SPATIAL_FUNCTION -> FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION",
+      "summary": "A compact rectangular profile and authentic yellow stain fit seamlessly into active children's bedrooms. Concealed cabinet sections keep bulky sports equipment, board games, and extra pillows neatly tucked away. The durable hdf chassis delivers steady platform balance and durable joint alignment across living. Concealing daily bedroom clutter inside dedicated storage creates a serene, relaxing space for evening stories. With its understated yellow silhouette, Topolino establishes an atmosphere of lasting dependable quality.",
+      "opener": "A compact rectangular profile and authentic yellow stain fit seamlessly into active children's bedrooms",
+      "closer": "With its understated yellow silhouette, Topolino establishes an atmosphere of lasting dependable quality.",
+      "angle": "STRUCTURE_A",
+      "structure": "OBSERVATION -> FUNCTION -> FUNCTION -> STORAGE_FUNCTION -> CONCLUSION",
       "facts": [
-        "hdf",
-        "yellow",
-        "kids chair",
-        "STRUCTURE_C"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:43.010Z"
+      "timestamp": "2026-09-15T11:37:15.041Z"
     },
     {
       "id": "ul-fvstch33ok52761",
       "name": "Topolino Engineered Wood Kids Chair in Red Colour",
       "shortName": "Topolino",
-      "summary": "An approachable red chair silhouette establishes a dedicated workstation seat for creative play. The thoughtfully scaled chair proportions provide dependable seating comfort tailored specifically for young children. Constructed from sturdy hdf, the frame delivers dependable stability and reliable support for active daily routines. Thoughtfully scaled access clearance allows children to navigate resting, seating, and storage areas independently and comfortably. Topolino supports your household habits with steadfast hdf stability, accessible storage compartments, and clean domestic harmony.",
-      "opener": "An approachable red chair silhouette establishes a dedicated workstation seat for creative play",
-      "closer": "Topolino supports your household habits with steadfast hdf stability, accessible storage compartments, and clean domestic harmony.",
+      "summary": "Artisanal warmth and a refined red finish provide dependable storage for kids' daily essentials. The secure platform deck holds the mattress firmly while providing accessible bedside room for water bottles. Solid hdf structural casing supplies structured support across the entire unit, curtailing wobble or panel shift. Preserving wide floor perimeters ensures comfortable room movement during lively games and family activities. Topolino enriches master bedroom arrangements through natural hdf texture and understated sophistication.",
+      "opener": "Artisanal warmth and a refined red finish provide dependable storage for kids' daily essentials",
+      "closer": "Topolino enriches master bedroom arrangements through natural hdf texture and understated sophistication.",
       "angle": "STRUCTURE_A",
-      "structure": "OBSERVATION -> SPATIAL_FUNCTION -> PRACTICAL_USE -> STORAGE_FUNCTION -> CONCLUSION",
+      "structure": "USE_CASE -> SPATIAL_FUNCTION -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION",
       "facts": [
-        "hdf",
-        "red",
-        "kids chair",
-        "STRUCTURE_A"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:43.011Z"
+      "timestamp": "2026-09-15T11:37:15.043Z"
     },
     {
       "id": "ul-fvstch62lp33615",
       "name": "Lavista Solid Wood Kids Chair in Lavender Purple Colour",
       "shortName": "Lavista",
-      "summary": "A compact footprint allows this purple kids chair to slide cleanly beneath study desks without crowding room space. The space-efficient layout organizes children's necessities neatly without dominating the room's floor plan. High-density teak wood construction maintains structural balance and unwavering stability under regular domestic use. Space-conscious dimensions ensure surrounding walkways remain accessible for easy cleaning and active play. Lavista fits naturally into household routines through steadfast teak wood stability, accessible storage compartments, and clean simplicity.",
-      "opener": "A compact footprint allows this purple kids chair to slide cleanly beneath study desks without crowding room space",
-      "closer": "Lavista fits naturally into household routines through steadfast teak wood stability, accessible storage compartments, and clean simplicity.",
-      "angle": "STRUCTURE_C",
-      "structure": "SPATIAL_OBSERVATION -> SPATIAL_FUNCTION -> MATERIAL_DETAIL -> FUNCTION -> CONCLUSION",
+      "summary": "A bright, engaging silhouette in a purple stain encourages neat study habits and organized play in bedrooms. Tiered desktop organizers and drawers keep daily school supplies readily reachable during homework hours. Built from solid teak wood, the framework preserves steady structural support and flat desk alignment over time. Disciplined organization keeps essential school supplies at hand while preserving a peaceful bedroom retreat. Tailored for everyday family routines, Lavista unites a purple finish with cheerful comfort.",
+      "opener": "A bright, engaging silhouette in a purple stain encourages neat study habits and organized play in bedrooms",
+      "closer": "Tailored for everyday family routines, Lavista unites a purple finish with cheerful comfort.",
+      "angle": "STRUCTURE_A",
+      "structure": "OBSERVATION -> FUNCTION -> MATERIAL_DETAIL -> FUNCTION -> CONCLUSION",
       "facts": [
-        "teak wood",
-        "purple",
-        "kids chair",
-        "STRUCTURE_C"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:43.013Z"
+      "timestamp": "2026-09-15T11:37:15.046Z"
     },
     {
       "id": "ul-fvstch33ok52756",
       "name": "Topolino Engineered Wood Kids Chair in Teal Colour",
       "shortName": "Topolino",
-      "summary": "Crafted from sturdy hdf, this blue kids chair delivers dependable daily seating strength for learning. It provides a level resting or study surface designed specifically for comfortable everyday domestic use. Durable hdf framing and structural panels provide reliable load-bearing support for daily domestic life. Accessible compartments keep daily essentials organized, supporting tidy bedroom habits throughout the week. Topolino fits naturally into household routines through steadfast hdf stability, accessible storage compartments, and steadfast craft quality.",
-      "opener": "Crafted from sturdy hdf, this blue kids chair delivers dependable daily seating strength for learning",
-      "closer": "Topolino fits naturally into household routines through steadfast hdf stability, accessible storage compartments, and steadfast craft quality.",
-      "angle": "STRUCTURE_D",
-      "structure": "USE_CASE -> FUNCTION -> PRACTICAL_USE -> FUNCTION -> CONCLUSION",
+      "summary": "Functional tiered storage and a warm blue finish keep school supplies and toys within easy child reach. Generous under-bed clearance allows convenient placement of modular storage boxes and seasonal toy bins. High-density hdf construction daily forms the exterior walls carefully and base legs, ensuring steady chassis balance. The compact, efficient design adapts easily as your child grows, providing enduring utility in the family home. Topolino provides steadfast household service, combining hdf panels with warm living comfort.",
+      "opener": "Functional tiered storage and a warm blue finish keep school supplies and toys within easy child reach",
+      "closer": "Topolino provides steadfast household service, combining hdf panels with warm living comfort.",
+      "angle": "STRUCTURE_A",
+      "structure": "MATERIAL_SENSORY -> STORAGE_FUNCTION -> FUNCTION -> FUNCTION -> CONCLUSION",
       "facts": [
-        "hdf",
-        "blue",
-        "kids chair",
-        "STRUCTURE_D"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:43.015Z"
+      "timestamp": "2026-09-15T11:37:15.049Z"
     },
     {
       "id": "ul-fvstch33ok52764",
       "name": "Topolino Engineered Wood Kids Chair in Blue Colour",
       "shortName": "Topolino",
-      "summary": "Featuring resilient hdf framing, this blue chair delivers lasting seating reliability for young learners. This piece pairs clean architectural proportions with a practical layout tailored for children's daily routines. High-density hdf construction guarantees lasting structural strength and dependable support for active children. Protective exterior finishes resist daily domestic wear, making regular household cleaning quick and convenient. Topolino delivers lasting domestic reliability with honest hdf durability, child-friendly proportions, and enduring craft integrity.",
-      "opener": "Featuring resilient hdf framing, this blue chair delivers lasting seating reliability for young learners",
-      "closer": "Topolino delivers lasting domestic reliability with honest hdf durability, child-friendly proportions, and enduring craft integrity.",
-      "angle": "STRUCTURE_D",
-      "structure": "OBSERVATION -> FUNCTION -> PRACTICAL_USE -> FUNCTION -> CONCLUSION",
+      "summary": "Crisp perimeter lines and an authentic blue finish readily establish a bright, tidy children's room aesthetic. Partitioned cubbies provide dedicated homes for backpacks, lunch bags, and daily school uniforms near the door. Constructed from hdf, the piece offers consistent finish texture, robust framing, and reliable structure. Keeping books and play items neatly arranged fosters an orderly, serene bedroom atmosphere for sound sleep. An authentic blue finish allows Topolino to complement existing bedroom furniture with authentic quality.",
+      "opener": "Crisp perimeter lines and an authentic blue finish readily establish a bright, tidy children's room aesthetic",
+      "closer": "An authentic blue finish allows Topolino to complement existing bedroom furniture with authentic quality.",
+      "angle": "STRUCTURE_A",
+      "structure": "MATERIAL_SENSORY -> FUNCTION -> FUNCTION -> PRACTICAL_USE -> CONCLUSION",
       "facts": [
-        "hdf",
-        "blue",
-        "kids chair",
-        "STRUCTURE_D"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:43.017Z"
+      "timestamp": "2026-09-15T11:37:15.052Z"
     },
     {
       "id": "ul-fvstch62gt33619",
       "name": "Lavista Solid Wood Kids Chair in Verdant Green Colour",
       "shortName": "Lavista",
-      "summary": "Calibrated proportions ensure this green seating piece integrates smoothly into shared study and play zones. This green piece maximizes usable play area while providing dedicated resting, storage, or study space. Sturdy teak wood components maintain platform levelness and rigidity through continuous active family living. The compact perimeter layout fits cleanly along room walls, leaving central floor space clear for creative activities. Lavista establishes an approachable focal point with authentic teak wood construction, versatile activity utility, and minimal balance.",
-      "opener": "Calibrated proportions ensure this green seating piece integrates smoothly into shared study and play zones",
-      "closer": "Lavista establishes an approachable focal point with authentic teak wood construction, versatile activity utility, and minimal balance.",
-      "angle": "STRUCTURE_C",
-      "structure": "OBSERVATION -> STORAGE_FUNCTION -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION",
+      "summary": "A balanced profile and smooth green exterior readily make this kids bed an essential companion for childhood routines. The broad work surface supports desktop task lighting, pencil organizers, and study materials without crowding. Substantial teak wood elements deliver steadfast cabinet integrity, joint stability, and load resilience over time. The balanced perimeter styling enhances room harmony while supporting active learning and disciplined storage. Lavista completes the master suite layout through sturdy teak wood framing and minimal harmony.",
+      "opener": "A balanced profile and smooth green exterior readily make this kids bed an essential companion for childhood routines",
+      "closer": "Lavista completes the master suite layout through sturdy teak wood framing and minimal harmony.",
+      "angle": "STRUCTURE_A",
+      "structure": "OBSERVATION -> PRACTICAL_USE -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION",
       "facts": [
-        "teak wood",
-        "green",
-        "kids chair",
-        "STRUCTURE_C"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:43.019Z"
+      "timestamp": "2026-09-15T11:37:15.055Z"
     },
     {
       "id": "ul-fvstch33ok52765",
       "name": "Topolino Engineered Wood Kids Chair in Light Blue Colour",
       "shortName": "Topolino",
-      "summary": "Homework and drawing sessions proceed comfortably with seating tailored for young children's posture. This blue unit pairs accessible proportions with dependable construction suited for vibrant children's rooms. Solid hdf paneling preserves structural alignment and trustworthy load support through seasons of childhood growth. Accessible functional areas encourage kids to maintain their own belongings, supporting an organized room environment. Topolino establishes an approachable focal point with authentic hdf construction, versatile activity utility, and clean simplicity.",
-      "opener": "Homework and drawing sessions proceed comfortably with seating tailored for young children's posture",
-      "closer": "Topolino establishes an approachable focal point with authentic hdf construction, versatile activity utility, and clean simplicity.",
-      "angle": "STRUCTURE_B",
-      "structure": "OBSERVATION -> FUNCTION -> PRACTICAL_USE -> SPATIAL_FUNCTION -> CONCLUSION",
+      "summary": "Warm timber accents and a versatile blue stain create a comforting environment for nightly rest. Low-profile storage drawers slide smoothly to give children quick access to their favorite dress-up outfits. Primary hdf framing daily ensures solid corner joinery, level platform positions, and balance across routines. Enclosing personal belongings within the unit maintains a tidy, welcoming bedroom space for family living. Structured proportions and a blue exterior make Topolino a trusted addition for restful ease.",
+      "opener": "Warm timber accents and a versatile blue stain create a comforting environment for nightly rest",
+      "closer": "Structured proportions and a blue exterior make Topolino a trusted addition for restful ease.",
+      "angle": "STRUCTURE_A",
+      "structure": "USE_CASE -> STORAGE_FUNCTION -> FUNCTION -> FUNCTION -> CONCLUSION",
       "facts": [
-        "hdf",
-        "blue",
-        "kids chair",
-        "STRUCTURE_B"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:43.020Z"
+      "timestamp": "2026-09-15T11:37:15.058Z"
     },
     {
       "id": "ul-fvstch33ok52757",
       "name": "Topolino Engineered Wood Kids Chair in Yellow Colour",
       "shortName": "Topolino",
-      "summary": "Space-efficient dimensions make this yellow chair easy to position beside children's tables and study desks. This unit supplies practical everyday utility while leaving surrounding floor areas completely open for active play. Solid hdf framing preserves strict structural alignment, keeping the piece securely grounded over time. The streamlined silhouette preserves generous room circulation and makes routine bedroom cleaning simple and quick. Topolino maintains a reliable domestic presence through clean yellow visual character, rounded edge safety, and balanced order.",
-      "opener": "Space-efficient dimensions make this yellow chair easy to position beside children's tables and study desks",
-      "closer": "Topolino maintains a reliable domestic presence through clean yellow visual character, rounded edge safety, and balanced order.",
-      "angle": "STRUCTURE_C",
-      "structure": "SPATIAL_OBSERVATION -> SPATIAL_FUNCTION -> FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION",
+      "summary": "Spacious compartment tiers and an authentic yellow finish bring orderly utility to busy family homes. The organized layout keeps bedtime storybooks and soothing night lights conveniently positioned for reading. Built with hdf, the framework delivers unwavering integrity securely and uniform securely surface alignment across daily use. Open floor space around the furniture ensures natural circulation and an easy, playful domestic rhythm. Topolino enriches modern bedroom quarters with solid hdf support and honest material character.",
+      "opener": "Spacious compartment tiers and an authentic yellow finish bring orderly utility to busy family homes",
+      "closer": "Topolino enriches modern bedroom quarters with solid hdf support and honest material character.",
+      "angle": "STRUCTURE_A",
+      "structure": "MATERIAL_SENSORY -> PRACTICAL_USE -> FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION",
       "facts": [
-        "hdf",
-        "yellow",
-        "kids chair",
-        "STRUCTURE_C"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:43.022Z"
+      "timestamp": "2026-09-15T11:37:15.061Z"
     },
     {
       "id": "ul-fvstch62bl33617",
       "name": "Lavista Solid Wood Kids Chair in Azure Blue Colour",
       "shortName": "Lavista",
-      "summary": "Dense teak wood components form the core foundation of this practical, child-scaled blue seat. The design features a sturdy framework proportioned to accommodate young family members throughout active years. Solid teak wood panels ensure dependable load distribution across the entire structure throughout years of active use. Smooth protective coatings safeguard the material surface from accidental spills while remaining easy to wipe down. Lavista establishes an approachable focal point with authentic teak wood construction, versatile activity utility, and dependable domestic strength.",
-      "opener": "Dense teak wood components form the core foundation of this practical, child-scaled blue seat",
-      "closer": "Lavista establishes an approachable focal point with authentic teak wood construction, versatile activity utility, and dependable domestic strength.",
-      "angle": "STRUCTURE_D",
-      "structure": "MATERIAL_SENSORY -> FUNCTION -> MATERIAL_DETAIL -> FUNCTION -> CONCLUSION",
+      "summary": "A classic silhouette in a bright blue tone provides dependable functionality across childhood stages. Dedicated compartment shelves hold textbooks, reference guides, and creative supplies in disciplined tiers. Durable teak wood construction ensures neatly lasting frame rigidity, dependable shelf reinforcement, and finish character. Structured organization daily inside the unit keeps children's rooms neat, practical, and restful across everyday living. With genuine teak wood materials and a blue tone, Lavista fosters lasting cheerful living comfort.",
+      "opener": "A classic silhouette in a bright blue tone provides dependable functionality across childhood stages",
+      "closer": "With genuine teak wood materials and a blue tone, Lavista fosters lasting cheerful living comfort.",
+      "angle": "STRUCTURE_A",
+      "structure": "OBSERVATION -> STORAGE_FUNCTION -> STORAGE_FUNCTION -> FUNCTION -> CONCLUSION",
       "facts": [
-        "teak wood",
-        "blue",
-        "kids chair",
-        "STRUCTURE_D"
+        "primaryMaterial",
+        "finish",
+        "subcategory"
       ],
-      "timestamp": "2026-09-15T10:43:43.025Z"
+      "timestamp": "2026-09-15T11:37:15.065Z"
     }
   ],
   "angleCounts": {
-    "STRUCTURE_A": 16,
-    "STRUCTURE_B": 10,
-    "STRUCTURE_C": 7,
-    "STRUCTURE_D": 5
+    "STRUCTURE_A": 26
   },
   "structureCounts": {
-    "SPATIAL_OBSERVATION -> FUNCTION -> FUNCTION -> FUNCTION -> CONCLUSION": 1,
-    "OBSERVATION -> FUNCTION -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION": 1,
-    "MATERIAL_SENSORY -> SPATIAL_FUNCTION -> FUNCTION -> PRACTICAL_USE -> CONCLUSION": 2,
-    "MATERIAL_SENSORY -> SPATIAL_FUNCTION -> MATERIAL_DETAIL -> FUNCTION -> CONCLUSION": 1,
-    "USE_CASE -> FUNCTION -> MATERIAL_DETAIL -> FUNCTION -> CONCLUSION": 1,
-    "USE_CASE -> PRACTICAL_USE -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION": 1,
-    "OBSERVATION -> FUNCTION -> FUNCTION -> STORAGE_FUNCTION -> CONCLUSION": 1,
-    "OBSERVATION -> STORAGE_FUNCTION -> FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION": 1,
-    "MATERIAL_SENSORY -> FUNCTION -> MATERIAL_DETAIL -> FUNCTION -> CONCLUSION": 2,
-    "OBSERVATION -> FUNCTION -> PRACTICAL_USE -> FUNCTION -> CONCLUSION": 2,
-    "OBSERVATION -> FUNCTION -> FUNCTION -> FUNCTION -> CONCLUSION": 1,
-    "OBSERVATION -> SPATIAL_FUNCTION -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION": 1,
-    "SPATIAL_OBSERVATION -> SPATIAL_FUNCTION -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION": 1,
-    "OBSERVATION -> SPATIAL_FUNCTION -> FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION": 3,
-    "OBSERVATION -> SPATIAL_FUNCTION -> FUNCTION -> FUNCTION -> CONCLUSION": 1,
-    "MATERIAL_SENSORY -> FUNCTION -> FUNCTION -> FUNCTION -> CONCLUSION": 1,
+    "MATERIAL_SENSORY -> SPATIAL_FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION": 1,
+    "SPATIAL_OBSERVATION -> STORAGE_FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION": 1,
+    "SPATIAL_OBSERVATION -> SPATIAL_FUNCTION -> PRACTICAL_USE -> SPATIAL_FUNCTION -> CONCLUSION": 1,
+    "MATERIAL_SENSORY -> FUNCTION -> FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION": 1,
+    "OBSERVATION -> PRACTICAL_USE -> STORAGE_FUNCTION -> PRACTICAL_USE -> CONCLUSION": 1,
+    "USE_CASE -> STORAGE_FUNCTION -> FUNCTION -> PRACTICAL_USE -> CONCLUSION": 1,
+    "SPATIAL_OBSERVATION -> STORAGE_FUNCTION -> FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION": 2,
+    "USE_CASE -> SPATIAL_FUNCTION -> STORAGE_FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION": 1,
     "MATERIAL_SENSORY -> PRACTICAL_USE -> FUNCTION -> PRACTICAL_USE -> CONCLUSION": 1,
-    "SPATIAL_OBSERVATION -> FUNCTION -> FUNCTION -> PRACTICAL_USE -> CONCLUSION": 2,
-    "MATERIAL_SENSORY -> PRACTICAL_USE -> FUNCTION -> FUNCTION -> CONCLUSION": 1,
-    "USE_CASE -> PRACTICAL_USE -> FUNCTION -> FUNCTION -> CONCLUSION": 2,
+    "OBSERVATION -> STORAGE_FUNCTION -> PRACTICAL_USE -> FUNCTION -> CONCLUSION": 1,
+    "SPATIAL_OBSERVATION -> SPATIAL_FUNCTION -> STORAGE_FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION": 1,
     "USE_CASE -> FUNCTION -> FUNCTION -> FUNCTION -> CONCLUSION": 1,
+    "OBSERVATION -> SPATIAL_FUNCTION -> FUNCTION -> PRACTICAL_USE -> CONCLUSION": 1,
+    "OBSERVATION -> FUNCTION -> MATERIAL_DETAIL -> PRACTICAL_USE -> CONCLUSION": 1,
+    "USE_CASE -> STORAGE_FUNCTION -> STORAGE_FUNCTION -> PRACTICAL_USE -> CONCLUSION": 1,
+    "OBSERVATION -> SPATIAL_FUNCTION -> FUNCTION -> FUNCTION -> CONCLUSION": 1,
+    "OBSERVATION -> FUNCTION -> FUNCTION -> STORAGE_FUNCTION -> CONCLUSION": 1,
+    "USE_CASE -> SPATIAL_FUNCTION -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION": 1,
+    "OBSERVATION -> FUNCTION -> MATERIAL_DETAIL -> FUNCTION -> CONCLUSION": 1,
+    "MATERIAL_SENSORY -> STORAGE_FUNCTION -> FUNCTION -> FUNCTION -> CONCLUSION": 1,
     "MATERIAL_SENSORY -> FUNCTION -> FUNCTION -> PRACTICAL_USE -> CONCLUSION": 1,
-    "OBSERVATION -> FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION": 1,
-    "USE_CASE -> PRACTICAL_USE -> FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION": 1,
-    "SPATIAL_OBSERVATION -> SPATIAL_FUNCTION -> FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION": 2,
-    "OBSERVATION -> SPATIAL_FUNCTION -> PRACTICAL_USE -> STORAGE_FUNCTION -> CONCLUSION": 1,
-    "SPATIAL_OBSERVATION -> SPATIAL_FUNCTION -> MATERIAL_DETAIL -> FUNCTION -> CONCLUSION": 1,
-    "USE_CASE -> FUNCTION -> PRACTICAL_USE -> FUNCTION -> CONCLUSION": 1,
-    "OBSERVATION -> STORAGE_FUNCTION -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION": 1,
-    "OBSERVATION -> FUNCTION -> PRACTICAL_USE -> SPATIAL_FUNCTION -> CONCLUSION": 1
+    "OBSERVATION -> PRACTICAL_USE -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION": 1,
+    "USE_CASE -> STORAGE_FUNCTION -> FUNCTION -> FUNCTION -> CONCLUSION": 1,
+    "MATERIAL_SENSORY -> PRACTICAL_USE -> FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION": 1,
+    "OBSERVATION -> STORAGE_FUNCTION -> STORAGE_FUNCTION -> FUNCTION -> CONCLUSION": 1
   },
-  "updated_at": "2026-09-15T10:43:43.025Z"
+  "updated_at": "2026-09-15T11:37:15.065Z"
 }

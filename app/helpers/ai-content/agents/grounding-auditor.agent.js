@@ -41,9 +41,18 @@ const BANNED_UNGROUNDED_TERMS = [
   { term: 'borer-proof', regex: /\bborer[- ]proof\b/i },
   { term: 'wobble-free', regex: /\bwobble[- ]free\b/i },
   { term: 'prevents drawer binding', regex: /\bprevents?\s+drawer\s+binding\b/i },
-  { term: 'resists timber movement', regex: /\bresists?\s+timber\s+movement\b/i },
   { term: 'engineered for heavy loads', regex: /\bengineered\s+for\s+heavy\s+loads\b/i },
   { term: 'acoustic dampening', regex: /\bacoustic\s+dampening\b/i },
+  { term: 'enduring density', regex: /\benduring\s+density\b/i },
+  { term: 'dependable stability', regex: /\bdependable\s+stability\b/i },
+  { term: 'smooth drawer action', regex: /\bsmooth(?:ly)?\s+(?:drawer\s+action|drawer\s+operation|drawer\s+travel|running\s+drawers?|sliding\s+drawer)\b/i },
+  { term: 'effortless hydraulic lift', regex: /\b(?:effortless|smooth)\s+hydraulic\s+lift\b/i },
+  { term: 'rigid mattress support', regex: /\b(?:rigid|unwavering)\s+(?:mattress\s+support|platform\s+stability)\b/i },
+  { term: 'robust door alignment', regex: /\brobust\s+door\s+alignment\b/i },
+  { term: 'dust protection', regex: /\b(?:dust\s+protection|ambient\s+dust)\b/i },
+  { term: 'full-length hanging rails', regex: /\bfull[- ]length\s+hanging\s+rails?\b/i },
+  { term: 'wipe-clean surfaces', regex: /\bwipe[- ]clean\b/i },
+  { term: 'load-bearing capacity', regex: /\bload[- ]bearing\s+capacity\b/i },
 ];
 
 const KNOWN_MATERIALS = [

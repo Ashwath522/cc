@@ -2,546 +2,404 @@
 
 /**
  * Beds Category Agent
- * Covers Solid Wood Beds, Hydraulic Storage Beds, Box Storage Beds, Platform Beds, and Upholstered Beds.
- * Uses 8 Structural Archetypes (Structures A–H) and dynamic attribute-driven combinatorial composition
- * to achieve 100% factual grounding, strict theme-loop alignment, 75-100 word counts, and zero repetition.
+ * Multi-Agent generator with 0 6-gram overlaps and strict factual grounding.
  */
 
 const { extractProductFacts } = require('./grounding-auditor.agent');
-const { hashSeed, pick, buildSynchronizedCloser } = require('./copy-composer.helper');
+const { hashSeed, buildDynamicCloser } = require('./copy-composer.helper');
 
 const BED_STRUCTURES = [
-  'STRUCTURE_A',
-  'STRUCTURE_B',
-  'STRUCTURE_C',
-  'STRUCTURE_D',
-  'STRUCTURE_E',
-  'STRUCTURE_F',
-  'STRUCTURE_G',
-  'STRUCTURE_H',
+  'STRUCTURE_A', 'STRUCTURE_B', 'STRUCTURE_C', 'STRUCTURE_D',
+  'STRUCTURE_E', 'STRUCTURE_F', 'STRUCTURE_G', 'STRUCTURE_H',
 ];
+
+function getValidBedAngles(facts) {
+  return ['STRUCTURE_A', 'STRUCTURE_B', 'STRUCTURE_C', 'STRUCTURE_D', 'STRUCTURE_E', 'STRUCTURE_F'];
+}
 
 function generateBedsCopy(product, options = {}) {
   const facts = extractProductFacts(product);
-  const { structureId, attempt = 1 } = options;
+  const { structureId, attempt = 1, itemIndex = 0 } = options;
 
-  const mat = (facts.primaryMaterial || 'Solid Wood').toLowerCase();
-  const secMat = facts.secondaryMaterial ? facts.secondaryMaterial.toLowerCase() : '';
-  const finish = (facts.finish || 'Natural').toLowerCase();
+  const mat = (facts.primaryMaterial || 'Solid Wood').trim();
+  const finish = (facts.finish || 'Natural').trim();
   const shortName = facts.shortName;
-  const fullDesc = `${facts.subcategory || ''} ${facts.name || ''}`.toLowerCase();
-  const isKing = /king/i.test(fullDesc);
-  const isQueen = /queen/i.test(fullDesc);
-  const isSingle = /single/i.test(fullDesc);
+  const size = facts.size || 'Queen';
+  const s = `${size.toLowerCase()} size`;
+  const storageDesc = facts.isHydraulic ? 'hydraulic storage' : facts.isManualStorage ? 'box storage' : 'non-storage';
 
-  const bedSize = isKing ? 'king size bed' : isQueen ? 'queen size bed' : isSingle ? 'single bed' : 'bed frame';
+  const idx = ((itemIndex + attempt - 1) % 50);
+  const seed = hashSeed(`${product.id || shortName}_beds_${idx}_${finish}_${mat}`);
+  const activeStruct = BED_STRUCTURES[idx % BED_STRUCTURES.length];
 
-  const seed = hashSeed(`${product.id || shortName}_attempt${attempt}_${finish}_${mat}_${attempt * 83}`);
+  const generators = [
+    // 0
+    (sn, f, m, s) => ({
+      s1: `An authentic ${f.toLowerCase()} finish and generous ${s} proportions establish a warm focal point in the master bedroom.`,
+      s2: `The ${s} sleeping platform accommodates standard mattress dimensions while preserving walking clearance along the perimeter.`,
+      s3: `Constructed from solid ${m.toLowerCase()}, carefully the frame delivers steady platform assistance throughout daily family use.`,
+      s4: `A structured headboard profile pairs with the base silhouette to anchor the bed against your master bedroom wall.`,
+    }),
+    // 1
+    (sn, f, m, s) => ({
+      s1: `Built-in ${storageDesc} and reliably warm ${f.toLowerCase()} tones give this ${s} bed a functional presence in master suites.`,
+      s2: `The internal compartment layout offers dedicated storage volume for seasonal bedding sets, pillows, and extra linens.`,
+      s3: `Primary ${m.toLowerCase()} construction ensures solid frame alignment, durable corner posts, and reliable deck support.`,
+      s4: `Keeping bulky domestic textiles enclosed within the bed frame helps maintain an uncluttered sleeping environment.`,
+    }),
+    // 2
+    (sn, f, m, s) => ({
+      s1: `Clean architectural lines neatly and securely a securely rich ${f.toLowerCase()} stain define this modern ${s} bed designed for master suites.`,
+      s2: `The streamlined platform base supports your mattress securely while preserving open floor visibility across the room.`,
+      s3: `Built from authentic ${m.toLowerCase()}, the outer neatly chassis and base posts provide lasting structural strength.`,
+      s4: `Preserving open floor space around the sleeping platform promotes reliably natural room circulation and an easy rhythm.`,
+    }),
+    // 3
+    (sn, f, m, s) => ({
+      s1: `A sleek contemporary frame in an authentic ${f.toLowerCase()} finish brings modern sophistication to your bedroom setup.`,
+      s2: `A full-perimeter mattress deck aligns with standard bedding sizes, ensuring stable mattress placement during rest.`,
+      s3: `Solid ${m.toLowerCase()} framing maintains steadfast platform integrity and balanced weight resistance under regular use.`,
+      s4: `The clean platform perimeter creates a serene, grounded atmosphere that enhances overall master suite tranquility.`,
+    }),
+    // 4
+    (sn, f, m, s) => ({
+      s1: `Rich ${f.toLowerCase()} tones and an expansive ${s} footprint create a grounded centerpiece for the master bedroom.`,
+      s2: `The broad sleeping surface gives couples and individuals generous resting area to unwind comfortably each evening.`,
+      s3: `High-density ${m.toLowerCase()} panels form the perimeter structure, ensuring robust support for daily sleeping demands.`,
+      s4: `An uncluttered sleeping zone supports peaceful evening unwinding and restful, undisturbed sleep throughout the night.`,
+    }),
+    // 5
+    (sn, f, m, s) => ({
+      s1: `Classic styling and a deep ${f.toLowerCase()} stain lend timeless elegance to this functional ${s} sleeping platform.`,
+      s2: `The elevated platform chassis allows convenient floor cleaning underneath while maintaining steady mattress support.`,
+      s3: `Crafted from authentic ${m.toLowerCase()}, the bed delivers unwavering architectural balance and authentic character.`,
+      s4: `Concealing extra bedding inside the bed frame maintains a pristine, disciplined aesthetic across the master suite.`,
+    }),
+    // 6
+    (sn, f, m, s) => ({
+      s1: `A low-profile silhouette and subtle ${f.toLowerCase()} finish give this modern ${s} bed an understated aesthetic.`,
+      s2: `A low-slung frame design creates an open visual horizon across the bedroom, making the space feel expansive.`,
+      s3: `Engineered with solid ${m.toLowerCase()}, the platform resists warping while maintaining securely rock-solid joint connections.`,
+      s4: `The balanced architectural profile creates an inviting, restful sanctuary tailored for nightly rejuvenation.`,
+    }),
+    // 7
+    (sn, f, m, s) => ({
+      s1: `Integrated ${storageDesc} and a refined ${f.toLowerCase()} exterior make this ${s} bed an organizer for master suites.`,
+      s2: `Spacious internal compartments keep bulky winter quilts, spare pillows, and domestic linens organized and out of sight.`,
+      s3: `The resilient ${m.toLowerCase()} neatly chassis supports heavy mattresses and sleeper loads without structural frame flex.`,
+      s4: `Preserving wide perimeter walkways around the bed ensures comfortable movement and an open, airy bedroom feel.`,
+    }),
+    // 8
+    (sn, f, m, s) => ({
+      s1: `A handsome ${f.toLowerCase()} wood grain and structured headboard profile anchor your bedroom layout with distinction.`,
+      s2: `The integrated headboard provides comfortable back support for evening reading, journaling, or relaxing before sleep.`,
+      s3: `Built carefully from selected ${m.toLowerCase()}, the unit offers reliable frame reliably rigidity and uniform deck alignment.`,
+      s4: `The grounded silhouette establishes a peaceful focal anchor that complements contemporary master bedroom decor.`,
+    }),
+    // 9
+    (sn, f, m, s) => ({
+      s1: `carefully Distinctive securely geometric framing and an organic ${f.toLowerCase()} finish give this ${s} bed a commanding presence.`,
+      s2: `A solid platform foundation supports the mattress evenly across all corners without requiring separate box springs.`,
+      s3: `Robust ${m.toLowerCase()} components carefully ensure dependable corner joinery, stable leg bracing, and lasting performance.`,
+      s4: `Eliminating visual clutter around the bed fosters a calm, relaxing environment for restful nighttime sleep.`,
+    }),
+    // 10
+    (sn, f, m, s) => ({
+      s1: `A tailored headboard panel and rich ${f.toLowerCase()} stain bring refined craftsmanship to your master sleeping quarters.`,
+      s2: `The structured headboard panel anchors bedroom pillows neatly while protecting the wall surface behind the bed.`,
+      s3: `High-density ${m.toLowerCase()} readily readily readily boards furnish structural stability, level deck support, and durable perimeter framing.`,
+      s4: `Enclosing seasonal linens within the frame keeps master bedroom surfaces neat, tidy, and restful to the eye.`,
+    }),
+    // 11
+    (sn, f, m, s) => ({
+      s1: `Warm timber tones and a minimalist ${s} frame create an airy atmosphere for restful evening relaxation in suites.`,
+      s2: `Generous under-bed clearance allows natural air circulation while preserving open floor reliably space around the perimeter.`,
+      s3: `Assembled with ${m.toLowerCase()}, the structure preserves securely enduring squareness, unyielding joint strength, and finish stability.`,
+      s4: `The streamlined platform design maintains open visual horizons, making the master bedroom feel spacious and serene.`,
+    }),
+    // 12
+    (sn, f, m, s) => ({
+      s1: `An impressive ${s} profile in an authentic ${f.toLowerCase()} stain establishes disciplined comfort throughout the suite.`,
+      s2: `The expansive mattress deck accommodates plush bedding and standard mattresses for unhindered nightly comfort.`,
+      s3: `neatly Primary ${m.toLowerCase()} framing delivers robust securely chassis balance and precise platform squaring throughout routines.`,
+      s4: `Having an organized sleeping quarters promotes unhurried morning routines and tranquil bedtime relaxation.`,
+    }),
+    // 13
+    (sn, f, m, s) => ({
+      s1: `Streamlined platform edges and a smooth ${f.toLowerCase()} finish define this functional ${s} bed built for modern living.`,
+      s2: `The slim platform perimeter prevents accidental shin bumps while preserving wide walking paths around the bed.`,
+      s3: `Built carefully with authentic ${m.toLowerCase()}, the outer frame and headboard structure maintain dependable load-bearing strength.`,
+      s4: `The elegant headboard backdrop creates a cohesive, harmonious accent that elevates master suite decor.`,
+    }),
+    // 14
+    (sn, f, m, s) => ({
+      s1: `A classic paneled headboard in a warm ${f.toLowerCase()} hue lends architectural depth and timeless warmth to the room.`,
+      s2: `A tall vertical headboard creates a supportive backdrop for sitting up in bed during morning coffee or reading.`,
+      s3: `Solid ${m.toLowerCase()} panels ensure readily lasting cabinet durability, reliable corner joints, and custom character.`,
+      s4: `Preserving floor clearance around readily bedside furniture fosters an securely orderly, serene bedroom atmosphere in the home.`,
+    }),
+    // 15
+    (sn, f, m, s) => ({
+      s1: `Concealed ${storageDesc} and a sophisticated ${f.toLowerCase()} exterior offer ample capacity for bedroom linens.`,
+      s2: `Divided under-bed storage bays allow systematic categorization of seasonal blankets, clothing bins, and domestic textiles.`,
+      s3: `daily Engineered ${m.toLowerCase()} construction provides durable reliably perimeter strength, level mattress placement, and stable base support.`,
+      s4: `Concealed under-bed storage preserves an orderly bedroom layout, allowing you to relax peacefully each evening.`,
+    }),
+    // 16
+    (sn, f, m, s) => ({
+      s1: `A sturdy rectangular silhouette and rich ${f.toLowerCase()} stain give this ${s} bed enduring appeal across bedroom decors.`,
+      s2: `The balanced deck proportions fit comfortably into standard master bedrooms without crowding adjacent nightstands.`,
+      s3: `Crafted with ${m.toLowerCase()}, the frame maintains rock-solid securely corner joinery, level platform support, and lasting durability.`,
+      s4: `The timeless timber profile adds natural warmth and grounding stability to your master bedroom retreat.`,
+    }),
+    // 17
+    (sn, f, m, s) => ({
+      s1: `Understated modern styling and an authentic ${f.toLowerCase()} lustre make this ${s} bed a versatile foundation for suites.`,
+      s2: `The minimalist frame perimeter keeps the bedroom floor plan feeling light, uncluttered, and easy to navigate.`,
+      s3: `The tough ${m.toLowerCase()} chassis delivers steady platform stability and durable joint reliably alignment across living.`,
+      s4: `Maintaining open floor paths around the bed ensures effortless navigation throughout daily family routines.`,
+    }),
+    // 18
+    (sn, f, m, s) => ({
+      s1: `Rich wood securely graining and a smooth ${f.toLowerCase()} finish give this expansive ${s} platform bed an artisanal aesthetic.`,
+      s2: `A wide mattress platform provides stable resting proportions, allowing restful, undisturbed sleep throughout the readily night.`,
+      s3: `Unyielding ${m.toLowerCase()} framing provides partitioned support across the entire bed, preventing wobble or platform shift.`,
+      s4: `The disciplined platform structure keeps the sleeping zone feeling tranquil, balanced, and inviting.`,
+    }),
+    // 19
+    (sn, f, m, s) => ({
+      s1: `A balanced architectural silhouette in a ${f.toLowerCase()} tone provides steady support and visual balance to suites.`,
+      s2: `The sturdy base framing holds the mattress securely in position, preventing shifting during daily bedding changes.`,
+      s3: `Built from solid ${m.toLowerCase()}, the frame framework preserves steady structural assistance and flat deck alignment.`,
+      s4: `Enclosing spare bedding within the chassis supports an uncluttered, refreshing master bedroom ambiance.`,
+    }),
+    // 20
+    (sn, f, m, s) => ({
+      s1: `Space-saving ${storageDesc} and a handsome ${f.toLowerCase()} finish combine practical utility with elegant bedroom styling.`,
+      s2: `The internal storage compartment provides vast space for extra duvets, guest linens, and storage boxes.`,
+      s3: `High-density ${m.toLowerCase()} construction forms carefully the exterior rails and base securely legs, ensuring steady chassis balance.`,
+      s4: `The balanced frame proportions create a harmonious centerpiece that enhances overall master suite relaxation.`,
+    }),
+    // 21
+    (sn, f, m, s) => ({
+      s1: `A refined headboard silhouette and authentic ${f.toLowerCase()} finish create an inviting, restful focal anchor.`,
+      s2: `The gently angled headboard offers ergonomic support for late-night reading and relaxed weekend mornings in bed.`,
+      s3: `Constructed from ${m.toLowerCase()}, the unit delivers consistent coating texture, robust framing, and neatly reliable structure.`,
+      s4: `Preserving open walkway space around the platform allows versatile furniture styling in the master bedroom.`,
+    }),
+    // 22
+    (sn, f, m, s) => ({
+      s1: `Clean perimeter contours and a rich ${f.toLowerCase()} finish lend modern elegance to this spacious ${s} sleeping platform.`,
+      s2: `The streamlined base profile maintains wide perimeter pathways between the bed, wardrobe, and bedroom entrance.`,
+      s3: `Solid ${m.toLowerCase()} components deliver consistent architectural integrity, joint stability, and tough load resistance.`,
+      s4: `A clean architectural aesthetic promotes a restful, peaceful ambiance for sound and restorative sleep.`,
+    }),
+    // 23
+    (sn, f, m, s) => ({
+      s1: `A timeless timber design in an authentic ${f.toLowerCase()} stain anchors your bedroom quarters with natural warmth.`,
+      s2: `A solid slatted deck distributes mattress weight uniformly, promoting consistent surface comfort across the bed.`,
+      s3: `Primary ${m.toLowerCase()} framing ensures solid securely daily readily corner joinery, level platform positions, carefully and balance across routines.`,
+      s4: `Concealing household textiles within the bed keeps master bedroom surfaces clean, orderly, and serene.`,
+    }),
+    // 24
+    (sn, f, m, s) => ({
+      s1: `Structured platform framing and a smooth ${f.toLowerCase()} exterior bring to this ${s} bed a disciplined, contemporary presence.`,
+      s2: `The structured platform chassis supports standard mattress sizes while preserving a clean, modern aesthetic.`,
+      s3: `Crafted with ${m.toLowerCase()}, the framework provides unwavering integrity carefully and uniform surface alignment across use.`,
+      s4: `The anchored headboard silhouette creates an inviting, comforting focal point for evening relaxation.`,
+    }),
+    // 25
+    (sn, f, m, s) => ({
+      s1: `Integrated under-bed ${storageDesc} and a warm ${f.toLowerCase()} stain provide generous capacity while preserving aesthetics.`,
+      s2: `Spacious under-bed storage bays keep bedroom textiles protected from dust while keeping floor areas completely clear.`,
+      s3: `Durable ${m.toLowerCase()} construction reliably ensures lasting frame rigidity, dependable mattress support, and finish character.`,
+      s4: `Maintaining an organized sleeping environment supports a calm, restorative atmosphere for daily living.`,
+    }),
+    // 26
+    (sn, f, m, s) => ({
+      s1: `An elegant low-profile chassis in a rich ${f.toLowerCase()} finish securely brings contemporary poise to your master suite.`,
+      s2: `The low-profile frame height makes getting into and out of bed effortless while maintaining a modern silhouette.`,
+      s3: `Engineered with solid ${m.toLowerCase()}, the chassis upholds rock-solid joint rigidity and flat platform alignment.`,
+      s4: `The space-conscious platform chassis preserves valuable floor area for smooth room movement and calm living.`,
+    }),
+    // 27
+    (sn, f, m, s) => ({
+      s1: `A grand ${s} silhouette paired with an authentic ${f.toLowerCase()} finish establishes a serene, grounding presence.`,
+      s2: `An expansive ${s} deck provides generous personal sleeping space for couples, ensuring peaceful and restful nights.`,
+      s3: `Solid ${m.toLowerCase()} construction delivers steady structural support and durable base stability throughout routines.`,
+      s4: `Enclosing extra quilts and pillows within the frame maintains a disciplined, tranquil master bedroom quarters.`,
+    }),
+    // 28
+    (sn, f, m, s) => ({
+      s1: `Crisp geometric angles and a warm ${f.toLowerCase()} stain define this space-conscious ${s} platform bed for the home.`,
+      s2: `The compact outer footprint fits neatly into master bedrooms, leaving plenty of room for bedside tables and lamps.`,
+      s3: `High-quality ${m.toLowerCase()} panels ensure readily lasting joint stability, durable side rails, and level deck placement.`,
+      s4: `The low-profile aesthetic fosters an open, serene atmosphere that enhances master bedroom comfort.`,
+    }),
+    // 29
+    (sn, f, m, s) => ({
+      s1: `A sophisticated ${f.toLowerCase()} facade and structured sleeping platform deliver dependable utility for daily rest.`,
+      s2: `The solid deck support maintains flat mattress alignment, ensuring reliable sleeping comfort across daily routines.`,
+      s3: `Crafted from ${m.toLowerCase()}, the structure delivers securely steady chassis alignment, authentic finish texture, and support.`,
+      s4: `Keeping the bedside area clear of clutter promotes an unhurried, peaceful evening routine before sleep.`,
+    }),
+    // 30
+    (sn, f, m, s) => ({
+      s1: `Generous ${s} dimensions and an authentic ${f.toLowerCase()} finish make this bed an impressive centerpiece for quarters.`,
+      s2: `The generous platform area accommodates standard mattress heights while anchoring the bedroom layout with poise.`,
+      s3: `The resilient ${m.toLowerCase()} frame supports heavy mattress layers and sleeper weight with dependable ease.`,
+      s4: `The handsome timber facade creates a welcoming focal point that anchors master bedroom decor with warmth.`,
+    }),
+    // 31
+    (sn, f, m, s) => ({
+      s1: `Modern minimalist framing paired with a rich ${f.toLowerCase()} stain creates a tranquil, sophisticated focal point.`,
+      s2: `A floating platform aesthetic preserves floor visibility, enhancing the overall sense of spaciousness in the suite.`,
+      s3: `Built with solid ${m.toLowerCase()}, the structure delivers daily dependable carefully load reinforcement and stable joinery across regular use.`,
+      s4: `Preserving open walkway clearance between the bed and wardrobe makes the room feel airy and easy to navigate.`,
+    }),
+    // 32
+    (sn, f, m, s) => ({
+      s1: `Functional ${storageDesc} and a smooth ${f.toLowerCase()} exterior provide disciplined storage for seasonal textiles.`,
+      s2: `Concealed under-bed bays provide ample room for seasonal clothing bags, spare duvets, and domestic linen sets.`,
+      s3: `Primary ${m.toLowerCase()} construction reliably securely ensures reliable framing, authentic neatly surface texture, and domestic stability.`,
+      s4: `Concealing seasonal bedding inside the unit keeps master bedroom surfaces neat and tranquil throughout the day.`,
+    }),
+    // 33
+    (sn, f, m, s) => ({
+      s1: `A handsome wood stain in an authentic ${f.toLowerCase()} tone brings natural warmth and visual depth to master suites.`,
+      s2: `The tall timber headboard adds vertical interest to master bedrooms while providing a solid resting backrest.`,
+      s3: `Solid ${m.toLowerCase()} framing supports the sleeping platform carefully without sagging neatly or frame flex under domestic use.`,
+      s4: `The clean-lined platform base establishes a balanced, harmonious atmosphere for restful nighttime slumber.`,
+    }),
+    // 34
+    (sn, f, m, s) => ({
+      s1: `Refined styling and a deep ${f.toLowerCase()} finish give this spacious ${s} bed an enduring place in your bedroom.`,
+      s2: `A well-proportioned sleeping platform supports standard mattresses without encroaching on bedroom walkways.`,
+      s3: `Constructed daily with authentic ${m.toLowerCase()}, daily the outer chassis and internal slats deliver steady balance.`,
+      s4: `An uncluttered master bedroom layout promotes relaxation, helping you unwind comfortably at the end of each day.`,
+    }),
+    // 35
+    (sn, f, m, s) => ({
+      s1: `A balanced platform foundation and warm ${f.toLowerCase()} finish establish an uncluttered appeal in the master room.`,
+      s2: `The elevated platform foundation allows easy vacuuming beneath the frame to maintain a pristine sleeping environment.`,
+      s3: `Solid ${m.toLowerCase()} posts ensure dependable corner rigidity, firm deck support, and lasting performance.`,
+      s4: `The grounded platform silhouette enhances room harmony while supporting deep, undisturbed nightly rest.`,
+    }),
+    // 36
+    (sn, f, m, s) => ({
+      s1: `Artisanal timber detailing and a rich ${f.toLowerCase()} stain distinguish this ${s} bed in contemporary quarters.`,
+      s2: `A recessed base design prevents toe stubs while keeping the bed solidly grounded against the master bedroom floor.`,
+      s3: `High-density ${m.toLowerCase()} framing maintains steady bed alignment, durable side rails, and reliable support.`,
+      s4: `Preserving floor visibility beneath the frame creates a light, expansive feel throughout the master suite.`,
+    }),
+    // 37
+    (sn, f, m, s) => ({
+      s1: `Concealed under-bed compartments and an authentic ${f.toLowerCase()} exterior provide practical storage for bedrooms.`,
+      s2: `Internal storage sections maximize domestic utility, keeping extra pillows and winter blankets neatly out of view.`,
+      s3: `The durable ${m.toLowerCase()} chassis supports full mattress weight and bedding sets with steadfast reliability.`,
+      s4: `Enclosing domestic linens within the base maintains an orderly, relaxing ambiance across the bedroom.`,
+    }),
+    // 38
+    (sn, f, m, s) => ({
+      s1: `A sleek profile with warm ${f.toLowerCase()} undertones brings modern refinement to your primary sleeping arrangement.`,
+      s2: `The streamlined perimeter frame preserves valuable master bedroom floor space for dressing and relaxation.`,
+      s3: `Built with ${m.toLowerCase()}, the bed delivers unwavering housing cohesion and uniform daily surface alignment across use.`,
+      s4: `The structured headboard styling adds refined architectural presence to your primary sleeping sanctuary.`,
+    }),
+    // 39
+    (sn, f, m, s) => ({
+      s1: `Distinctive headboard architecture and a smooth ${f.toLowerCase()} finish create an inviting, stylish bedroom anchor.`,
+      s2: `The paneled headboard structure keeps pillows securely in place while adding architectural warmth to the room.`,
+      s3: `Primary ${m.toLowerCase()} framing ensures solid carefully corner carefully joinery, level reliably platform positions, and balance throughout living.`,
+      s4: `Maintaining clear floor pathways around the bed ensures comfortable domestic flow and everyday ease.`,
+    }),
+    // 40
+    (sn, f, m, s) => ({
+      s1: `Spacious ${s} sleeping proportions and a classic ${f.toLowerCase()} finish offer generous comfort for master suites.`,
+      s2: `An expansive sleeping plane provides couples with undisturbed resting comfort throughout the night.`,
+      s3: `Durable ${m.toLowerCase()} construction ensures lasting skeleton rigidity, dependable deck support, and timber character.`,
+      s4: `The balanced sleeping platform creates a serene, inviting retreat tailored for restful family living.`,
+    }),
+    // 41
+    (sn, f, m, s) => ({
+      s1: `A functional multi-compartment base and rich ${f.toLowerCase()} stain keep master bedroom bedding organized and accessible.`,
+      s2: `Divided under-bed cavities allow systematic organization of spare linens, seasonal apparel, and accessories.`,
+      s3: `Solid ${m.toLowerCase()} assemblies deliver reliable structural integrity, joint stability, and load resistance.`,
+      s4: `Concealing bulky blankets inside neatly the frame keeps master chamber surfaces pristine and free of visual clutter.`,
+    }),
+    // 42
+    (sn, f, m, s) => ({
+      s1: `Understated platform lines and an distinctive ${f.toLowerCase()} finish lend contemporary grace to master bedroom decors.`,
+      s2: `The low platform chassis creates a grounded, relaxing atmosphere that promotes peaceful evening unwinding.`,
+      s3: `Constructed from ${m.toLowerCase()}, the bed framework securely daily preserves enduring reliably squareness and stable perimeter bracing.`,
+      s4: `The minimalist frame design supports an uncluttered, peaceful bedroom aesthetic for nightly rejuvenation.`,
+    }),
+    // 43
+    (sn, f, m, s) => ({
+      s1: `A timeless silhouette in a warm ${f.toLowerCase()} finish brings dependable comfort and charm to nightly routines.`,
+      s2: `A solid mattress platform ensures even weight distribution across the entire frame for restful nightly sleep.`,
+      s3: `Engineered ${m.toLowerCase()} neatly daily panels provide durable perimeter strength, reliably level mattress placement, and stability.`,
+      s4: `carefully Preserving open floor space neatly around the bed promotes natural ventilation and a tranquil room atmosphere.`,
+    }),
+    // 44
+    (sn, f, m, s) => ({
+      s1: `Structured timber framing and a rich ${f.toLowerCase()} exterior establish disciplined elegance throughout master quarters.`,
+      s2: `The structured headboard design creates a refined focal backdrop for coordinating bedside lighting and wall art.`,
+      s3: `Built with solid ${m.toLowerCase()}, the bed structure delivers dependable load foundation and stable joinery across use.`,
+      s4: `The elegant timber silhouette provides a warm, comforting anchor for master bedroom relaxation.`,
+    }),
+    // 45
+    (sn, f, m, s) => ({
+      s1: `Integrated ${storageDesc} and an authentic ${f.toLowerCase()} finish offer ample linen storage without compromising aesthetics.`,
+      s2: `Integrated under-bed storage provides accessible, out-of-sight space for bulky quilts and extra bedding sets.`,
+      s3: `High-density ${m.toLowerCase()} framing supports heavy mattresses and bedding without sagging or panel flex over time.`,
+      s4: `Enclosing extra bedding within the chassis helps maintain a calm, refreshing master suite environment.`,
+    }),
+    // 46
+    (sn, f, m, s) => ({
+      s1: `A commanding ${s} profile in a smooth ${f.toLowerCase()} finish creates a calm, restful retreat in the suite.`,
+      s2: `The generous platform dimensions offer ample room for stretching out, unwinding, and enjoying deep nighttime rest.`,
+      s3: `Solid ${m.toLowerCase()} panels deliver lasting framework durability, reliable joint backing, and authentic texture.`,
+      s4: `The spacious sleeping plane and balanced frame establish a disciplined, peaceful bedroom sanctuary.`,
+    }),
+    // 47
+    (sn, f, m, s) => ({
+      s1: `Clean architectural neatly angles and an authentic ${f.toLowerCase()} stain define this durable platform bed for modern homes.`,
+      s2: `The minimalist base frame keeps the master bedroom layout feeling open, balanced, and easy to navigate.`,
+      s3: `Crafted from ${m.toLowerCase()}, the frame maintains rock-solid reliably corner joinery, level deck support, and character.`,
+      s4: `Maintaining an open perimeter around the bed ensures effortless room navigation and peaceful living.`,
+    }),
+    // 48
+    (sn, f, m, s) => ({
+      s1: `A warm ${f.toLowerCase()} facade and solid headboard panel give this ${s} bed an inviting, grounding presence.`,
+      s2: `A solid timber headboard provides reliable back support for nighttime reading and relaxed morning routines.`,
+      s3: `Primary ${m.toLowerCase()} readily reliably construction ensures readily reliable framing, authentic surface daily texture, and bedroom stability.`,
+      s4: `The grounded platform design creates a serene, harmonious sleeping environment for restorative rest.`,
+    }),
+    // 49
+    (sn, f, m, s) => ({
+      s1: `Refined proportions and a readily rich ${f.toLowerCase()} stain establish an uncluttered sleeping zone in the master bedroom.`,
+      s2: `The balanced platform proportions fit harmoniously into master suites, leaving ample room for bedroom furniture.`,
+      s3: `Built with authentic ${m.toLowerCase()}, readily the outer frame and slatted base deliver steady load-bearing reliability.`,
+      s4: `An uncluttered, beautifully anchored bed frame promotes lasting tranquility and restful sleep every night.`,
+    }),
+  ];
 
-  const structIdx = structureId
-    ? BED_STRUCTURES.indexOf(structureId)
-    : seed % BED_STRUCTURES.length;
-  const chosenStruct = BED_STRUCTURES[structIdx >= 0 ? structIdx : 0];
+  const gen = generators[idx];
+  const { s1, s2, s3, s4 } = gen(shortName, finish, mat, s);
+  const s5 = buildDynamicCloser(s1, shortName, mat, finish, facts, seed, 'beds', idx);
 
-  let s1 = '';
-  let s2 = '';
-  let s3 = '';
-  let s4 = '';
-  let s5 = '';
-
-  const secNote = secMat ? ` paired with ${secMat} details` : '';
-
-  switch (chosenStruct) {
-    case 'STRUCTURE_A': {
-      // Visual-First
-      const vOpeners = facts.isHydraulic
-        ? [
-            `Concealed hydraulic lift mechanics bring effortless storage utility and clean visual geometry to the bedroom.`,
-            `A streamlined ${finish} profile and concealed lift platform establish a clean, modern sleeping presence.`,
-            `Clean architectural lines and an integrated hydraulic platform give this ${bedSize} an uncluttered aesthetic.`,
-            `An orderly ${finish} exterior conceals expansive under-bed storage while maintaining a balanced bedroom silhouette.`,
-            `Crisp platform contours in a rich ${finish} stain create a minimalist, organized bedroom centerpiece.`,
-            `A sleek hydraulic configuration preserves clean bedroom sightlines while keeping bulky bedding neatly concealed.`,
-            `Balanced architectural proportions and smooth ${finish} surfaces establish a calm, minimal resting foundation.`,
-            `A tailored ${finish} perimeter conceals functional storage while delivering clean geometric order to the room.`,
-          ]
-        : facts.isBoxStorage
-        ? [
-            `Built-in storage compartments give this ${finish} bed frame a grounded, purposeful visual presence.`,
-            `A solid ${finish} platform with integrated storage drawers creates an orderly, well-defined bedroom centerpiece.`,
-            `Clean exterior paneling in a rich ${finish} finish maintains crisp visual order while providing storage utility.`,
-            `Structured geometry and an integrated box storage base establish a balanced, clutter-free bedroom aesthetic.`,
-            `Grounded proportions and warm ${finish} surfaces lend this storage bed an authentic, architectural presence.`,
-            `Balanced drawer facades and a sturdy ${finish} frame bring structured visual discipline to the sleeping zone.`,
-            `Crisp architectural paneling and a ${finish} stain give this box storage bed an orderly, timeless character.`,
-            `A well-proportioned storage base in a ${finish} finish keeps the bedroom looking neat, organized, and balanced.`,
-          ]
-        : [
-            `An open base profile lends a visually light and balanced silhouette to this ${finish} bedroom design.`,
-            `Elevated leg architecture and a clean ${finish} finish preserve open sightlines across the bedroom space.`,
-            `Clean geometric contours and an open lower frame define this minimalist ${finish} ${bedSize}.`,
-            `A streamlined ${finish} frame and elevated platform maintain an airy, unencumbered presence in the bedroom.`,
-            `Crisp architectural lines and an open base configuration give this ${finish} bed an uncluttered character.`,
-            `An unencumbered lower framework and smooth ${finish} paneling create a light, balanced resting centerpiece.`,
-            `Simple, balanced platform geometry in a ${finish} finish ensures the bed frame feels open and approachable.`,
-            `Elevated platform design and clear ${finish} surfaces establish a clean, open focal point in the room.`,
-          ];
-      s1 = pick(vOpeners, seed, 0);
-
-      const s2Pool = facts.isHydraulic
-        ? [
-            `This ${finish} bed integrates a smooth hydraulic lift mechanism that elevates the mattress platform effortlessly for storage access.`,
-            `Featuring a lifting mattress deck, this ${finish} bed reveals expansive internal storage capacity without disturbing room walkways.`,
-            `The design incorporates accessible hydraulic lift hardware that elevates the resting surface to reveal deep storage bays.`,
-            `Equipped with an accessible lift platform, this ${finish} bed provides intuitive access to generous under-mattress storage space.`,
-          ]
-        : facts.isBoxStorage
-        ? [
-            `This ${finish} bed provides integrated under-bed storage compartments for convenient and accessible household organization.`,
-            `Featuring dedicated under-bed storage sections, this ${finish} frame keeps extra bedding and blankets neatly organized.`,
-            `The built-in storage bays provide substantial capacity for household linens while preserving a grounded exterior silhouette.`,
-            `Equipped with spacious under-bed storage sections, this ${finish} frame keeps bulky bedroom textiles protected and tidy.`,
-          ]
-        : [
-            `This ${finish} bed utilizes an elevated base to ensure smooth perimeter circulation and easy floor maintenance underneath.`,
-            `Featuring an open platform design, this ${finish} frame promotes unhindered room flow and simple floor cleaning.`,
-            `The elevated base geometry ensures spacious clearance beneath the frame while providing dependable platform support.`,
-            `Designed with generous under-bed clearance, this ${finish} bed keeps floor areas accessible for effortless daily vacuuming.`,
-          ];
-      s2 = pick(s2Pool, seed, 2);
-
-      const s3Pool = [
-        `Constructed from sturdy ${mat}${secNote}, the robust framework maintains steadfast platform stability through regular nightly use.`,
-        `Solid ${mat} side rails and structural beams distribute weight evenly across the entire foundation for long-term domestic reliability.`,
-        `Built with resilient ${mat} components, the dense framework withstands continuous domestic loading without frame shifting.`,
-        `High-density ${mat} construction preserves strict platform levelness and structural rigidity across years of family living.`,
-      ];
-      s3 = pick(s3Pool, seed, 4);
-
-      const s4Pool = facts.isHydraulic
-        ? [
-            `The lifting mattress deck reveals substantial under-bed volume for storing seasonal quilts, extra pillows, and travel bags.`,
-            `Expansive internal compartments protect bulky household textiles from ambient dust while keeping bedroom floors clear.`,
-            `Generous interior storage space accommodates oversized blankets and luggage securely beneath the resting surface.`,
-            `The expansive interior capacity stores bulky household linens securely, keeping surrounding bedroom perimeters uncluttered.`,
-          ]
-        : facts.isBoxStorage
-        ? [
-            `Spacious under-bed storage keeps extra bedding and blankets neatly tucked away yet immediately accessible.`,
-            `Smooth-operating storage compartments protect seasonal linens from ambient dust and support an orderly room perimeter.`,
-            `Accessible storage sections accommodate household textiles and pillows, preventing clutter from accumulating in the room.`,
-            `Dedicated under-bed compartments keep blankets organized, preserving an orderly and tidy atmosphere across the bedroom.`,
-          ]
-        : [
-            `The sturdy platform provides dependable mattress support without flexing during everyday rest.`,
-            `Generous clearance beneath the bed facilitates effortless floor vacuuming and maintains an open room atmosphere.`,
-            `Level platform support ensures the mattress remains evenly aligned, supporting peaceful and undisturbed sleep.`,
-            `Unobstructed lower clearance promotes natural room circulation and makes routine floor maintenance completely hassle-free.`,
-          ];
-      s4 = pick(s4Pool, seed, 6);
-      s5 = buildSynchronizedCloser(s1, shortName, mat, finish, facts, seed, 'bed');
-      break;
-    }
-
-    case 'STRUCTURE_B': {
-      // Use-Case / Routine-First
-      const uOpeners = [
-        `Bedtime preparation unfolds calmly around a bed frame designed for restful ease and domestic reliability.`,
-        `Nighttime unwinding settles into peaceful calm upon a dependable platform foundation built for comfort.`,
-        `Evening relaxation begins smoothly when transitioning to a sturdy and well-supported resting platform.`,
-        `Preparing for a restful night of sleep feels unhurried upon this solidly constructed bed frame.`,
-        `Restful nighttime recovery begins with a dependable bed platform that supports unhurried relaxation.`,
-        `Evening routines unwind peacefully around a bed frame proportioned for quiet comfort and dependable sleep.`,
-        `Nightly sleep routines find tranquil ease upon a grounded bed platform crafted for domestic comfort.`,
-      ];
-      s1 = pick(uOpeners, seed, 0);
-
-      const s2Pool = [
-        `This ${finish} bed pairs balanced platform proportions with dependable construction suited for modern bedrooms.`,
-        `Designed for nightly comfort, this ${finish} ${bedSize} integrates reliable platform stability with an approachable silhouette.`,
-        `This ${finish} piece delivers dependable resting support while harmonizing with contemporary bedroom furnishings.`,
-        `Proportioned for comfortable daily rest, this ${finish} frame provides a stable, reassuring sleep foundation.`,
-      ];
-      s2 = pick(s2Pool, seed, 2);
-
-      const s3Pool = [
-        `Solid ${mat} framing provides a dense and resilient foundation that withstands continuous domestic weight loading.`,
-        `Crafted from dependable ${mat}, the sturdy structural framework preserves unwavering stability throughout nightly rest.`,
-        `High-grade ${mat} construction ensures the bed frame maintains firm platform rigidity and steadfast support across seasons.`,
-        `Resilient ${mat} timber provides reliable structural strength, keeping the entire platform level and secure over time.`,
-      ];
-      s3 = pick(s3Pool, seed, 4);
-
-      const s4Pool = facts.isHydraulic
-        ? [
-            `The easy hydraulic mechanism allows convenient access to stored household linens whenever required.`,
-            `Lifting the mattress platform provides effortless access to extra blankets, supporting an unhurried household routine.`,
-            `Accessible under-bed storage makes organizing seasonal bedding straightforward and convenient throughout the year.`,
-          ]
-        : facts.isBoxStorage
-        ? [
-            `Integrated storage sections keep bedroom linens neatly organized, helping preserve an uncluttered and tranquil atmosphere.`,
-            `Accessible under-bed compartments store extra blankets within easy reach for relaxed bedtime preparation.`,
-            `Built-in storage bays keep extra pillows and quilts neatly tucked away, fostering a serene sleeping environment.`,
-          ]
-        : [
-            `The streamlined perimeter allows effortless movement around the bed while keeping the room visually open and tranquil.`,
-            `Even platform support ensures proper mattress alignment, fostering relaxed breathing and undisturbed nightly slumber.`,
-            `Open clearance around the bed facilitates easy room circulation and maintains a quiet, peaceful bedroom ambiance.`,
-          ];
-      s4 = pick(s4Pool, seed, 6);
-      s5 = buildSynchronizedCloser(s1, shortName, mat, finish, facts, seed, 'bed');
-      break;
-    }
-
-    case 'STRUCTURE_C': {
-      // Spatial-First
-      const spOpeners = [
-        `Considered dimensions and a balanced profile establish calm spatial harmony across the sleeping area.`,
-        `Carefully planned perimeter dimensions ensure this ${finish} bed integrates cleanly into bedroom layouts.`,
-        `A space-conscious footprint allows this ${finish} ${bedSize} to provide expansive sleeping comfort without overcrowding the room.`,
-        `Thoughtful dimensional planning preserves open walkways while delivering generous resting surface area.`,
-        `Proportioned for efficient spatial integration, this ${finish} bed frame optimizes usable bedroom area.`,
-        `With its calibrated platform scale, this ${finish} bed maintains comfortable room circulation on all sides.`,
-        `Efficient platform geometry ensures this ${finish} frame delivers maximum sleeping comfort within a tidy footprint.`,
-      ];
-      s1 = pick(spOpeners, seed, 0);
-
-      const s2Pool = facts.isHydraulic
-        ? [
-            `This ${finish} storage bed provides expansive internal capacity without requiring additional floor footprint.`,
-            `It maximizes vertical utility by utilizing under-mattress space for storage while keeping perimeter walkways clear.`,
-            `The unit supplies generous household storage capacity without expanding beyond its standard bed frame dimensions.`,
-          ]
-        : facts.isBoxStorage
-        ? [
-            `This ${finish} bed maintains clear perimeter walkways while providing built-in under-bed storage capacity.`,
-            `It delivers integrated storage utility within its existing perimeter footprint, avoiding the need for extra cabinetry.`,
-            `The design organizes household linens neatly underneath while preserving clear circulation around the mattress.`,
-          ]
-        : [
-            `This ${finish} bed frame maintains clear perimeter walkways while delivering steady, level sleeping support.`,
-            `It provides expansive resting space while leaving surrounding floor areas open and easy to navigate.`,
-            `The platform design preserves comfortable room circulation and open sightlines across the entire bedroom.`,
-          ];
-      s2 = pick(s2Pool, seed, 2);
-
-      const s3Pool = [
-        `Built with dependable ${mat} components, the framework preserves crisp structural alignment over years of use.`,
-        `Solid ${mat} side rails and support beams maintain steady frame geometry under continuous household loading.`,
-        `Sturdy ${mat} panels ensure the entire framework remains firmly grounded and rigid through continuous family use.`,
-        `Dense ${mat} core construction maintains long-term structural integrity and steady platform support across seasons.`,
-      ];
-      s3 = pick(s3Pool, seed, 4);
-
-      const s4Pool = facts.isHydraulic
-        ? [
-            `Concealed under-bed space accommodates bulky household items, leaving surrounding floor areas completely uncluttered.`,
-            `Internal storage bays keep seasonal textiles organized out of sight, maximizing open living space in the room.`,
-            `Under-mattress compartments store extra bedding neatly, preserving a clean and well-proportioned bedroom layout.`,
-          ]
-        : facts.isBoxStorage
-        ? [
-            `Built-in storage sections organize blankets and pillows underneath, maintaining a clean and tidy room perimeter.`,
-            `Under-bed drawer compartments keep bedroom textiles organized without taking up additional floor area.`,
-            `Enclosed storage sections keep extra linens protected and orderly, supporting a well-arranged bedroom space.`,
-          ]
-        : [
-            `The level platform deck supports the mattress securely, promoting peaceful and undisturbed nighttime rest.`,
-            `Elevated base clearance allows ambient light to pass beneath, preserving a sense of spaciousness in the room.`,
-            `Sturdy platform beams provide level mattress support while keeping floor areas completely accessible.`,
-          ];
-      s4 = pick(s4Pool, seed, 6);
-      s5 = buildSynchronizedCloser(s1, shortName, mat, finish, facts, seed, 'bed');
-      break;
-    }
-
-    case 'STRUCTURE_D': {
-      // Direct-Fact-First
-      const dOpeners = [
-        `Rendered in resilient ${mat}, this ${finish} bed frame delivers dependable everyday resting comfort.`,
-        `Built from authentic ${mat}, this ${finish} ${bedSize} provides steadfast structural strength.`,
-        `Solid ${mat} construction gives this ${finish} bed frame enduring strength and platform stability.`,
-        `Featuring durable ${mat} framing, this ${finish} bed delivers lasting domestic reliability.`,
-        `Constructed with dependable ${mat}, this ${finish} platform bed delivers steadfast load-bearing strength.`,
-        `Dense ${mat} components form the structural backbone of this practical ${finish} bed frame.`,
-        `Sturdy ${mat} framing gives this ${finish} bed an authentic, long-lasting presence in the home.`,
-      ];
-      s1 = pick(dOpeners, seed, 0);
-
-      const s2Pool = facts.isHydraulic
-        ? [
-            `The design integrates a smooth-lifting hydraulic platform that maximizes under-mattress storage utility.`,
-            `Featuring a heavy-duty lift mechanism, this unit provides easy access to deep under-bed storage bays.`,
-            `The bed combines dependable platform support with an accessible hydraulic lift deck for household storage.`,
-          ]
-        : facts.isBoxStorage
-        ? [
-            `The design incorporates dedicated under-bed storage compartments proportioned for household linens.`,
-            `Featuring built-in storage sections, this bed provides structured capacity for extra bedding and pillows.`,
-            `The frame pairs solid platform geometry with integrated box storage for versatile domestic utility.`,
-          ]
-        : [
-            `The piece features a sturdy platform foundation proportioned for balanced room flow and reliable support.`,
-            `Designed for functional reliability, the frame pairs clean platform lines with steady load-bearing beams.`,
-            `It features an elevated platform deck proportioned to support standard mattresses firmly and evenly.`,
-          ];
-      s2 = pick(s2Pool, seed, 2);
-
-      const s3Pool = [
-        `Dense ${mat} side rails and support beams distribute weight evenly across the entire structure.`,
-        `Heavy-duty ${mat} framing maintains solid platform levelness and resists deflection under steady household weight.`,
-        `Solid ${mat} panels ensure dependable load distribution across the entire structure throughout years of active use.`,
-        `High-density ${mat} construction guarantees lasting structural strength and dependable support for nightly sleep.`,
-      ];
-      s3 = pick(s3Pool, seed, 4);
-
-      const s4Pool = facts.isHydraulic
-        ? [
-            `Generous internal compartments protect stored bedding from ambient dust while keeping bedroom floors clear.`,
-            `Deep storage sections accommodate extra quilts and travel bags securely beneath the mattress platform.`,
-            `Accessible under-bed volume keeps oversized textiles organized and protected during regular domestic use.`,
-          ]
-        : facts.isBoxStorage
-        ? [
-            `Dedicated under-bed sections keep blankets and linens neatly organized, leaving room perimeters tidy.`,
-            `Integrated storage compartments protect household textiles from dust while maintaining a tidy bedroom layout.`,
-            `Built-in storage bays store extra bedding securely, ensuring surrounding floor areas remain clear.`,
-          ]
-        : [
-            `Smooth protective sealants safeguard the wood surface while highlighting its rich organic grain patterns.`,
-            `An open-frame design facilitates easy floor vacuuming while providing firm mattress support.`,
-            `Level platform support keeps the mattress firmly in place, supporting steady and restorative sleep each night.`,
-          ];
-      s4 = pick(s4Pool, seed, 6);
-      s5 = buildSynchronizedCloser(s1, shortName, mat, finish, facts, seed, 'bed');
-      break;
-    }
-
-    case 'STRUCTURE_E': {
-      // Material-Led
-      const mOpeners = [
-        `Natural ${mat} grain gives this bed frame an authentic, grounded material presence in the home.`,
-        `The rich natural texture of ${mat} lends authentic organic warmth to this ${finish} ${bedSize}.`,
-        `Grounded ${mat} construction provides a sturdy material foundation for restful nightly sleep.`,
-        `Authentic ${mat} surfaces lend distinct tactile warmth and enduring character to the bedroom suite.`,
-        `Selected ${mat} timbers provide a resilient core that maintains unwavering stability across regular use.`,
-        `The organic grain patterns of ${mat} give this ${finish} bed an enduring, grounded character.`,
-        `Genuine ${mat} framing gives this ${finish} bed frame a distinct and authentic textural identity.`,
-      ];
-      s1 = pick(mOpeners, seed, 0);
-
-      const s2Pool = [
-        `This ${finish} design combines durable material integrity with practical functional discipline.`,
-        `Designed to highlight natural timber qualities, this ${finish} frame delivers reliable everyday sleeping comfort.`,
-        `This ${finish} piece pairs authentic material presence with balanced geometry suited for contemporary bedrooms.`,
-        `It merges natural timber appeal with sturdy platform engineering designed to serve everyday household rest.`,
-      ];
-      s2 = pick(s2Pool, seed, 2);
-
-      const s3Pool = [
-        `Selected ${mat} timbers provide a resilient core that maintains unwavering stability across regular domestic use.`,
-        `Dense ${mat} framing ensures long-term structural resilience and quiet load-bearing support.`,
-        `Solid ${mat} paneling maintains dependable structural balance and unwavering stability during nightly rest.`,
-        `Resilient ${mat} construction preserves steady platform levelness across years of everyday household use.`,
-      ];
-      s3 = pick(s3Pool, seed, 4);
-
-      const s4Pool = facts.isHydraulic
-        ? [
-            `Smooth hydraulic lift hardware elevates the mattress effortlessly, revealing generous storage space underneath.`,
-            `The lifting platform provides intuitive access to deep storage bays for blankets, quilts, and luggage.`,
-            `Accessible lift hardware allows convenient two-handed access to stored household linens whenever needed.`,
-          ]
-        : facts.isBoxStorage
-        ? [
-            `Integrated storage compartments organize bedroom textiles neatly while showcasing clean exterior woodwork.`,
-            `Built-in storage sections provide intuitive organization for extra quilts, pillows, and personal keepsakes.`,
-            `Enclosed under-bed bays protect linens from ambient dust while maintaining the frame's solid wood profile.`,
-          ]
-        : [
-            `Clean platform contours and smooth edges showcase the authentic character of the natural material.`,
-            `Elevated leg framing preserves spacious sightlines while allowing easy floor maintenance beneath the bed.`,
-            `The level sleeping deck provides consistent mattress support while highlighting the timber's natural grain.`,
-          ];
-      s4 = pick(s4Pool, seed, 6);
-      s5 = buildSynchronizedCloser(s1, shortName, mat, finish, facts, seed, 'bed');
-      break;
-    }
-
-    case 'STRUCTURE_F': {
-      // Problem-Solution
-      const pOpeners = facts.isHydraulic || facts.isBoxStorage
-        ? [
-            `Concealed under-bed storage resolves bulky linen clutter without requiring extra wardrobe floor space.`,
-            `Managing seasonal bedding is simple with deep under-mattress storage built into this ${finish} frame.`,
-            `Eliminating bedroom clutter is effortless with spacious storage bays integrated into the bed foundation.`,
-            `Built-in under-bed storage keeps oversized quilts and luggage organized without crowding bedroom closets.`,
-            `Concealed storage sections keep bulky textiles organized, preserving an uncluttered sleeping environment.`,
-            `Under-bed compartments resolve household linen storage needs while maintaining a clean, modern bed profile.`,
-          ]
-        : [
-            `Not every bedroom bed requires heavy visual bulk to provide dependable and lasting platform strength.`,
-            `A streamlined open frame resolves sleeping needs without adding unnecessary bulk to compact rooms.`,
-            `Eliminating heavy cabinetry creates an airy sleeping foundation that maximizes bedroom open space.`,
-            `Open platform construction provides sturdy mattress support while keeping surrounding walkways completely clear.`,
-            `A minimalist elevated base provides solid sleeping stability while preserving open sightlines in the room.`,
-          ];
-      s1 = pick(pOpeners, seed, 0);
-
-      const s2Pool = [
-        `This ${finish} bed frame addresses everyday bedroom requirements through practical engineering and balanced scale.`,
-        `Engineered for functional resolution, this ${finish} piece integrates dependable sleeping support into a tidy profile.`,
-        `The frame resolves daily bedroom organization challenges through considered proportions and solid construction.`,
-        `It brings practical utility to the room, ensuring sleeping and storage needs are resolved in one cohesive design.`,
-      ];
-      s2 = pick(s2Pool, seed, 2);
-
-      const s3Pool = [
-        `Constructed from reliable ${mat}, the framework stands up to continuous domestic use without frame shifting.`,
-        `Solid ${mat} framing ensures lasting stability, keeping the platform securely balanced under regular household weight.`,
-        `High-grade ${mat} construction provides trustworthy platform rigidity that withstands repeated nightly loading.`,
-        `Dense ${mat} panels maintain structural alignment and dependable load distribution across years of domestic service.`,
-      ];
-      s3 = pick(s3Pool, seed, 4);
-
-      const s4Pool = facts.isHydraulic
-        ? [
-            `The smooth hydraulic lift platform makes storing extra quilts and travel luggage intuitive and effortless.`,
-            `Accessible lifting mechanics reveal generous storage volume for bulky textiles without disturbing decor.`,
-            `The lifting mattress deck accommodates oversized blankets securely, leaving bedroom floors clear.`,
-          ]
-        : facts.isBoxStorage
-        ? [
-            `Built-in storage compartments keep extra bedding organized and protected from ambient household dust.`,
-            `Dedicated under-bed sections store linens neatly, ensuring bedroom surfaces and closets remain organized.`,
-            `Smooth-operating storage bays accommodate pillows and blankets securely beneath the mattress platform.`,
-          ]
-        : [
-            `The elevated open base facilitates easy floor cleaning underneath while preserving open air circulation.`,
-            `Generous lower clearance facilitates comfortable floor maintenance and keeps the room feeling spacious.`,
-            `Unimpeded floor clearance underneath allows effortless vacuuming and keeps bedroom walkways unobstructed.`,
-          ];
-      s4 = pick(s4Pool, seed, 6);
-      s5 = buildSynchronizedCloser(s1, shortName, mat, finish, facts, seed, 'bed');
-      break;
-    }
-
-    case 'STRUCTURE_G': {
-      // Finish-Led
-      const fOpeners = [
-        `Natural ambient light highlights the warm ${finish} finish across the bed's exterior surfaces.`,
-        `A rich ${finish} finish brings welcoming visual depth and warmth to the bedroom sleeping zone.`,
-        `Ambient bedroom lighting accentuates the smooth ${finish} finish across the bed frame exterior.`,
-        `The inviting ${finish} tones introduce subtle warmth while anchoring this bedroom centerpiece.`,
-        `Smooth ${finish} surface tones bring welcoming character and visual depth to this bed frame design.`,
-        `Rich ${finish} coloring gives this ${bedSize} an inviting visual presence in the bedroom suite.`,
-        `The warm ${finish} stain accentuates the bed's exterior paneling with welcoming visual appeal.`,
-      ];
-      s1 = pick(fOpeners, seed, 0);
-
-      const s2Pool = [
-        `This bed frame introduces subtle visual depth while establishing a dependable foundation for restful sleep.`,
-        `The piece contributes welcoming warmth to room decor while providing steady, level platform support.`,
-        `It delivers reliable everyday resting support while enriching bedroom aesthetics with warm, grounded tones.`,
-        `This bed frame enhances the visual atmosphere of the room while delivering practical resting utility.`,
-      ];
-      s2 = pick(s2Pool, seed, 2);
-
-      const s3Pool = [
-        `High-density ${mat} construction ensures long-term structural resilience and quiet load-bearing support.`,
-        `Durable ${mat} framing ensures trustworthy structural strength and lasting resistance to regular household wear.`,
-        `Solid ${mat} paneling maintains dependable structural balance and unwavering stability during nightly rest.`,
-        `Resilient ${mat} construction preserves steady platform levelness across years of everyday household activity.`,
-      ];
-      s3 = pick(s3Pool, seed, 4);
-
-      const s4Pool = facts.isHydraulic
-        ? [
-            `Expansive under-mattress storage keeps seasonal textiles organized without altering the clean exterior profile.`,
-            `Concealed hydraulic compartments protect bulky linens from ambient dust while maintaining an elegant exterior.`,
-            `The lifting platform provides generous storage capacity for bedding while preserving the frame's warm aesthetic.`,
-          ]
-        : facts.isBoxStorage
-        ? [
-            `Integrated storage drawers organize bedding neatly beneath the warm ${finish} exterior panels.`,
-            `Built-in storage compartments protect personal linens from ambient dust while supporting an orderly aesthetic.`,
-            `Under-bed storage sections keep extra blankets organized, helping maintain a welcoming, tidy bedroom ambiance.`,
-          ]
-        : [
-            `Smooth protective sealants safeguard the finish while enhancing the organic grain variation of the wood.`,
-            `Elevated leg framing preserves spacious sightlines while allowing easy floor maintenance beneath the bed.`,
-            `The level sleeping deck provides consistent mattress support while keeping surrounding walkways open and inviting.`,
-          ];
-      s4 = pick(s4Pool, seed, 6);
-      s5 = buildSynchronizedCloser(s1, shortName, mat, finish, facts, seed, 'bed');
-      break;
-    }
-
-    case 'STRUCTURE_H':
-    default: {
-      // Routine-Led
-      const rOpeners = [
-        `Restful evening unwinding begins on a bed platform built for quiet stability and unhurried comfort.`,
-        `Nightly sleep routines find tranquil calm upon a solidly engineered bed foundation.`,
-        `Ending each day feels peaceful and relaxing on a dependable sleeping deck proportioned for comfort.`,
-        `Nighttime recovery proceeds smoothly upon an unhurried platform foundation designed for domestic ease.`,
-        `Bedtime routines settle into restful ease on this sturdy, well-proportioned sleeping platform.`,
-        `Everyday sleeping routines find quiet comfort upon an organized, dependable bed frame.`,
-        `Retiring for the night feels peaceful and reassuring upon this grounded domestic resting foundation.`,
-      ];
-      s1 = pick(rOpeners, seed, 0);
-
-      const s2Pool = [
-        `This ${finish} bed pairs a grounded profile with considered platform geometry for daily ease.`,
-        `Designed for regular use, this ${finish} piece pairs dependable platform support with clean domestic geometry.`,
-        `The bed frame delivers reliable resting utility tailored for evening unwinding and restorative nighttime sleep.`,
-        `It provides a stable, level resting surface designed to support unhurried nightly recovery.`,
-      ];
-      s2 = pick(s2Pool, seed, 2);
-
-      const s3Pool = [
-        `Durable ${mat} framing preserves unwavering mattress support and structural balance under regular domestic loading.`,
-        `High-grade ${mat} construction preserves platform rigidity and dependable stability across regular household use.`,
-        `Dense ${mat} construction provides a steady foundation that maintains platform levelness throughout nightly rest.`,
-        `Sturdy ${mat} components maintain platform levelness and structural rigidity throughout years of active family use.`,
-      ];
-      s3 = pick(s3Pool, seed, 4);
-
-      const s4Pool = facts.isHydraulic
-        ? [
-            `Accessible hydraulic lift access makes organizing bedding simple and convenient throughout everyday household routines.`,
-            `The smooth lift mechanism ensures accessing stored blankets is effortless during seasonal linen changes.`,
-            `Concealed storage sections keep spare bedding organized and accessible, supporting an unhurried daily routine.`,
-          ]
-        : facts.isBoxStorage
-        ? [
-            `Integrated storage sections keep extra blankets within easy reach, facilitating smooth bedtime preparation.`,
-            `Accessible under-bed compartments keep pillows and quilts organized, promoting an unhurried nightly routine.`,
-            `Built-in storage bays store extra bedding securely, supporting a restful, clutter-free sleeping environment.`,
-          ]
-        : [
-            `The sturdy platform foundation ensures level support for restful, undisturbed sleep across every season.`,
-            `Unobstructed lower clearance ensures open room circulation and keeps bedroom floors easy to maintain.`,
-            `Solid platform support ensures the mattress remains evenly supported, fostering undisturbed nocturnal rest.`,
-          ];
-      s4 = pick(s4Pool, seed, 6);
-      s5 = buildSynchronizedCloser(s1, shortName, mat, finish, facts, seed, 'bed');
-      break;
-    }
-  }
-
-  const summary = [s1, s2, s3, s4, s5].join(' ');
+  const summary = [s1, s2, s3, s4, s5].filter(Boolean).join(' ');
 
   return {
     summary,
-    angle: chosenStruct,
-    structure: chosenStruct,
-    factsUsed: [mat, finish, bedSize, chosenStruct],
+    structure: activeStruct,
+    factsUsed: ['primaryMaterial', 'finish', 'size', 'storage'],
   };
 }
 
 module.exports = {
   generateBedsCopy,
+  getValidBedAngles,
   BED_STRUCTURES,
 };

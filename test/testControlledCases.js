@@ -84,10 +84,10 @@ const priorMemory = [
 
 // Test 4: Different structure and different semantic emphasis -> PASS
 {
-  const diverseSummary = 'This open base configuration keeps the morning vanity zone light and easy to navigate. Featuring an unencumbered leg profile, the piece provides generous leg clearance for comfortable grooming. Solid sheesham wood surfaces deliver enduring density and dependable stability across daily use. The smooth tabletop offers an accessible surface for daily self-care rituals and personal grooming essentials. Sirius coordinates with surrounding furniture through open floor clearance, minimalist vanity presence, and graceful refined presence.';
+  const diverseSummary = 'Daily grooming routines unfold easily around this open-frame teak dressing table. Measuring 66 x 32.5 x 1.68 cm, the piece fits comfortably along bedroom perimeters without crowding walkways. Sheesham Wood construction forms the primary frame, highlighting natural material texture and clean edges. Without enclosed storage compartments, the design emphasizes visual lightness and accessible surface area. Sirius completes your room arrangement with minimal visual weight, authentic timber presence, and practical daily utility.';
   const diverseProduct = { ...baseProduct, id: 'ul-prod-003' };
   const result = auditRepetition(diverseSummary, diverseProduct, priorMemory);
-  assert.strictEqual(result.status, 'PASS', 'Test 4 should pass diverse structure and perspective');
+  assert.strictEqual(result.status, 'PASS', `Test 4 should pass diverse structure (Failed with: ${result.reason})`);
   console.log('✔ Test 4 PASS: Genuinely diverse structure and narrative angle accepted (PASS)');
   passedTests++;
 }
@@ -104,7 +104,7 @@ const priorMemory = [
 
 // Test 6: Valid grounded content -> PASS
 {
-  const groundedSummary = 'Natural sheesham wood grain pairs with a warm teak finish to anchor the morning dressing area. An open, unencumbered base preserves visual airiness and keeps the dressing perimeter uncluttered. Solid sheesham wood surfaces deliver enduring density and dependable stability across daily use. The smooth tabletop offers an accessible surface for daily self-care rituals and personal grooming essentials. Sirius complements the bedroom with warm teak tones, open floor clearance, and balanced aesthetic harmony.';
+  const groundedSummary = 'An open base and teak finish give this dressing table a clean, uncluttered presence. The top surface provides dedicated space for grooming essentials while preserving floor clearance beneath. Sheesham Wood surfaces define the structure, showcasing authentic teak tones throughout the frame. The open lower section leaves legroom unobstructed and simplifies routine floor cleaning. Sirius settles into your bedroom suite with quiet restraint, honest sheesham wood character, and balanced functional clarity.';
   const result = auditFactualGrounding(groundedSummary, baseProduct);
   assert.strictEqual(result.valid, true, 'Test 6 should pass factual grounding for verified attributes');
   console.log('✔ Test 6 PASS: Strictly grounded factual content validated (PASS)');
@@ -141,7 +141,7 @@ const priorMemory = [
 
 // Test 8: Retry produces genuinely different structure -> Accepted
 {
-  const retrySummary = 'A dedicated morning self-care routine begins effortlessly around an open-base dressing station. Broad tabletop dimensions host vanity mirrors and grooming essentials within immediate arm reach. Solid sheesham wood surfaces deliver enduring density and dependable stability across daily use. Open legroom allows comfortable seated positioning and seamless floor maintenance. Sirius introduces practical utility to dressing areas through generous tabletop space, open legroom clearance, and quiet visual refinement.';
+  const retrySummary = 'Teak tones bring warm visual definition to this minimalist dressing table. The flat upper platform offers ample room for a vanity mirror and personal cosmetic organizers. Built with sheesham wood, the framework provides steady support for everyday use. An unencumbered lower silhouette maintains open sightlines across the surrounding room. Sirius keeps personal grooming items organized while preserving an airy bedroom atmosphere.';
   const retryProduct = { ...baseProduct, id: 'ul-prod-004' };
   
   const groundingVal = auditFactualGrounding(retrySummary, retryProduct);
@@ -149,7 +149,7 @@ const priorMemory = [
   
   assert.strictEqual(groundingVal.valid, true, 'Retry summary must be grounded');
   assert.strictEqual(repVal.status, 'PASS', 'Retry summary with new structure must pass repetition audit');
-  console.log('✔ Test 8 PASS: Retry with alternative structure (STRUCTURE_B / routine-led) accepted cleanly (PASS)');
+  console.log('✔ Test 8 PASS: Retry with alternative structure (STRUCTURE_C) accepted cleanly (PASS)');
   passedTests++;
 }
 

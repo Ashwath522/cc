@@ -96,4 +96,6 @@ dump.rdb
 output/excel_versions/**/*.xlsx
 output/excel_versions/*.xlsx
 !output/excel_versions/.gitkeep
+data/trainingSet/_regenerated/
+bulk-template-products.xlsx
 

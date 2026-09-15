@@ -2,6 +2,7 @@
 
 const Sentry = require('@sentry/node');
 const logger = require('../common/logger');
+const { appRedis } = require('../common/redis.init');
 const AiContentJobModel = require('../models/aiContentJob.model');
 const ContentReviewQueueModel = require('../models/contentReviewQueue.model');
 const FieldHistoryModel = require('../models/fieldHistory.model');
@@ -207,6 +208,8 @@ async function processAiContentJob(jobId, companyId, applicationId, options = {}
           categoryIds,
           pageSize: AI_CONTENT_PRODUCT_BATCH_SIZE,
           pageId,
+          allowSeedFallback: options.allowSeedFallback !== undefined ? options.allowSeedFallback : true,
+          catalogSource: options.catalogSource || null,
         });
       } catch (fetchErr) {
         logger.error(`[processAiContentJob] Error fetching products page: ${fetchErr.message}`);
@@ -218,17 +221,29 @@ async function processAiContentJob(jobId, companyId, applicationId, options = {}
         break;
       }
 
+      const workerId = options.workerId || `worker:${process.pid}:${jobId}`;
+
       // Process products sequentially one by one to avoid cross-product contamination
       for (const rawItem of items) {
-        totalProcessed++;
         const product = transformCatalogItemToProduct(rawItem);
         const productRef = catalogItemToProductRef(rawItem) || {
           uid: product.id,
           slug: product.slug || '',
           name: product.name || '',
         };
+        const productId = product.id || product.uid || rawItem.uid || rawItem.id;
+
+        // Atomic product claim pattern via Redis SETNX:
+        const claimKey = `claim:product:${companyId}:${productId}`;
+        const acquired = await appRedis.set(claimKey, workerId, 'NX', 'EX', 300);
+        if (!acquired) {
+          logger.info(`[processAiContentJob] Product ${productId} already claimed by another worker. Skipping collision-free.`);
+          continue;
+        }
 
         try {
+          totalProcessed++;
+
           const generated = await generateOne(
             product,
             null,
@@ -254,6 +269,19 @@ async function processAiContentJob(jobId, companyId, applicationId, options = {}
               });
               pushedCount++;
             }
+            // Always persist row into ContentReviewQueue for review audit & Excel export
+            await ContentReviewQueueModel.create({
+              company_id: companyId,
+              application_id: applicationId,
+              job_id: job._id,
+              definition_slug: definitionSlug,
+              product_ref: productRef,
+              source_attributes: product,
+              generated_content: generated,
+              validation_result: prePushValidation,
+              status: definitionSlug ? AI_CONTENT_ROW_STATUS.PUSHED : AI_CONTENT_ROW_STATUS.CLEAN,
+              human_edited_fields: [],
+            });
           } else {
             // Save to ContentReviewQueue
             needsReviewCount++;
@@ -285,6 +313,9 @@ async function processAiContentJob(jobId, companyId, applicationId, options = {}
             validation_result: { valid: false, errors: [itemErr.message] },
             status: AI_CONTENT_ROW_STATUS.FAILED,
           });
+        } finally {
+          // Release atomic product claim
+          await appRedis.del(claimKey);
         }
 
         // Periodically update job progress
@@ -332,6 +363,7 @@ async function generatePreviewProducts({
   categoryIds,
   tone = 'auto',
   count = 3,
+  options = {},
 }) {
   const cats = categoryIds && categoryIds.length > 0 ? categoryIds : (category ? [category] : []);
   const pageResponse = await getProductsByCategoryPaginated({
@@ -339,6 +371,8 @@ async function generatePreviewProducts({
     categoryIds: cats,
     pageSize: Math.max(1, count),
     pageId: '*',
+    allowSeedFallback: options.allowSeedFallback !== undefined ? options.allowSeedFallback : true,
+    catalogSource: options.catalogSource || null,
   });
 
   const rawItems = (pageResponse?.items || []).slice(0, count);

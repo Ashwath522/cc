@@ -52,7 +52,7 @@ let config = convict({
     },
     base_url: {
       doc: 'extension base_url',
-      default: 'https://krypton-groggily-creation.ngrok-free.dev',
+      default: 'https://excavate-rind-pajamas.ngrok-free.dev',
       env: 'EXTENSION_BASE_URL',
     },
   },
@@ -110,7 +110,7 @@ let config = convict({
     HOST_MAIN_URL: {
       doc: 'Host Main URL',
       format: String,
-      default: 'https://krypton-groggily-creation.ngrok-free.dev',
+      default: 'https://excavate-rind-pajamas.ngrok-free.dev',
       env: 'EXTENSION_BASE_URL',
     },
   },

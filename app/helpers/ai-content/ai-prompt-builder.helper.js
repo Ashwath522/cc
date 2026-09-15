@@ -306,6 +306,31 @@ RULES:
   CRITICAL GROUNDING RULE FOR PROSE STYLE:
   This is a REWORDING instruction, not a new-content instruction. You MUST NOT introduce any specific claim (color, hardware, shape, accent detail, pattern) that isn't present in the input product data. When design details are present, apply this rich treatment to them. When design details are absent, this guidance must draw ONLY from the material, storage, and room-use facts provided. Do not invent details just to sound warm.
 
+  WORD-CHOICE & VOCABULARY GUIDANCE:
+  Replace plain or utilitarian verbs and adjectives with richer, more considered equivalents:
+  - 'Assembled with' → 'Crafted with' / 'Meticulously built with'
+  - 'Constructed with' → 'Fashioned from' / 'Handcrafted from'
+  - 'Built from' → 'Crafted from' / 'Rendered in'
+  - 'sturdy' → 'robust' / 'resilient' / 'enduring'
+  - 'durable' → 'long-lasting' / 'built to endure'
+  - 'dependable framework' → 'trusted framework' / 'steadfast construction'
+  - 'provides sturdy support' → 'offers unwavering support'
+  - 'thoughtful proportions' → 'considered proportions' / 'thoughtful scale'
+  - 'practical utility' → 'effortless functionality'
+  - 'Reassuring joinery' → 'Confident craftsmanship' / 'Considered joinery'
+  - 'soft satin treatments' → 'refined satin detailing'
+  - 'creates an inviting surface' → 'lends a graceful, inviting finish'
+  - 'looks even better with age' → 'develops character with age'
+  - 'Smooth protective sealants' → 'Meticulous protective finishing'
+  - 'preserve the authentic grain' → 'honour the natural grain'
+  - 'Mellow wood grain patterns' → 'Rich, understated grain patterns'
+  - 'hand-rubbed surfaces' → 'hand-finished surfaces'
+  - 'grounded ease' → 'quiet sophistication'
+  - 'balanced silhouette' → 'considered silhouette'
+  - 'harmonizes with' → 'complements effortlessly'
+  - 'approachable warmth' → 'refined warmth'
+  Ensure vocabulary upgrades remain appropriate for the assigned tone without crossing into forbidden words (e.g. avoid 'premium', 'luxurious', 'indulgent' unless assigned to premium_indulgent).
+
 12. NEVER include specific numeric measurements (dimensions, weight, or any other raw number) in the prose. Describe scale and presence qualitatively — e.g. 'a substantial, grounded presence' rather than citing exact measurements. Numbers belong only in the specifications block and in key_features bullets, never in this summary.
 
 Produce the prose targeting ~70-110 words across 4-6 sentences.
@@ -508,6 +533,7 @@ function assemblePromptTemplate({
   let userPrompt = `PRODUCT INPUT:
 Name: ${productForPrompt.name}
 Category: ${productForPrompt.category}
+Subcategory: ${productForPrompt.subcategory || ''}
 ${variantLines.join('\n')}
 Raw source data: ${JSON.stringify(productForPrompt, null, 2)}
 
@@ -588,6 +614,30 @@ function buildPrompt(
   return asyncPromise;
 }
 
+const VOCABULARY_UPGRADES = {
+  'Assembled with': 'Crafted with / Meticulously built with',
+  'Constructed with': 'Fashioned from / Handcrafted from',
+  'Built from': 'Crafted from / Rendered in',
+  'sturdy': 'robust / resilient / enduring',
+  'durable': 'long-lasting / built to endure',
+  'dependable framework': 'trusted framework / steadfast construction',
+  'provides sturdy support': 'offers unwavering support',
+  'thoughtful proportions': 'considered proportions / thoughtful scale',
+  'practical utility': 'effortless functionality',
+  'Reassuring joinery': 'Confident craftsmanship / Considered joinery',
+  'soft satin treatments': 'refined satin detailing',
+  'creates an inviting surface': 'lends a graceful, inviting finish',
+  'looks even better with age': 'develops character with age',
+  'Smooth protective sealants': 'Meticulous protective finishing',
+  'preserve the authentic grain': 'honour the natural grain',
+  'Mellow wood grain patterns': 'Rich, understated grain patterns',
+  'hand-rubbed surfaces': 'hand-finished surfaces',
+  'grounded ease': 'quiet sophistication',
+  'balanced silhouette': 'considered silhouette',
+  'harmonizes with': 'complements effortlessly',
+  'approachable warmth': 'refined warmth',
+};
+
 module.exports = {
   buildPrompt,
   computeTier,
@@ -601,4 +651,5 @@ module.exports = {
   OPENING_STRATEGIES,
   CLOSE_ANCHOR_STRATEGIES,
   TIER_VOICE,
+  VOCABULARY_UPGRADES,
 };

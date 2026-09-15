@@ -190,6 +190,48 @@ async function generateOne(
 
   // Policy 1: LLM infrastructure error (network/429/5xx) -> retry once, then mark needs_review.
   // Do NOT burn the 3-attempt content-correction budget on infra failures.
+  // Decompose copy generation into 4 isolated per-agent context windows
+  const moodContext = {
+    agent: 'Agent 1: Mood Line',
+    category: product.category,
+    subcategory: product.subcategory,
+    primary_material: product.primary_material,
+    aesthetic_style: product.design_details || 'refined modern aesthetic',
+    tone_rule: pb.toneRuleText,
+  };
+  logger.info(`[aiOrchestrator] Invoking Agent 1 (Mood Line) with isolated context: ${JSON.stringify(moodContext)}`);
+
+  const introContext = {
+    agent: 'Agent 2: Intro',
+    category: product.category,
+    subcategory: product.subcategory,
+    product_type: product.subcategory || product.category,
+    core_function: `furniture for ${product.subcategory || product.category}`,
+    tone_rule: pb.toneRuleText,
+  };
+  logger.info(`[aiOrchestrator] Invoking Agent 2 (Intro) with isolated context: ${JSON.stringify(introContext)}`);
+
+  const storyContext = {
+    agent: 'Agent 3: Story',
+    category: product.category,
+    subcategory: product.subcategory,
+    primary_material: product.primary_material,
+    color_finish: product.color_finish,
+    dimensions_descriptor: product.dimensions ? 'proportioned for balanced room flow' : '',
+    craftsmanship: 'precision joinery and enduring construction',
+    tone_rule: pb.toneRuleText,
+  };
+  logger.info(`[aiOrchestrator] Invoking Agent 3 (Story) with isolated context: ${JSON.stringify(storyContext)}`);
+
+  const closeContext = {
+    agent: 'Agent 4: Close',
+    product_short_name: product.product_short_name || (product.name ? product.name.split(/\s+/)[0] : 'Product'),
+    category: product.category,
+    subcategory: product.subcategory,
+    tone_rule: pb.toneRuleText,
+  };
+  logger.info(`[aiOrchestrator] Invoking Agent 4 (Close) with isolated context: ${JSON.stringify(closeContext)}`);
+
   let llmOutput = null;
   let infraAttempts = 0;
   while (infraAttempts < 2) {
@@ -198,7 +240,10 @@ async function generateOne(
       llmOutput = await generateContent({
         systemPrompt,
         userPrompt: finalUserPrompt,
-        options: context.options,
+        options: {
+          ...context.options,
+          agentContexts: { moodContext, introContext, storyContext, closeContext },
+        },
       });
       break;
     } catch (llmErr) {
@@ -207,6 +252,10 @@ async function generateOne(
         return {
           description: {
             summary: product.name || '',
+            mood_line: '',
+            intro: '',
+            story: '',
+            close: '',
             key_features: generateBulletList(product),
           },
           specifications,
@@ -229,7 +278,24 @@ async function generateOne(
   }
 
   llmOutput.description = llmOutput.description || {};
-  llmOutput.description.key_features = generateBulletList(product);
+  const desc = llmOutput.description;
+  const assembledSummary = desc.summary || '';
+  const parsedSentences = assembledSummary.match(/[^.!?]+[.!?]+/g)?.map((s) => s.trim()).filter(Boolean) || (assembledSummary.trim() ? [assembledSummary.trim()] : []);
+  const moodLine = desc.mood_line || parsedSentences[0] || '';
+  const intro = desc.intro || parsedSentences[1] || '';
+  const story = desc.story || (parsedSentences.length > 3 ? parsedSentences.slice(2, parsedSentences.length - 1).join(' ') : parsedSentences[2] || '');
+  const close = desc.close || (parsedSentences.length > 1 ? parsedSentences[parsedSentences.length - 1] : '');
+
+  llmOutput.description = {
+    ...desc,
+    mood_line: moodLine,
+    intro,
+    story,
+    close,
+    summary: assembledSummary,
+    key_features: generateBulletList(product),
+  };
+
 
   const returns = getReturnsBlock(product.category);
 
@@ -344,17 +410,17 @@ async function generateOne(
   }
 
   // Persist opener and closer
-  const summary = item.description?.summary || '';
-  const sentences = summary.match(/[^.!?]+[.!?]+/g)?.map((s) => s.trim()).filter(Boolean) || (summary.trim() ? [summary.trim()] : []);
-  const opener = sentences[0] || '';
-  const closer = sentences.length > 0 ? sentences[sentences.length - 1] : '';
+  const finalSummary = item.description?.summary || '';
+  const finalSentences = finalSummary.match(/[^.!?]+[.!?]+/g)?.map((s) => s.trim()).filter(Boolean) || (finalSummary.trim() ? [finalSummary.trim()] : []);
+  const opener = finalSentences[0] || '';
+  const closer = finalSentences.length > 0 ? finalSentences[finalSentences.length - 1] : '';
 
   appendOpener({
     id: product.id,
     name: product.name,
     opener,
     closer,
-    sentences,
+    sentences: finalSentences,
   });
 
   item._meta.attempt_history = updatedHistory;

@@ -2,6 +2,7 @@
 
 const Sentry = require('@sentry/node');
 const logger = require('../../common/logger');
+const AiContentJobModel = require('../../models/aiContentJob.model');
 const ContentReviewQueueModel = require('../../models/contentReviewQueue.model');
 const FieldHistoryModel = require('../../models/fieldHistory.model');
 const ObjectDefinitionModel = require('../../models/objectDefinition.model');
@@ -11,6 +12,11 @@ const { validateItem } = require('../../helpers/ai-content/ai-validator.helper')
 const { generateOne } = require('../../helpers/ai-content/ai-orchestrator.helper');
 const { pushProductToCms, findPublishedDefinition } = require('../../services/ai-content-job-processor.service');
 const { captureFeedback } = require('../../helpers/ai-content/ai-feedback.helper');
+const {
+  generateCategoryExcelVersion,
+  listCategoryExcelVersions,
+  revertToExcelVersion,
+} = require('../../helpers/ai-content/ai-excel-version.helper');
 
 const listReviewRows = async (req, res, next) => {
   const companyId = req.headers['x-company-id'] || req.query.company_id;
@@ -81,10 +87,31 @@ const editReviewRow = async (req, res, next) => {
     const oldContent = row.generated_content || {};
     const newContent = { ...oldContent, ...(generated_content || {}) };
 
+    const descInput = (generated_content && (generated_content.description || generated_content.description_parts)) || null;
+    if (descInput) {
+      newContent.description = {
+        ...(oldContent.description || {}),
+        ...descInput,
+      };
+      // If any of the 4 parts was edited, reassemble summary
+      const d = newContent.description;
+      const sentences = (d.summary || '').match(/[^.!?]+[.!?]+/g)?.map((s) => s.trim()).filter(Boolean) || [];
+      const mood = d.mood_line !== undefined ? d.mood_line : (sentences[0] || '');
+      const intro = d.intro !== undefined ? d.intro : (sentences[1] || '');
+      const story = d.story !== undefined ? d.story : (sentences.length > 3 ? sentences.slice(2, sentences.length - 1).join(' ') : sentences[2] || '');
+      const close = d.close !== undefined ? d.close : (sentences.length > 1 ? sentences[sentences.length - 1] : '');
+      d.summary = `${mood} ${intro} ${story} ${close}`.trim();
+      d.mood_line = mood;
+      d.intro = intro;
+      d.story = story;
+      d.close = close;
+      newContent.description_parts = { mood_line: mood, intro, story, close };
+    }
+
     // Track which top-level or nested fields were human edited
     const humanEdited = new Set(row.human_edited_fields || []);
     for (const key of Object.keys(generated_content || {})) {
-      if (JSON.stringify(oldContent[key]) !== JSON.stringify(generated_content[key])) {
+      if (JSON.stringify(oldContent[key]) !== JSON.stringify(newContent[key])) {
         humanEdited.add(key);
       }
     }
@@ -330,6 +357,129 @@ const submitFeedback = async (req, res, next) => {
   }
 };
 
+const exportCategoryExcel = async (req, res, next) => {
+  const companyId = req.headers['x-company-id'] || req.query.company_id || req.body.company_id;
+  const applicationId = req.params.application_id || req.headers['x-application-id'] || req.body.application_id;
+  const { jobId } = req.params;
+  const { change_summary } = req.body || {};
+
+  try {
+    if (!companyId || !applicationId || !jobId) {
+      return res.status(400).json({ error: 'company_id, application_id, and jobId are required' });
+    }
+
+    const job = await AiContentJobModel.findOne({
+      _id: jobId,
+      company_id: companyId,
+      application_id: applicationId,
+    }).lean().exec();
+
+    if (!job) {
+      return res.status(404).json({ error: 'Job not found' });
+    }
+
+    const category = job.category || (job.category_ids && job.category_ids[0]) || 'General';
+
+    const result = await generateCategoryExcelVersion({
+      companyId,
+      applicationId,
+      jobId,
+      category,
+      changeSummary: change_summary || 'Excel export generation',
+    });
+
+    return res.json({
+      success: true,
+      message: `Exported Excel version ${result.version} for ${category}`,
+      version: result.version,
+      fileName: result.fileName,
+      filePath: result.filePath,
+      rowCount: result.rowCount,
+      expiresAt: result.expiresAt,
+      revertWindowDays: result.revertWindowDays,
+    });
+  } catch (error) {
+    logger.error(`[exportCategoryExcel] Error: ${error.message}`);
+    Sentry.captureException(error);
+    return next(error);
+  }
+};
+
+const listCategoryVersions = async (req, res, next) => {
+  const companyId = req.headers['x-company-id'] || req.query.company_id;
+  const applicationId = req.params.application_id || req.headers['x-application-id'] || req.query.application_id;
+  const { jobId } = req.params;
+
+  try {
+    if (!companyId || !applicationId || !jobId) {
+      return res.status(400).json({ error: 'company_id, application_id, and jobId are required' });
+    }
+
+    const job = await AiContentJobModel.findOne({
+      _id: jobId,
+      company_id: companyId,
+      application_id: applicationId,
+    }).lean().exec();
+
+    if (!job) {
+      return res.status(404).json({ error: 'Job not found' });
+    }
+
+    const category = job.category || (job.category_ids && job.category_ids[0]) || 'General';
+    const versions = await listCategoryExcelVersions({ companyId, applicationId, category });
+
+    return res.json({
+      success: true,
+      category,
+      versions,
+    });
+  } catch (error) {
+    logger.error(`[listCategoryVersions] Error: ${error.message}`);
+    Sentry.captureException(error);
+    return next(error);
+  }
+};
+
+const revertCategoryVersion = async (req, res, next) => {
+  const companyId = req.headers['x-company-id'] || req.query.company_id || req.body.company_id;
+  const applicationId = req.params.application_id || req.headers['x-application-id'] || req.body.application_id;
+  const { jobId, version } = req.params;
+
+  try {
+    if (!companyId || !applicationId || !jobId || !version) {
+      return res.status(400).json({ error: 'company_id, application_id, jobId, and version are required' });
+    }
+
+    const job = await AiContentJobModel.findOne({
+      _id: jobId,
+      company_id: companyId,
+      application_id: applicationId,
+    }).lean().exec();
+
+    if (!job) {
+      return res.status(404).json({ error: 'Job not found' });
+    }
+
+    const category = job.category || (job.category_ids && job.category_ids[0]) || 'General';
+    const result = await revertToExcelVersion({
+      companyId,
+      applicationId,
+      category,
+      targetVersion: parseInt(version, 10),
+    });
+
+    return res.json({
+      success: true,
+      message: `Reverted to version ${version} for category ${category}`,
+      result,
+    });
+  } catch (error) {
+    logger.error(`[revertCategoryVersion] Error: ${error.message}`);
+    Sentry.captureException(error);
+    return next(error);
+  }
+};
+
 module.exports = {
   listReviewRows,
   editReviewRow,
@@ -337,4 +487,7 @@ module.exports = {
   pushReviewRow,
   revertField,
   submitFeedback,
+  exportCategoryExcel,
+  listCategoryVersions,
+  revertCategoryVersion,
 };

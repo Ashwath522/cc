@@ -50,6 +50,18 @@
       "Avoid placing heavy objects directly on glass edges"
     ]
   },
+  "Foam & Latex": {
+    "keywords": ["latex", "foam", "memory foam", "coir", "spring", "mattress"],
+    "instructions": [
+      "Rotate the mattress head-to-toe every few months for even wear",
+      "Use a breathable, washable mattress protector to prevent staining",
+      "Spot-clean spills immediately with a damp cloth and mild soap"
+    ],
+    "avoid": [
+      "Avoid soaking or saturating the core with water or liquid cleaners",
+      "Avoid folding, bending, or jumping on the mattress surface"
+    ]
+  },
   "General": {
     "keywords": [],
     "instructions": [

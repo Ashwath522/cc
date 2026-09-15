@@ -143,7 +143,18 @@ function isProductComplete(product) {
  * Loads and filters complete products from trainingSet file.
  */
 function loadProductsForSubcategory(trainingFile, count) {
-  const filePath = path.join(__dirname, '..', 'data', 'trainingSet', trainingFile);
+  let filePath = path.join(__dirname, '..', 'data', 'trainingSet', trainingFile);
+  if (!fs.existsSync(filePath)) {
+    const archiveDir = path.join(__dirname, '..', 'data', 'trainingSet', '_archive');
+    if (fs.existsSync(archiveDir)) {
+      const basePrefix = trainingFile.replace(/\.jsonl$/, '');
+      const files = fs.readdirSync(archiveDir);
+      const matched = files.find((f) => f.startsWith(basePrefix) && f.endsWith('.jsonl'));
+      if (matched) {
+        filePath = path.join(archiveDir, matched);
+      }
+    }
+  }
   if (!fs.existsSync(filePath)) {
     return {
       products: [],

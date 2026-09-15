@@ -93,4 +93,7 @@ scratch/
 .agents/
 .gemini/
 dump.rdb
+output/excel_versions/**/*.xlsx
+output/excel_versions/*.xlsx
+!output/excel_versions/.gitkeep
 

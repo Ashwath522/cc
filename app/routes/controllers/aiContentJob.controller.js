@@ -49,11 +49,18 @@ const startAiContentJob = async (req, res, next) => {
       created_by: created_by || '',
     });
 
+    const options = {
+      selected_tone: chosenTone,
+      allowSeedFallback: req.body.allowSeedFallback !== undefined ? req.body.allowSeedFallback : true,
+      catalogSource: req.body.catalogSource,
+      ...(req.body.options || {}),
+    };
+
     await enqueueAiContentJob({
       jobId: job._id,
       companyId,
       applicationId,
-      options: { selected_tone: chosenTone, ...(req.body.options || {}) },
+      options,
     });
 
     return res.status(201).json({
@@ -168,6 +175,12 @@ const previewAiContentJob = async (req, res, next) => {
       categoryIds: job.category_ids,
       tone,
       count,
+      options: {
+        selected_tone: tone,
+        allowSeedFallback: req.body.allowSeedFallback !== undefined ? req.body.allowSeedFallback : true,
+        catalogSource: req.body.catalogSource,
+        ...(req.body.options || {}),
+      },
     });
 
     job.selected_tone = tone;
@@ -228,7 +241,12 @@ const confirmAiContentJob = async (req, res, next) => {
       jobId: job._id,
       companyId,
       applicationId,
-      options: { selected_tone: job.selected_tone, ...(req.body.options || {}) },
+      options: {
+        selected_tone: job.selected_tone,
+        allowSeedFallback: req.body.allowSeedFallback !== undefined ? req.body.allowSeedFallback : true,
+        catalogSource: req.body.catalogSource,
+        ...(req.body.options || {}),
+      },
     });
 
     return res.json({

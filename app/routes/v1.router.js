@@ -117,6 +117,9 @@ const {
   pushReviewRow,
   revertField,
   submitFeedback,
+  exportCategoryExcel,
+  listCategoryVersions,
+  revertCategoryVersion,
 } = require('./controllers/aiContentReview.controller');
 
 const {
@@ -135,6 +138,9 @@ router.get('/ai-content/jobs/:jobId/review', listReviewRows);
 router.put('/ai-content/jobs/:jobId/review/:rowId', editReviewRow);
 router.post('/ai-content/jobs/:jobId/review/:rowId/regenerate', regenerateReviewRow);
 router.post('/ai-content/jobs/:jobId/review/:rowId/push', pushReviewRow);
+router.post('/ai-content/jobs/:jobId/excel-export', exportCategoryExcel);
+router.get('/ai-content/jobs/:jobId/excel-versions', listCategoryVersions);
+router.post('/ai-content/jobs/:jobId/excel-versions/:version/revert', revertCategoryVersion);
 router.post('/ai-content/fields/:fieldHistoryId/revert', revertField);
 router.post('/ai-content/feedback', submitFeedback);
 router.get('/ai-content/tones', listTonePresets);
@@ -153,6 +159,9 @@ router.get(`${APP_BASE_PATH}/ai-content/jobs/:jobId/review`, listReviewRows);
 router.put(`${APP_BASE_PATH}/ai-content/jobs/:jobId/review/:rowId`, editReviewRow);
 router.post(`${APP_BASE_PATH}/ai-content/jobs/:jobId/review/:rowId/regenerate`, regenerateReviewRow);
 router.post(`${APP_BASE_PATH}/ai-content/jobs/:jobId/review/:rowId/push`, pushReviewRow);
+router.post(`${APP_BASE_PATH}/ai-content/jobs/:jobId/excel-export`, exportCategoryExcel);
+router.get(`${APP_BASE_PATH}/ai-content/jobs/:jobId/excel-versions`, listCategoryVersions);
+router.post(`${APP_BASE_PATH}/ai-content/jobs/:jobId/excel-versions/:version/revert`, revertCategoryVersion);
 router.post(`${APP_BASE_PATH}/ai-content/fields/:fieldHistoryId/revert`, revertField);
 router.post(`${APP_BASE_PATH}/ai-content/feedback`, submitFeedback);
 router.get(`${APP_BASE_PATH}/ai-content/tones`, listTonePresets);

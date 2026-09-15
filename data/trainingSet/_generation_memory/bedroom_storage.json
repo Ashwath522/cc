@@ -1,0 +1,633 @@
+{
+  "category": "Bedroom Storage",
+  "items": [
+    {
+      "id": "ul-fntbds11mh16348",
+      "name": "Fidora Solid Wood Dressing Table With Stool in Mahogany Finish",
+      "shortName": "Fidora",
+      "summary": "Refined proportions and a smooth mahogany finish create a calm, organized focal point in the room. This mahogany dressing table provides an expansive top surface carefully proportioned for cosmetic organizers, mirrors, and everyday grooming necessities. Solid sheesham wood paneling forms a resilient structural foundation capable of handling continuous everyday domestic activity with ease. Dedicated storage compartments keep personal belongings neatly arranged, shielded from ambient household dust, and ready for daily use. Fidora completes your room arrangement with accessible drawer capacity, solid timber integrity, and gentle domestic ease.",
+      "opener": "Refined proportions and a smooth mahogany finish create a calm, organized focal point in the room",
+      "closer": "Fidora completes your room arrangement with accessible drawer capacity, solid timber integrity, and gentle domestic ease.",
+      "angle": "STRUCTURE_A",
+      "structure": "MATERIAL_SENSORY -> PRACTICAL_USE -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION",
+      "facts": [
+        "sheesham wood",
+        "mahogany",
+        "dressing table",
+        "STRUCTURE_A"
+      ],
+      "timestamp": "2026-09-15T10:31:41.183Z"
+    },
+    {
+      "id": "ul-fnsgdt62wa36249",
+      "name": "Nina Dressing Table With Storage Drawer in Walnut Finish",
+      "shortName": "Nina",
+      "summary": "A streamlined walnut platform and open base introduce clear visual order to the dressing area. Designed with generous surface width, this walnut table accommodates beauty essentials and lighting within an accessible arrangement. Dense mango wood construction provides steadfast frame stability, ensuring the piece remains securely balanced under daily household weight. Leaving the base open preserves generous legroom for seating while facilitating unhindered airflow and simple floor maintenance. Nina enriches the domestic environment with clean walnut visual character, sturdy framing, and functional clarity.",
+      "opener": "A streamlined walnut platform and open base introduce clear visual order to the dressing area",
+      "closer": "Nina enriches the domestic environment with clean walnut visual character, sturdy framing, and functional clarity.",
+      "angle": "STRUCTURE_A",
+      "structure": "OBSERVATION -> FUNCTION -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION",
+      "facts": [
+        "mango wood",
+        "walnut",
+        "dressing table",
+        "STRUCTURE_A"
+      ],
+      "timestamp": "2026-09-15T10:31:41.185Z"
+    },
+    {
+      "id": "ul-fnsgdr11tk16166",
+      "name": "Jean Solid Wood Dressing Table in Teak Finish",
+      "shortName": "Jean",
+      "summary": "The open-frame teak profile creates a clean, unencumbered focal point along the bedroom wall. The considered tabletop configuration delivers reliable functional space for mirrors and personal accessories during morning preparation. Built from solid sheesham wood, the sturdy framework provides dependable strength and lasting tabletop rigidity throughout regular domestic use. Unimpeded floor clearance underneath allows comfortable seated posture and ensures effortless vacuuming and maintenance of the room. Jean supports your household habits with steadfast sheesham wood stability, space-saving design, and minimal balance.",
+      "opener": "The open-frame teak profile creates a clean, unencumbered focal point along the bedroom wall",
+      "closer": "Jean supports your household habits with steadfast sheesham wood stability, space-saving design, and minimal balance.",
+      "angle": "STRUCTURE_A",
+      "structure": "MATERIAL_SENSORY -> FUNCTION -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION",
+      "facts": [
+        "sheesham wood",
+        "teak",
+        "dressing table",
+        "STRUCTURE_A"
+      ],
+      "timestamp": "2026-09-15T10:31:41.186Z"
+    },
+    {
+      "id": "ul-fntbds11tk10009",
+      "name": "Sirius Solid Wood Dressing Table in Teak Finish",
+      "shortName": "Sirius",
+      "summary": "An airy base configuration and crisp teak surfaces establish a clean, uncluttered vanity setup. Featuring a broad tabletop layout, this teak vanity provides generous space for daily grooming essentials while maintaining clean room flow. Crafted with dependable sheesham wood framing, the structure preserves strict mechanical alignment and surface stability across years of use. The elevated lower framework preserves spacious legroom for vanity stools while maintaining completely unobstructed floor visibility. Sirius introduces thoughtful functional discipline with resilient sheesham wood paneling, unencumbered space, and balanced order.",
+      "opener": "An airy base configuration and crisp teak surfaces establish a clean, uncluttered vanity setup",
+      "closer": "Sirius introduces thoughtful functional discipline with resilient sheesham wood paneling, unencumbered space, and balanced order.",
+      "angle": "STRUCTURE_A",
+      "structure": "MATERIAL_SENSORY -> MATERIAL_DETAIL -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION",
+      "facts": [
+        "sheesham wood",
+        "teak",
+        "dressing table",
+        "STRUCTURE_A"
+      ],
+      "timestamp": "2026-09-15T10:31:41.187Z"
+    },
+    {
+      "id": "ul-acmrrc11tk10024",
+      "name": "Ohio Solid Wood Dressing Table in Teak Finish",
+      "shortName": "Ohio",
+      "summary": "Beginning your morning routine feels tranquil and orderly at an unhurried, dedicated grooming surface. This teak dressing table pairs practical household utility with a considered silhouette suited for modern bedroom living. Sturdy sheesham wood framework provides dependable platform rigidity that withstands regular domestic contact across seasons. The open lower framework leaves ample legroom for a stool while keeping the surrounding bedroom floor completely clear and spacious. Ohio completes your room arrangement with unobstructed lower clearance, solid panel strength, and unhurried restful calm.",
+      "opener": "Beginning your morning routine feels tranquil and orderly at an unhurried, dedicated grooming surface",
+      "closer": "Ohio completes your room arrangement with unobstructed lower clearance, solid panel strength, and unhurried restful calm.",
+      "angle": "STRUCTURE_B",
+      "structure": "USE_CASE -> MATERIAL_DETAIL -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION",
+      "facts": [
+        "sheesham wood",
+        "teak",
+        "dressing table",
+        "STRUCTURE_B"
+      ],
+      "timestamp": "2026-09-15T10:31:41.189Z"
+    },
+    {
+      "id": "ul-fnsgdr33be36195",
+      "name": "Valeria Dresser with Mirror in Dual Tone Finish",
+      "shortName": "Valeria",
+      "summary": "An uncluttered silhouette and an open dual tone framework establish a simple, balanced dressing station. The multi-tier layout provides ample surface and storage area, accommodating diverse household organization requirements. Crafted with dependable mdf framing, the structure preserves strict mechanical alignment and surface stability across years of use. The elevated lower framework preserves spacious legroom for vanity stools while maintaining completely unobstructed floor visibility. Valeria anchors your personal resting space with honest mdf durability, open-frame lightness, and uncluttered minimal balance.",
+      "opener": "An uncluttered silhouette and an open dual tone framework establish a simple, balanced dressing station",
+      "closer": "Valeria anchors your personal resting space with honest mdf durability, open-frame lightness, and uncluttered minimal balance.",
+      "angle": "STRUCTURE_A",
+      "structure": "OBSERVATION -> STORAGE_FUNCTION -> FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION",
+      "facts": [
+        "mdf",
+        "dual tone",
+        "storage unit",
+        "STRUCTURE_A"
+      ],
+      "timestamp": "2026-09-15T10:31:41.190Z"
+    },
+    {
+      "id": "ul-fntbds33cw35797",
+      "name": "Eve Engineered Wood Dressing Table in Classic Walnut Finish",
+      "shortName": "Eve",
+      "summary": "Carefully aligned classic walnut panels give this storage piece a crisp, orderly architectural character. This classic walnut dressing table provides an expansive top surface carefully proportioned for cosmetic organizers, mirrors, and everyday grooming necessities. Solid particle board paneling forms a resilient structural foundation capable of handling continuous everyday domestic activity with ease. Dedicated storage compartments keep personal belongings neatly arranged, shielded from ambient household dust, and ready for daily use. Eve establishes an approachable focal point with authentic particle board construction, smooth drawer storage, and refined contemporary poise.",
+      "opener": "Carefully aligned classic walnut panels give this storage piece a crisp, orderly architectural character",
+      "closer": "Eve establishes an approachable focal point with authentic particle board construction, smooth drawer storage, and refined contemporary poise.",
+      "angle": "STRUCTURE_A",
+      "structure": "OBSERVATION -> PRACTICAL_USE -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION",
+      "facts": [
+        "particle board",
+        "classic walnut",
+        "dressing table",
+        "STRUCTURE_A"
+      ],
+      "timestamp": "2026-09-15T10:31:41.191Z"
+    },
+    {
+      "id": "ul-fntbds41wl30025",
+      "name": "Baltoro Engineered Wood Dressing Table in White Finish",
+      "shortName": "Baltoro",
+      "summary": "An open white base gives this dressing table a visually light and uncluttered bedroom profile. The considered tabletop configuration delivers reliable functional space for mirrors and personal accessories during morning preparation. Built from solid mdf paired with glass accents, the sturdy framework provides dependable strength and lasting tabletop rigidity throughout regular domestic use. Unimpeded floor clearance underneath allows comfortable seated posture and ensures effortless vacuuming and maintenance of the room. Baltoro coordinates with surrounding furniture through space-conscious proportions, honest materials, and essential functional order.",
+      "opener": "An open white base gives this dressing table a visually light and uncluttered bedroom profile",
+      "closer": "Baltoro coordinates with surrounding furniture through space-conscious proportions, honest materials, and essential functional order.",
+      "angle": "STRUCTURE_A",
+      "structure": "OBSERVATION -> FUNCTION -> FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION",
+      "facts": [
+        "mdf",
+        "white",
+        "dressing table",
+        "STRUCTURE_A"
+      ],
+      "timestamp": "2026-09-15T10:31:41.192Z"
+    },
+    {
+      "id": "ul-fntbdm11tk16333",
+      "name": "Zephyr Solid Wood Dresser with Mirror in Amber Walnut Finish",
+      "shortName": "Zephyr",
+      "summary": "Nighttime preparations settle into quiet ease with bedside storage kept within immediate arm's reach. Thoughtfully proportioned for regular use, this amber walnut unit accommodates essential items while enhancing room functionality. Durable mango wood construction provides unwavering frame stability, keeping the table steady through repeated daily interactions. Built-in compartments store personal accessories neatly out of sight, promoting an undisturbed and restful environment. Zephyr enriches the domestic environment with clean amber walnut visual character, organized compartments, and restful sleep and quiet ease.",
+      "opener": "Nighttime preparations settle into quiet ease with bedside storage kept within immediate arm's reach",
+      "closer": "Zephyr enriches the domestic environment with clean amber walnut visual character, organized compartments, and restful sleep and quiet ease.",
+      "angle": "STRUCTURE_B",
+      "structure": "USE_CASE -> SPATIAL_FUNCTION -> MATERIAL_DETAIL -> FUNCTION -> CONCLUSION",
+      "facts": [
+        "mango wood",
+        "amber walnut",
+        "storage unit",
+        "STRUCTURE_B"
+      ],
+      "timestamp": "2026-09-15T10:31:41.193Z"
+    },
+    {
+      "id": "ul-fntbdm12dw16407",
+      "name": "Toledo Solid Wood Mirror Frame In Danish Walnut Finish",
+      "shortName": "Toledo",
+      "summary": "Evening routines unwind smoothly when bedside essentials are arranged within comfortable arm's reach. This danish walnut storage unit balances accessible organization with a refined silhouette that harmonizes with contemporary decor. Crafted with resilient mango wood panels, the structure ensures trustworthy load-bearing support for everyday household items. The streamlined open base allows unrestricted seating movement and preserves an open, airy feeling across the room. Toledo supports your household habits with steadfast mango wood stability, space-saving design, and peaceful daily calm.",
+      "opener": "Evening routines unwind smoothly when bedside essentials are arranged within comfortable arm's reach",
+      "closer": "Toledo supports your household habits with steadfast mango wood stability, space-saving design, and peaceful daily calm.",
+      "angle": "STRUCTURE_B",
+      "structure": "USE_CASE -> STORAGE_FUNCTION -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION",
+      "facts": [
+        "mango wood",
+        "danish walnut",
+        "storage unit",
+        "STRUCTURE_B"
+      ],
+      "timestamp": "2026-09-15T10:31:41.194Z"
+    },
+    {
+      "id": "ul-fntbds15wh10023",
+      "name": "Evelyn Solid Wood Dressing Table With Mirror in White Finish",
+      "shortName": "Evelyn",
+      "summary": "Crisp architectural contours and a warm white stain establish a grounded, uncluttered vanity station. Featuring a broad tabletop layout, this white vanity provides generous space for daily grooming essentials while maintaining clean room flow. Crafted with dependable rubber wood framing, the structure preserves strict mechanical alignment and surface stability across years of use. Smoothly sliding drawer sections keep personal accessories neatly tucked away while preserving an orderly, uncluttered room perimeter. Evelyn anchors your personal resting space with honest rubber wood durability, dedicated storage convenience, and understated sophistication.",
+      "opener": "Crisp architectural contours and a warm white stain establish a grounded, uncluttered vanity station",
+      "closer": "Evelyn anchors your personal resting space with honest rubber wood durability, dedicated storage convenience, and understated sophistication.",
+      "angle": "STRUCTURE_A",
+      "structure": "OBSERVATION -> SPATIAL_FUNCTION -> FUNCTION -> STORAGE_FUNCTION -> CONCLUSION",
+      "facts": [
+        "rubber wood",
+        "white",
+        "dressing table",
+        "STRUCTURE_A"
+      ],
+      "timestamp": "2026-09-15T10:31:41.195Z"
+    },
+    {
+      "id": "ul-fnbstb12aw38033",
+      "name": "Cove Solid Wood Bedside Table in Amber Walnut Finish",
+      "shortName": "Cove",
+      "summary": "Bedside necessities remain organized for peaceful nighttime ease and unhurried morning wakeups. This amber walnut bedside table pairs practical household utility with a considered silhouette suited for modern bedroom living. Sturdy mango wood framework provides dependable platform rigidity that withstands regular domestic contact across seasons. The open lower framework leaves ample legroom for a stool while keeping the surrounding bedroom floor completely clear and spacious. Cove handles daily domestic life with authentic mango wood construction, generous legroom, and gentle domestic ease.",
+      "opener": "Bedside necessities remain organized for peaceful nighttime ease and unhurried morning wakeups",
+      "closer": "Cove handles daily domestic life with authentic mango wood construction, generous legroom, and gentle domestic ease.",
+      "angle": "STRUCTURE_B",
+      "structure": "USE_CASE -> FUNCTION -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION",
+      "facts": [
+        "mango wood",
+        "amber walnut",
+        "bedside table",
+        "STRUCTURE_B"
+      ],
+      "timestamp": "2026-09-15T10:31:41.196Z"
+    },
+    {
+      "id": "ul-fntbbs12dw16406",
+      "name": "Toledo Solid Wood Bedside Table in Danish Walnut Finish",
+      "shortName": "Toledo",
+      "summary": "Structured geometry and a smooth danish walnut surface bring an organized, balanced presence to the space. The compact bedside profile provides dedicated surface utility for lighting and personal keepsakes without crowding surrounding space. Built from solid mango wood paired with engineered wood accents, the sturdy framework provides dependable strength and lasting tabletop rigidity throughout regular domestic use. Integrated storage sections resolve everyday accessory clutter, helping maintain a tidy, organized atmosphere throughout the bedroom. Toledo supports your household habits with steadfast mango wood stability, dust-protected drawers, and minimal balance.",
+      "opener": "Structured geometry and a smooth danish walnut surface bring an organized, balanced presence to the space",
+      "closer": "Toledo supports your household habits with steadfast mango wood stability, dust-protected drawers, and minimal balance.",
+      "angle": "STRUCTURE_A",
+      "structure": "MATERIAL_SENSORY -> FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION",
+      "facts": [
+        "mango wood",
+        "danish walnut",
+        "bedside table",
+        "STRUCTURE_A"
+      ],
+      "timestamp": "2026-09-15T10:31:41.197Z"
+    },
+    {
+      "id": "ul-fnbstb12aw16508",
+      "name": "Hiro Solid Wood Bedside Table in Amber Walnut Finish",
+      "shortName": "Hiro",
+      "summary": "Constructed with dependable mango wood, this amber walnut piece delivers steadfast load-bearing strength. The piece features balanced geometric proportions tailored for convenient bedside organization and everyday domestic use. Solid mango wood panels ensure dependable load distribution across the entire structure throughout years of active use. Practical drawer compartments organize personal accessories neatly, ensuring the main surface remains clear and uncluttered. Hiro establishes an approachable focal point with authentic mango wood construction, smooth drawer storage, and dependable domestic strength.",
+      "opener": "Constructed with dependable mango wood, this amber walnut piece delivers steadfast load-bearing strength",
+      "closer": "Hiro establishes an approachable focal point with authentic mango wood construction, smooth drawer storage, and dependable domestic strength.",
+      "angle": "STRUCTURE_D",
+      "structure": "MATERIAL_SENSORY -> FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION",
+      "facts": [
+        "mango wood",
+        "amber walnut",
+        "bedside table",
+        "STRUCTURE_D"
+      ],
+      "timestamp": "2026-09-15T10:31:41.198Z"
+    },
+    {
+      "id": "ul-fntbbs33cw35796",
+      "name": "Hazel Engineered Wood Bedside Table in Classic Walnut Finish",
+      "shortName": "Hazel",
+      "summary": "Balanced drawer fronts and a smooth classic walnut tabletop provide an organized, uncluttered visual presence. Proportioned for bedside placement, this classic walnut unit keeps table lamps, clocks, and personal items conveniently accessible each evening. Crafted with dependable particle board framing, the structure preserves strict mechanical alignment and surface stability across years of use. Smoothly sliding drawer sections keep personal accessories neatly tucked away while preserving an orderly, uncluttered room perimeter. Hazel introduces thoughtful functional discipline with resilient particle board paneling, ample interior capacity, and balanced order.",
+      "opener": "Balanced drawer fronts and a smooth classic walnut tabletop provide an organized, uncluttered visual presence",
+      "closer": "Hazel introduces thoughtful functional discipline with resilient particle board paneling, ample interior capacity, and balanced order.",
+      "angle": "STRUCTURE_A",
+      "structure": "OBSERVATION -> FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION",
+      "facts": [
+        "particle board",
+        "classic walnut",
+        "bedside table",
+        "STRUCTURE_A"
+      ],
+      "timestamp": "2026-09-15T10:31:41.199Z"
+    },
+    {
+      "id": "ul-fntbbs12rc36386",
+      "name": "Takai Solid Wood Bedside Table in Red Cedar Finish",
+      "shortName": "Takai",
+      "summary": "An uncluttered silhouette and an open red cedar framework establish a simple, balanced dressing station. Proportioned for bedside placement, this red cedar unit keeps table lamps, clocks, and personal items conveniently accessible each evening. Crafted with dependable mango wood framing, the structure preserves strict mechanical alignment and surface stability across years of use. The elevated lower framework preserves spacious legroom for vanity stools while maintaining completely unobstructed floor visibility. Takai delivers lasting domestic reliability with honest mango wood durability, open-frame lightness, and balanced clean simplicity.",
+      "opener": "An uncluttered silhouette and an open red cedar framework establish a simple, balanced dressing station",
+      "closer": "Takai delivers lasting domestic reliability with honest mango wood durability, open-frame lightness, and balanced clean simplicity.",
+      "angle": "STRUCTURE_A",
+      "structure": "OBSERVATION -> FUNCTION -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION",
+      "facts": [
+        "mango wood",
+        "red cedar",
+        "bedside table",
+        "STRUCTURE_A"
+      ],
+      "timestamp": "2026-09-15T10:31:41.200Z"
+    },
+    {
+      "id": "ul-fnbstb12aw36590",
+      "name": "Olen Solid Wood Bedside Table in Amber Walnut Finish",
+      "shortName": "Olen",
+      "summary": "Proportioned with a space-conscious footprint, this amber walnut unit fits comfortably along bedroom perimeters. It offers dependable utility and accessible organization while fitting neatly beside bedroom furniture. Solid mango wood framing resists structural shifting, providing continuous stability and dependable weight-bearing performance. Built-in storage sections resolve tabletop clutter, maintaining a tidy, clean, and well-proportioned room perimeter. Olen maintains a reliable domestic presence through clean amber walnut visual character, organized compartments, and uncluttered harmony.",
+      "opener": "Proportioned with a space-conscious footprint, this amber walnut unit fits comfortably along bedroom perimeters",
+      "closer": "Olen maintains a reliable domestic presence through clean amber walnut visual character, organized compartments, and uncluttered harmony.",
+      "angle": "STRUCTURE_C",
+      "structure": "SPATIAL_OBSERVATION -> FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION",
+      "facts": [
+        "mango wood",
+        "amber walnut",
+        "bedside table",
+        "STRUCTURE_C"
+      ],
+      "timestamp": "2026-09-15T10:31:41.202Z"
+    },
+    {
+      "id": "ul-fntbbt11tk16324",
+      "name": "Magellan Solid Wood Bedside Table in Teak Finish",
+      "shortName": "Magellan",
+      "summary": "With its calibrated perimeter profile, this teak unit integrates smoothly into narrow or compact room zones. It offers dependable utility and accessible organization while fitting neatly beside bedroom furniture. Resilient sheesham wood construction maintains steadfast frame alignment and dependable balance across years of household living. Built-in storage sections resolve tabletop clutter, maintaining a tidy, clean, and well-proportioned room perimeter. Magellan fits naturally into household routines through steadfast sheesham wood stability, dust-protected drawers, and pure functional order.",
+      "opener": "With its calibrated perimeter profile, this teak unit integrates smoothly into narrow or compact room zones",
+      "closer": "Magellan fits naturally into household routines through steadfast sheesham wood stability, dust-protected drawers, and pure functional order.",
+      "angle": "STRUCTURE_C",
+      "structure": "MATERIAL_SENSORY -> FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION",
+      "facts": [
+        "sheesham wood",
+        "teak",
+        "bedside table",
+        "STRUCTURE_C"
+      ],
+      "timestamp": "2026-09-15T10:31:41.203Z"
+    },
+    {
+      "id": "ul-fntbbs11tk15064",
+      "name": "Fidora Solid Wood Bedside Table in Teak Finish",
+      "shortName": "Fidora",
+      "summary": "Clean architectural lines and a clear teak finish define this minimalist bedside table. Positioned beside the bed, this teak unit provides practical tabletop space for books, glasses, and personal nighttime accessories. Dense sheesham wood construction provides steadfast frame stability, ensuring the piece remains securely balanced under daily household weight. Leaving the base open preserves generous legroom for seating while facilitating unhindered airflow and simple floor maintenance. Fidora provides dependable domestic service with elevated base geometry, level tabletop support, and understated modern elegance.",
+      "opener": "Clean architectural lines and a clear teak finish define this minimalist bedside table",
+      "closer": "Fidora provides dependable domestic service with elevated base geometry, level tabletop support, and understated modern elegance.",
+      "angle": "STRUCTURE_A",
+      "structure": "MATERIAL_SENSORY -> MATERIAL_DETAIL -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION",
+      "facts": [
+        "sheesham wood",
+        "teak",
+        "bedside table",
+        "STRUCTURE_A"
+      ],
+      "timestamp": "2026-09-15T10:31:41.204Z"
+    },
+    {
+      "id": "ul-fntbbs33br36376",
+      "name": "Rodrigues Engineered Wood Bedside Table in Sheesham Finish",
+      "shortName": "Rodrigues",
+      "summary": "Peaceful bedtime unwinding begins with a dependable bedside surface holding your essential nighttime items. This sheesham bedside table balances accessible organization with a refined silhouette that harmonizes with contemporary decor. Crafted with resilient particle board panels, the structure ensures trustworthy load-bearing support for everyday household items. Practical storage capacity keeps everyday grooming and bedside items neatly arranged within comfortable reaching distance. Rodrigues coordinates with surrounding furniture through space-conscious proportions, organized storage, and restful sleep and quiet ease.",
+      "opener": "Peaceful bedtime unwinding begins with a dependable bedside surface holding your essential nighttime items",
+      "closer": "Rodrigues coordinates with surrounding furniture through space-conscious proportions, organized storage, and restful sleep and quiet ease.",
+      "angle": "STRUCTURE_B",
+      "structure": "MATERIAL_SENSORY -> MATERIAL_DETAIL -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION",
+      "facts": [
+        "particle board",
+        "sheesham",
+        "bedside table",
+        "STRUCTURE_B"
+      ],
+      "timestamp": "2026-09-15T10:31:41.205Z"
+    },
+    {
+      "id": "ul-fntbbs43cw35091",
+      "name": "Zoey Engineered Wood Bedside Table in Classic Walnut Finish",
+      "shortName": "Zoey",
+      "summary": "Elevated leg geometry and a smooth classic walnut tabletop preserve open sightlines across the bedroom space. This classic walnut bedside companion organizes evening reading material and nighttime essentials neatly within immediate reach of your mattress. Solid particle board paneling forms a resilient structural foundation capable of handling continuous everyday domestic activity with ease. Generous open clearance beneath the top platform accommodates comfortable seating while keeping surrounding floor space accessible and easy to clean. Zoey completes your room arrangement with unobstructed lower clearance, solid panel strength, and clean domestic harmony.",
+      "opener": "Elevated leg geometry and a smooth classic walnut tabletop preserve open sightlines across the bedroom space",
+      "closer": "Zoey completes your room arrangement with unobstructed lower clearance, solid panel strength, and clean domestic harmony.",
+      "angle": "STRUCTURE_A",
+      "structure": "SPATIAL_OBSERVATION -> PRACTICAL_USE -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION",
+      "facts": [
+        "particle board",
+        "classic walnut",
+        "bedside table",
+        "STRUCTURE_A"
+      ],
+      "timestamp": "2026-09-15T10:31:41.206Z"
+    },
+    {
+      "id": "ul-fntbbs41wl30048",
+      "name": "Baltoro Engineered Wood Bedside Table in White Finish",
+      "shortName": "Baltoro",
+      "summary": "Rendered in durable mdf, this white bedside table delivers dependable daily utility. Designed for functional reliability, the unit pairs clean lines with a practical layout suited for bedside living. Heavy-duty mdf framing maintains solid tabletop levelness and resists deflection under steady household weight. Concealed storage bays accommodate personal items securely, maintaining an orderly tabletop and clean room aesthetic. Baltoro maintains a reliable domestic presence through clean white visual character, organized compartments, and balanced order.",
+      "opener": "Rendered in durable mdf, this white bedside table delivers dependable daily utility",
+      "closer": "Baltoro maintains a reliable domestic presence through clean white visual character, organized compartments, and balanced order.",
+      "angle": "STRUCTURE_D",
+      "structure": "USE_CASE -> FUNCTION -> FUNCTION -> STORAGE_FUNCTION -> CONCLUSION",
+      "facts": [
+        "mdf",
+        "white",
+        "bedside table",
+        "STRUCTURE_D"
+      ],
+      "timestamp": "2026-09-15T10:31:41.208Z"
+    },
+    {
+      "id": "ul-fntbbs11tk10042",
+      "name": "Snooze Solid Wood Bedside Table in Teak Finish",
+      "shortName": "Snooze",
+      "summary": "An open teak base gives this bedside table a visually light and uncluttered bedroom profile. The compact bedside profile provides dedicated surface utility for lighting and personal keepsakes without crowding surrounding space. Built from solid sheesham wood paired with engineered wood accents, the sturdy framework provides dependable strength and lasting tabletop rigidity throughout regular domestic use. Unimpeded floor clearance underneath allows comfortable seated posture and ensures effortless vacuuming and maintenance of the room. Snooze brings space-conscious proportions, honest materials, and essential functional order.",
+      "opener": "An open teak base gives this bedside table a visually light and uncluttered bedroom profile",
+      "closer": "Snooze brings space-conscious proportions, honest materials, and essential functional order.",
+      "angle": "STRUCTURE_A",
+      "structure": "MATERIAL_SENSORY -> FUNCTION -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION",
+      "facts": [
+        "sheesham wood",
+        "teak",
+        "bedside table",
+        "STRUCTURE_A"
+      ],
+      "timestamp": "2026-09-15T10:31:41.209Z"
+    },
+    {
+      "id": "ul-fnsgf11tk36328",
+      "name": "Ohio Chest of Drawer in Amber Walnut Finish",
+      "shortName": "Ohio",
+      "summary": "Settling in for the night proceeds calmly when nighttime books and water glasses sit within easy reaching distance. This amber walnut chest of drawers pairs practical household utility with a considered silhouette suited for modern bedroom living. Sturdy mango wood framework provides dependable platform rigidity that withstands regular domestic contact across seasons. Smooth storage compartments offer quick access to accessories, toiletries, and personal keepsakes without creating visual clutter. Ohio establishes an approachable focal point with authentic mango wood construction, smooth drawer storage, and pure functional order.",
+      "opener": "Settling in for the night proceeds calmly when nighttime books and water glasses sit within easy reaching distance",
+      "closer": "Ohio establishes an approachable focal point with authentic mango wood construction, smooth drawer storage, and pure functional order.",
+      "angle": "STRUCTURE_B",
+      "structure": "OBSERVATION -> FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION",
+      "facts": [
+        "mango wood",
+        "amber walnut",
+        "chest of drawers",
+        "STRUCTURE_B"
+      ],
+      "timestamp": "2026-09-15T10:31:41.210Z"
+    },
+    {
+      "id": "ul-fnsgdr12dw16408",
+      "name": "Toledo Solid Wood Chest of 6 Drawers In Danish Walnut Finish",
+      "shortName": "Toledo",
+      "summary": "Restful evenings begin with a clutter-free bedside station organized for nighttime reading and tranquil rest. Designed for daily convenience, this dark walnut piece integrates dependable surface utility into an approachable domestic profile. High-quality mango wood surfaces maintain reliable load-bearing capability and structural integrity over long-term family use. Integrated drawer sections protect personal items from ambient dust while supporting an orderly, clutter-free bedroom setting. Toledo delivers lasting domestic reliability with honest mango wood durability, dedicated storage convenience, and quiet domestic comfort.",
+      "opener": "Restful evenings begin with a clutter-free bedside station organized for nighttime reading and tranquil rest",
+      "closer": "Toledo delivers lasting domestic reliability with honest mango wood durability, dedicated storage convenience, and quiet domestic comfort.",
+      "angle": "STRUCTURE_B",
+      "structure": "OBSERVATION -> FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION",
+      "facts": [
+        "mango wood",
+        "dark walnut",
+        "chest of drawers",
+        "STRUCTURE_B"
+      ],
+      "timestamp": "2026-09-15T10:31:41.211Z"
+    },
+    {
+      "id": "ul-fnsgdr41wl30095",
+      "name": "Baltoro Engineered Wood Chest of 5 Drawers in White Finish",
+      "shortName": "Baltoro",
+      "summary": "A balanced white silhouette brings structured visual order to the bedroom perimeter. This white chest of drawers delivers generous functional surface area while organizing everyday bedroom essentials into a cohesive layout. Built from solid mdf paired with engineered wood accents, the sturdy framework provides dependable strength and lasting tabletop rigidity throughout regular domestic use. Integrated storage sections resolve everyday accessory clutter, helping maintain a tidy, organized atmosphere throughout the bedroom. Baltoro brings space-conscious proportions, organized storage, and pure functional order.",
+      "opener": "A balanced white silhouette brings structured visual order to the bedroom perimeter",
+      "closer": "Baltoro brings space-conscious proportions, organized storage, and pure functional order.",
+      "angle": "STRUCTURE_A",
+      "structure": "SPATIAL_OBSERVATION -> FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION",
+      "facts": [
+        "mdf",
+        "white",
+        "chest of drawers",
+        "STRUCTURE_A"
+      ],
+      "timestamp": "2026-09-15T10:31:41.212Z"
+    },
+    {
+      "id": "ul-fnsgdr41dw30127",
+      "name": "Bocado Tall Engineered Wood Chest of 6 Drawers in Columbian Walnut Finish",
+      "shortName": "Bocado",
+      "summary": "Solid particle board construction gives this columbian walnut chest of drawers enduring strength and stability. Designed for functional reliability, the unit pairs clean lines with a practical layout suited for bedside living. Heavy-duty particle board framing maintains solid tabletop levelness and resists deflection under steady household weight. Concealed storage bays accommodate personal items securely, maintaining an orderly tabletop and clean room aesthetic. Bocado serves as a reliable domestic companion through enclosed storage bays, dependable frame balance, and honest functional purpose.",
+      "opener": "Solid particle board construction gives this columbian walnut chest of drawers enduring strength and stability",
+      "closer": "Bocado serves as a reliable domestic companion through enclosed storage bays, dependable frame balance, and honest functional purpose.",
+      "angle": "STRUCTURE_D",
+      "structure": "OBSERVATION -> FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION",
+      "facts": [
+        "particle board",
+        "columbian walnut",
+        "chest of drawers",
+        "STRUCTURE_D"
+      ],
+      "timestamp": "2026-09-15T10:31:41.214Z"
+    },
+    {
+      "id": "ul-fnsgdr33cw35799",
+      "name": "Ben Engineered Wood Chest of 4 Drawers in Classic Walnut Finish",
+      "shortName": "Ben",
+      "summary": "Considered perimeter dimensions make this classic walnut chest of drawers easy to position without crowding bedroom circulation. It offers dependable utility and accessible organization while fitting neatly beside bedroom furniture. Dense particle board core construction maintains long-term structural integrity and steady tabletop support under regular loading. Built-in storage sections resolve tabletop clutter, maintaining a tidy, clean, and well-proportioned room perimeter. Ben anchors your personal resting space with honest particle board durability, dedicated storage convenience, and uncluttered minimal balance.",
+      "opener": "Considered perimeter dimensions make this classic walnut chest of drawers easy to position without crowding bedroom circulation",
+      "closer": "Ben anchors your personal resting space with honest particle board durability, dedicated storage convenience, and uncluttered minimal balance.",
+      "angle": "STRUCTURE_C",
+      "structure": "SPATIAL_OBSERVATION -> FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION",
+      "facts": [
+        "particle board",
+        "classic walnut",
+        "chest of drawers",
+        "STRUCTURE_C"
+      ],
+      "timestamp": "2026-09-15T10:31:41.216Z"
+    },
+    {
+      "id": "ul-fnsgcdf12am16330",
+      "name": "Walter Solid Wood Chest of Drawers in Amber Walnut Finish",
+      "shortName": "Walter",
+      "summary": "Efficient structural proportions ensure this amber walnut chest of drawers optimizes available floor area in the bedroom. The space-efficient layout provides dedicated storage and tabletop capacity without dominating the bedroom layout. Dense mango wood core construction maintains long-term structural integrity and steady tabletop support under regular loading. Enclosed storage sections keep bedroom accessories organized, preventing surface build-up in compact spaces. Walter anchors your personal resting space with honest mango wood durability, dedicated storage convenience, and uncluttered harmony.",
+      "opener": "Efficient structural proportions ensure this amber walnut chest of drawers optimizes available floor area in the bedroom",
+      "closer": "Walter anchors your personal resting space with honest mango wood durability, dedicated storage convenience, and uncluttered harmony.",
+      "angle": "STRUCTURE_C",
+      "structure": "OBSERVATION -> STORAGE_FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION",
+      "facts": [
+        "mango wood",
+        "amber walnut",
+        "chest of drawers",
+        "STRUCTURE_C"
+      ],
+      "timestamp": "2026-09-15T10:31:41.217Z"
+    },
+    {
+      "id": "ul-fnsgdr33dw35583",
+      "name": "Bennis Engineered Wood Chest of 5 Drawers in Dark Walnut Finish",
+      "shortName": "Bennis",
+      "summary": "Constructed with dependable mdf, this dark walnut piece delivers steadfast load-bearing strength. The piece features balanced geometric proportions tailored for convenient bedside organization and everyday domestic use. Dense mdf framing provides trustworthy tabletop support for lamps, mirrors, cosmetics, and everyday personal essentials. Practical drawer compartments organize personal accessories neatly, ensuring the main surface remains clear and uncluttered. Bennis supports your household habits with steadfast mdf stability, dust-protected drawers, and dependable domestic strength.",
+      "opener": "Constructed with dependable mdf, this dark walnut piece delivers steadfast load-bearing strength",
+      "closer": "Bennis supports your household habits with steadfast mdf stability, dust-protected drawers, and dependable domestic strength.",
+      "angle": "STRUCTURE_D",
+      "structure": "OBSERVATION -> FUNCTION -> PRACTICAL_USE -> STORAGE_FUNCTION -> CONCLUSION",
+      "facts": [
+        "mdf",
+        "dark walnut",
+        "chest of drawers",
+        "STRUCTURE_D"
+      ],
+      "timestamp": "2026-09-15T10:31:41.220Z"
+    },
+    {
+      "id": "ul-fnsgdr12aw16467",
+      "name": "Masai Solid Wood Chest Of Drawers In American Walnut Finish With 2 Tone Finish",
+      "shortName": "Masai",
+      "summary": "The rich natural texture of mango wood lends authentic organic warmth to this american walnut chest of drawers. It merges genuine timber appeal with practical proportions designed to serve everyday household organization needs. Dense mango wood timber provides reliable structural stability and resists surface wear during regular household activities. The open lower architecture preserves generous leg clearance while maintaining an airy, uncluttered bedroom presence. Masai provides dependable domestic service with elevated base geometry, level tabletop support, and welcoming warmth.",
+      "opener": "The rich natural texture of mango wood lends authentic organic warmth to this american walnut chest of drawers",
+      "closer": "Masai provides dependable domestic service with elevated base geometry, level tabletop support, and welcoming warmth.",
+      "angle": "STRUCTURE_E",
+      "structure": "MATERIAL_SENSORY -> FUNCTION -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION",
+      "facts": [
+        "mango wood",
+        "american walnut",
+        "chest of drawers",
+        "STRUCTURE_E"
+      ],
+      "timestamp": "2026-09-15T10:31:41.222Z"
+    },
+    {
+      "id": "ul-fvsgdr33br70380",
+      "name": "Opal Chest Of Drawers with 5 Drawers in Columbian Walnut",
+      "shortName": "Opal",
+      "summary": "Evening unwinding feels effortless and restful with bedtime necessities kept neatly organized beside the bed. Designed for daily convenience, this columbian walnut piece integrates dependable surface utility into an approachable domestic profile. High-quality particle board surfaces maintain reliable load-bearing capability and structural integrity over long-term family use. Integrated drawer sections protect personal items from ambient dust while supporting an orderly, clutter-free bedroom setting. Opal anchors your personal resting space with honest particle board durability, dedicated storage convenience, and balanced clean simplicity.",
+      "opener": "Evening unwinding feels effortless and restful with bedtime necessities kept neatly organized beside the bed",
+      "closer": "Opal anchors your personal resting space with honest particle board durability, dedicated storage convenience, and balanced clean simplicity.",
+      "angle": "STRUCTURE_B",
+      "structure": "USE_CASE -> FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION",
+      "facts": [
+        "particle board",
+        "columbian walnut",
+        "chest of drawers",
+        "STRUCTURE_B"
+      ],
+      "timestamp": "2026-09-15T10:31:41.224Z"
+    },
+    {
+      "id": "ul-fnsgdr62nw16054",
+      "name": "Faye Solid Wood Chest Of Drawers In Natural White Ash Finish",
+      "shortName": "Faye",
+      "summary": "Efficient structural proportions ensure this natural white ash chest of drawers optimizes available floor area in the bedroom. It offers dependable utility and accessible organization while fitting neatly beside bedroom furniture. Solid ash wood framing resists structural shifting, providing continuous stability and dependable weight-bearing performance. Built-in storage sections resolve tabletop clutter, maintaining a tidy, clean, and well-proportioned room perimeter. Faye provides dependable domestic service with enclosed storage bays, dependable frame balance, and functional clarity.",
+      "opener": "Efficient structural proportions ensure this natural white ash chest of drawers optimizes available floor area in the bedroom",
+      "closer": "Faye provides dependable domestic service with enclosed storage bays, dependable frame balance, and functional clarity.",
+      "angle": "STRUCTURE_C",
+      "structure": "OBSERVATION -> FUNCTION -> FUNCTION -> STORAGE_FUNCTION -> CONCLUSION",
+      "facts": [
+        "ash wood",
+        "natural white ash",
+        "chest of drawers",
+        "STRUCTURE_C"
+      ],
+      "timestamp": "2026-09-15T10:31:41.226Z"
+    },
+    {
+      "id": "ul-fnsgdr12dw16492",
+      "name": "Ohio Chest of Drawers in Danish Walnut Finish",
+      "shortName": "Ohio",
+      "summary": "Sturdy mango wood craftsmanship gives this danish walnut chest of drawers an authentic, lasting domestic presence. It provides a level surface and organized storage tailored for bedside lamps, electronics, and reading materials. Dense mango wood framing provides trustworthy tabletop support for lamps, mirrors, cosmetics, and everyday personal essentials. The open leg structure ensures comfortable seated posture and allows effortless maintenance and cleaning of surrounding floors. Ohio supports your household habits with steadfast mango wood stability, space-saving design, and dependable domestic strength.",
+      "opener": "Sturdy mango wood craftsmanship gives this danish walnut chest of drawers an authentic, lasting domestic presence",
+      "closer": "Ohio supports your household habits with steadfast mango wood stability, space-saving design, and dependable domestic strength.",
+      "angle": "STRUCTURE_D",
+      "structure": "MATERIAL_SENSORY -> STORAGE_FUNCTION -> MATERIAL_DETAIL -> FUNCTION -> CONCLUSION",
+      "facts": [
+        "mango wood",
+        "danish walnut",
+        "chest of drawers",
+        "STRUCTURE_D"
+      ],
+      "timestamp": "2026-09-15T10:31:41.228Z"
+    },
+    {
+      "id": "ul-fnsgdr12aw16542",
+      "name": "Toledo Solid Wood Chest of 6 Drawers In Amber Walnut Finish",
+      "shortName": "Toledo",
+      "summary": "Authentic mango wood surfaces lend distinct tactile warmth and enduring character to the bedroom. This amber walnut chest of drawers combines honest timber aesthetics with balanced daily functionality and practical convenience. Sturdy mango wood framework delivers dependable frame strength, keeping the entire unit securely grounded and level. Dedicated drawer compartments keep personal items neatly tucked away while highlighting the clean exterior wood grain. Toledo completes your room arrangement with accessible drawer capacity, solid timber integrity, and welcoming warmth.",
+      "opener": "Authentic mango wood surfaces lend distinct tactile warmth and enduring character to the bedroom",
+      "closer": "Toledo completes your room arrangement with accessible drawer capacity, solid timber integrity, and welcoming warmth.",
+      "angle": "STRUCTURE_E",
+      "structure": "MATERIAL_SENSORY -> FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION",
+      "facts": [
+        "mango wood",
+        "amber walnut",
+        "chest of drawers",
+        "STRUCTURE_E"
+      ],
+      "timestamp": "2026-09-15T10:31:41.231Z"
+    }
+  ],
+  "angleCounts": {
+    "STRUCTURE_A": 15,
+    "STRUCTURE_B": 8,
+    "STRUCTURE_D": 5,
+    "STRUCTURE_C": 5,
+    "STRUCTURE_E": 2
+  },
+  "structureCounts": {
+    "MATERIAL_SENSORY -> PRACTICAL_USE -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION": 1,
+    "OBSERVATION -> FUNCTION -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION": 2,
+    "MATERIAL_SENSORY -> FUNCTION -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION": 3,
+    "MATERIAL_SENSORY -> MATERIAL_DETAIL -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION": 2,
+    "USE_CASE -> MATERIAL_DETAIL -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION": 1,
+    "OBSERVATION -> STORAGE_FUNCTION -> FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION": 1,
+    "OBSERVATION -> PRACTICAL_USE -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION": 1,
+    "OBSERVATION -> FUNCTION -> FUNCTION -> SPATIAL_FUNCTION -> CONCLUSION": 1,
+    "USE_CASE -> SPATIAL_FUNCTION -> MATERIAL_DETAIL -> FUNCTION -> CONCLUSION": 1,
+    "USE_CASE -> STORAGE_FUNCTION -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION": 1,
+    "OBSERVATION -> SPATIAL_FUNCTION -> FUNCTION -> STORAGE_FUNCTION -> CONCLUSION": 1,
+    "USE_CASE -> FUNCTION -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION": 1,
+    "MATERIAL_SENSORY -> FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION": 4,
+    "OBSERVATION -> FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION": 4,
+    "SPATIAL_OBSERVATION -> FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION": 3,
+    "MATERIAL_SENSORY -> MATERIAL_DETAIL -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION": 1,
+    "SPATIAL_OBSERVATION -> PRACTICAL_USE -> MATERIAL_DETAIL -> SPATIAL_FUNCTION -> CONCLUSION": 1,
+    "USE_CASE -> FUNCTION -> FUNCTION -> STORAGE_FUNCTION -> CONCLUSION": 1,
+    "OBSERVATION -> STORAGE_FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION": 1,
+    "OBSERVATION -> FUNCTION -> PRACTICAL_USE -> STORAGE_FUNCTION -> CONCLUSION": 1,
+    "USE_CASE -> FUNCTION -> MATERIAL_DETAIL -> STORAGE_FUNCTION -> CONCLUSION": 1,
+    "OBSERVATION -> FUNCTION -> FUNCTION -> STORAGE_FUNCTION -> CONCLUSION": 1,
+    "MATERIAL_SENSORY -> STORAGE_FUNCTION -> MATERIAL_DETAIL -> FUNCTION -> CONCLUSION": 1
+  },
+  "updated_at": "2026-09-15T10:31:41.231Z"
+}

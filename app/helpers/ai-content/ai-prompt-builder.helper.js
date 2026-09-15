@@ -92,6 +92,16 @@ const OPENING_STRATEGIES = {
     name: 'Strategy 5 (Material-first fact)',
     description: 'open from a specific, ungeneric detail about the actual material (not generic "rich grain" — a specific detail about how this material behaves or looks, e.g. how mango wood ages differently than sheesham, how particle board provides uniform surfaces, etc.)',
   },
+  6: {
+    id: 6,
+    name: 'Strategy 6 (Contrast/juxtaposition)',
+    description: 'open by juxtaposing two apparent opposites the product resolves — e.g. generous storage that leaves the room feeling open, or robust construction that carries a light visual presence. Do NOT name both sides explicitly; show the resolution.',
+  },
+  7: {
+    id: 7,
+    name: 'Strategy 7 (Consequence/outcome)',
+    description: 'open with the lived consequence of good furniture — the room feels complete, the morning runs smoother, the space finally makes sense — without naming the product or its features until later.',
+  },
 };
 
 const STRATEGY_2_SUB_CASES = [
@@ -100,7 +110,18 @@ const STRATEGY_2_SUB_CASES = [
   'hosting a guest or gathering',
   'starting a relaxed weekend routine',
   'returning home in the evening',
+  'organising a shared bedroom',
+  'a child finally having their own space',
 ];
+
+// Strategy IDs that map to structural opener patterns — used to avoid repeating
+// strategies that appear too frequently in the recent corpus.
+const STRATEGY_TO_PATTERN = {
+  2: 'settling_in',   // Strategy 2 (moment) maps to settling/morning patterns
+  1: 'natural_grain_patterns', // Strategy 1 (sensory) can match this
+  3: 'crafted_from_material',  // Strategy 3 (direct) can match crafted_from
+  5: 'crafted_from_material',  // Strategy 5 (material) same
+};
 
 function selectOpeningStrategy(productKey) {
   const str = String(productKey || '');
@@ -109,10 +130,40 @@ function selectOpeningStrategy(productKey) {
     hash = (hash << 5) - hash + str.charCodeAt(i);
     hash |= 0;
   }
-  const key = (Math.abs(hash) % 5) + 1;
-  const strat = OPENING_STRATEGIES[key];
 
-  if (key === 2) {
+  // Try to get recently overused pattern IDs from the corpus
+  let overusedPatternIds = [];
+  try {
+    const { getRecentlyUsedPatterns } = require('./ai-opener-store.helper');
+    overusedPatternIds = getRecentlyUsedPatterns(12);
+  } catch (e) { /* non-fatal if store not available */ }
+
+  // Build candidate list: all 7 strategies, ordered by hash preference
+  // Strategies are deprioritized if their structural pattern appears overused in corpus
+  const allKeys = [1, 2, 3, 4, 5, 6, 7];
+  const primaryKey = (Math.abs(hash) % 7) + 1;
+
+  // Check if the primary strategy's structural pattern is overused
+  const primaryPatternId = STRATEGY_TO_PATTERN[primaryKey];
+  const primaryIsOverused = primaryPatternId && overusedPatternIds.includes(primaryPatternId);
+
+  let selectedKey = primaryKey;
+  if (primaryIsOverused) {
+    // Find an alternative strategy that isn't overused
+    let altHash = hash ^ 0x5f3759df; // XOR with a constant to get different ordering
+    for (let i = 0; i < allKeys.length; i++) {
+      const candidate = ((Math.abs(altHash) + i) % 7) + 1;
+      const candidatePatternId = STRATEGY_TO_PATTERN[candidate];
+      if (!candidatePatternId || !overusedPatternIds.includes(candidatePatternId)) {
+        selectedKey = candidate;
+        break;
+      }
+    }
+  }
+
+  const strat = OPENING_STRATEGIES[selectedKey];
+
+  if (selectedKey === 2) {
     let subHash = 5381;
     for (let i = 0; i < str.length; i++) {
       subHash = (subHash << 5) + subHash + str.charCodeAt(i);
@@ -122,7 +173,7 @@ function selectOpeningStrategy(productKey) {
     const assignedSubCase = STRATEGY_2_SUB_CASES[subIndex];
     return {
       ...strat,
-      description: `open from this specific concrete use-case/moment: "${assignedSubCase}". Do NOT use a formulaic template like "Preparing for a..." — describe the moment naturally and specifically.`,
+      description: `open from this specific concrete use-case/moment: "${assignedSubCase}". Do NOT use a formulaic template like "Preparing for a..." or "Settling in after..." — describe the moment naturally, embedded in the product's specific context.`,
     };
   }
 
@@ -194,6 +245,12 @@ RULES:
    sentence from the source is fine when it's the clearest way to state
    an important fact; the priority is that required facts are present
    and the format rules below are followed, not avoiding all repetition.
+   STRICT FACTUAL GROUNDING CONSTRAINTS:
+   - Do NOT invent ungrounded construction or joinery methods (e.g. NEVER claim "traditional joinery", "hand-finished joinery", "mortise-and-tenon", "interlocking joinery", "corner bracing", "cross-braced", "precision milling", "timber movement resistance", or "kiln-dried" unless explicitly in the source specs).
+   - Do NOT invent unstated mechanical parts (e.g. NEVER claim "gas-assist struts", "gas lift pistons", "sliding lids"). Refer strictly to the catalog-stated storage mechanism (e.g. "hydraulic lift mechanism", "drawer storage").
+   - Do NOT invent unstated internal organization features (e.g. NEVER claim "drawer dividers", "cosmetic compartments", "partitioned internal sections" unless explicitly in source specs).
+   - Do NOT invent health or ergonomic claims (e.g. NEVER claim "spinal support", "postural alignment", "mattress airflow/ventilation").
+   - Describe only the verified material, finish, stated storage configuration, general proportions, and everyday room utility.
 3. NUMBERS STAY AS DIGITS. Any numeric spec you reference in bullets or
    specifications (mattress size, seating capacity, counts, sizes, etc.) must
    be written the same way the source gives it — digits, not spelled-out
@@ -341,7 +398,9 @@ Produce the prose targeting ~70-110 words across 4-6 sentences.
     Tone: {{CATEGORY_TONE}}
 
 LEARNED PREFERENCES (feedback-derived rules):
-{{LEARNED_RULES}}`;
+{{LEARNED_RULES}}
+
+{{DIVERSITY_CONTEXT}}`;
 
 const SUBCATEGORY_MAPPING = {
   beds: 'Beds',
@@ -452,6 +511,7 @@ function formatLearnedRules(rules, category) {
 }
 
 const { getEffectiveTone } = require('./tone');
+const { buildDiversityHint } = require('./ai-opener-store.helper');
 
 const TONE_NAMES = Object.freeze({
   warm_inviting: 'Warm & Inviting',
@@ -518,7 +578,8 @@ function assemblePromptTemplate({
     .replace('{{CATEGORY_EMPHASIS}}', JSON.stringify(categoryRules.emphasis_points))
     .replace('{{CATEGORY_AVOID}}', JSON.stringify(categoryRules.avoid_list))
     .replace('{{CATEGORY_TONE}}', categoryRules.tone_notes)
-    .replace('{{LEARNED_RULES}}', formatLearnedRules(learnedRules, product.category));
+    .replace('{{LEARNED_RULES}}', formatLearnedRules(learnedRules, product.category))
+    .replace('{{DIVERSITY_CONTEXT}}', buildDiversityHint(8));
 
   const variantLines = [];
   if (product.seating_capacity) variantLines.push(`Primary size/seating variant (THIS product): ${product.seating_capacity}`);

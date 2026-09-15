@@ -23,7 +23,7 @@ const THEME_FAMILIES = {
   },
   craft: {
     moodWords: ['grounded', 'enduring', 'craft', 'craftsmanship', 'heritage', 'rooted', 'authentic', 'foundation', 'strength', 'solid', 'lasting'],
-    closeWords: ['enduring', 'lasting', 'grounded', 'craftsmanship', 'strength', 'integrity', 'heritage', 'foundation', 'solid', 'dependable'],
+    closeWords: ['enduring', 'lasting', 'grounded', 'craftsmanship', 'strength', 'integrity', 'heritage', 'foundation', 'solid', 'dependable', 'honest', 'purpose', 'quality', 'accurate', 'consistent', 'principled', 'material', 'honest in'],
   },
   luxury: {
     moodWords: ['luxury', 'luxurious', 'indulgence', 'indulgent', 'grand', 'opulent', 'sumptuous', 'exquisite', 'masterpiece', 'prestige'],

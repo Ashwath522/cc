@@ -13,6 +13,8 @@ const {
   ngramOverlapCheck,
   loadPhraseFrequencies,
   checkPhraseFrequency,
+  structuralPatternCheck,
+  buildDiversityHint,
 } = require('./ai-opener-store.helper');
 
 function generateBulletList(prod) {
@@ -120,7 +122,10 @@ async function generateOne(
     application_id: context.application_id,
   });
 
-  let finalUserPrompt = userPrompt;
+  // Build diversity hint from recent real openers and inject into the user prompt.
+  // This prevents the LLM from reusing opener templates and structural patterns.
+  const diversityHint = attempt === 1 ? buildDiversityHint(8) : '';
+  let finalUserPrompt = diversityHint ? userPrompt + '\n' + diversityHint : userPrompt;
 
   // Targeted correction feedback from previous attempt errors
   if (attempt > 1 && attemptHistory.length > 0) {
@@ -354,18 +359,26 @@ async function generateOne(
     const closer = sentences.length > 0 ? sentences[sentences.length - 1] : '';
 
     const existingRecords = loadOpeners();
-    const existingOpeners = existingRecords.map((r) => ({ id: r.id, sentence: r.opener }));
-    const existingClosers = existingRecords.map((r) => ({ id: r.id, sentence: r.closer }));
+    // For ngram checks: pass full records so source='mock' can be filtered
+    const existingOpeners = existingRecords.map((r) => ({ id: r.id, sentence: r.opener, source: r.source }));
+    const existingClosers = existingRecords.map((r) => ({ id: r.id, sentence: r.closer, source: r.source }));
 
     const openerCheck = opener ? ngramOverlapCheck(opener, existingOpeners) : { tooSimilar: false };
     const closerCheck = closer ? ngramOverlapCheck(closer, existingClosers) : { tooSimilar: false };
-    const isTooSimilar = openerCheck.tooSimilar || closerCheck.tooSimilar;
+
+    // Structural pattern check: catches variable-substitution templates like
+    // "[Name] brings a complete feel" used across multiple products
+    const openerStructuralCheck = opener ? structuralPatternCheck(opener, existingRecords, 'opener') : { tooSimilar: false };
+    const closerStructuralCheck = closer ? structuralPatternCheck(closer, existingRecords, 'closer') : { tooSimilar: false };
+
+    const isTooSimilar = openerCheck.tooSimilar || closerCheck.tooSimilar
+      || openerStructuralCheck.tooSimilar || closerStructuralCheck.tooSimilar;
 
     const phraseFreqMap = loadPhraseFrequencies();
     const phraseCheckResults = sentences.map((sentence, idx) => ({
       sentenceIndex: idx,
       sentence,
-      ...checkPhraseFrequency(sentence, phraseFreqMap, 3),
+      ...checkPhraseFrequency(sentence, phraseFreqMap, 4),
     }));
     const flaggedSentenceChecks = phraseCheckResults.filter((r) => r.flagged);
     const hasOverusedPhrases = flaggedSentenceChecks.length > 0;
@@ -374,12 +387,22 @@ async function generateOne(
       const retryErrors = [];
       if (openerCheck.tooSimilar) {
         retryErrors.push(
-          `REPETITION FIX REQUIRED: Your opening sentence is too similar to a previously generated product's opener (matched: '${openerCheck.matchedSentence}'). Rewrite the opening sentence using different vocabulary.`,
+          `REPETITION FIX REQUIRED: Your opening sentence is too similar to a previously generated product's opener (matched: '${openerCheck.matchedSentence}'). Rewrite the opening sentence using a completely different angle and vocabulary. Do NOT start with the same words or sentence structure.`,
         );
       }
       if (closerCheck.tooSimilar) {
         retryErrors.push(
-          `REPETITION FIX REQUIRED: Your closing sentence is too similar to a previously generated product's closer (matched: '${closerCheck.matchedSentence}'). Rewrite the closing sentence using different vocabulary.`,
+          `REPETITION FIX REQUIRED: Your closing sentence is too similar to a previously generated product's closer (matched: '${closerCheck.matchedSentence}'). Rewrite it with a different structure and angle.`,
+        );
+      }
+      if (openerStructuralCheck.tooSimilar) {
+        retryErrors.push(
+          `STRUCTURAL REPETITION: Your opener follows the narrative template "${openerStructuralCheck.patternLabel}" which has been used in ${openerStructuralCheck.patternCount} recent products. Choose a completely different opening angle that does not fit this pattern.`,
+        );
+      }
+      if (closerStructuralCheck.tooSimilar) {
+        retryErrors.push(
+          `STRUCTURAL REPETITION: Your closer follows the narrative template "${closerStructuralCheck.patternLabel}" which has been used in ${closerStructuralCheck.patternCount} recent products. Choose a completely different closing angle.`,
         );
       }
       if (hasOverusedPhrases) {
@@ -391,7 +414,7 @@ async function generateOne(
               ? 'closing sentence'
               : `sentence ${res.sentenceIndex + 1}`;
           for (const p of res.repeatedPhrases) {
-            retryErrors.push(`OVERUSED PHRASE: '${p.phrase}' in your ${positionLabel} has already appeared 3+ times.`);
+            retryErrors.push(`OVERUSED PHRASE: '${p.phrase}' in your ${positionLabel} has already appeared ${p.count}+ times across the dataset. Replace it and any close variant.`);
           }
         }
       }
@@ -409,18 +432,19 @@ async function generateOne(
     }
   }
 
-  // Persist opener and closer
+  // Persist opener and closer — tagged as 'real' so mock test runs don't pollute
   const finalSummary = item.description?.summary || '';
   const finalSentences = finalSummary.match(/[^.!?]+[.!?]+/g)?.map((s) => s.trim()).filter(Boolean) || (finalSummary.trim() ? [finalSummary.trim()] : []);
-  const opener = finalSentences[0] || '';
-  const closer = finalSentences.length > 0 ? finalSentences[finalSentences.length - 1] : '';
+  const finalOpener = finalSentences[0] || '';
+  const finalCloser = finalSentences.length > 0 ? finalSentences[finalSentences.length - 1] : '';
 
   appendOpener({
     id: product.id,
     name: product.name,
-    opener,
-    closer,
+    opener: finalOpener,
+    closer: finalCloser,
     sentences: finalSentences,
+    source: 'real',
   });
 
   item._meta.attempt_history = updatedHistory;

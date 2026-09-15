@@ -12,7 +12,7 @@ const { buildQualityPromise } = require('./qualityComposer');
 const { validateItem } = require('./validator');
 const { PLACEHOLDER_LINKS } = require('./schema');
 
-const { loadOpeners, appendOpener, ngramOverlapCheck, loadPhraseFrequencies, checkPhraseFrequency } = require('./openerStore');
+const { loadOpeners, appendOpener, ngramOverlapCheck, loadPhraseFrequencies, checkPhraseFrequency, structuralPatternCheck, buildDiversityHint } = require('./openerStore');
 
 const PRICE_BANDS_PATH = path.join(__dirname, '..', 'data', 'price_bands.json');
 const OUTPUT_DIR = path.join(__dirname, '..', 'output', 'generated');
@@ -48,9 +48,13 @@ async function generateOne(product, priceBands, attempt = 1, conv_id = null, att
 
   const { systemPrompt, userPrompt, careMatch } = buildPrompt(product, priceBands, lengthDirection);
 
+  // On first attempt, inject diversity hint from recent real openers to
+  // prevent the LLM from reusing the same opener templates.
+  const diversityHint = attempt === 1 ? buildDiversityHint(8) : '';
   let finalUserPrompt = conv_id
     ? applySessionAdjustments(conv_id, userPrompt)
     : userPrompt;
+  if (diversityHint) finalUserPrompt += '\n' + diversityHint;
 
   // Targeted correction feedback from previous attempt errors
   if (attempt > 1 && attemptHistory.length > 0) {
@@ -229,19 +233,25 @@ async function generateOne(product, priceBands, attempt = 1, conv_id = null, att
   const closer = sentences.length > 0 ? sentences[sentences.length - 1] : '';
 
   const existingRecords = loadOpeners();
-  const existingOpeners = existingRecords.map(r => ({ id: r.id, sentence: r.opener }));
-  const existingClosers = existingRecords.map(r => ({ id: r.id, sentence: r.closer }));
+  const existingOpeners = existingRecords.map(r => ({ id: r.id, sentence: r.opener, source: r.source }));
+  const existingClosers = existingRecords.map(r => ({ id: r.id, sentence: r.closer, source: r.source }));
 
   const openerCheck = opener ? ngramOverlapCheck(opener, existingOpeners) : { tooSimilar: false };
   const closerCheck = closer ? ngramOverlapCheck(closer, existingClosers) : { tooSimilar: false };
-  const isTooSimilar = openerCheck.tooSimilar || closerCheck.tooSimilar;
 
-  // Exact phrase frequency check on existing map across all sentences (BEFORE appending this attempt)
+  // Structural pattern check: catches templates that vary words but keep the same narrative structure
+  const openerStructuralCheck = opener ? structuralPatternCheck(opener, existingRecords, 'opener') : { tooSimilar: false };
+  const closerStructuralCheck = closer ? structuralPatternCheck(closer, existingRecords, 'closer') : { tooSimilar: false };
+
+  const isTooSimilar = openerCheck.tooSimilar || closerCheck.tooSimilar
+    || openerStructuralCheck.tooSimilar || closerStructuralCheck.tooSimilar;
+
+  // Exact phrase frequency check — raised threshold to 4 (was 3) to reduce false positives
   const phraseFreqMap = loadPhraseFrequencies();
   const phraseCheckResults = sentences.map((sentence, idx) => ({
     sentenceIndex: idx,
     sentence,
-    ...checkPhraseFrequency(sentence, phraseFreqMap, 3)
+    ...checkPhraseFrequency(sentence, phraseFreqMap, 4)
   }));
   const flaggedSentenceChecks = phraseCheckResults.filter(r => r.flagged);
   const hasOverusedPhrases = flaggedSentenceChecks.length > 0;
@@ -249,17 +259,23 @@ async function generateOne(product, priceBands, attempt = 1, conv_id = null, att
   if ((isTooSimilar || hasOverusedPhrases) && attempt < 3) {
     const retryErrors = [];
     if (openerCheck.tooSimilar) {
-      retryErrors.push(`REPETITION FIX REQUIRED: Your opening sentence is too similar to a previously generated product's opener (matched: '${openerCheck.matchedSentence}'). Rewrite the opening sentence using different vocabulary and sentence structure. This is unrelated to factual content — keep all facts the same, only change the phrasing.`);
+      retryErrors.push(`REPETITION FIX REQUIRED: Your opening sentence is too similar to a previously generated product's opener (matched: '${openerCheck.matchedSentence}'). Rewrite the opening sentence using a completely different angle and vocabulary. Keep all facts the same, only change the structure and phrasing.`);
     }
     if (closerCheck.tooSimilar) {
-      retryErrors.push(`REPETITION FIX REQUIRED: Your closing sentence is too similar to a previously generated product's closer (matched: '${closerCheck.matchedSentence}'). Rewrite the closing sentence using different vocabulary and sentence structure. This is unrelated to factual content — keep all facts the same, only change the phrasing.`);
+      retryErrors.push(`REPETITION FIX REQUIRED: Your closing sentence is too similar to a previously generated product's closer (matched: '${closerCheck.matchedSentence}'). Rewrite the closing sentence using different vocabulary and sentence structure.`);
+    }
+    if (openerStructuralCheck.tooSimilar) {
+      retryErrors.push(`STRUCTURAL REPETITION: Your opener follows the narrative template "${openerStructuralCheck.patternLabel}" which has been used in ${openerStructuralCheck.patternCount} recent products. Choose a completely different opening angle that does not fit this pattern.`);
+    }
+    if (closerStructuralCheck.tooSimilar) {
+      retryErrors.push(`STRUCTURAL REPETITION: Your closer follows the narrative template "${closerStructuralCheck.patternLabel}" which has been used in ${closerStructuralCheck.patternCount} recent products. Choose a completely different closing angle.`);
     }
     if (hasOverusedPhrases) {
       for (const res of flaggedSentenceChecks) {
         const positionLabel = res.sentenceIndex === 0 ? 'opening sentence' :
                               (res.sentenceIndex === sentences.length - 1 ? 'closing sentence' : `sentence ${res.sentenceIndex + 1}`);
         for (const p of res.repeatedPhrases) {
-          retryErrors.push(`OVERUSED PHRASE: '${p.phrase}' in your ${positionLabel} has already appeared 3+ times across this dataset. Avoid it and any close variant in this sentence.`);
+          retryErrors.push(`OVERUSED PHRASE: '${p.phrase}' in your ${positionLabel} has already appeared ${p.count}+ times across this dataset. Avoid it and any close variant.`);
         }
       }
     }
@@ -295,13 +311,14 @@ async function generateOne(product, priceBands, attempt = 1, conv_id = null, att
     console.warn(`[phrase overuse warning] product ${product.id} accepted on attempt ${attempt} with phrase overuse flag: ${allOverused.map(p => `'${p.phrase}' (${p.count}x)`).join(', ')}`);
   }
 
-  // Persist opener and closer across all runs, and update phrase frequencies for all sentences in summary
+  // Persist opener and closer — tagged as 'real' so mock test runs don't pollute
   appendOpener({
     id: product.id,
     name: product.name,
     opener,
     closer,
-    sentences
+    sentences,
+    source: 'real',
   });
 
   item._meta.attempt_history = updatedHistory;

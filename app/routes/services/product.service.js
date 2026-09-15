@@ -78,8 +78,8 @@ const path = require('path');
 
 function getRawCategoryProducts({ categoryIds = [], pageSize = 50 }) {
   try {
-    const archiveDir = path.join(__dirname, '../../../data/trainingSet/_archive');
-    if (!fs.existsSync(archiveDir)) {
+    const trainingDir = path.join(__dirname, '../../../data/trainingSet');
+    if (!fs.existsSync(trainingDir)) {
       return [];
     }
 
@@ -94,22 +94,22 @@ function getRawCategoryProducts({ categoryIds = [], pageSize = 50 }) {
       'wardrobe': 'wardrobes_generated_enriched',
       'kids room': 'kids_room_generated_enriched',
       'kids': 'kids_room_generated_enriched',
-      'pet furniture': 'pet_furniture_generated',
+      'pet furniture': 'pet_furniture_generated_enriched',
     };
 
     const requested = Array.isArray(categoryIds) ? categoryIds : [categoryIds];
     const catKey = (requested[0] || 'beds').toString().toLowerCase().trim();
     const prefix = CATEGORY_MAP[catKey] || 'beds_generated_enriched';
 
-    const files = fs.readdirSync(archiveDir);
-    const matchedFile = files.find((f) => f.startsWith(prefix) && f.endsWith('.jsonl')) ||
-      files.find((f) => f.startsWith('beds_generated_enriched'));
+    const files = fs.readdirSync(trainingDir);
+    const matchedFile = files.find((f) => f.startsWith(prefix) && f.endsWith('.jsonl') && !f.includes('.bak')) ||
+      files.find((f) => f.startsWith('beds_generated_enriched') && !f.includes('.bak'));
 
     if (!matchedFile) {
       return [];
     }
 
-    const filePath = path.join(archiveDir, matchedFile);
+    const filePath = path.join(trainingDir, matchedFile);
     const lines = fs.readFileSync(filePath, 'utf-8').trim().split('\n').filter(Boolean);
     const items = [];
 

@@ -65,6 +65,16 @@
         "msg": "make it long",
         "feedback": "Be more specific and grounded in the referenced material category when phrasing care instructions.",
         "timestamp": "2026-08-27T05:59:46.248Z"
+      },
+      {
+        "msg": "make it short",
+        "feedback": "Make the product description more concise and shorter.",
+        "timestamp": "2026-09-15T09:52:31.448Z"
+      },
+      {
+        "msg": "make it long",
+        "feedback": "Make the product description more concise and shorter.",
+        "timestamp": "2026-09-15T09:52:31.449Z"
       }
     ]
   },

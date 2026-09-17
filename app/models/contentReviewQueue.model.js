@@ -20,6 +20,14 @@ const ContentReviewQueueSchema = new mongoose.Schema(
       default: AI_CONTENT_ROW_STATUS.NEEDS_REVIEW,
     },
     human_edited_fields: { type: [String], default: [] },
+    generation_attempts: [
+      {
+        attempt_number: { type: Number },
+        profile_hash: { type: String },
+        generated_content: { type: mongoose.Schema.Types.Mixed },
+        timestamp: { type: Date, default: Date.now },
+      },
+    ],
   },
   {
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },

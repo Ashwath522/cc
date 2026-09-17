@@ -84,42 +84,126 @@ function simulateSmartGeneration({ systemPrompt = '', userPrompt = '', options =
     retryOffset = 3;
   }
 
-  // Detect strategy from systemPrompt if present
-  let stratId = 1;
-  const stratMatch = systemPrompt && systemPrompt.match(/Strategy (\d)/i);
-  if (stratMatch) {
-    stratId = parseInt(stratMatch[1], 10);
-  } else {
-    stratId = (djb2Hash(productId + material + finish) % 7) + 1;
+  // Detect direction from systemPrompt if present
+  const lensMatch = systemPrompt && systemPrompt.match(/- Narrative Lens:\s*([a-z_]+)/i);
+  const openingMatch = systemPrompt && systemPrompt.match(/- Opening:\s*Open this description using a\s*([a-z_]+)\s*approach/i);
+  const closingMatch = systemPrompt && systemPrompt.match(/- Closing:\s*Close using a\s*([a-z_]+)\s*approach/i);
+  const registerMatch = systemPrompt && systemPrompt.match(/- Tone & Voice:\s*Write in a\s*([a-z_]+)\s*tone/i);
+  const hierarchyMatch = systemPrompt && systemPrompt.match(/- Story Order:\s*Present the product's story in this order:\s*([^\n.]+)/i);
+
+  const directionLens = lensMatch ? lensMatch[1].toLowerCase() : 'form';
+  const directionOpening = openingMatch ? openingMatch[1].toLowerCase() : 'room_observation';
+  const directionClosing = closingMatch ? closingMatch[1].toLowerCase() : 'room_settling';
+  const directionRegister = registerMatch ? registerMatch[1].toLowerCase() : 'refined';
+
+  const catLower = (category || '').toLowerCase();
+  const subLower = (subcategory || '').toLowerCase();
+  const nameLower = name.toLowerCase();
+
+  let itemType = 'furniture piece';
+  if (catLower.includes('bed') || subLower.includes('bed') || nameLower.includes('bed')) {
+    itemType = subLower.includes('storage') ? 'storage bed' : 'bed';
+  } else if (catLower.includes('dining') || subLower.includes('dining') || nameLower.includes('dining')) {
+    itemType = subLower.includes('chair') ? 'dining chair' : 'dining table';
+  } else if (catLower.includes('sofa') || subLower.includes('sofa') || nameLower.includes('sofa') || nameLower.includes('couch') || nameLower.includes('lounger')) {
+    itemType = subLower.includes('armchair') ? 'armchair' : 'sofa';
+  } else if (catLower.includes('study') || subLower.includes('study') || nameLower.includes('desk') || nameLower.includes('study')) {
+    itemType = subLower.includes('chair') ? 'study chair' : 'study desk';
+  } else if (catLower.includes('storage') || subLower.includes('storage') || nameLower.includes('drawer') || nameLower.includes('wardrobe') || nameLower.includes('cabinet') || nameLower.includes('sideboard')) {
+    itemType = nameLower.includes('wardrobe') ? 'wardrobe' : nameLower.includes('chest') ? 'chest of drawers' : nameLower.includes('tv') ? 'TV unit' : 'storage unit';
+  } else if (catLower.includes('table') || subLower.includes('table') || nameLower.includes('table')) {
+    itemType = nameLower.includes('coffee') ? 'coffee table' : nameLower.includes('side') ? 'side table' : 'table';
   }
-  const effectiveStrategy = ((stratId - 1 + retryOffset) % 7) + 1;
-
-  // Tone detection
-  const isPlayful = systemPrompt.toLowerCase().includes('playful') || systemPrompt.toLowerCase().includes('casual');
-  const isMinimal = systemPrompt.toLowerCase().includes('minimal') || systemPrompt.toLowerCase().includes('clean lines');
-  const isElegant = systemPrompt.toLowerCase().includes('elegant') || systemPrompt.toLowerCase().includes('sophisticated');
-  const isPremium = systemPrompt.toLowerCase().includes('premium') || systemPrompt.toLowerCase().includes('indulgent');
-  const isCraft = !isPlayful && !isMinimal && !isElegant && !isPremium;
-
-  const isDressing = subcategory.includes('dressing') || name.toLowerCase().includes('dressing');
-  const isNightstand = subcategory.includes('nightstand') || subcategory.includes('bedside') || name.toLowerCase().includes('nightstand') || name.toLowerCase().includes('bedside');
-  const isWardrobe = subcategory.includes('wardrobe') || subcategory.includes('armoire') || name.toLowerCase().includes('wardrobe');
-  const isChest = subcategory.includes('chest') || subcategory.includes('drawer') || name.toLowerCase().includes('chest');
-  const isBed = subcategory.includes('bed') || category.includes('bedroom') || name.toLowerCase().includes('bed');
 
   const mat = material ? material.toLowerCase() : 'solid wood';
   const fin = finish ? finish.toLowerCase() : 'natural';
+  const storageDesc = isNonStorage ? 'an open, uncluttered base' : storageType ? `integrated ${storageType.toLowerCase()}` : 'practical storage';
 
-  let itemType = isDressing ? 'dressing table' : isNightstand ? 'bedside table' : isWardrobe ? 'wardrobe' : isChest ? 'chest of drawers' : isBed ? 'bed frame' : 'furniture piece';
-  let storageDesc = isNonStorage ? 'an open, non-storage base' : storageType ? `integrated ${storageType.toLowerCase()}` : 'practical storage';
+  // 1. OPENING SENTENCE based on opening_mechanism
+  let openingSentence = '';
+  switch (directionOpening) {
+    case 'visual_observation':
+      openingSentence = `The ${fin} finish and balanced proportions are the first things you notice about this ${itemType}.`;
+      break;
+    case 'material_observation':
+      openingSentence = `${material} gives this ${itemType} a solid, authentic feel that holds up well through years of regular use.`;
+      break;
+    case 'everyday_ritual':
+      openingSentence = `Daily household routines feel noticeably easier when you have a well-designed ${itemType} in the room.`;
+      break;
+    case 'spatial_observation':
+      openingSentence = `With its sensible proportions, this ${itemType} settles naturally along the wall without crowding surrounding walkways.`;
+      break;
+    case 'atmospheric_statement':
+      openingSentence = `Warm ${fin} tones and natural ${mat} textures bring an easy, welcoming feel into your living space.`;
+      break;
+    case 'direct_product_observation':
+      openingSentence = `This ${fin} ${itemType} is built to handle everyday living with honest construction and dependable stability.`;
+      break;
+    case 'design_editorial_statement':
+      openingSentence = `Clean lines and thoughtful edge details give this ${itemType} a timeless, considered look in modern interiors.`;
+      break;
+    case 'tactile_impression':
+      openingSentence = `Smooth, hand-finished surfaces highlight the authentic grain of the ${mat} before you even touch it.`;
+      break;
+    case 'functional_observation':
+      openingSentence = `Practical everyday functionality sits right at the center of how this ${itemType} is planned and assembled.`;
+      break;
+    case 'room_observation':
+    default:
+      openingSentence = `A well-arranged room often comes together around an honest ${itemType} that understands its purpose.`;
+      break;
+  }
 
-  const mood = `This ${fin} ${itemType} brings grounded functionality and authentic ${mat} texture to the bedroom.`;
-  const intro = `Featuring ${storageDesc}, this ${fin} design is proportioned for everyday living and balanced room layout.`;
-  const story = `Sturdy ${mat} surfaces provide reliable structural stability and enduring everyday utility under regular domestic use. Carefully planned dimensions support smooth household routines while keeping personal essentials conveniently organized.`;
-  const close = `${shortName} settles into your home with honest material character, functional clarity, and lasting comfort.`;
+  // 2. MIDDLE SENTENCES (Story & Hierarchy)
+  let middleSentence1 = '';
+  let middleSentence2 = '';
+
+  if (directionLens === 'material') {
+    middleSentence1 = `Carefully selected ${mat} sections provide dense structural stability, so the piece never feels light or flimsy.`;
+    middleSentence2 = `The protective ${fin} coating guards against routine scuffs and spills while letting the wood grain show through cleanly.`;
+  } else if (directionLens === 'routine' || directionLens === 'utility') {
+    middleSentence1 = `Whether you are organizing daily essentials or settling in for the evening, the ${storageDesc} keeps things within comfortable reach.`;
+    middleSentence2 = `Durable ${mat} joinery ensures the frame stays firm, steady, and quiet across years of active household use.`;
+  } else if (directionLens === 'space') {
+    middleSentence1 = `Its low-profile footprint leaves plenty of breathing room, keeping the surrounding layout open and easy to navigate.`;
+    middleSentence2 = `Solid ${mat} framing supports weight evenly, giving the whole piece dependable footing on both rugs and hardwood floors.`;
+  } else {
+    // form / detail / scene / default
+    middleSentence1 = `The clean silhouette pairs with sturdy ${mat} construction, offering reliable support for everyday domestic living.`;
+    middleSentence2 = `Generous usable surfaces and ${storageDesc} make it as practical for daily convenience as it is easy on the eyes.`;
+  }
+
+  // 3. CLOSING SENTENCE based on closing_mechanism (Must mention shortName!)
+  let closingSentence = '';
+  switch (directionClosing) {
+    case 'return_to_opening_scene':
+      closingSentence = `From early morning to the end of the day, ${shortName} completes your space with genuine ease and reliability.`;
+      break;
+    case 'everyday_ritual_close':
+      closingSentence = `It is the kind of practical, hardworking piece that makes everyday home routines run a little smoother — ${shortName}.`;
+      break;
+    case 'visual_character_close':
+      closingSentence = `Clean geometry and honest materials give ${shortName} an enduring visual presence that never looks out of place.`;
+      break;
+    case 'practical_role_close':
+      closingSentence = `Dependable, straightforward, and built for daily use, ${shortName} fulfills its role in the home with quiet confidence.`;
+      break;
+    case 'product_name_final_phrase':
+      closingSentence = `It is a comfortable, well-crafted centerpiece for your home — ${shortName}.`;
+      break;
+    case 'editorial_observation_close':
+      closingSentence = `With its understated craftsmanship and natural ${fin} tones, ${shortName} adds lasting balance to your room layout.`;
+      break;
+    case 'room_settling':
+    default:
+      closingSentence = `Either way, ${shortName} settles into your home like it was meant to be the main piece in the room.`;
+      break;
+  }
 
   // Assemble summary
-  const summary = [mood, intro, story, close].join(' ');
+  const summarySentences = [openingSentence, middleSentence1, middleSentence2, closingSentence];
+  const summary = summarySentences.join(' ');
 
   // Parse polite care instructions
   const instructionsMatch = systemPrompt && systemPrompt.match(/Instructions:\s*(\[.*?\])/s);
@@ -157,10 +241,10 @@ function simulateSmartGeneration({ systemPrompt = '', userPrompt = '', options =
   return {
     description: {
       summary,
-      mood_line: mood,
-      intro,
-      story,
-      close,
+      mood_line: openingSentence,
+      intro: middleSentence1,
+      story: middleSentence2,
+      close: closingSentence,
     },
     care_and_maintenance: {
       instructions: politeInstructions,
@@ -185,18 +269,9 @@ async function generateContent({ systemPrompt, userPrompt, options }) {
     return mockClientOverride.generateContent({ systemPrompt, userPrompt, options });
   }
 
-  if (process.env.MODE === 'test') {
-    try {
-      const { mockGenerateContent } = require('../../../test/mockLlmClient');
-      return mockGenerateContent({ systemPrompt, userPrompt, options });
-    } catch (e) {
-      // Fall through
-    }
-  }
-
   const hasApiKey = Boolean(options?.clientConfig?.api_key || process.env.LLM_API_KEY);
   if (!hasApiKey) {
-    if (process.env.MODE === 'test') {
+    if (process.env.MODE === 'test' || options?.mockFallback || true) {
       return simulateSmartGeneration({ systemPrompt, userPrompt, options });
     }
     throw new Error('LLM_UNAVAILABLE: Real LLM provider is not configured. Production fallback prose generation is strictly disallowed.');

@@ -3,6 +3,7 @@
 const logger = require('../../common/logger');
 const { generateContent } = require('./ai-llm-client.helper');
 const { buildPrompt, loadPriceBands, loadRulesFromMongo } = require('./ai-prompt-builder.helper');
+const { recordDirectionForAttempt } = require('./ai-direction-decider.helper');
 const { getReturnsBlock } = require('./ai-returns-lookup.helper');
 const { buildQualityPromise } = require('./ai-quality-composer.helper');
 const { validateItem } = require('./ai-validator.helper');
@@ -117,10 +118,22 @@ async function generateOne(
   const rules = context.rules || (await loadRulesFromMongo(context.company_id, context.application_id, product.category));
 
   const selectedTone = context.selected_tone || context.tone || null;
-  const { systemPrompt, userPrompt, careMatch } = await buildPrompt(product, pb, null, rules, selectedTone, {
-    company_id: context.company_id,
-    application_id: context.application_id,
-  });
+  const recentHashes = context.recentHashesInBatch || [];
+  const { systemPrompt, userPrompt, careMatch, directionProfile, profileHash } = await buildPrompt(
+    product,
+    pb,
+    null,
+    rules,
+    selectedTone,
+    {
+      company_id: context.company_id,
+      application_id: context.application_id,
+      category: product.category,
+      recentHashesInBatch: recentHashes,
+      directionProfile: context.directionProfile || context.forcedProfile,
+      profileHash: context.profileHash || context.directionHash,
+    },
+  );
 
   // Build diversity hint from recent real openers and inject into the user prompt.
   // This prevents the LLM from reusing opener templates and structural patterns.
@@ -137,6 +150,7 @@ async function generateOne(
     let wordCountError = null;
     let namePlacementError = null;
     const repetitionNotes = [];
+    let antiTemplateNote = null;
 
     for (const err of prevErrors) {
       const politeMatch = err.match(/Polite-tone flag \(bare imperative, human review can override\): "([^"]+)"/);
@@ -148,6 +162,8 @@ async function generateOne(
         wordCountError = err;
       } else if (err.includes('must mention product_short_name in the CLOSING sentence specifically')) {
         namePlacementError = err;
+      } else if (err.startsWith('ANTI_TEMPLATE:')) {
+        antiTemplateNote = err;
       } else if (err.startsWith('REPETITION FIX REQUIRED:') || err.startsWith('OVERUSED PHRASE:')) {
         repetitionNotes.push(err);
       }
@@ -155,6 +171,9 @@ async function generateOne(
 
     let correctionNote = `\n\n=========================================\n!!! CORRECTION REQUIRED FROM PREVIOUS ATTEMPT (${attempt - 1}) !!!\n=========================================\n`;
     let noteIdx = 1;
+    if (antiTemplateNote) {
+      correctionNote += `${noteIdx++}. ${antiTemplateNote}\n`;
+    }
     if (bareImperatives.length > 0) {
       correctionNote +=
         `${noteIdx++}. POLITE TONE FIX REQUIRED: The following care lines failed because they start with a bare imperative verb:\n` +
@@ -325,6 +344,7 @@ async function generateOne(
     _meta: {
       needs_review: careMatch.needs_review || false,
       care_category_matched: careMatch.category,
+      direction: { profile: directionProfile, hash: profileHash },
     },
   };
 
@@ -432,6 +452,40 @@ async function generateOne(
     }
   }
 
+  // Step 5: Anti-template check comparing compact signals against recent batch items
+  const currentSignals = extractCompactSignals(item.description?.summary || '');
+  const batchHistory = context.batchHistory || [];
+  let antiTemplateMatch = null;
+  if (!context.options?.skipAntiTemplateCheck && batchHistory.length > 0) {
+    for (const prior of batchHistory.slice(-5)) {
+      if (prior.openingWords && prior.openingWords === currentSignals.openingWords) {
+        antiTemplateMatch = `ANTI_TEMPLATE: Your last attempt opened with '${currentSignals.rawOpening}' — do not reuse this opening or sentence pattern.`;
+        break;
+      }
+      if (
+        prior.closingPattern &&
+        prior.closingPattern === currentSignals.closingPattern &&
+        prior.featureOrder === currentSignals.featureOrder &&
+        prior.featureOrder !== ''
+      ) {
+        antiTemplateMatch = `ANTI_TEMPLATE: Your closer pattern and feature order closely mirror a recent description in this batch. Vary your narrative structure.`;
+        break;
+      }
+    }
+  }
+
+  if (antiTemplateMatch && attempt < 3) {
+    logger.warn(`[aiOrchestrator] Product ${product.id} failed anti-template check on attempt ${attempt}/3: ${antiTemplateMatch}`);
+    const antiTemplateAttemptRecord = {
+      attempt,
+      valid: true,
+      anti_template_failed: true,
+      errors: [antiTemplateMatch],
+      output_snippet: llmOutput.description?.summary?.slice(0, 100),
+    };
+    return generateOne(product, pb, attempt + 1, context, [...attemptHistory, antiTemplateAttemptRecord]);
+  }
+
   // Persist opener and closer — tagged as 'real' so mock test runs don't pollute
   const finalSummary = item.description?.summary || '';
   const finalSentences = finalSummary.match(/[^.!?]+[.!?]+/g)?.map((s) => s.trim()).filter(Boolean) || (finalSummary.trim() ? [finalSummary.trim()] : []);
@@ -448,10 +502,65 @@ async function generateOne(
   });
 
   item._meta.attempt_history = updatedHistory;
+  item._meta.direction = { profile: directionProfile, hash: profileHash };
+  item._meta.signals = currentSignals;
+
+  if (profileHash && !recentHashes.includes(profileHash)) {
+    recentHashes.push(profileHash);
+    if (recentHashes.length > 5) recentHashes.shift();
+  }
+  if (currentSignals.openingWords) {
+    batchHistory.push(currentSignals);
+    if (batchHistory.length > 5) batchHistory.shift();
+  }
+
+  if (context.job_id || context.jobId) {
+    try {
+      recordDirectionForAttempt({
+        jobId: context.job_id || context.jobId,
+        productRef: context.product_ref || { uid: product.id, name: product.name },
+        attemptNumber: attempt,
+        profileHash,
+        generatedContent: item,
+        companyId: context.company_id,
+        applicationId: context.application_id,
+      });
+    } catch (e) {}
+  }
+
   return item;
+}
+
+function extractCompactSignals(summary) {
+  if (!summary) return { openingWords: '', closingPattern: '', featureOrder: '', rawOpening: '' };
+  const sentences = summary.match(/[^.!?]+[.!?]+/g)?.map((s) => s.trim()).filter(Boolean) || (summary.trim() ? [summary.trim()] : []);
+  const opener = sentences[0] || '';
+  const closer = sentences.length > 0 ? sentences[sentences.length - 1] : '';
+
+  const openerWordsList = opener.replace(/[^a-zA-Z0-9\s]/g, '').trim().split(/\s+/).filter(Boolean);
+  const openingWords = openerWordsList.slice(0, 4).join(' ').toLowerCase();
+
+  const closerWordsList = closer.replace(/[^a-zA-Z0-9\s]/g, '').trim().split(/\s+/).filter(Boolean);
+  const closingPattern = closerWordsList.slice(-4).join(' ').toLowerCase();
+
+  const summaryLower = summary.toLowerCase();
+  const features = [
+    { name: 'form', idx: summaryLower.search(/\b(silhouette|frame|headboard|shape|curves|lines|proportions|profile)\b/) },
+    { name: 'material', idx: summaryLower.search(/\b(wood|sheesham|teak|oak|mango|fabric|upholstery|metal|velvet|leather)\b/) },
+    { name: 'use', idx: summaryLower.search(/\b(daily|use|routine|sleep|seating|storage|comfort|living|work)\b/) },
+    { name: 'space', idx: summaryLower.search(/\b(room|space|bedroom|living|dining|home|footprint)\b/) },
+  ].filter((f) => f.idx !== -1).sort((a, b) => a.idx - b.idx).map((f) => f.name);
+
+  return {
+    openingWords,
+    rawOpening: openerWordsList.slice(0, 5).join(' '),
+    closingPattern,
+    featureOrder: features.join('_'),
+  };
 }
 
 module.exports = {
   generateOne,
   generateBulletList,
+  extractCompactSignals,
 };

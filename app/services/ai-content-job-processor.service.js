@@ -200,6 +200,9 @@ async function processAiContentJob(jobId, companyId, applicationId, options = {}
     let pushedCount = 0;
     let failedCount = 0;
 
+    const recentHashesInBatch = [];
+    const batchHistory = [];
+
     while (hasMore) {
       let pageResponse;
       try {
@@ -248,11 +251,28 @@ async function processAiContentJob(jobId, companyId, applicationId, options = {}
             product,
             null,
             1,
-            { company_id: companyId, application_id: applicationId, selected_tone: selectedTone, options },
+            {
+              company_id: companyId,
+              application_id: applicationId,
+              selected_tone: selectedTone,
+              job_id: job._id,
+              product_ref: productRef,
+              recentHashesInBatch,
+              batchHistory,
+              options,
+            },
           );
 
           // Re-validate immediately before push
           const prePushValidation = validateItem(generated, product, { selectedTone });
+          const initialAttempts = generated._meta?.direction?.hash ? [
+            {
+              attempt_number: 1,
+              profile_hash: generated._meta.direction.hash,
+              generated_content: generated,
+              timestamp: new Date(),
+            },
+          ] : [];
 
           if (prePushValidation.valid && !generated._meta?.needs_review) {
             cleanCount++;
@@ -281,6 +301,7 @@ async function processAiContentJob(jobId, companyId, applicationId, options = {}
               validation_result: prePushValidation,
               status: definitionSlug ? AI_CONTENT_ROW_STATUS.PUSHED : AI_CONTENT_ROW_STATUS.CLEAN,
               human_edited_fields: [],
+              generation_attempts: initialAttempts,
             });
           } else {
             // Save to ContentReviewQueue
@@ -296,6 +317,7 @@ async function processAiContentJob(jobId, companyId, applicationId, options = {}
               validation_result: prePushValidation,
               status: AI_CONTENT_ROW_STATUS.NEEDS_REVIEW,
               human_edited_fields: [],
+              generation_attempts: initialAttempts,
             });
           }
         } catch (itemErr) {
